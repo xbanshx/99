@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>99 Media & Tech | i99.sa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link
+    rel="preload"
+    href="assets/fonts/tasneem-regular.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"/>
+
+    <link
+    rel="preload"
+    href="assets/fonts/DGAgnadeen-Light.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"/>
+
+    <link rel="stylesheet" href="css/splash.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <nav class="splash-nav">
+        <img src="img/blue-logo.png" alt="99 Logo" class="splash-logo">
+        <button id="lang-toggle" onclick="switchLang(currentLang === 'ar' ? 'en' : 'ar')">EN</button>
+    </nav>
+
+    <!-- Split Screen -->
+    <main class="split-container">
+        <!-- Media Side -->
+        <a href="media/" class="split-side media-side" id="media-side">
+            <div class="side-overlay"></div>
+            <div class="side-content">
+                <div class="side-icon">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                    </svg>
+                </div>
+                <h2 data-i18n="splash-media-title">الإعلام</h2>
+                <p data-i18n="splash-media-desc">إنتاج محتوى، تسويق رقمي، علاقات عامة</p>
+                <span class="side-cta" data-i18n="splash-enter">اكتشف المزيد ←</span>
+            </div>
+        </a>
+
+        <!-- Center Logo -->
+        <div class="center-logo">
+            <img src="img/blue-logo.png" alt="99">
+        </div>
+
+        <!-- Tech Side -->
+        <a href="tech/" class="split-side tech-side" id="tech-side">
+            <div class="side-overlay"></div>
+            <div class="side-content">
+                <div class="side-icon">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                        <path d="M7 8l3 3-3 3"></path>
+                        <line x1="13" y1="14" x2="17" y2="14"></line>
+                    </svg>
+                </div>
+                <h2 data-i18n="splash-tech-title">التقنية والذكاء الاصطناعي</h2>
+                <p data-i18n="splash-tech-desc">تطوير برمجيات، حلول AI، تحليل بيانات</p>
+                <span class="side-cta" data-i18n="splash-enter">اكتشف المزيد ←</span>
+            </div>
+        </a>
+    </main>
+
+    <!-- Footer -->
+    <footer class="splash-footer">
+        <span style="font-size: 20px;">🇸🇦</span>
+        <span data-i18n="splash-footer">إعلام سعودي بروح عالمية</span>
+    </footer>
+
+    <script src="js/splash-i18n.js"></script>
+</body>
+</html>

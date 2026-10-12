@@ -1,0 +1,23 @@
+# --- System files ---
+.DS_Store
+Thumbs.db
+*.swp
+
+# --- Secrets / environment (never commit) ---
+.env
+.env.*
+*.pem
+*.key
+*.duck
+
+# --- Tooling / local deploy metadata ---
+node_modules/
+.vercel/
+
+# --- Archives & old copies (kept on disk, not tracked) ---
+*.zip
+*.rar
+*.7z
+untitled folder/
+*_backup*/
+_backups/
