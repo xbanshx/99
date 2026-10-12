@@ -24,7 +24,7 @@ const techTranslations = {
         "t-stat3": "دعم فني متواصل",
         "t-partners-title": "شركاء النجاح",
         "t-contact-title": "ابدأ مشروعك معنا",
-        "t-label-name": "الإسم",
+        "t-label-name": "الاسم",
         "t-label-email": "البريد الإلكتروني",
         "t-label-message": "تفاصيل المشروع",
         "t-submit-btn": "أرسل طلبك"
