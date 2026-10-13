@@ -222,23 +222,27 @@
                         <li><a href="tel:+966566111617">+966566111617</a></li>
                     </ul>
                 </div>
-                <form action="" id="contact-form">
+                <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+                    <input type="hidden" name="access_key" value="ضع_المفتاح_هنا">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
                     <div class="input-parent">
-                        <input type="text" name="name" id="user-name">
-                        <label for="name" data-i18n="label-name">الاسم</label>
+                        <input type="text" name="name" id="user-name" required>
+                        <label for="user-name" data-i18n="label-name">الاسم</label>
                     </div>
     
                     <div class="input-parent">
-                        <input type="text" name="email" id="user-email">
-                        <label for="" id="email" data-i18n="label-email">البريد الإلكتروني</label>
+                        <input type="email" name="email" id="user-email" required>
+                        <label for="user-email" id="email" data-i18n="label-email">البريد الإلكتروني</label>
                     </div>
     
                     <div class="input-parent">
-                        <textarea name="message" id="message"></textarea>
+                        <textarea name="message" id="message" required></textarea>
                         <label for="message" data-i18n="label-message">الرسالة</label>
                     </div>
     
-                    <button value="Send" class="btn" data-i18n="submit-btn">إرسال رسالة</button>
+                    <button type="submit" value="Send" class="btn" data-i18n="submit-btn">إرسال رسالة</button>
+                    <div class="form-status" style="display: none; font-family: 'DGAgnadeen', sans-serif; margin-top: 15px; font-size: 1rem; text-align: center;"></div>
                 </form>
             </div>
             

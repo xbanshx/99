@@ -163,4 +163,91 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         );
     }
+
+    // 8. Web3Forms AJAX Handler for Tech Contact Form
+    const techForm = document.getElementById("tech-form");
+    if (techForm) {
+        techForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const statusDiv = techForm.querySelector(".form-status");
+            const submitBtn = techForm.querySelector("button[type='submit'], .btn");
+            const btnTextSpan = submitBtn ? submitBtn.querySelector(".btn-text") : null;
+            const originalBtnText = btnTextSpan ? btnTextSpan.textContent : (submitBtn ? submitBtn.textContent : "");
+
+            const nameInput = techForm.querySelector("#tech-name");
+            const emailInput = techForm.querySelector("#tech-email");
+            const messageInput = techForm.querySelector("#tech-message");
+            const botcheck = techForm.querySelector('input[name="botcheck"]');
+
+            if (botcheck && botcheck.checked) return;
+
+            const isEn = (document.documentElement.lang === "en");
+
+            if (!nameInput.value.trim() || !emailInput.value.trim() || !messageInput.value.trim()) {
+                if (statusDiv) {
+                    statusDiv.style.display = "block";
+                    statusDiv.style.color = "var(--color-pink)";
+                    statusDiv.textContent = isEn ? "Please fill in all required fields." : "يرجى تعبئة جميع الحقول المطلوبة.";
+                }
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailInput.value.trim())) {
+                if (statusDiv) {
+                    statusDiv.style.display = "block";
+                    statusDiv.style.color = "var(--color-pink)";
+                    statusDiv.textContent = isEn ? "Please enter a valid email address." : "يرجى إدخال بريد إلكتروني صحيح.";
+                }
+                return;
+            }
+
+            if (btnTextSpan) btnTextSpan.textContent = isEn ? "Sending..." : "جاري الإرسال...";
+            else if (submitBtn) submitBtn.textContent = isEn ? "Sending..." : "جاري الإرسال...";
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = "0.7";
+            }
+            if (statusDiv) statusDiv.style.display = "none";
+
+            const formData = new FormData(techForm);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            try {
+                const response = await fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: json
+                });
+                const result = await response.json();
+                if (response.status === 200 && result.success) {
+                    techForm.reset();
+                    if (statusDiv) {
+                        statusDiv.style.display = "block";
+                        statusDiv.style.color = "var(--color-cyan)";
+                        statusDiv.textContent = isEn ? "Your message has been sent successfully! We will contact you soon." : "تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.";
+                    }
+                } else {
+                    throw new Error(result.message || "Submission failed");
+                }
+            } catch (err) {
+                if (statusDiv) {
+                    statusDiv.style.display = "block";
+                    statusDiv.style.color = "var(--color-pink)";
+                    statusDiv.textContent = isEn ? "Failed to send. Please try again or contact us at Info@i99.sa." : "حدث خطأ أثناء الإرسال. يرجى المحاولة لاحقاً أو مراسلتنا عبر Info@i99.sa.";
+                }
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = "1";
+                    if (btnTextSpan) btnTextSpan.textContent = originalBtnText;
+                    else submitBtn.textContent = originalBtnText;
+                }
+            }
+        });
+    }
 });

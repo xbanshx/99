@@ -145,11 +145,15 @@
                     <li><a href="tel:+966566111617" dir="ltr" style="text-align: right; display: block;">+966566111617</a></li>
                 </ul>
             </div>
-            <form id="tech-form">
-                <div class="input-parent"><input type="text" name="name"><label data-i18n="t-label-name">الاسم</label></div>
-                <div class="input-parent"><input type="text" name="email"><label data-i18n="t-label-email">البريد الإلكتروني</label></div>
-                <div class="input-parent"><textarea name="message"></textarea><label data-i18n="t-label-message">تفاصيل المشروع</label></div>
-                <button type="button" class="btn glow-btn magnetic-btn" data-i18n="t-submit-btn"><span class="btn-text">أرسل طلبك</span></button>
+            <form id="tech-form" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="ضع_المفتاح_هنا">
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                <div class="input-parent"><input type="text" name="name" id="tech-name" required><label for="tech-name" data-i18n="t-label-name">الاسم</label></div>
+                <div class="input-parent"><input type="email" name="email" id="tech-email" required><label for="tech-email" data-i18n="t-label-email">البريد الإلكتروني</label></div>
+                <div class="input-parent"><textarea name="message" id="tech-message" required></textarea><label for="tech-message" data-i18n="t-label-message">تفاصيل المشروع</label></div>
+                <button type="submit" class="btn glow-btn magnetic-btn" data-i18n="t-submit-btn"><span class="btn-text">أرسل طلبك</span></button>
+                <div class="form-status" style="display: none; font-family: var(--font-ar); margin-top: 15px; font-size: 1rem; text-align: center;"></div>
             </form>
         </div>
     </section>
