@@ -13,6 +13,7 @@ Thumbs.db
 # --- Tooling / local deploy metadata ---
 node_modules/
 .vercel/
+qa_reports/
 
 # --- Archives & old copies (kept on disk, not tracked) ---
 *.zip
@@ -21,3 +22,15 @@ node_modules/
 untitled folder/
 *_backup*/
 _backups/
+
+# --- Unused heavy legacy assets (preserved locally on disk) ---
+img/videographer.jpg
+img/studio-1.jpg
+img/studio-2.jpg
+img/tv.jpg
+img/main-logo.svg
+img/sec-logo.svg
+img/icons/pink-star.svg
+img/icons/purple-star.svg
+img/icons/yellow-star.svg
+img/icons/question-mark.svg
