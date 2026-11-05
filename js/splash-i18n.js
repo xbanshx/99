@@ -5,7 +5,8 @@ const splashTranslations = {
         "splash-tech-title": "التقنية والذكاء الاصطناعي",
         "splash-tech-desc": "تطوير برمجيات، حلول AI، تحليل بيانات",
         "splash-enter": "اكتشف المزيد ←",
-        "splash-footer": "إعلام سعودي بروح عالمية"
+        "splash-footer": "إعلام سعودي بروح عالمية",
+        "splash-main-heading": "شركة 99 للإعلام والتقنية والذكاء الاصطناعي"
     },
     en: {
         "splash-media-title": "Media",
@@ -13,7 +14,8 @@ const splashTranslations = {
         "splash-tech-title": "Technology & AI",
         "splash-tech-desc": "Software Development, AI Solutions, Data Analytics",
         "splash-enter": "Explore →",
-        "splash-footer": "Saudi Media with a Global Vision"
+        "splash-footer": "Saudi Media with a Global Vision",
+        "splash-main-heading": "99 Media & Tech Company"
     }
 };
 

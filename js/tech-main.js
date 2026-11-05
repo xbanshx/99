@@ -1,170 +1,148 @@
 document.addEventListener("DOMContentLoaded", () => {
-    
+
     // 1. VANTA.JS 3D BACKGROUND INIT (OPTIMIZED)
     if (window.VANTA && window.VANTA.NET) {
-        VANTA.NET({
-            el: "#vanta-bg",
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            color: 0x3b82f6, // Accent blue
-            backgroundColor: 0x07070a, // Dark BG
-            points: 10.00, // Reduced from 15 to 10 for better performance
-            maxDistance: 20.00,
-            spacing: 18.00,
-            showDots: true
+        try {
+            VANTA.NET({
+                el: "#vanta-bg",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                color: 0x3b82f6,
+                backgroundColor: 0x07070a,
+                points: 10.00,
+                maxDistance: 20.00,
+                spacing: 18.00,
+                showDots: true
+            });
+        } catch (e) {
+            // Fallback silently if WebGL is unavailable
+        }
+    }
+
+    // 2. STICKY HEADER & ACTIVE SECTION NAV
+    const siteHeader = document.querySelector(".site-header");
+    const updateHeader = () => {
+        if (siteHeader) {
+            siteHeader.classList.toggle("scrolled", window.scrollY > 24);
+        }
+    };
+    window.addEventListener("scroll", updateHeader, { passive: true });
+    updateHeader();
+
+    const navLinks = document.querySelectorAll(".nav-links a");
+    if ("IntersectionObserver" in window && navLinks.length > 0) {
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute("id");
+                    navLinks.forEach(link => {
+                        link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
+                    });
+                }
+            });
+        }, { rootMargin: "-40% 0px -50% 0px" });
+
+        ["tech-services", "tech-works", "tech-process", "tech-about", "tech-contact"].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) navObserver.observe(el);
         });
     }
 
-    gsap.registerPlugin(ScrollTrigger);
-
-    // 2. MAGNETIC BUTTONS (Premium UI Touch)
-    const magneticBtns = document.querySelectorAll('.magnetic-btn');
-    magneticBtns.forEach(btn => {
-        btn.addEventListener('mousemove', (e) => {
-            const rect = btn.getBoundingClientRect();
-            const x = (e.clientX - rect.left) - (rect.width / 2);
-            const y = (e.clientY - rect.top) - (rect.height / 2);
-            
-            gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.4, ease: "power2.out", overwrite: true });
-            
-            const text = btn.querySelector('.btn-text');
-            if (text) {
-                gsap.to(text, { x: x * 0.15, y: y * 0.15, duration: 0.4, ease: "power2.out", overwrite: true });
-            }
-        });
-
-        btn.addEventListener('mouseleave', () => {
-            gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1, 0.3)" });
-            const text = btn.querySelector('.btn-text');
-            if (text) gsap.to(text, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1, 0.3)" });
+    // 3. SPOTLIGHT CURSOR TRACKING ON CARDS
+    document.querySelectorAll(".spotlight").forEach(card => {
+        card.addEventListener("pointermove", (e) => {
+            const rect = card.getBoundingClientRect();
+            card.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+            card.style.setProperty("--my", `${e.clientY - rect.top}px`);
         });
     });
 
-    // 3. HERO TEXT REVEAL
-    setTimeout(() => {
-        gsap.fromTo("#tech-hero .hidden", 
-            { opacity: 0, y: 30 },
-            { 
-                opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power2.out',
-                onComplete: () => {
-                    document.querySelectorAll("#tech-hero .hidden").forEach(el => el.classList.remove("hidden"));
+    if (typeof window.gsap !== "undefined" && typeof window.ScrollTrigger !== "undefined") {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 4. MAGNETIC BUTTONS
+        const magneticBtns = document.querySelectorAll(".magnetic-btn");
+        magneticBtns.forEach(btn => {
+            btn.addEventListener("mousemove", (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = (e.clientX - rect.left) - (rect.width / 2);
+                const y = (e.clientY - rect.top) - (rect.height / 2);
+
+                gsap.to(btn, { x: x * 0.25, y: y * 0.25, duration: 0.35, ease: "power2.out", overwrite: true });
+
+                const text = btn.querySelector(".btn-text");
+                if (text) {
+                    gsap.to(text, { x: x * 0.12, y: y * 0.12, duration: 0.35, ease: "power2.out", overwrite: true });
                 }
-            }
-        );
-    }, 100);
+            });
 
-    // 4. CIRCUIT SVG DRAWING ANIMATION
-    const circuitPath = document.getElementById("circuit-path");
-    if (circuitPath) {
-        const pathLength = circuitPath.getTotalLength();
-        circuitPath.style.strokeDasharray = pathLength;
-        circuitPath.style.strokeDashoffset = pathLength;
-
-        gsap.to(circuitPath, {
-            strokeDashoffset: 0,
-            ease: "none",
-            scrollTrigger: {
-                trigger: "body",
-                start: "top top",
-                end: "bottom bottom",
-                scrub: 1
-            }
+            btn.addEventListener("mouseleave", () => {
+                gsap.to(btn, { x: 0, y: 0, duration: 0.65, ease: "elastic.out(1, 0.3)" });
+                const text = btn.querySelector(".btn-text");
+                if (text) gsap.to(text, { x: 0, y: 0, duration: 0.65, ease: "elastic.out(1, 0.3)" });
+            });
         });
-    }
 
-    // 5. SERVICES GRID REVEAL (Fast & Smooth like Media Page)
-    const techCards = gsap.utils.toArray(".tech-card");
-    if (techCards.length > 0) {
-        ScrollTrigger.batch(techCards, {
-            start: "top 85%",
-            onEnter: (elements) => {
-                gsap.fromTo(elements, 
-                    { opacity: 0, y: 50, scale: 0.95 },
+        // 5. HERO REVEAL
+        setTimeout(() => {
+            const heroHidden = document.querySelectorAll("#tech-hero .hidden");
+            if (heroHidden.length > 0) {
+                gsap.fromTo(heroHidden,
+                    { opacity: 0, y: 28 },
                     {
                         opacity: 1,
                         y: 0,
-                        scale: 1,
-                        duration: 0.6,
-                        stagger: 0.1,
+                        duration: 0.75,
+                        stagger: 0.12,
                         ease: "power2.out",
-                        overwrite: true,
-                        onComplete: () => elements.forEach(el => el.classList.remove("hidden"))
+                        onComplete: () => {
+                            heroHidden.forEach(el => {
+                                el.classList.remove("hidden");
+                                gsap.set(el, { clearProps: "opacity,transform" });
+                            });
+                        }
                     }
                 );
-            },
-            once: true
-        });
-    }
-
-    // 6. STATS REVEAL & COUNTER
-    const statsSection = document.getElementById("tech-about");
-    if (statsSection) {
-        gsap.fromTo("#tech-about .hidden:not(.stat)",
-            { opacity: 0, y: 40 },
-            {
-                scrollTrigger: { trigger: "#tech-about", start: "top 80%" },
-                opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power2.out",
-                onComplete: () => {
-                    document.querySelectorAll("#tech-about .hidden:not(.stat)").forEach(el => el.classList.remove("hidden"));
-                }
             }
-        );
+        }, 80);
 
-        const stats = gsap.utils.toArray(".stat");
-        if (stats.length > 0) {
-            ScrollTrigger.batch(stats, {
-                start: "top 85%",
+        // 6. SECTION & CARD REVEALS
+        const restHidden = gsap.utils.toArray("section:not(#tech-hero) .hidden");
+        if (restHidden.length > 0) {
+            ScrollTrigger.batch(restHidden, {
+                start: "top 88%",
                 onEnter: (elements) => {
                     gsap.fromTo(elements,
-                        { opacity: 0, scale: 0.9, y: 30 },
+                        { opacity: 0, y: 36 },
                         {
-                            opacity: 1, scale: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "back.out(1.2)",
-                            onComplete: () => elements.forEach(el => el.classList.remove("hidden"))
+                            opacity: 1,
+                            y: 0,
+                            duration: 0.6,
+                            stagger: 0.08,
+                            ease: "power2.out",
+                            overwrite: true,
+                            onComplete: () => {
+                                elements.forEach(el => {
+                                    el.classList.remove("hidden");
+                                    gsap.set(el, { clearProps: "opacity,transform" });
+                                });
+                            }
                         }
                     );
-
-                    elements.forEach(stat => {
-                        const numberEl = stat.querySelector(".stat-number");
-                        if (!numberEl) return;
-                        const text = numberEl.textContent.trim();
-                        const hasPlus = text.includes("+");
-                        const num = parseInt(text.replace(/[^0-9]/g, ""));
-                        
-                        if (!isNaN(num)) {
-                            gsap.fromTo(numberEl, 
-                                { textContent: 0 },
-                                {
-                                    textContent: num, duration: 2, ease: "power1.out", snap: { textContent: 1 },
-                                    onUpdate: function() { numberEl.textContent = (hasPlus ? "+" : "") + Math.round(gsap.getProperty(numberEl, "textContent")); }
-                                }
-                            );
-                        }
-                    });
                 },
                 once: true
             });
         }
+    } else {
+        document.querySelectorAll(".hidden").forEach(el => el.classList.remove("hidden"));
     }
 
-    // 7. CONTACT FORM REVEAL
-    const contactElements = gsap.utils.toArray("#tech-contact .hidden");
-    if (contactElements.length > 0) {
-        gsap.fromTo(contactElements,
-            { opacity: 0, y: 30 },
-            {
-                scrollTrigger: { trigger: "#tech-contact", start: "top 85%" },
-                opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power2.out",
-                onComplete: () => contactElements.forEach(el => el.classList.remove("hidden"))
-            }
-        );
-    }
-
-    // 8. Web3Forms AJAX Handler for Tech Contact Form
+    // 7. Web3Forms AJAX Handler for Tech Contact Form
     const techForm = document.getElementById("tech-form");
     if (techForm) {
         techForm.addEventListener("submit", async (e) => {

@@ -416,10 +416,12 @@ header .logo img{
     animation: scroller 15s linear infinite;
 }
 
-.slider-container .content h2 {
+.slider-container .content h2,
+.slider-container .content .ticker-item {
     color: white;
     font-family: 'DGAgnadeen';
     font-weight: 300;
+    font-size: 1.5rem;
 }
 
 
