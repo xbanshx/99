@@ -833,8 +833,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     setStatus(
                         "ok",
                         isEn
-                            ? "Your project inquiry has been received. Our Riyadh engineering team will respond shortly."
-                            : "تم استلام طلب مشروعك بنجاح. سيتواصل معك فريقنا الهندسي في الرياض قريباً."
+                            ? "Your project inquiry has been received. Our Jeddah engineering team will respond shortly."
+                            : "تم استلام طلب مشروعك بنجاح. سيتواصل معك فريقنا الهندسي في جدة قريباً."
                     );
                 } else {
                     throw new Error(result.message || "Submission failed");

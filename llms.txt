@@ -1,0 +1,39 @@
+# 99 Media & Tech (i99.sa) — مؤسسة تسعة وتسعون للإعلام والتقنية والذكاء الاصطناعي
+
+> Saudi AI engineering, enterprise software, and strategic media establishment founded in 2014 and headquartered in Jeddah, Saudi Arabia (جدة، المملكة العربية السعودية).
+
+## Company Overview
+- **Legal Entity:** 99 Commercial Establishment (مؤسسة تسعة وتسعون التجارية)
+- **Founded:** 2014
+- **Headquarters:** Jeddah, Makkah Province, Saudi Arabia (21.5433° N, 39.1728° E)
+- **Service Coverage:** Saudi Arabia (Jeddah, Riyadh, Khobar, Makkah, Madinah) and the wider GCC / MENA region
+- **Official Website:** https://www.i99.sa/
+- **Tech & AI Division:** https://www.i99.sa/tech/
+- **Media Division:** https://www.i99.sa/media/
+- **Official Email:** Info@i99.sa
+- **Phone:** +966 56 611 1617
+
+## 99 Tech & AI — Flagship Systems Engineered In-House
+1. **EXOX (https://exox.ai)** — Autonomous AI Business Operating System. Starts from a single website link to preserve institutional brand memory and orchestrate SEO/GEO web presence, visual creatives, monthly publishing calendars, and multi-channel advertising campaigns under strict owner approval and instant-pause governance.
+2. **PR MEDIA** — AI-Powered Media Intelligence & Strategic Communications platform analyzing live coverage and reputation signals to support executive communication decisions.
+3. **FIRX** — AI Governance, Verification & Trusted Execution layer enforcing output compliance, decision audit trails, and enterprise AI safety.
+
+## Five Core Engineering Disciplines (99 Tech & AI)
+1. **AI Systems & Autonomous Agents:** Multi-agent orchestration, Arabic-native RAG architectures, LLM guardrails, structured enterprise memory, and owner-approved tool execution.
+2. **Enterprise Software & SaaS Engineering:** Multi-tenant SaaS platforms, REST/GraphQL APIs, RBAC security, and ERP/CRM/payments integrations.
+3. **Interactive Web Platforms & Mobile Apps:** 60fps bilingual Arabic (RTL) & English (LTR) web experiences engineered for SEO and GEO discoverability, plus native iOS & Android apps.
+4. **Data Engineering & Business Intelligence:** Enterprise data pipelines, clean metric layers, executive KPI dashboards, and predictive analytics.
+5. **Cloud Architecture & Zero-Trust Security:** Edge infrastructure (Cloudflare/AWS/Kubernetes), Zero-Trust WAF, zero-downtime CI/CD delivery, and 24/7 operational observability.
+
+## Delivery Methodology
+1. Discovery & Architecture (`BLUEPRINT`)
+2. Design System & Prototyping (`CRAFT & UX`)
+3. Iterative Engineering & Automated QA (`BUILD & QA`)
+4. Zero-Downtime Launch & 24/7 Ops (`SCALE 24/7`)
+
+## Primary Links
+- [99 Home](https://www.i99.sa/): Entry hub for 99 Media & Tech
+- [99 Tech & AI](https://www.i99.sa/tech/): AI systems, enterprise software, flagship platforms, capabilities, and project inquiry
+- [99 Media](https://www.i99.sa/media/): Media production, strategic communications, and digital marketing
+- [EXOX.AI](https://exox.ai/): Flagship Autonomous AI Business Operating System engineered by 99
+- [XML Sitemap](https://www.i99.sa/sitemap.xml): Canonical URL & image index
