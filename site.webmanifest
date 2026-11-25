@@ -1,0 +1,31 @@
+{
+  "name": "99 Tech & AI | 99 للتقنية والذكاء الاصطناعي",
+  "short_name": "99 Tech",
+  "description": "ذراع الذكاء الاصطناعي والهندسة البرمجية في مؤسسة 99 — جدة، المملكة العربية السعودية.",
+  "start_url": "/tech/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#06030A",
+  "theme_color": "#33075F",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "/img/tech-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/tech-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/img/tech-favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
