@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>99 Media | دار الإنتاج الإعلامي والسينمائي وفيديوهات الذكاء الاصطناعي من جدة | i99.sa</title>
     <meta name="description"
-        content="99 للإعلام (منذ 2014 في جدة): دار إنتاج تلفزيوني وسينمائي ورقمي، فيديوهات الذكاء الاصطناعي، الاتصال المؤسسي والعلاقات العامة، والتسويق الرقمي — شركاء MBC وهيئة الإذاعة والتلفزيون ومسك والفيصلية.">
+        content="99 للإعلام (منذ 2014 في جدة): دار إنتاج تلفزيوني وسينمائي ورقمي، فيديوهات الذكاء الاصطناعي، الاتصال المؤسسي والعلاقات العامة، والتسويق الرقمي — شركاء MBC وهيئة الإذاعة والتلفزيون ومسك والجمعية الفيصلية الخيرية.">
     <meta name="keywords"
         content="99 للإعلام, شركة إنتاج إعلامي جدة, إنتاج تلفزيوني السعودية, إنتاج فيديوهات AI, علاقات عامة واتصال مؤسسي, تسويق رقمي جدة, 99 Media Jeddah Saudi Arabia, i99.sa">
     <meta name="author" content="مؤسسة تسعة وتسعون — 99 Media &amp; Tech">
@@ -33,7 +33,7 @@
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="../img/tech-apple-touch-icon.png">
 
-    <!-- Open Graph (WhatsApp, LinkedIn, Facebook, Telegram, iMessage) -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.i99.sa/media/">
     <meta property="og:title" content="99 Media | دار الإنتاج الإعلامي والسينمائي وفيديوهات الذكاء الاصطناعي">
@@ -49,7 +49,7 @@
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:site_name" content="99 Media | i99.sa">
 
-    <!-- Twitter / X Card -->
+    <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="99 Media | دار الإنتاج الإعلامي والسينمائي من جدة">
     <meta name="twitter:description"
@@ -83,9 +83,7 @@
             "addressRegion": "Makkah Province",
             "addressCountry": "SA"
           },
-          "sameAs": [
-            "https://exox.ai/"
-          ]
+          "sameAs": ["https://exox.ai/"]
         },
         {
           "@type": "WebSite",
@@ -178,7 +176,7 @@
               "name": "كيف توظف 99 الذكاء الاصطناعي في إنتاج الفيديوهات والحملات؟",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "تجمع 99 بين الإخراج السينمائي البشري وتقنيات توليد الفيديو بالذكاء الاصطناعي لاختصار زمن التنفيذ ومضاعفة الأثر البصري، مدعومة بذراع 99 للتقنية والذكاء الاصطناعي (EXOX و PR MEDIA) لقياس الأداء والوصول."
+                "text": "نجمع بين الإخراج السينمائي البشري وتقنيات توليد الفيديو بالذكاء الاصطناعي لاختصار زمن التنفيذ ومضاعفة الأثر البصري، مدعومين بذراع 99 للتقنية والذكاء الاصطناعي (EXOX و PR MEDIA) لقياس الأداء والوصول."
               }
             },
             {
@@ -213,20 +211,46 @@
     <link
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="../css/media.css?v=2.0">
+    <link rel="stylesheet" href="../css/media.css?v=3.1">
 </head>
 
 <body>
     <a href="#main-content" class="skip-link" data-i18n="m-skip">الانتقال إلى المحتوى الرئيسي</a>
 
-    <!-- ═══ SOVEREIGN HEADER + CONTINUOUS READING PROGRESS HAIRLINE ═══ -->
-    <header class="site-header" id="site-header">
-        <div class="container header-inner">
-            <a href="../" class="brand-lockup" aria-label="99 Media House">
+    <!-- ═══ 0.85s CINEMA FILM-LEADER CURTAIN (MICHAEL BAY INSPIRED) ═══ -->
+    <div id="cinema-loader" class="cinema-loader" aria-hidden="true">
+        <div class="loader-top" dir="ltr">
+            <span>99</span>
+            <i class="loader-line" id="loader-line"></i>
+            <span>MEDIA HOUSE</span>
+        </div>
+        <div class="loader-bottom" dir="ltr">
+            <span class="loader-meta">JEDDAH // EST. 2014 // 24 FPS</span>
+            <span id="loader-count" class="loader-count">00</span>
+        </div>
+    </div>
+
+    <!-- ═══ CUSTOM MAGNETIC CINEMA CURSOR (DESKTOP ONLY) ═══ -->
+    <div id="cinema-cursor" class="cinema-cursor" aria-hidden="true">
+        <span id="cursor-label" class="cursor-label"></span>
+    </div>
+
+    <!-- ═══ MINIMAL EDITORIAL FLOATING BAR (Q'IN SABA INSPIRED — AUTO-ADAPTS DARK/IVORY) ═══ -->
+    <header class="cinema-header" id="cinema-header" data-theme="dark">
+        <div class="header-shell">
+            <!-- Start: Live Jeddah Broadcast Clock -->
+            <div class="header-live mono-meta">
+                <span class="live-pulse" aria-hidden="true"></span>
+                <span data-i18n="m-live-city">الآن في جدة</span>
+                <span id="jeddah-clock" class="clock-val" dir="ltr">--:--</span>
+            </div>
+
+            <!-- Center: Official #33075F 99 Emblem + Wordmark -->
+            <a href="../" class="header-center-brand" aria-label="99 Media House" data-cursor="99">
                 <span class="brand-seal" aria-hidden="true">
-                    <svg viewBox="0 0 450 450" width="24" height="24" fill="none">
+                    <svg viewBox="0 0 450 450" width="22" height="22" fill="none">
                         <defs>
-                            <radialGradient id="mhdr-g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                            <radialGradient id="mh-g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
                                 gradientTransform="matrix(-47.823,-138.298,138.298,-47.823,252.777,223.62)">
                                 <stop offset=".507" stop-color="#33075F" stop-opacity="0" />
                                 <stop offset="1" stop-color="#33075F" stop-opacity="1" />
@@ -234,28 +258,26 @@
                         </defs>
                         <path fill-rule="evenodd" fill="#33075F"
                             d="m259.1 219.4l-168.4 213.8c-8.9 11.1-25.1 12.9-36.2 4.1l100.9-129.4c-28.2-2.5-55-13.2-77.5-31.5-29.9-24.3-48.5-58.8-52.2-97.2-3.6-37.1 7.3-73.7 30.8-103 23.4-29.3 56.7-48 93.7-52.7q1.7-0.2 3.5-0.4c24.1-2.4 47.4 2.2 67.5 12.8 8.1 4.3 15.7 9.5 22.6 15.5 10.7 9.3 19.8 20.7 27 33.9 23.8 43.8 19.4 95.2-11.7 134.1zm-10.9-121.8c-6.4-11.8-14.8-21.7-24.6-29.5-7-5.5-14.6-10-22.8-13.3-10.8-4.3-22.6-6.6-34.7-6.6q-4.9 0-9.9 0.5-1.4 0.2-2.8 0.3c-62.4 7.9-108.2 65.1-102.1 127.7 3 31.5 18.2 59.8 42.8 79.8 23.2 18.8 52 27.9 81.7 25.9l27.5-34.5 16.3-20.3 19.4-24.3c24.5-30.6 28-71.1 9.2-105.7z" />
-                        <path fill="url(#mhdr-g1)"
+                        <path fill="url(#mh-g1)"
                             d="m190.7 161.2c2 20.9 9.5 40.5 21.5 57.2l-13.8 17.2-2.8 3.5c-17.2-21.5-27.8-47.6-30.5-75.4-3.9-39.8 9.3-79.2 35.7-108.9 8.2 3.3 15.8 7.8 22.8 13.3-24.1 24.7-36.3 58.8-32.9 93.1z" />
                         <path fill="#33075F" d="m212.1 256.5q-4.6-4.1-8.8-8.6l16.3-20.3q4.5 5.1 9.6 9.7z" />
                         <path fill="#33075F"
                             d="m398.5 203.9l-183.5 229.3c-8.8 11.1-25 12.9-36.1 4.1l136.2-170.3 63.3-79.2c24.5-30.6 28-71.1 9.2-105.7-18.5-34-53.8-52.7-92-48.9q-1.4 0.2-2.9 0.3c-17.5 2.2-34.2 8.4-48.9 17.9q-6.8 4.4-12.9 9.8-3.9 3.3-7.3 6.9c-7-5.5-14.6-10-22.8-13.3q6.1-6.9 13.2-13 3.5-3.1 7.2-5.9c20-15.2 43.4-24.7 68.4-27.9q1.7-0.2 3.5-0.4c48.6-4.9 93.5 18.9 117.1 62.2 23.8 43.8 19.3 95.2-11.7 134.1z" />
                     </svg>
                 </span>
-                <span class="brand-divider" aria-hidden="true"></span>
                 <span class="brand-word" dir="ltr">99 MEDIA</span>
             </a>
 
-            <nav class="nav-links" aria-label="التنقل الرئيسي">
-                <a href="#media-partners" data-i18n="m-nav-partners">شركاؤنا</a>
-                <a href="#media-studio" data-i18n="m-nav-studio">الاستوديو</a>
-                <a href="#media-pipeline" data-i18n="m-nav-pipeline">منهجية الإنتاج</a>
-                <a href="#media-synergy" data-i18n="m-nav-synergy">تكامل 99</a>
-                <a href="../tech/" class="nav-division" data-i18n="m-nav-tech">99 للتقنية ↗</a>
-            </nav>
-
-            <div class="header-actions">
+            <!-- End: Minimal Editorial Navigation + Lang + Action -->
+            <div class="header-right">
+                <nav class="header-nav" aria-label="التنقل الرئيسي">
+                    <a href="#act-ivory" data-i18n="m-nav-story">الهوية والشركاء</a>
+                    <a href="#act-director" data-i18n="m-nav-disciplines">المسارات</a>
+                    <a href="#act-reel" data-i18n="m-nav-reel">شريط الإنتاج</a>
+                    <a href="../tech/" class="nav-tech-pill" data-i18n="m-nav-tech">99 للتقنية ↗</a>
+                </nav>
                 <button id="lang-toggle" class="lang-btn" type="button" aria-label="Switch language">EN</button>
-                <a href="#media-contact" class="btn-primary btn-sm" data-i18n="m-header-cta">ابدأ إنتاجك</a>
+                <a href="#act-slate" class="header-cta" data-i18n="m-header-cta">ابدأ إنتاجك</a>
                 <button id="mobile-menu-btn" class="menu-toggle" type="button" aria-expanded="false"
                     aria-controls="mobile-drawer" aria-label="فتح القائمة">
                     <span></span>
@@ -263,18 +285,18 @@
                 </button>
             </div>
         </div>
-        <div class="scroll-progress-track" aria-hidden="true">
-            <div id="scroll-progress-bar" class="scroll-progress-bar"></div>
+        <div class="scroll-hairline" aria-hidden="true">
+            <div id="scroll-progress-bar" class="scroll-hairline-fill"></div>
         </div>
 
         <div id="mobile-drawer" class="mobile-drawer" hidden>
             <nav class="mobile-nav" aria-label="قائمة الجوال">
-                <a href="#media-partners" data-i18n="m-nav-partners">شركاؤنا</a>
-                <a href="#media-studio" data-i18n="m-nav-studio">الاستوديو</a>
-                <a href="#media-pipeline" data-i18n="m-nav-pipeline">منهجية الإنتاج</a>
-                <a href="#media-synergy" data-i18n="m-nav-synergy">تكامل 99</a>
+                <a href="#act-ivory" data-i18n="m-nav-story">الهوية والشركاء</a>
+                <a href="#act-director" data-i18n="m-nav-disciplines">المسارات</a>
+                <a href="#act-reel" data-i18n="m-nav-reel">شريط الإنتاج</a>
+                <a href="#act-synergy" data-i18n="m-nav-synergy">تكامل 99</a>
                 <a href="../tech/" data-i18n="m-nav-tech">99 للتقنية ↗</a>
-                <a href="#media-contact" class="btn-primary mobile-cta" data-i18n="m-header-cta">ابدأ إنتاجك</a>
+                <a href="#act-slate" class="mobile-cta" data-i18n="m-header-cta">ابدأ إنتاجك</a>
             </nav>
         </div>
     </header>
@@ -282,359 +304,128 @@
     <main id="main-content">
 
         <!-- ═══════════════════════════════════════════════════════════════════
-             ACT I — ANAMORPHIC SCREENING ROOM HERO
-             Full-bleed real soundstage + GPU anamorphic light veil + viewfinder HUD
+             ACT I — FULL-BLEED 2.39:1 ANAMORPHIC SCREENING ROOM HERO
+             Zero boxed grid — Pure theatrical cinema screen + WebGL projector lens
              ═══════════════════════════════════════════════════════════════════ -->
-        <section id="media-hero" class="hero-screening">
-            <!-- Real soundstage background with GPU parallax -->
-            <div class="hero-stage-bg" id="hero-stage-bg" aria-hidden="true">
-                <img src="../img/studio-2.webp" alt="" class="hero-bg-still">
+        <section id="act-theater" class="act-theater" data-section-theme="dark">
+            <div class="theater-backdrop" id="theater-backdrop" aria-hidden="true">
+                <img src="../img/studio-2.webp" alt="" class="theater-still">
             </div>
-            <canvas id="cinema-veil-shader" class="hero-shader" aria-hidden="true"></canvas>
-            <div class="hero-scrim" aria-hidden="true"></div>
-            <div class="hero-film-grain" aria-hidden="true"></div>
+            <canvas id="anamorphic-shader" class="theater-shader" aria-hidden="true"></canvas>
+            <div class="theater-vignette" aria-hidden="true"></div>
+            <div class="letterbox letterbox-top" id="lb-top" aria-hidden="true"></div>
+            <div class="letterbox letterbox-bottom" id="lb-bot" aria-hidden="true"></div>
 
-            <!-- Subtle Director's Viewfinder Corner Brackets -->
-            <div class="viewfinder-hud container" aria-hidden="true">
-                <span class="vf-corner vf-tl"></span>
-                <span class="vf-corner vf-tr"></span>
-                <span class="vf-corner vf-bl"></span>
-                <span class="vf-corner vf-br"></span>
-            </div>
-
-            <div class="container hero-cinema-grid">
-                <!-- Editorial Lead -->
-                <div class="hero-copy-col" data-enter data-parallax="0.08">
-                    <div class="hero-slate-pill">
-                        <span class="rec-dot" aria-hidden="true"></span>
-                        <span class="mono-meta"><bdi dir="ltr">99 MEDIA HOUSE // JEDDAH · EST. 2014</bdi></span>
-                    </div>
-
-                    <h1 class="hero-headline" data-i18n="m-hero-title">نصنع الصورة التي تُروى، والأثر الذي يبقى</h1>
-
-                    <p class="hero-lead" data-i18n="m-hero-desc">دار إنتاج إعلامي وسينمائي ورقمي في جدة منذ 2014 — نجمع الإخراج التلفزيوني، إنتاج فيديوهات الذكاء الاصطناعي، والاتصال الاستراتيجي لصناعة حضورٍ يليق بالعلامات الكبرى.</p>
-
-                    <div class="hero-cta-row">
-                        <a href="#media-contact" class="btn-primary" data-i18n="m-hero-cta">ابدأ إنتاجك الإعلامي</a>
-                        <a href="../assets/99-Profile-final.pdf" download class="btn-glass" data-i18n="m-hero-pdf">تحميل الملف التعريفي (PDF) ↓</a>
-                    </div>
+            <div class="theater-stage">
+                <div class="theater-meta-top mono-meta" dir="ltr" data-enter>
+                    <span>REEL 01 // 2.39:1 ANAMORPHIC</span>
+                    <span class="accent">21.5433° N · 39.1728° E</span>
                 </div>
 
-                <!-- Right/End Anamorphic Production Reel Stack (Real Studio Photography) -->
-                <div class="hero-reel-col" data-enter data-delay="1" data-parallax="-0.11">
-                    <div class="cinema-frame border-beam-card" data-depth-stage>
-                        <div class="cinema-frame-top mono-meta" dir="ltr">
-                            <span class="accent">CAM A // 24 FPS · 4K</span>
-                            <span class="muted">21.5433° N · 39.1728° E</span>
-                        </div>
-                        <div class="cinema-viewport" data-depth-layer>
-                            <img src="../img/videographer.webp" alt="تصوير وإخراج سينمائي في 99 للإعلام" class="cinema-still still-main">
-                            <div class="cinema-crop-bars" aria-hidden="true"></div>
-                            <div class="cinema-caption-overlay">
-                                <span class="mono-meta accent"><bdi dir="ltr">BROADCAST · CINEMA · AI VIDEO</bdi></span>
-                                <strong data-i18n="m-reel-cap">إنتاج بمعايير البث التلفزيوني والسينمائي</strong>
-                            </div>
-                        </div>
-                        <div class="cinema-thumb-strip">
-                            <div class="mini-still">
-                                <img src="../img/studio-2.webp" alt="موقع التصوير والإضاءة السينمائية" loading="lazy">
-                                <span class="mono-meta" dir="ltr">01 · STAGE</span>
-                            </div>
-                            <div class="mini-still">
-                                <img src="../img/studio-1.webp" alt="استوديو التصوير الاحترافي" loading="lazy">
-                                <span class="mono-meta" dir="ltr">02 · STUDIO</span>
-                            </div>
-                            <div class="mini-still">
-                                <img src="../img/tv.webp" alt="البث التلفزيوني والمنصات الرقمية" loading="lazy">
-                                <span class="mono-meta" dir="ltr">03 · BROADCAST</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="theater-headline-wrap" data-enter data-delay="1">
+                    <span class="theater-kicker" data-i18n="m-hero-kicker">دار الإنتاج الإعلامي والسينمائي — جدة منذ 2014</span>
+                    <h1 class="theater-title">
+                        <span class="t-line" data-i18n="m-hero-line1">نصنع الصورة التي تُروى</span>
+                        <span class="t-line t-gold" data-i18n="m-hero-line2">والأثر الذي يبقى</span>
+                    </h1>
+                    <p class="theater-sub" data-i18n="m-hero-sub">من البث التلفزيوني والسينما إلى فيديوهات الذكاء الاصطناعي والاتصال المؤسسي — نُخرج قصص العلامات الكبرى بمستوى يفرض هيبته على الشاشة.</p>
                 </div>
-            </div>
 
-            <!-- Hero Bottom Broadcast Dock -->
-            <div class="hero-dock-wrap" data-enter data-delay="2">
-                <div class="container hero-dock">
-                    <div class="dock-credits">
-                        <span class="dock-caption" data-i18n="m-dock-label">تشرّفنا بالعمل مع:</span>
-                        <a href="#media-partners" class="dock-pill is-gold"><span dir="ltr">MBC GROUP</span></a>
-                        <a href="#media-partners" class="dock-pill"><span dir="ltr">SBA</span></a>
-                        <a href="#media-partners" class="dock-pill"><span dir="ltr">MISK</span></a>
-                        <a href="#media-partners" class="dock-pill"><span data-i18n="m-dock-more">+5 جهات كبرى</span></a>
+                <div class="theater-footer-bar" data-enter data-delay="2">
+                    <div class="theater-actions">
+                        <a href="#act-slate" class="btn-ivory" data-i18n="m-hero-cta" data-cursor="ابدأ">ابدأ إنتاجك الإعلامي</a>
+                        <a href="../assets/99-Profile-final.pdf" download class="btn-wire" data-i18n="m-hero-pdf" data-cursor="PDF">تحميل ملف الشركة ↓</a>
                     </div>
-                    <a href="#media-partners" class="scroll-cue" aria-label="Scroll down">
-                        <span class="scroll-label" data-i18n="m-scroll-cue">استمر للاستكشاف</span>
-                        <span class="scroll-line" aria-hidden="true"></span>
+
+                    <div class="theater-timecode mono-meta" dir="ltr">
+                        <span class="tc-rec"></span>
+                        <span>TC</span>
+                        <span id="hero-tc" class="accent">00:00:01:00</span>
+                    </div>
+
+                    <a href="#act-ivory" class="theater-scroll" data-cursor="اسحب">
+                        <span data-i18n="m-scroll-cue">اسحب لبدء العرض</span>
+                        <i class="scroll-tick" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
-            <div class="hero-horizon-line" aria-hidden="true"></div>
         </section>
 
         <!-- ═══════════════════════════════════════════════════════════════════
-             ACT II — PRESTIGE PARTNER LAURELS WALL (LUMINOUS PEARL MONOCHROME)
-             Elevating MBC, SBA, Misk, Al-Faisalya, Taiba, Al-Dawaa, Zahra, Ftah
+             ACT II — WARM ALABASTER IVORY EDITORIAL CHAPTER (#F4EFE6)
+             Inspired by Q'in Saba: Split Monumental #33075F Typography framing
+             a Chamfered Film-Developing Studio Portrait + Royal Indigo Partner Laurels
              ═══════════════════════════════════════════════════════════════════ -->
-        <section id="media-partners" class="section-block section-velvet">
-            <div class="container">
-                <div class="section-head reveal">
-                    <div class="section-index">
-                        <span class="mono-meta accent"><bdi dir="ltr">01</bdi></span>
-                        <span class="index-rule" aria-hidden="true"></span>
-                        <span class="eyebrow-text" data-i18n="m-partners-eyebrow">شركاء النجاح والثقة</span>
-                    </div>
-                    <h2 class="section-title" data-i18n="m-partners-title">جهات ومؤسسات كبرى وضعت ثقتها في 99</h2>
-                    <p class="section-sub" data-i18n="m-partners-sub">مسيرة إعلامية ممتدة منذ 2014 مع أبرز القنوات والمؤسسات الوطنية والقيادية في المملكة.</p>
+        <section id="act-ivory" class="act-ivory" data-section-theme="light">
+            <div class="ivory-container">
+                <div class="ivory-kicker mono-meta" dir="ltr">
+                    <span>CHAPTER 01 // HERITAGE &amp; OFFICIAL CREDITS</span>
+                    <span>JEDDAH · SAUDI ARABIA</span>
                 </div>
 
-                <div class="laurels-grid reveal">
-                    <div class="laurel-cell specular-card">
-                        <img src="../img/partners-light/mbc.png" alt="مجموعة MBC" loading="lazy">
-                        <span class="laurel-name" data-i18n="m-p-mbc">مجموعة MBC</span>
+                <!-- Monumental Split-Word Framing Chamfered Cinema Portrait -->
+                <div class="editorial-triptych reveal">
+                    <div class="trip-word trip-start">
+                        <span class="trip-display" data-i18n="m-trip-left">منذ 2014</span>
+                        <i class="trip-rule" aria-hidden="true"></i>
+                        <span class="trip-note" data-i18n="m-trip-left-sub">خبرة تلفزيونية وسينمائية راسخة</span>
                     </div>
-                    <div class="laurel-cell specular-card">
-                        <img src="../img/partners-light/sba.png" alt="هيئة الإذاعة والتلفزيون SBA" loading="lazy">
-                        <span class="laurel-name" data-i18n="m-p-sba">هيئة الإذاعة والتلفزيون</span>
-                    </div>
-                    <div class="laurel-cell specular-card">
-                        <img src="../img/partners-light/misk.png" alt="مؤسسة مسك الخيرية" loading="lazy">
-                        <span class="laurel-name" data-i18n="m-p-misk">مؤسسة مسك</span>
-                    </div>
-                    <div class="laurel-cell specular-card">
-                        <img src="../img/partners-light/alfaisalya.png" alt="الجمعية الفيصلية الخيرية" loading="lazy">
-                        <span class="laurel-name" data-i18n="m-p-faisalya">الجمعية الفيصلية الخيرية</span>
-                    </div>
-                    <div class="laurel-cell specular-card">
-                        <img src="../img/partners-light/taiba.png" alt="جمعية طيبة النسائية" loading="lazy">
-                        <span class="laurel-name" data-i18n="m-p-taiba">جمعية طيبة النسائية</span>
-                    </div>
-                    <div class="laurel-cell specular-card">
-                        <img src="../img/partners-light/aldwaa.png" alt="صيدليات الدواء" loading="lazy">
-                        <span class="laurel-name" data-i18n="m-p-aldwaa">الدواء</span>
-                    </div>
-                    <div class="laurel-cell specular-card">
-                        <img src="../img/partners-light/zahra.png" alt="جمعية زهرة" loading="lazy">
-                        <span class="laurel-name" data-i18n="m-p-zahra">جمعية زهرة</span>
-                    </div>
-                    <div class="laurel-cell specular-card">
-                        <img src="../img/partners-light/ftah.png" alt="جمعية فتاة الأحساء" loading="lazy">
-                        <span class="laurel-name" data-i18n="m-p-ftah">فتاة الأحساء</span>
+
+                    <figure class="trip-portal" id="trip-portal" data-cursor="99 STUDIO">
+                        <img src="../img/videographer.webp" alt="فريق الإخراج والتصوير السينمائي في 99 للإعلام" class="trip-photo" id="trip-photo">
+                        <figcaption class="trip-cap mono-meta" dir="ltr">— 99 CINEMA UNIT · JEDDAH</figcaption>
+                    </figure>
+
+                    <div class="trip-word trip-end">
+                        <span class="trip-display" data-i18n="m-trip-right">في جدة</span>
+                        <i class="trip-rule" aria-hidden="true"></i>
+                        <span class="trip-note" data-i18n="m-trip-right-sub">إلى شاشات المملكة والخليج</span>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- ═══════════════════════════════════════════════════════════════════
-             ACT III — SCROLL-SCRUBBED CINEMA MANIFESTO + LIVE 24FPS TIMECODE
-             ═══════════════════════════════════════════════════════════════════ -->
-        <section id="media-manifesto" class="manifesto-section">
-            <div class="container manifesto-inner">
-                <div class="manifesto-top-bar">
-                    <div class="section-index">
-                        <span class="mono-meta accent"><bdi dir="ltr">02</bdi></span>
-                        <span class="index-rule" aria-hidden="true"></span>
-                        <span class="eyebrow-text" data-i18n="m-manifesto-eyebrow">فلسفتنا الإعلامية</span>
-                    </div>
-                    <div class="timecode-badge mono-meta" dir="ltr" aria-hidden="true">
-                        <span class="tc-dot"></span>
-                        <span>TC</span>
-                        <span id="live-timecode" class="accent">00:00:01:00</span>
-                    </div>
-                </div>
-                <p id="media-manifesto-text" class="manifesto-copy" aria-label="فلسفة 99 للإعلام"></p>
-            </div>
-        </section>
+                <p class="ivory-manifesto reveal" data-i18n="m-ivory-statement">
+                    لم نكن يوماً وكالة إعلانات عابرة؛ منذ 2014 حوّلنا خبرتنا التلفزيونية والسينمائية إلى دار إنتاج تصنع الصورة ذات الهيبة، وتجمع بين الابتكار الخارج عن المألوف والمهنية التي لا تساوم على لقطة.
+                </p>
 
-        <!-- ═══════════════════════════════════════════════════════════════════
-             ACT IV — INTERACTIVE DIRECTOR'S STUDIO & 5-DISCIPLINE SHOWCASE
-             Anamorphic 16:9 Cinema Frame + Conic Border Beam + Director's Slate Rail
-             ═══════════════════════════════════════════════════════════════════ -->
-        <section id="media-studio" class="section-block section-velvet">
-            <div class="container">
-                <div class="section-head reveal">
-                    <div class="section-index">
-                        <span class="mono-meta accent"><bdi dir="ltr">03</bdi></span>
-                        <span class="index-rule" aria-hidden="true"></span>
-                        <span class="eyebrow-text" data-i18n="m-studio-eyebrow">قدرات الإنتاج والإعلام</span>
-                    </div>
-                    <h2 class="section-title" data-i18n="m-studio-title">خمسة مسارات إبداعية تحت سقف إخراجي واحد</h2>
-                    <p class="section-sub" data-i18n="m-studio-sub">اختر أي مسار إنتاجي لاستعراض الرؤية الإخراجية والمخرجات الفعلية التي ننفذها لعلامتك.</p>
-                </div>
-
-                <div class="studio-layout reveal">
-                    <!-- Director's Slate Rail (5 Tracks) -->
-                    <div class="studio-rail" role="tablist" aria-label="مسارات الإنتاج الإعلامي">
-                        <button type="button" class="slate-item is-active" role="tab" aria-selected="true" data-track="broadcast">
-                            <span class="slate-num mono-meta"><bdi dir="ltr">01</bdi></span>
-                            <div class="slate-copy">
-                                <strong data-i18n="m-tr1-t">الإنتاج التلفزيوني وصناعة المحتوى</strong>
-                                <span data-i18n="m-tr1-s">برامج تلفزيونية · محتوى رقمي · وثائقيات</span>
-                            </div>
-                        </button>
-
-                        <button type="button" class="slate-item" role="tab" aria-selected="false" data-track="cinema">
-                            <span class="slate-num mono-meta"><bdi dir="ltr">02</bdi></span>
-                            <div class="slate-copy">
-                                <strong data-i18n="m-tr2-t">الإنتاج المرئي والصوتي السينمائي</strong>
-                                <span data-i18n="m-tr2-s">إخراج سينمائي · إضاءة وتلوين · هندسة صوت</span>
-                            </div>
-                        </button>
-
-                        <button type="button" class="slate-item" role="tab" aria-selected="false" data-track="aivideo">
-                            <span class="slate-num mono-meta"><bdi dir="ltr">03</bdi></span>
-                            <div class="slate-copy">
-                                <strong data-i18n="m-tr3-t">إنتاج فيديوهات الذكاء الاصطناعي</strong>
-                                <span data-i18n="m-tr3-s">مشاهد مولّدة بالـ AI · سرعة فائقة · إخراج إبداعي</span>
-                            </div>
-                        </button>
-
-                        <button type="button" class="slate-item" role="tab" aria-selected="false" data-track="pr">
-                            <span class="slate-num mono-meta"><bdi dir="ltr">04</bdi></span>
-                            <div class="slate-copy">
-                                <strong data-i18n="m-tr4-t">الاتصال المؤسسي والعلاقات العامة</strong>
-                                <span data-i18n="m-tr4-s">إدارة السمعة والأزمات · الفعاليات الكبرى</span>
-                            </div>
-                        </button>
-
-                        <button type="button" class="slate-item" role="tab" aria-selected="false" data-track="marketing">
-                            <span class="slate-num mono-meta"><bdi dir="ltr">05</bdi></span>
-                            <div class="slate-copy">
-                                <strong data-i18n="m-tr5-t">التسويق الرقمي وصناعة الانتشار</strong>
-                                <span data-i18n="m-tr5-s">استراتيجية المحتوى · الحملات · قياس الأثر</span>
-                            </div>
-                        </button>
+                <!-- Official Selection Partner Credits in Pure #33075F Royal Indigo Ink -->
+                <div class="ivory-partners-wrap reveal" id="media-partners">
+                    <div class="partners-head">
+                        <span class="mono-meta royal-meta" dir="ltr">OFFICIAL SELECTION // TRUSTED BY</span>
+                        <h2 class="ivory-h2" data-i18n="m-partners-title">شركاء النجاح والثقة</h2>
                     </div>
 
-                    <!-- Sticky Anamorphic Screening Viewport -->
-                    <div class="studio-viewport border-beam-card specular-card" role="tabpanel" id="studio-viewport">
-                        <div class="vp-head">
-                            <span class="mono-meta accent" id="st-code" dir="ltr">SCENE 01 // BROADCAST &amp; CONTENT</span>
-                            <span class="vp-pill" id="st-tag">إنتاج تلفزيوني ورقمي</span>
+                    <div class="royal-laurels">
+                        <div class="royal-laurel" data-cursor="MBC">
+                            <img src="../img/partners-royal/mbc.png" alt="مجموعة MBC" loading="lazy">
+                            <span data-i18n="m-p-mbc">مجموعة MBC</span>
                         </div>
-
-                        <div class="st-screen" data-depth-stage>
-                            <img id="st-img" src="../img/studio-2.webp" alt="الإنتاج التلفزيوني وصناعة المحتوى في 99" class="st-photo" data-depth-layer>
-                            <div class="st-photo-grade" id="st-grade" aria-hidden="true"></div>
-                            <div class="st-hud mono-meta" dir="ltr" aria-hidden="true">
-                                <span id="st-hud-left">4K BROADCAST MASTER</span>
-                                <span class="accent" id="st-hud-right">24 FPS · JEDDAH</span>
-                            </div>
+                        <div class="royal-laurel" data-cursor="SBA">
+                            <img src="../img/partners-royal/sba.png" alt="هيئة الإذاعة والتلفزيون SBA" loading="lazy">
+                            <span data-i18n="m-p-sba">هيئة الإذاعة والتلفزيون</span>
                         </div>
-
-                        <!-- Live Production Spec Telemetry -->
-                        <div class="vp-specs" id="st-specs" dir="ltr" aria-hidden="true"></div>
-
-                        <div class="vp-content" id="st-content">
-                            <h3 class="vp-title" id="st-title">الإنتاج التلفزيوني وصناعة المحتوى</h3>
-                            <p class="vp-desc" id="st-desc">نبتكر وننتج برامج تلفزيونية ومحتوى رقمياً متكاملاً بفرق تحرير وإخراج متخصصة تخاطب الجمهور السعودي والخليجي بوعي عميق وجودة بث عالمية.</p>
-                            <ul class="vp-deliverables" id="st-list"></ul>
+                        <div class="royal-laurel" data-cursor="MISK">
+                            <img src="../img/partners-royal/misk.png" alt="مؤسسة مسك الخيرية" loading="lazy">
+                            <span data-i18n="m-p-misk">مؤسسة مسك</span>
                         </div>
-
-                        <div class="vp-stack-row" id="st-formats" dir="ltr"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════════════════════════════
-             ACT V — SCROLL-LIT PRODUCTION PIPELINE (SCRIPT TO SCREEN)
-             ═══════════════════════════════════════════════════════════════════ -->
-        <section id="media-pipeline" class="section-block">
-            <div class="container">
-                <div class="section-head reveal">
-                    <div class="section-index">
-                        <span class="mono-meta accent"><bdi dir="ltr">04</bdi></span>
-                        <span class="index-rule" aria-hidden="true"></span>
-                        <span class="eyebrow-text" data-i18n="m-pipe-eyebrow">منهجية الإنتاج</span>
-                    </div>
-                    <h2 class="section-title" data-i18n="m-pipe-title">من الفكرة الأولى إلى شاشة الجمهور</h2>
-                    <p class="section-sub" data-i18n="m-pipe-sub">أربع محطات إنتاجية منضبطة تحفظ جودة القصة وجمال اللقطة ودقة التسليم.</p>
-                </div>
-
-                <div class="pipeline-spine" aria-hidden="true">
-                    <div id="pipeline-fill" class="pipeline-fill"></div>
-                </div>
-
-                <div class="pipeline-row reveal">
-                    <article class="pipe-card specular-card">
-                        <div class="pipe-top">
-                            <span class="mono-meta accent"><bdi dir="ltr">01</bdi></span>
-                            <span class="mono-meta muted"><bdi dir="ltr">CONCEPT &amp; SCRIPT</bdi></span>
+                        <div class="royal-laurel" data-cursor="AL-FAISALYA">
+                            <img src="../img/partners-royal/alfaisalya.png" alt="الجمعية الفيصلية الخيرية" loading="lazy">
+                            <span data-i18n="m-p-faisalya">الجمعية الفيصلية الخيرية</span>
                         </div>
-                        <h3 data-i18n="m-step1-t">البحث والمعالجة الإبداعية</h3>
-                        <p data-i18n="m-step1-d">فهم دقيق لهوية العلامة وجمهورها لصياغة الفكرة المحورية والسيناريو وخطة التأثير الإعلامي.</p>
-                    </article>
-
-                    <article class="pipe-card specular-card">
-                        <div class="pipe-top">
-                            <span class="mono-meta accent"><bdi dir="ltr">02</bdi></span>
-                            <span class="mono-meta muted"><bdi dir="ltr">PRE-PRODUCTION</bdi></span>
+                        <div class="royal-laurel" data-cursor="TAIBA">
+                            <img src="../img/partners-royal/taiba.png" alt="جمعية طيبة النسائية" loading="lazy">
+                            <span data-i18n="m-p-taiba">جمعية طيبة النسائية</span>
                         </div>
-                        <h3 data-i18n="m-step2-t">الإخراج الفني والتجهيز</h3>
-                        <p data-i18n="m-step2-d">بناء لوحة المشاهد (Storyboard)، اختيار مواقع التصوير والمعدات، وتصميم الهوية البصرية والصوتية.</p>
-                    </article>
-
-                    <article class="pipe-card specular-card">
-                        <div class="pipe-top">
-                            <span class="mono-meta accent"><bdi dir="ltr">03</bdi></span>
-                            <span class="mono-meta muted"><bdi dir="ltr">SHOOT &amp; AI LAB</bdi></span>
+                        <div class="royal-laurel" data-cursor="AL-DAWAA">
+                            <img src="../img/partners-royal/aldwaa.png" alt="صيدليات الدواء" loading="lazy">
+                            <span data-i18n="m-p-aldwaa">الدواء</span>
                         </div>
-                        <h3 data-i18n="m-step3-t">التصوير أو التوليد بالـ AI</h3>
-                        <p data-i18n="m-step3-d">تنفيذ ميداني واستوديو بأعلى معايير الإضاءة والصوت، أو توليد مشاهد سينمائية فائقة بالذكاء الاصطناعي.</p>
-                    </article>
-
-                    <article class="pipe-card specular-card">
-                        <div class="pipe-top">
-                            <span class="mono-meta accent"><bdi dir="ltr">04</bdi></span>
-                            <span class="mono-meta muted"><bdi dir="ltr">GRADE &amp; REACH</bdi></span>
+                        <div class="royal-laurel" data-cursor="ZAHRA">
+                            <img src="../img/partners-royal/zahra.png" alt="جمعية زهرة" loading="lazy">
+                            <span data-i18n="m-p-zahra">جمعية زهرة</span>
                         </div>
-                        <h3 data-i18n="m-step4-t">التلوين والبث والانتشار</h3>
-                        <p data-i18n="m-step4-d">مونتاج وتلوين سينمائي ومكساج متقن، يليه إطلاق إعلامي ورقمي مدروس يضمن وصولاً مؤثراً.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════════════════════════════
-             ACT VI — THE 99 DUAL-POWER BRIDGE (MEDIA × TECH & AI SINCE 2014)
-             ═══════════════════════════════════════════════════════════════════ -->
-        <section id="media-synergy" class="section-block section-velvet">
-            <div class="container">
-                <div class="synergy-monolith border-beam-card specular-card reveal">
-                    <div class="synergy-copy">
-                        <div class="section-index">
-                            <span class="mono-meta accent"><bdi dir="ltr">05</bdi></span>
-                            <span class="index-rule" aria-hidden="true"></span>
-                            <span class="eyebrow-text" data-i18n="m-syn-eyebrow">ميزة 99 المتكاملة</span>
-                        </div>
-                        <h2 class="section-title" data-i18n="m-syn-title">حسّ سينمائي وإعلامي… مدعوم بمحرك ذكاء اصطناعي</h2>
-                        <p class="synergy-desc" data-i18n="m-syn-desc">منذ 2014 في جدة لم نفصل يوماً بين الإبداع الإعلامي والتطور التقني. اليوم تعمل 99 للإعلام بتناغم مباشر مع ذراعنا التقنية (99 Tech &amp; AI) ومنظوماتنا المطوّرة داخلياً مثل EXOX و PR MEDIA لتحويل المحتوى إلى أثرٍ قابلٍ للقياس والتوسع.</p>
-
-                        <div class="synergy-metrics">
-                            <div class="syn-metric">
-                                <span class="metric-num mono-meta"><bdi dir="ltr">2014</bdi></span>
-                                <span class="metric-lbl" data-i18n="m-stat1">بداية مسيرة 99 في جدة</span>
-                            </div>
-                            <div class="syn-metric">
-                                <span class="metric-num mono-meta"><bdi dir="ltr">TV · AI</bdi></span>
-                                <span class="metric-lbl" data-i18n="m-stat2">تكامل البث التلفزيوني مع الذكاء الاصطناعي</span>
-                            </div>
-                        </div>
-
-                        <div class="synergy-actions">
-                            <a href="../tech/" class="btn-primary btn-sm" data-i18n="m-syn-tech-cta">استكشف 99 للتقنية والذكاء الاصطناعي ↗</a>
-                            <a href="../assets/99-Profile-final.pdf" download class="btn-glass btn-sm" data-i18n="m-syn-pdf-cta">تحميل بروفايل 99 (PDF) ↓</a>
-                        </div>
-                    </div>
-
-                    <div class="synergy-visual" data-depth-stage>
-                        <div class="synergy-aura" aria-hidden="true"></div>
-                        <img src="../img/studio-1.webp" alt="استوديو 99 للإعلام والتصوير" class="synergy-photo" data-depth-layer loading="lazy">
-                        <div class="synergy-badge mono-meta" dir="ltr">
-                            <span class="accent">99 MEDIA</span>
-                            <span>×</span>
-                            <span>99 TECH &amp; AI</span>
+                        <div class="royal-laurel" data-cursor="FTAH">
+                            <img src="../img/partners-royal/ftah.png" alt="جمعية فتاة الأحساء" loading="lazy">
+                            <span data-i18n="m-p-ftah">فتاة الأحساء</span>
                         </div>
                     </div>
                 </div>
@@ -642,169 +433,347 @@
         </section>
 
         <!-- ═══════════════════════════════════════════════════════════════════
-             ACT VI.B — ARCHITECTURAL FAQ (AEO & GEO ANSWER AUTHORITY)
+             ACT III — MICHAEL BAY GIANT BRACKETED [ ] DIRECTOR'S REEL THEATER
+             Full-bleed dynamic cinema stills crossfade behind giant bracketed titles
              ═══════════════════════════════════════════════════════════════════ -->
-        <section id="media-faq" class="section-block">
-            <div class="container faq-layout">
-                <div class="section-head reveal">
-                    <div class="section-index">
-                        <span class="mono-meta accent"><bdi dir="ltr">06</bdi></span>
-                        <span class="index-rule" aria-hidden="true"></span>
-                        <span class="eyebrow-text" data-i18n="m-faq-eyebrow">أسئلة شائعة</span>
-                    </div>
-                    <h2 class="section-title" data-i18n="m-faq-title">إجابات واضحة حول الإنتاج والتعاون معنا</h2>
-                    <p class="section-sub" data-i18n="m-faq-sub">أبرز التساؤلات حول خدمات 99 للإعلام، شركائنا، وآلية تنفيذ المشاريع من جدة إلى كل المملكة والخليج.</p>
+        <section id="act-director" class="act-director" data-section-theme="dark">
+            <!-- Full-bleed crossfading backdrop stills -->
+            <div class="director-bg-stack" aria-hidden="true">
+                <img src="../img/studio-2.webp" alt="" class="dir-bg is-active" data-bg="broadcast">
+                <img src="../img/videographer.webp" alt="" class="dir-bg" data-bg="cinema">
+                <img src="../img/tv.webp" alt="" class="dir-bg" data-bg="aivideo">
+                <img src="../img/studio-1.webp" alt="" class="dir-bg" data-bg="pr">
+                <img src="../img/studio-2.webp" alt="" class="dir-bg dir-bg-marketing" data-bg="marketing">
+                <div class="director-scrim"></div>
+            </div>
+
+            <div class="director-stage">
+                <div class="director-top-bar mono-meta" dir="ltr">
+                    <span>CHAPTER 02 // FIVE PRODUCTION DISCIPLINES</span>
+                    <span id="dir-scene-code" class="accent">SCENE 01 // 4K BROADCAST MASTER</span>
                 </div>
 
-                <div class="faq-list reveal">
-                    <details class="faq-item specular-card" open>
-                        <summary class="faq-q">
-                            <span data-i18n="m-faq1-q">ما هي الخدمات الأساسية التي تقدمها 99 للإعلام (99 Media)؟</span>
-                            <span class="faq-plus" aria-hidden="true"></span>
-                        </summary>
-                        <p class="faq-a" data-i18n="m-faq1-a">تقدم 99 للإعلام منذ 2014 منظومة إعلامية متكاملة تشمل إنتاج البرامج التلفزيونية والرقمية، الإنتاج المرئي والصوتي السينمائي، إنتاج فيديوهات الذكاء الاصطناعي، الاتصال المؤسسي والعلاقات العامة وإدارة الفعاليات والأزمات، والتسويق الرقمي.</p>
-                    </details>
+                <!-- Giant Michael Bay Bracketed Typography Selector -->
+                <div class="director-index" role="tablist" aria-label="مسارات الإنتاج في 99 للإعلام">
+                    <button type="button" class="dir-row is-active" role="tab" aria-selected="true"
+                        data-scene="broadcast" data-cursor="المشهد 01">
+                        <span class="dir-side-meta mono-meta" dir="ltr">01 // TV &amp; DIGITAL</span>
+                        <span class="dir-title-wrap">
+                            <span class="dir-bracket" aria-hidden="true">[</span>
+                            <span class="dir-title" data-i18n="m-sc1-t">الإنتاج التلفزيوني والمحتوى</span>
+                            <span class="dir-bracket" aria-hidden="true">]</span>
+                        </span>
+                        <span class="dir-side-tag mono-meta" dir="ltr">4K BROADCAST</span>
+                    </button>
 
-                    <details class="faq-item specular-card">
-                        <summary class="faq-q">
-                            <span data-i18n="m-faq2-q">من أبرز الجهات والشركاء الذين تعاونت معهم 99 للإعلام؟</span>
-                            <span class="faq-plus" aria-hidden="true"></span>
-                        </summary>
-                        <p class="faq-a" data-i18n="m-faq2-a">تشرفنا بالتعاون والعمل مع جهات إعلامية ومؤسسية كبرى في المملكة منها مجموعة MBC، هيئة الإذاعة والتلفزيون (SBA)، مؤسسة مسك الخيرية، الجمعية الفيصلية الخيرية، جمعية طيبة النسائية، صيدليات الدواء، جمعية زهرة، وجمعية فتاة الأحساء.</p>
-                    </details>
+                    <button type="button" class="dir-row" role="tab" aria-selected="false"
+                        data-scene="cinema" data-cursor="المشهد 02">
+                        <span class="dir-side-meta mono-meta" dir="ltr">02 // FILM &amp; AUDIO</span>
+                        <span class="dir-title-wrap">
+                            <span class="dir-bracket" aria-hidden="true">[</span>
+                            <span class="dir-title" data-i18n="m-sc2-t">الإنتاج المرئي والصوتي السينمائي</span>
+                            <span class="dir-bracket" aria-hidden="true">]</span>
+                        </span>
+                        <span class="dir-side-tag mono-meta" dir="ltr">RAW &amp; DOLBY</span>
+                    </button>
 
-                    <details class="faq-item specular-card">
-                        <summary class="faq-q">
-                            <span data-i18n="m-faq3-q">كيف توظف 99 الذكاء الاصطناعي في إنتاج الفيديوهات والحملات؟</span>
-                            <span class="faq-plus" aria-hidden="true"></span>
-                        </summary>
-                        <p class="faq-a" data-i18n="m-faq3-a">نجمع بين الإخراج السينمائي البشري وتقنيات توليد الفيديو بالذكاء الاصطناعي لاختصار زمن التنفيذ ومضاعفة الأثر البصري، مدعومين بذراع 99 للتقنية والذكاء الاصطناعي (EXOX و PR MEDIA) لقياس الأداء والوصول.</p>
-                    </details>
+                    <button type="button" class="dir-row" role="tab" aria-selected="false"
+                        data-scene="aivideo" data-cursor="المشهد 03">
+                        <span class="dir-side-meta mono-meta" dir="ltr">03 // GEN-AI FILM</span>
+                        <span class="dir-title-wrap">
+                            <span class="dir-bracket" aria-hidden="true">[</span>
+                            <span class="dir-title" data-i18n="m-sc3-t">سينما وفيديوهات الذكاء الاصطناعي</span>
+                            <span class="dir-bracket" aria-hidden="true">]</span>
+                        </span>
+                        <span class="dir-side-tag mono-meta" dir="ltr">AI DIRECTOR LAB</span>
+                    </button>
 
-                    <details class="faq-item specular-card">
-                        <summary class="faq-q">
-                            <span data-i18n="m-faq4-q">أين يقع مقر 99 للإعلام وهل تنفذون أعمالاً خارج جدة؟</span>
-                            <span class="faq-plus" aria-hidden="true"></span>
-                        </summary>
-                        <p class="faq-a" data-i18n="m-faq4-a">يقع المقر الرئيسي في جدة بالمملكة العربية السعودية، وننفذ الإنتاج والتغطيات والحملات في كافة مناطق المملكة (جدة، الرياض، الشرقية، مكة والمدينة) ودول الخليج والمنطقة.</p>
-                    </details>
+                    <button type="button" class="dir-row" role="tab" aria-selected="false"
+                        data-scene="pr" data-cursor="المشهد 04">
+                        <span class="dir-side-meta mono-meta" dir="ltr">04 // STRATEGIC PR</span>
+                        <span class="dir-title-wrap">
+                            <span class="dir-bracket" aria-hidden="true">[</span>
+                            <span class="dir-title" data-i18n="m-sc4-t">الاتصال المؤسسي والعلاقات العامة</span>
+                            <span class="dir-bracket" aria-hidden="true">]</span>
+                        </span>
+                        <span class="dir-side-tag mono-meta" dir="ltr">REPUTATION OPS</span>
+                    </button>
 
-                    <details class="faq-item specular-card">
-                        <summary class="faq-q">
-                            <span data-i18n="m-faq5-q">كيف نطلب عرضاً فنياً أو نبدأ إنتاجاً إعلامياً مع 99؟</span>
-                            <span class="faq-plus" aria-hidden="true"></span>
-                        </summary>
-                        <p class="faq-a" data-i18n="m-faq5-a">يمكنك تحميل الملف التعريفي للشركة (PDF) أو إرسال ملخص مشروعك عبر نموذج التواصل أدناه أو مباشرة عبر Info@i99.sa أو الواتساب +966 56 611 1617 لنرتّب جلسة معالجة فنية وتصور إنتاجي واضح.</p>
-                    </details>
+                    <button type="button" class="dir-row" role="tab" aria-selected="false"
+                        data-scene="marketing" data-cursor="المشهد 05">
+                        <span class="dir-side-meta mono-meta" dir="ltr">05 // DIGITAL REACH</span>
+                        <span class="dir-title-wrap">
+                            <span class="dir-bracket" aria-hidden="true">[</span>
+                            <span class="dir-title" data-i18n="m-sc5-t">التسويق الرقمي وصناعة الانتشار</span>
+                            <span class="dir-bracket" aria-hidden="true">]</span>
+                        </span>
+                        <span class="dir-side-tag mono-meta" dir="ltr">FULL-FUNNEL</span>
+                    </button>
+                </div>
+
+                <!-- Live Director's Brief Drawer at Bottom of Theater -->
+                <div class="director-brief-bar" id="director-brief">
+                    <div class="brief-copy">
+                        <span class="mono-meta accent" id="brief-label" dir="ltr">DELIVERABLES // SCENE 01</span>
+                        <p id="brief-desc">نبتكر وننتج برامج تلفزيونية ووثائقية وسلاسل رقمية متكاملة بفرق تحرير وإخراج متخصصة تخاطب الجمهور السعودي والخليجي بجودة بث عالمية.</p>
+                    </div>
+                    <div class="brief-pills" id="brief-pills" dir="ltr"></div>
                 </div>
             </div>
         </section>
 
         <!-- ═══════════════════════════════════════════════════════════════════
-             ACT VII — EXECUTIVE PRODUCTION INQUIRY
+             ACT IV — PINNED HORIZONTAL 35MM FILM-STRIP REEL (CODROPS / FWA)
+             Vertical scroll drives a 35mm sprocket cinema roll sideways with velocity skew
              ═══════════════════════════════════════════════════════════════════ -->
-        <section id="media-contact" class="section-block section-velvet">
-            <div class="container">
-                <div class="contact-monolith specular-card reveal">
-                    <div class="contact-side">
-                        <div class="section-index">
-                            <span class="mono-meta accent"><bdi dir="ltr">07</bdi></span>
-                            <span class="index-rule" aria-hidden="true"></span>
-                            <span class="eyebrow-text" data-i18n="m-contact-eyebrow">ابدأ إنتاجك</span>
-                        </div>
-                        <h2 class="contact-title" data-i18n="m-contact-title">لنصنع قصتك القادمة معاً</h2>
-                        <p class="contact-desc" data-i18n="m-contact-sub">شاركنا فكرة مشروعك الإعلامي أو حملتك القادمة، وسيتواصل معك فريق الإنتاج والإخراج في جدة بتصور عملي واضح.</p>
+        <section id="act-reel" class="act-reel" data-section-theme="dark">
+            <div class="reel-sticky">
+                <div class="reel-header">
+                    <div>
+                        <span class="mono-meta accent" dir="ltr">CHAPTER 03 // 35MM PRODUCTION WORKFLOW</span>
+                        <h2 class="reel-heading" data-i18n="m-reel-title">من الفكرة الأولى إلى شاشة الجمهور</h2>
+                    </div>
+                    <div class="reel-counter mono-meta" dir="ltr">
+                        <span>FRAME</span>
+                        <strong id="reel-frame-num" class="accent">01 / 04</strong>
+                    </div>
+                </div>
 
-                        <ul class="contact-list">
-                            <li>
-                                <span class="ch-k" data-i18n="m-ch-email">البريد الرسمي</span>
-                                <a href="mailto:Info@i99.sa"><bdi dir="ltr">Info@i99.sa</bdi></a>
-                            </li>
-                            <li>
-                                <span class="ch-k" data-i18n="m-ch-phone">الهاتف المباشر</span>
-                                <a href="tel:+966566111617"><bdi dir="ltr">+966 56 611 1617</bdi></a>
-                            </li>
-                            <li>
-                                <span class="ch-k" data-i18n="m-ch-whatsapp">واتساب مباشر</span>
-                                <a href="https://wa.me/966566111617" target="_blank" rel="noopener noreferrer"
-                                    class="contact-wa-link" data-i18n="m-ch-whatsapp-val">محادثة فورية عبر واتساب ↗</a>
-                            </li>
-                            <li>
-                                <span class="ch-k" data-i18n="m-ch-loc">المقر</span>
-                                <span data-i18n="m-ch-loc-val">جدة، المملكة العربية السعودية</span>
-                            </li>
-                        </ul>
+                <!-- 35mm Top Sprocket Perforations -->
+                <div class="sprockets" aria-hidden="true"></div>
+
+                <div class="reel-viewport">
+                    <div class="reel-track" id="reel-track">
+                        <article class="film-frame" data-cursor="01">
+                            <div class="frame-media">
+                                <img src="../img/studio-1.webp" alt="المعالجة الإبداعية والسيناريو" loading="lazy">
+                                <span class="frame-num mono-meta" dir="ltr">FRAME 01 // SCRIPT</span>
+                            </div>
+                            <div class="frame-body">
+                                <h3 data-i18n="m-step1-t">البحث والمعالجة الإبداعية</h3>
+                                <p data-i18n="m-step1-d">فهم دقيق لهوية العلامة وجمهورها لصياغة الفكرة المحورية والسيناريو وخطة التأثير الإعلامي قبل أن تدور الكاميرا.</p>
+                            </div>
+                        </article>
+
+                        <article class="film-frame" data-cursor="02">
+                            <div class="frame-media">
+                                <img src="../img/studio-2.webp" alt="الإخراج الفني وتجهيز الاستوديو" loading="lazy">
+                                <span class="frame-num mono-meta" dir="ltr">FRAME 02 // ART DIRECTION</span>
+                            </div>
+                            <div class="frame-body">
+                                <h3 data-i18n="m-step2-t">الإخراج الفني وتجهيز الموقع</h3>
+                                <p data-i18n="m-step2-d">بناء لوحة المشاهد (Storyboard)، اختيار مواقع التصوير والمعدات والإضاءة، وتصميم الهوية البصرية والصوتية.</p>
+                            </div>
+                        </article>
+
+                        <article class="film-frame" data-cursor="03">
+                            <div class="frame-media">
+                                <img src="../img/videographer.webp" alt="التصوير السينمائي ومختبر الذكاء الاصطناعي" loading="lazy">
+                                <span class="frame-num mono-meta" dir="ltr">FRAME 03 // SHOOT &amp; AI LAB</span>
+                            </div>
+                            <div class="frame-body">
+                                <h3 data-i18n="m-step3-t">التصوير السينمائي أو مختبر الـ AI</h3>
+                                <p data-i18n="m-step3-d">تنفيذ ميداني واستوديو بأعلى معايير البث، أو توليد مشاهد سينمائية فائقة بالذكاء الاصطناعي بإشراف إخراجي كامل.</p>
+                            </div>
+                        </article>
+
+                        <article class="film-frame" data-cursor="04">
+                            <div class="frame-media">
+                                <img src="../img/tv.webp" alt="التلوين السينمائي والبث والانتشار" loading="lazy">
+                                <span class="frame-num mono-meta" dir="ltr">FRAME 04 // GRADE &amp; BROADCAST</span>
+                            </div>
+                            <div class="frame-body">
+                                <h3 data-i18n="m-step4-t">التلوين والبث وصناعة الانتشار</h3>
+                                <p data-i18n="m-step4-d">مونتاج وتلوين سينمائي ومكساج متقن، يليه إطلاق إعلامي ورقمي مدروس يضمن وصولاً مؤثراً وأثراً ممتداً.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- 35mm Bottom Sprocket Perforations -->
+                <div class="sprockets" aria-hidden="true"></div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             ACT V — WARM IVORY EDITORIAL BRIDGE (99 MEDIA × 99 TECH) + AEO FAQ
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section id="act-synergy" class="act-ivory act-ivory-synergy" data-section-theme="light">
+            <div class="ivory-container">
+                <div class="synergy-editorial reveal">
+                    <div class="syn-lead">
+                        <span class="mono-meta royal-meta" dir="ltr">CHAPTER 04 // THE 99 DUAL ENGINE</span>
+                        <h2 class="ivory-display" data-i18n="m-syn-title">حسّ سينمائي وإعلامي… مدعوم بذراع ذكاء اصطناعي</h2>
+                    </div>
+                    <div class="syn-detail">
+                        <p data-i18n="m-syn-desc">ما يميّز 99 منذ 2014 في جدة أننا لم نفصل بين جمال الصورة وقوة التكنولوجيا. اليوم تعمل 99 للإعلام بتكامل مباشر مع ذراعنا التقنية (99 Tech &amp; AI) ومنظوماتنا المطوّرة داخلياً مثل EXOX و PR MEDIA لتحويل كل إنتاج إعلامي إلى حضور رقمي قابل للقياس والنمو.</p>
+                        <div class="syn-links">
+                            <a href="../tech/" class="btn-royal" data-i18n="m-syn-tech-cta" data-cursor="99 TECH">استكشف 99 للتقنية والذكاء الاصطناعي ↗</a>
+                            <a href="../assets/99-Profile-final.pdf" download class="btn-royal-outline" data-i18n="m-syn-pdf-cta" data-cursor="PDF">تحميل بروفايل 99 (PDF) ↓</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Architectural AEO FAQ on Warm Ivory -->
+                <div class="ivory-faq-wrap reveal" id="media-faq">
+                    <div class="faq-head">
+                        <span class="mono-meta royal-meta" dir="ltr">CHAPTER 05 // PRODUCTION FAQ</span>
+                        <h2 class="ivory-h2" data-i18n="m-faq-title">إجابات واضحة قبل أن تدور الكاميرا</h2>
                     </div>
 
-                    <form id="media-form" class="contact-form" action="https://api.web3forms.com/submit" method="POST"
-                        novalidate>
-                        <input type="hidden" name="access_key" value="928f6b69-1a8e-4438-baaa-460f5fc70074">
-                        <input type="hidden" name="subject" value="New Media Production Inquiry — 99 Media (i99.sa)">
-                        <input type="hidden" name="scope" id="media-scope-input" value="Broadcast & Cinema Production">
-                        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"
-                            style="display:none;position:absolute;opacity:0;pointer-events:none;">
+                    <div class="ivory-faq-list">
+                        <details class="ivory-faq-item" open>
+                            <summary class="ivory-faq-q">
+                                <span data-i18n="m-faq1-q">ما هي الخدمات الأساسية التي تقدمها 99 للإعلام (99 Media)؟</span>
+                                <span class="ivory-plus" aria-hidden="true"></span>
+                            </summary>
+                            <p class="ivory-faq-a" data-i18n="m-faq1-a">تقدم 99 للإعلام منذ 2014 منظومة إعلامية متكاملة تشمل إنتاج البرامج التلفزيونية والرقمية، الإنتاج المرئي والصوتي السينمائي، إنتاج فيديوهات الذكاء الاصطناعي، الاتصال المؤسسي والعلاقات العامة وإدارة الفعاليات والأزمات، والتسويق الرقمي.</p>
+                        </details>
 
-                        <div class="field-group">
-                            <span class="field-label" data-i18n="m-scope-label">نوع المشروع الإعلامي</span>
-                            <div class="scope-chips" role="group" aria-label="نوع المشروع الإعلامي">
-                                <button type="button" class="scope-chip is-selected" data-scope="Broadcast & Cinema Production"
-                                    data-i18n="m-scope-1">إنتاج تلفزيوني وسينمائي</button>
-                                <button type="button" class="scope-chip" data-scope="AI Video Production"
-                                    data-i18n="m-scope-2">فيديوهات AI</button>
-                                <button type="button" class="scope-chip" data-scope="Corporate PR & Communications"
-                                    data-i18n="m-scope-3">علاقات عامة واتصال</button>
-                                <button type="button" class="scope-chip" data-scope="Digital Marketing & Content"
-                                    data-i18n="m-scope-4">تسويق ومحتوى رقمي</button>
-                            </div>
+                        <details class="ivory-faq-item">
+                            <summary class="ivory-faq-q">
+                                <span data-i18n="m-faq2-q">من أبرز الجهات والشركاء الذين تعاونت معهم 99 للإعلام؟</span>
+                                <span class="ivory-plus" aria-hidden="true"></span>
+                            </summary>
+                            <p class="ivory-faq-a" data-i18n="m-faq2-a">تشرفنا بالتعاون والعمل مع جهات إعلامية ومؤسسية كبرى في المملكة منها مجموعة MBC، هيئة الإذاعة والتلفزيون (SBA)، مؤسسة مسك الخيرية، الجمعية الفيصلية الخيرية، جمعية طيبة النسائية، صيدليات الدواء، جمعية زهرة، وجمعية فتاة الأحساء.</p>
+                        </details>
+
+                        <details class="ivory-faq-item">
+                            <summary class="ivory-faq-q">
+                                <span data-i18n="m-faq3-q">كيف توظف 99 الذكاء الاصطناعي في إنتاج الفيديوهات والحملات؟</span>
+                                <span class="ivory-plus" aria-hidden="true"></span>
+                            </summary>
+                            <p class="ivory-faq-a" data-i18n="m-faq3-a">نجمع بين الإخراج السينمائي البشري وتقنيات توليد الفيديو بالذكاء الاصطناعي لاختصار زمن التنفيذ ومضاعفة الأثر البصري، مدعومين بذراع 99 للتقنية والذكاء الاصطناعي (EXOX و PR MEDIA) لقياس الأداء والوصول.</p>
+                        </details>
+
+                        <details class="ivory-faq-item">
+                            <summary class="ivory-faq-q">
+                                <span data-i18n="m-faq4-q">أين يقع مقر 99 للإعلام وهل تنفذون أعمالاً خارج جدة؟</span>
+                                <span class="ivory-plus" aria-hidden="true"></span>
+                            </summary>
+                            <p class="ivory-faq-a" data-i18n="m-faq4-a">يقع المقر الرئيسي في جدة بالمملكة العربية السعودية، وننفذ الإنتاج والتغطيات والحملات في كافة مناطق المملكة (جدة، الرياض، الشرقية، مكة والمدينة) ودول الخليج والمنطقة.</p>
+                        </details>
+
+                        <details class="ivory-faq-item">
+                            <summary class="ivory-faq-q">
+                                <span data-i18n="m-faq5-q">كيف نطلب عرضاً فنياً أو نبدأ إنتاجاً إعلامياً مع 99؟</span>
+                                <span class="ivory-plus" aria-hidden="true"></span>
+                            </summary>
+                            <p class="ivory-faq-a" data-i18n="m-faq5-a">يمكنك تحميل الملف التعريفي للشركة (PDF) أو إرسال ملخص مشروعك عبر نموذج التواصل أدناه أو مباشرة عبر Info@i99.sa أو الواتساب +966 56 611 1617 لنرتّب جلسة معالجة فنية وتصور إنتاجي واضح.</p>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             ACT VI — OBSIDIAN DIRECTOR'S SLATE CLOSING INQUIRY
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section id="act-slate" class="act-slate" data-section-theme="dark">
+            <div class="slate-container">
+                <div class="slate-board reveal">
+                    <!-- Director's Clapperboard Top Strip -->
+                    <div class="clapper-strip mono-meta" dir="ltr">
+                        <span>PROD: 99 MEDIA HOUSE</span>
+                        <span>SLATE: 099 · TAKE 01</span>
+                        <span class="accent">JEDDAH // SAUDI ARABIA</span>
+                    </div>
+
+                    <div class="slate-grid">
+                        <div class="slate-info">
+                            <h2 class="slate-title" data-i18n="m-contact-title">لنُخرج قصتك القادمة معاً</h2>
+                            <p class="slate-desc" data-i18n="m-contact-sub">شاركنا فكرة مشروعك الإعلامي أو حملتك القادمة، وسيتواصل معك فريق الإنتاج والإخراج في جدة بتصور فني وعملي واضح.</p>
+
+                            <ul class="slate-channels">
+                                <li>
+                                    <span class="ch-k" data-i18n="m-ch-email">البريد الرسمي</span>
+                                    <a href="mailto:Info@i99.sa"><bdi dir="ltr">Info@i99.sa</bdi></a>
+                                </li>
+                                <li>
+                                    <span class="ch-k" data-i18n="m-ch-phone">الهاتف المباشر</span>
+                                    <a href="tel:+966566111617"><bdi dir="ltr">+966 56 611 1617</bdi></a>
+                                </li>
+                                <li>
+                                    <span class="ch-k" data-i18n="m-ch-whatsapp">واتساب مباشر</span>
+                                    <a href="https://wa.me/966566111617" target="_blank" rel="noopener noreferrer"
+                                        class="contact-wa-link" data-i18n="m-ch-whatsapp-val">محادثة فورية عبر واتساب ↗</a>
+                                </li>
+                                <li>
+                                    <span class="ch-k" data-i18n="m-ch-loc">المقر</span>
+                                    <span data-i18n="m-ch-loc-val">جدة، المملكة العربية السعودية</span>
+                                </li>
+                            </ul>
                         </div>
 
-                        <div class="form-row-2">
+                        <form id="media-form" class="slate-form" action="https://api.web3forms.com/submit" method="POST"
+                            novalidate>
+                            <input type="hidden" name="access_key" value="928f6b69-1a8e-4438-baaa-460f5fc70074">
+                            <input type="hidden" name="subject" value="New Media Production Inquiry — 99 Media (i99.sa)">
+                            <input type="hidden" name="scope" id="media-scope-input" value="Broadcast & Cinema Production">
+                            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"
+                                style="display:none;position:absolute;opacity:0;pointer-events:none;">
+
                             <div class="field-group">
-                                <label for="media-name" class="field-label" data-i18n="m-label-name">الاسم الكامل</label>
-                                <input type="text" name="name" id="media-name" class="field-input" required
-                                    autocomplete="name" data-i18n-placeholder="m-ph-name"
-                                    placeholder="الاسم أو اسم الجهة">
+                                <span class="field-label" data-i18n="m-scope-label">نوع المشروع الإعلامي</span>
+                                <div class="scope-chips" role="group" aria-label="نوع المشروع الإعلامي">
+                                    <button type="button" class="scope-chip is-selected" data-scope="Broadcast & Cinema Production"
+                                        data-i18n="m-scope-1">إنتاج تلفزيوني وسينمائي</button>
+                                    <button type="button" class="scope-chip" data-scope="AI Video Production"
+                                        data-i18n="m-scope-2">فيديوهات AI</button>
+                                    <button type="button" class="scope-chip" data-scope="Corporate PR & Communications"
+                                        data-i18n="m-scope-3">علاقات عامة واتصال</button>
+                                    <button type="button" class="scope-chip" data-scope="Digital Marketing & Content"
+                                        data-i18n="m-scope-4">تسويق ومحتوى رقمي</button>
+                                </div>
                             </div>
+
+                            <div class="form-row-2">
+                                <div class="field-group">
+                                    <label for="media-name" class="field-label" data-i18n="m-label-name">الاسم الكامل</label>
+                                    <input type="text" name="name" id="media-name" class="field-input" required
+                                        autocomplete="name" data-i18n-placeholder="m-ph-name"
+                                        placeholder="الاسم أو اسم الجهة">
+                                </div>
+                                <div class="field-group">
+                                    <label for="media-email" class="field-label" data-i18n="m-label-email">البريد الإلكتروني</label>
+                                    <input type="email" name="email" id="media-email" class="field-input input-ltr" dir="ltr"
+                                        required autocomplete="email" placeholder="name@company.com">
+                                </div>
+                            </div>
+
                             <div class="field-group">
-                                <label for="media-email" class="field-label" data-i18n="m-label-email">البريد الإلكتروني</label>
-                                <input type="email" name="email" id="media-email" class="field-input input-ltr" dir="ltr"
-                                    required autocomplete="email" placeholder="name@company.com">
+                                <label for="media-message" class="field-label" data-i18n="m-label-message">تفاصيل المشروع</label>
+                                <textarea name="message" id="media-message" class="field-textarea" rows="4" required
+                                    data-i18n-placeholder="m-ph-message"
+                                    placeholder="نبذة عن الإنتاج المطلوب، القنوات المستهدفة، والجدول الزمني المتوقع"></textarea>
                             </div>
-                        </div>
 
-                        <div class="field-group">
-                            <label for="media-message" class="field-label" data-i18n="m-label-message">تفاصيل المشروع</label>
-                            <textarea name="message" id="media-message" class="field-textarea" rows="4" required
-                                data-i18n-placeholder="m-ph-message"
-                                placeholder="نبذة عن الإنتاج المطلوب، القنوات المستهدفة، والجدول الزمني المتوقع"></textarea>
-                        </div>
-
-                        <button type="submit" class="btn-primary submit-btn" data-i18n="m-submit-btn">إرسال طلب الإنتاج</button>
-                        <div class="form-status" role="status" aria-live="polite"></div>
-                    </form>
+                            <button type="submit" class="btn-ivory submit-btn" data-i18n="m-submit-btn">إرسال طلب الإنتاج</button>
+                            <div class="form-status" role="status" aria-live="polite"></div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <!-- ═══ SOVEREIGN FOOTER ═══ -->
-    <footer class="site-footer">
-        <div class="container footer-inner">
+    <!-- ═══ SOVEREIGN CINEMA FOOTER ═══ -->
+    <footer class="cinema-footer" data-section-theme="dark">
+        <div class="footer-shell">
             <div class="footer-brand">
-                <a href="../" class="brand-lockup" aria-label="99 Media &amp; Tech">
+                <a href="../" class="header-center-brand" aria-label="99 Media &amp; Tech">
                     <span class="brand-seal seal-sm" aria-hidden="true">
-                        <svg viewBox="0 0 450 450" width="20" height="20" fill="none">
+                        <svg viewBox="0 0 450 450" width="18" height="18" fill="none">
                             <path fill-rule="evenodd" fill="#33075F"
                                 d="m259.1 219.4l-168.4 213.8c-8.9 11.1-25.1 12.9-36.2 4.1l100.9-129.4c-28.2-2.5-55-13.2-77.5-31.5-29.9-24.3-48.5-58.8-52.2-97.2-3.6-37.1 7.3-73.7 30.8-103 23.4-29.3 56.7-48 93.7-52.7q1.7-0.2 3.5-0.4c24.1-2.4 47.4 2.2 67.5 12.8 8.1 4.3 15.7 9.5 22.6 15.5 10.7 9.3 19.8 20.7 27 33.9 23.8 43.8 19.4 95.2-11.7 134.1zm-10.9-121.8c-6.4-11.8-14.8-21.7-24.6-29.5-7-5.5-14.6-10-22.8-13.3-10.8-4.3-22.6-6.6-34.7-6.6q-4.9 0-9.9 0.5-1.4 0.2-2.8 0.3c-62.4 7.9-108.2 65.1-102.1 127.7 3 31.5 18.2 59.8 42.8 79.8 23.2 18.8 52 27.9 81.7 25.9l27.5-34.5 16.3-20.3 19.4-24.3c24.5-30.6 28-71.1 9.2-105.7z" />
                             <path fill="#33075F"
                                 d="m398.5 203.9l-183.5 229.3c-8.8 11.1-25 12.9-36.1 4.1l136.2-170.3 63.3-79.2c24.5-30.6 28-71.1 9.2-105.7-18.5-34-53.8-52.7-92-48.9q-1.4 0.2-2.9 0.3c-17.5 2.2-34.2 8.4-48.9 17.9q-6.8 4.4-12.9 9.8-3.9 3.3-7.3 6.9c-7-5.5-14.6-10-22.8-13.3q6.1-6.9 13.2-13 3.5-3.1 7.2-5.9c20-15.2 43.4-24.7 68.4-27.9q1.7-0.2 3.5-0.4c48.6-4.9 93.5 18.9 117.1 62.2 23.8 43.8 19.3 95.2-11.7 134.1z" />
                         </svg>
                     </span>
-                    <span class="brand-divider" aria-hidden="true"></span>
                     <span class="brand-word" dir="ltr">99 MEDIA HOUSE</span>
                 </a>
-                <span class="footer-loc mono-meta"><bdi dir="ltr">JEDDAH · KSA</bdi></span>
+                <span class="footer-loc mono-meta"><bdi dir="ltr">JEDDAH · KSA // EST. 2014</bdi></span>
             </div>
 
             <nav class="footer-links" aria-label="روابط التذييل">
@@ -812,15 +781,15 @@
                 <a href="../tech/" data-i18n="m-footer-tech">99 للتقنية والذكاء الاصطناعي</a>
                 <a href="https://exox.ai" target="_blank" rel="noopener noreferrer"><bdi dir="ltr">EXOX.AI ↗</bdi></a>
                 <a href="../assets/99-Profile-final.pdf" download data-i18n="m-footer-pdf">الملف التعريفي PDF</a>
-                <a href="#media-contact" data-i18n="m-footer-contact">تواصل معنا</a>
+                <a href="#act-slate" data-i18n="m-footer-contact">تواصل معنا</a>
             </nav>
 
             <p class="footer-copy" data-i18n="m-footer-copy">© 2026 مؤسسة تسعة وتسعون (i99.sa). جميع الحقوق محفوظة.</p>
         </div>
     </footer>
 
-    <script src="../js/media-i18n.js?v=2.0"></script>
-    <script src="../js/media-main.js?v=2.0"></script>
+    <script src="../js/media-i18n.js?v=3.1"></script>
+    <script src="../js/media-main.js?v=3.1"></script>
 </body>
 
 </html>

@@ -3,54 +3,165 @@ document.addEventListener("DOMContentLoaded", () => {
     const isFinePointer = window.matchMedia("(pointer: fine)").matches;
 
     // ═══════════════════════════════════════════════════════════════════════
-    // 1. SUBTLE WEBGL ANAMORPHIC CINEMA LIGHT VEIL (#cinema-veil-shader)
-    //    Royal Indigo (#33075F) + Warm Champagne Tungsten projector rays
-    //    blending delicately over the real soundstage hero photograph.
+    // 1. 0.85s MICHAEL BAY INSPIRED SOVEREIGN ROYAL FILM-LEADER CURTAIN
     // ═══════════════════════════════════════════════════════════════════════
-    const initCinemaVeil = () => {
-        const canvas = document.getElementById("cinema-veil-shader");
+    const loader = document.getElementById("cinema-loader");
+    const loaderCount = document.getElementById("loader-count");
+    const loaderLine = document.getElementById("loader-line");
+    const revealHero = () => {
+        document.querySelectorAll("[data-enter]").forEach((el) => el.classList.add("is-visible"));
+    };
+
+    if (loader && !prefersReducedMotion) {
+        const start = performance.now();
+        const dur = 760;
+        let dismissed = false;
+
+        const dismiss = () => {
+            if (dismissed) return;
+            dismissed = true;
+            loader.classList.add("is-done");
+            setTimeout(() => { loader.style.display = "none"; }, 900);
+            revealHero();
+        };
+
+        loader.addEventListener("click", dismiss);
+
+        const tickLoader = (now) => {
+            if (dismissed) return;
+            const p = Math.min(1, (now - start) / dur);
+            const eased = 1 - Math.pow(1 - p, 3);
+            const val = Math.round(eased * 99);
+            if (loaderCount) loaderCount.textContent = String(val).padStart(2, "0");
+            if (loaderLine) loaderLine.style.setProperty("--p", eased.toFixed(3));
+            if (p < 1) {
+                requestAnimationFrame(tickLoader);
+            } else {
+                setTimeout(dismiss, 110);
+            }
+        };
+        requestAnimationFrame(tickLoader);
+    } else {
+        if (loader) loader.style.display = "none";
+        revealHero();
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // 2. LIVE JEDDAH BROADCAST CLOCK (Q'IN SABA INSPIRED) + 24FPS HERO TIMECODE
+    // ═══════════════════════════════════════════════════════════════════════
+    const clockEl = document.getElementById("jeddah-clock");
+    const updateJeddahClock = () => {
+        if (!clockEl) return;
+        try {
+            const fmt = new Intl.DateTimeFormat("en-GB", {
+                timeZone: "Asia/Riyadh",
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false
+            });
+            clockEl.textContent = fmt.format(new Date());
+        } catch (_) {
+            clockEl.textContent = "KSA";
+        }
+    };
+    updateJeddahClock();
+    setInterval(updateJeddahClock, 15000);
+
+    const heroTc = document.getElementById("hero-tc");
+    if (heroTc && !prefersReducedMotion) {
+        let f = 0;
+        setInterval(() => {
+            f = (f + 1) % (24 * 60);
+            const sec = String(Math.floor(f / 24)).padStart(2, "0");
+            const frm = String(f % 24).padStart(2, "0");
+            heroTc.textContent = `00:00:${sec}:${frm}`;
+        }, 125);
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // 3. CUSTOM MAGNETIC CINEMA CURSOR (DESKTOP FINE POINTER ONLY)
+    // ═══════════════════════════════════════════════════════════════════════
+    const cursorEl = document.getElementById("cinema-cursor");
+    const cursorLbl = document.getElementById("cursor-label");
+    if (cursorEl && isFinePointer && !prefersReducedMotion) {
+        let mx = -100, my = -100, cx = -100, cy = -100;
+        let visible = false;
+
+        window.addEventListener("pointermove", (e) => {
+            mx = e.clientX;
+            my = e.clientY;
+            if (!visible) {
+                visible = true;
+                cursorEl.classList.add("is-visible");
+            }
+        }, { passive: true });
+
+        document.addEventListener("pointerleave", () => {
+            visible = false;
+            cursorEl.classList.remove("is-visible");
+        });
+
+        document.querySelectorAll("[data-cursor]").forEach((el) => {
+            el.addEventListener("pointerenter", () => {
+                const txt = el.getAttribute("data-cursor") || "";
+                if (cursorLbl) cursorLbl.textContent = txt;
+                cursorEl.classList.add("is-pill");
+            });
+            el.addEventListener("pointerleave", () => {
+                cursorEl.classList.remove("is-pill");
+            });
+        });
+
+        const loopCursor = () => {
+            cx += (mx - cx) * 0.18;
+            cy += (my - cy) * 0.18;
+            cursorEl.style.transform = `translate3d(${cx.toFixed(1)}px, ${cy.toFixed(1)}px, 0) translate(-50%, -50%)`;
+            requestAnimationFrame(loopCursor);
+        };
+        requestAnimationFrame(loopCursor);
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // 4. WEBGL ANAMORPHIC PROJECTOR LENS SHADER OVER HERO SCREENING ROOM
+    // ═══════════════════════════════════════════════════════════════════════
+    const initAnamorphicShader = () => {
+        const canvas = document.getElementById("anamorphic-shader");
         if (!canvas) return;
         const gl = canvas.getContext("webgl", { alpha: false, antialias: false, powerPreference: "high-performance" });
         if (!gl) return;
 
-        const vsSrc = `attribute vec2 a_pos; void main() { gl_Position = vec4(a_pos, 0.0, 1.0); }`;
-        const fsSrc = `
+        const vs = gl.createShader(gl.VERTEX_SHADER);
+        gl.shaderSource(vs, `attribute vec2 p; void main(){ gl_Position = vec4(p,0.,1.); }`);
+        gl.compileShader(vs);
+
+        const fs = gl.createShader(gl.FRAGMENT_SHADER);
+        gl.shaderSource(fs, `
             precision highp float;
             uniform vec2 u_res;
-            uniform float u_time;
-            uniform vec2 u_mouse;
-
+            uniform float u_t;
+            uniform vec2 u_m;
+            float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
             void main() {
                 vec2 uv = gl_FragCoord.xy / u_res;
-                float aspect = u_res.x / max(u_res.y, 1.0);
-                vec2 p = (uv - 0.5) * vec2(aspect, 1.0);
-                vec2 m = (u_mouse - 0.5) * vec2(aspect, 1.0);
-                float t = u_time * 0.22;
+                float asp = u_res.x / max(u_res.y, 1.0);
+                vec2 p = (uv - 0.5) * vec2(asp, 1.0);
+                vec2 m = (u_m - 0.5) * vec2(asp, 1.0);
+                float t = u_t * 0.25;
 
-                // Soft anamorphic horizontal lens flare + royal projection beams
-                float beam1 = exp(-pow((p.y + 0.12 - sin(p.x * 1.4 + t) * 0.12) * 3.8, 2.0));
-                float beam2 = exp(-pow((p.x * 0.65 - p.y * 0.85 - 0.2 + cos(t * 0.7) * 0.14) * 2.6, 2.0));
-                float ptrGlow = exp(-length(p - m) * 2.8);
+                // Horizontal anamorphic cinema lens streak reacting to mouse Y
+                float streak = exp(-pow((p.y - m.y * 0.45) * 9.5, 2.0)) * exp(-abs(p.x - m.x * 0.6) * 1.15);
+                // Royal 99 indigo projector beam sweep
+                float beam = exp(-pow((p.x * 0.6 - p.y * 0.8 + sin(t) * 0.18) * 2.4, 2.0));
+                float grain = (hash(gl_FragCoord.xy + fract(u_t) * 90.0) - 0.5) * 0.03;
 
                 vec3 col = vec3(0.0);
-                col += vec3(0.24, 0.05, 0.46) * beam2 * 0.72;      // 99 Royal Indigo beam
-                col += vec3(0.875, 0.769, 0.573) * beam1 * 0.18;   // Warm Champagne anamorphic flare
-                col += vec3(0.875, 0.769, 0.573) * ptrGlow * 0.16; // Pointer projection bloom
-
+                col += vec3(0.24, 0.04, 0.46) * beam * 0.72;
+                col += vec3(0.875, 0.769, 0.573) * streak * 0.55;
+                col = max(col + grain, 0.0);
                 gl_FragColor = vec4(col, 1.0);
             }
-        `;
-
-        const compile = (type, src) => {
-            const s = gl.createShader(type);
-            gl.shaderSource(s, src);
-            gl.compileShader(s);
-            return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null;
-        };
-
-        const vs = compile(gl.VERTEX_SHADER, vsSrc);
-        const fs = compile(gl.FRAGMENT_SHADER, fsSrc);
-        if (!vs || !fs) return;
+        `);
+        gl.compileShader(fs);
 
         const prog = gl.createProgram();
         gl.attachShader(prog, vs);
@@ -62,16 +173,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const buf = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, buf);
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
-        const loc = gl.getAttribLocation(prog, "a_pos");
+        const loc = gl.getAttribLocation(prog, "p");
         gl.enableVertexAttribArray(loc);
         gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
 
         const uRes = gl.getUniformLocation(prog, "u_res");
-        const uTime = gl.getUniformLocation(prog, "u_time");
-        const uMouse = gl.getUniformLocation(prog, "u_mouse");
+        const uT = gl.getUniformLocation(prog, "u_t");
+        const uM = gl.getUniformLocation(prog, "u_m");
 
-        let tx = 0.36, ty = 0.54, cx = 0.36, cy = 0.54;
-        let visible = true;
+        let tx = 0.5, ty = 0.5, cx = 0.5, cy = 0.5, vis = true;
         const t0 = performance.now();
 
         const resize = () => {
@@ -91,43 +201,50 @@ document.addEventListener("DOMContentLoaded", () => {
             }, { passive: true });
         }
 
-        const hero = document.getElementById("media-hero");
+        const hero = document.getElementById("act-theater");
         if (hero && "IntersectionObserver" in window) {
-            new IntersectionObserver((entries) => { visible = entries[0].isIntersecting; }, { threshold: 0.01 }).observe(hero);
+            new IntersectionObserver((e) => { vis = e[0].isIntersecting; }, { threshold: 0.01 }).observe(hero);
         }
 
-        const frame = (now) => {
-            if (visible) {
-                cx += (tx - cx) * 0.04;
-                cy += (ty - cy) * 0.04;
+        const draw = (now) => {
+            if (vis) {
+                cx += (tx - cx) * 0.05;
+                cy += (ty - cy) * 0.05;
                 gl.uniform2f(uRes, canvas.width, canvas.height);
-                gl.uniform1f(uTime, prefersReducedMotion ? 1.5 : (now - t0) * 0.001);
-                gl.uniform2f(uMouse, cx, cy);
+                gl.uniform1f(uT, prefersReducedMotion ? 1.2 : (now - t0) * 0.001);
+                gl.uniform2f(uM, cx, cy);
                 gl.drawArrays(gl.TRIANGLES, 0, 6);
             }
-            if (!prefersReducedMotion) requestAnimationFrame(frame);
+            if (!prefersReducedMotion) requestAnimationFrame(draw);
         };
-        requestAnimationFrame(frame);
+        requestAnimationFrame(draw);
     };
-    initCinemaVeil();
+    initAnamorphicShader();
 
     // ═══════════════════════════════════════════════════════════════════════
-    // 2. SINGLE-RAF SCROLL ENGINE: PROGRESS BAR, PARALLAX, TIMECODE & PIPELINE
+    // 5. UNIFIED SCROLL ENGINE:
+    //    - Auto-adapting Dark / Warm Ivory Header Theme
+    //    - Hero Letterbox Opening & Backdrop Parallax
+    //    - Pinned Vertical-to-Horizontal 35mm Film-Strip Roll + Velocity Skew
+    //    - Safe Visible Scroll Reveals
     // ═══════════════════════════════════════════════════════════════════════
+    const header = document.getElementById("cinema-header");
     const progressBar = document.getElementById("scroll-progress-bar");
-    const heroBg = document.getElementById("hero-stage-bg");
-    const pipelineSec = document.getElementById("media-pipeline");
-    const pipelineFill = document.getElementById("pipeline-fill");
-    const timecodeEl = document.getElementById("live-timecode");
-    const parallaxNodes = !prefersReducedMotion && window.innerWidth > 900
-        ? Array.from(document.querySelectorAll("[data-parallax]"))
-        : [];
+    const heroBg = document.getElementById("theater-backdrop");
+    const lbTop = document.getElementById("lb-top");
+    const lbBot = document.getElementById("lb-bot");
+    const reelSec = document.getElementById("act-reel");
+    const reelTrack = document.getElementById("reel-track");
+    const reelCounter = document.getElementById("reel-frame-num");
+    const themedSections = Array.from(document.querySelectorAll("[data-section-theme]"));
     const reveals = Array.from(document.querySelectorAll(".reveal"));
-    const sectionBlocks = Array.from(document.querySelectorAll(".section-block"));
 
-    let scrollRaf = null;
+    let lastScrollY = window.scrollY;
+    let currentSkew = 0;
+    let rafId = null;
+
     const syncScroll = () => {
-        scrollRaf = null;
+        rafId = null;
         const y = window.scrollY;
         const vh = window.innerHeight || 900;
         const maxScroll = Math.max(1, document.documentElement.scrollHeight - vh);
@@ -135,405 +252,166 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (progressBar) progressBar.style.transform = `scaleX(${ratio.toFixed(4)})`;
 
-        if (!prefersReducedMotion && y < vh * 1.25) {
-            if (heroBg) {
-                heroBg.style.transform = `translate3d(0, ${(y * 0.16).toFixed(1)}px, 0) scale(${(1 + ratio * 0.08).toFixed(4)})`;
+        // Auto-adapt header theme (dark obsidian vs warm alabaster ivory)
+        if (header) {
+            let activeTheme = "dark";
+            const probeY = 48;
+            for (const sec of themedSections) {
+                const r = sec.getBoundingClientRect();
+                if (r.top <= probeY && r.bottom > probeY) {
+                    activeTheme = sec.getAttribute("data-section-theme") || "dark";
+                    break;
+                }
             }
-            parallaxNodes.forEach((el) => {
-                const f = parseFloat(el.getAttribute("data-parallax") || "0");
-                el.style.transform = `translate3d(0, ${(y * f).toFixed(1)}px, 0)`;
-            });
+            header.setAttribute("data-theme", activeTheme);
         }
 
-        if (pipelineSec && pipelineFill) {
-            const r = pipelineSec.getBoundingClientRect();
-            const p = Math.min(1, Math.max(0, (vh * 0.84 - r.top) / (vh * 0.58)));
-            pipelineFill.style.transform = `scaleX(${p.toFixed(3)})`;
+        // Hero cinema backdrop parallax & parting letterbox bars
+        if (!prefersReducedMotion && y < vh * 1.2) {
+            const heroP = Math.min(1, y / vh);
+            if (heroBg) heroBg.style.transform = `translate3d(0, ${(y * 0.18).toFixed(1)}px, 0) scale(${(1 + heroP * 0.07).toFixed(4)})`;
+            if (lbTop) lbTop.style.transform = `translate3d(0, ${(-heroP * 26).toFixed(1)}px, 0)`;
+            if (lbBot) lbBot.style.transform = `translate3d(0, ${(heroP * 26).toFixed(1)}px, 0)`;
         }
 
-        // Safety sweep: ensure elements well inside viewport always reveal
+        // Pinned Horizontal 35mm Film-Strip Roll (Desktop > 1060px)
+        if (reelSec && reelTrack && !prefersReducedMotion && window.innerWidth > 1060) {
+            const r = reelSec.getBoundingClientRect();
+            const scrollable = Math.max(1, reelSec.offsetHeight - vh);
+            const p = Math.min(1, Math.max(0, -r.top / scrollable));
+            const maxShift = Math.max(0, reelTrack.scrollWidth - (window.innerWidth - 64));
+
+            // Respect RTL vs LTR horizontal scroll direction!
+            const isRtl = document.documentElement.dir === "rtl";
+            const shiftX = (isRtl ? 1 : -1) * (p * maxShift);
+
+            // Subtle cinema velocity skew
+            const vel = Math.max(-18, Math.min(18, (y - lastScrollY) * 0.14));
+            currentSkew += (vel - currentSkew) * 0.18;
+
+            reelTrack.style.transform = `translate3d(${shiftX.toFixed(1)}px, 0, 0) skewX(${(currentSkew * (isRtl ? -0.25 : 0.25)).toFixed(2)}deg)`;
+
+            if (reelCounter) {
+                const frameIdx = Math.min(4, Math.max(1, Math.floor(p * 3.99) + 1));
+                reelCounter.textContent = `0${frameIdx} / 04`;
+            }
+        }
+
+        // Safety sweep for visible reveals
         if (!prefersReducedMotion) {
-            const triggerLine = vh * 0.89;
+            const trig = vh * 0.90;
             reveals.forEach((el) => {
                 if (!el.classList.contains("is-visible")) {
                     const r = el.getBoundingClientRect();
-                    if (r.top <= triggerLine && r.bottom > 0) el.classList.add("is-visible");
-                }
-            });
-            sectionBlocks.forEach((sec) => {
-                if (!sec.classList.contains("is-entered")) {
-                    const r = sec.getBoundingClientRect();
-                    if (r.top <= vh * 0.88) sec.classList.add("is-entered");
+                    if (r.top <= trig && r.bottom > 0) el.classList.add("is-visible");
                 }
             });
         }
 
-        updateManifesto();
+        lastScrollY = y;
     };
 
-    const requestSync = () => { if (!scrollRaf) scrollRaf = requestAnimationFrame(syncScroll); };
+    const requestSync = () => { if (!rafId) rafId = requestAnimationFrame(syncScroll); };
     window.addEventListener("scroll", requestSync, { passive: true });
-
-    // Pointer Depth Stages + Specular Cards
-    if (isFinePointer && !prefersReducedMotion) {
-        document.querySelectorAll("[data-depth-stage]").forEach((stage) => {
-            const layer = stage.querySelector("[data-depth-layer]");
-            if (!layer) return;
-            stage.addEventListener("pointermove", (e) => {
-                const r = stage.getBoundingClientRect();
-                const nx = (e.clientX - r.left) / r.width - 0.5;
-                const ny = (e.clientY - r.top) / r.height - 0.5;
-                layer.style.transform = `translate3d(${(nx * 10).toFixed(1)}px, ${(ny * 8).toFixed(1)}px, 0) scale(1.03)`;
-            }, { passive: true });
-            stage.addEventListener("pointerleave", () => {
-                layer.style.transform = "translate3d(0, 0, 0) scale(1)";
-            });
-        });
-
-        document.querySelectorAll(".specular-card").forEach((card) => {
-            card.addEventListener("pointermove", (e) => {
-                const r = card.getBoundingClientRect();
-                card.style.setProperty("--mx", `${e.clientX - r.left}px`);
-                card.style.setProperty("--my", `${e.clientY - r.top}px`);
-            }, { passive: true });
-        });
-    }
-
-    // ═══════════════════════════════════════════════════════════════════════
-    // 3. SCROLL-SCRUBBED CINEMA MANIFESTO + LIVE 24FPS SMPTE TIMECODE
-    // ═══════════════════════════════════════════════════════════════════════
-    const MANIFESTO_COPY = {
-        ar: [
-            { text: "منذ", accent: false },
-            { text: "2014 في جدة", accent: true },
-            { text: "— نحوّل الفكرة إلى", accent: false },
-            { text: "مشهد تلفزيوني وسينمائي ورقمي", accent: true },
-            { text: "يفرض حضوره؛ حيث يلتقي الابتكار الخارج عن المألوف، والمهنية الجادة، وجودة التنفيذ التي لا تساوم.", accent: false }
-        ],
-        en: [
-            { text: "Since", accent: false },
-            { text: "2014 in Jeddah", accent: true },
-            { text: "— we transform ideas into", accent: false },
-            { text: "television, cinema, and digital stories", accent: true },
-            { text: "that command attention — uniting bold originality, disciplined craft, and uncompromising execution.", accent: false }
-        ]
-    };
-
-    const manifestoEl = document.getElementById("media-manifesto-text");
-    const manifestoSec = document.getElementById("media-manifesto");
-    let wordSpans = [];
-
-    const buildManifesto = () => {
-        if (!manifestoEl) return;
-        const lang = window.currentLang === "en" ? "en" : "ar";
-        const segs = MANIFESTO_COPY[lang];
-        manifestoEl.innerHTML = "";
-        wordSpans = [];
-        segs.forEach((seg, sIdx) => {
-            const words = seg.text.split(" ");
-            words.forEach((w, wIdx) => {
-                const span = document.createElement("span");
-                span.className = "m-word" + (seg.accent ? " is-accent" : "");
-                span.textContent = w;
-                manifestoEl.appendChild(span);
-                wordSpans.push(span);
-                if (wIdx < words.length - 1 || sIdx < segs.length - 1) {
-                    manifestoEl.appendChild(document.createTextNode(" "));
-                }
-            });
-        });
-        updateManifesto();
-    };
-
-    function updateManifesto() {
-        if (!manifestoSec || wordSpans.length === 0) return;
-        if (prefersReducedMotion) {
-            wordSpans.forEach((s) => s.classList.add("is-lit"));
-            return;
-        }
-        const rect = manifestoSec.getBoundingClientRect();
-        const vh = window.innerHeight || 900;
-        const start = vh * 0.85;
-        const end = vh * 0.22;
-        const p = Math.min(1, Math.max(0, (start - rect.top) / (start - end + rect.height * 0.35)));
-        const litCount = Math.ceil(p * wordSpans.length);
-        wordSpans.forEach((s, i) => s.classList.toggle("is-lit", i < litCount));
-
-        // Update 24fps SMPTE Timecode smoothly (00:00:01:00 -> 00:00:24:00)
-        if (timecodeEl) {
-            const totalFrames = Math.floor(24 + p * (23 * 24));
-            const secs = String(Math.floor(totalFrames / 24)).padStart(2, "0");
-            const frms = String(totalFrames % 24).padStart(2, "0");
-            timecodeEl.textContent = `00:00:${secs}:${frms}`;
-        }
-    }
-
-    buildManifesto();
+    window.addEventListener("resize", requestSync, { passive: true });
     syncScroll();
 
     // ═══════════════════════════════════════════════════════════════════════
-    // 4. INTERACTIVE DIRECTOR'S STUDIO SHOWCASE (5 PRODUCTION TRACKS)
+    // 6. MICHAEL BAY GIANT BRACKETED [ ] DIRECTOR'S REEL INTERACTION
     // ═══════════════════════════════════════════════════════════════════════
-    const STUDIO_DATA = {
+    const SCENES = {
         broadcast: {
-            code: "SCENE 01 // BROADCAST & CONTENT",
-            img: "../img/studio-2.webp",
-            hudL: "4K BROADCAST MASTER",
-            hudR: "24 FPS · JEDDAH STAGE",
-            specs: [
-                { k: "FORMAT", ok: "4K / HD", v: "TV & Digital Series" },
-                { k: "CRAFT", ok: "IN-HOUSE", v: "Script to Master" },
-                { k: "REACH", ok: "KSA & GCC", v: "Broadcast Ready" }
-            ],
-            formats: ["TV Programs", "Documentaries", "Digital Originals", "Editorial Scripts", "Multi-Cam Studio"],
-            ar: {
-                tag: "إنتاج تلفزيوني ورقمي",
-                title: "الإنتاج التلفزيوني وصناعة المحتوى",
-                desc: "نبتكر وننتج برامج تلفزيونية ومحتوى رقمياً متكاملاً بفرق تحرير وإخراج متخصصة تخاطب الجمهور السعودي والخليجي بوعي عميق وجودة بث عالمية.",
-                list: [
-                    "إنتاج البرامج التلفزيونية والوثائقية والسلاسل الرقمية من الفكرة للبث",
-                    "إعداد المحتوى التحريري والسيناريوهات بما يلائم هوية القناة والجمهور",
-                    "استهداف دقيق يجمع بين القيمة الفنية وتحقيق أعلى معدلات المشاهدة"
-                ]
-            },
-            en: {
-                tag: "Broadcast & Digital",
-                title: "Broadcast & Content Production",
-                desc: "We conceive and produce flagship television shows, documentaries, and digital series crafted for Saudi and regional audiences at international broadcast standards.",
-                list: [
-                    "End-to-end TV programs, documentaries, and digital original series",
-                    "Editorial development and scriptwriting tailored to channel and audience",
-                    "Precision production uniting artistic authority with measurable viewership"
-                ]
-            }
+            code: "SCENE 01 // 4K BROADCAST MASTER",
+            label: "DELIVERABLES // SCENE 01",
+            pills: ["TV Programs", "Documentaries", "Digital Series", "Editorial Scripts"],
+            ar: "نبتكر وننتج برامج تلفزيونية ووثائقية وسلاسل رقمية متكاملة بفرق تحرير وإخراج متخصصة تخاطب الجمهور السعودي والخليجي بجودة بث عالمية.",
+            en: "Flagship television programs, documentaries, and digital original series produced end-to-end at international broadcast standards."
         },
         cinema: {
-            code: "SCENE 02 // CINEMA & AUDIO PRODUCTION",
-            img: "../img/videographer.webp",
-            hudL: "ARRI / RED WORKFLOW",
-            hudR: "RAW COLOR & DOLBY MIX",
-            specs: [
-                { k: "CAMERA", ok: "4K RAW", v: "Cinema Optics" },
-                { k: "POST", ok: "GRADED", v: "DaVinci Color" },
-                { k: "AUDIO", ok: "MASTER", v: "Studio Sound Mix" }
-            ],
-            formats: ["Commercial Films", "Brand Documentaries", "Color Grading", "Sound Design", "Event Films"],
-            ar: {
-                tag: "إخراج وتصوير سينمائي",
-                title: "الإنتاج المرئي والصوتي السينمائي",
-                desc: "نصنع اللقطة التي تبدأ بها مصافحة العين الأولى — إخراج سينمائي، إضاءة مدروسة، تلوين احترافي، وهندسة صوتية متكاملة تحوّل كل فيلم إلى تجربة بصرية لا تُنسى.",
-                list: [
-                    "أفلام العلامات التجارية والإعلانات السينمائية عالية التأثير",
-                    "إدارة إضاءة وتصوير ميداني واستوديو بأحدث المعدات السينمائية",
-                    "تلوين سينمائي وهندسة صوت ومكساج بمعايير دور العرض والبث"
-                ]
-            },
-            en: {
-                tag: "Cinema Craft",
-                title: "Cinema & Audio Production",
-                desc: "Every frame is engineered as a visual signature — combining cinema direction, sculpted lighting, film color grading, and immersive sound design.",
-                list: [
-                    "High-impact brand films, commercials, and institutional documentaries",
-                    "Full cinema camera, lighting, and studio/location production crews",
-                    "Theatrical color grading, sound design, and broadcast audio mastering"
-                ]
-            }
+            code: "SCENE 02 // ARRI & DOLBY CINEMA",
+            label: "DELIVERABLES // SCENE 02",
+            pills: ["Brand Films", "Commercials", "DaVinci Color", "Sound Mastering"],
+            ar: "إخراج سينمائي وإضاءة وتصوير ميداني واستوديو وتلوين سينمائي وهندسة صوت تحوّل كل فيلم إلى تجربة بصرية فائقة الهيبة.",
+            en: "High-craft brand films, commercial cinematography, theatrical color grading, and immersive studio sound mastering."
         },
         aivideo: {
-            code: "SCENE 03 // AI CINEMA & GENERATIVE VIDEO",
-            img: "../img/tv.webp",
-            hudL: "AI DIRECTORIAL PIPELINE",
-            hudR: "RAPID CONCEPT TO SCREEN",
-            specs: [
-                { k: "ENGINE", ok: "GEN-AI", v: "Directed Visuals" },
-                { k: "SPEED", ok: "5× FASTER", v: "Concept to Cut" },
-                { k: "CONTROL", ok: "BRAND-LOCK", v: "Art-Directed Look" }
-            ],
-            formats: ["AI Brand Films", "Generative Ads", "Virtual Worlds", "Concept Teasers", "Hybrid VFX"],
-            ar: {
-                tag: "جيل جديد من الإنتاج",
-                title: "إنتاج فيديوهات الذكاء الاصطناعي",
-                desc: "نختصر الزمن ونفتح آفاقاً بصرية مستحيلة بالتصوير التقليدي — نوظف أحدث تقنيات توليد الفيديو بالذكاء الاصطناعي تحت إشراف مخرجين محترفين لتقديم أفلام مبهرة بهوية علامتك.",
-                list: [
-                    "فيديوهات إعلانية وسينمائية مولّدة بالـ AI بإشراف فني وإخراجي كامل",
-                    "عروض مستقبلية وعوالم افتراضية للمشاريع الكبرى قبل تنفيذها على الواقع",
-                    "دمج هجين بين التصوير الحقيقي وتقنيات الذكاء الاصطناعي والمؤثرات"
-                ]
-            },
-            en: {
-                tag: "Next-Gen Film",
-                title: "AI Video & Generative Cinema",
-                desc: "We compress production timelines and unlock visual worlds impossible on traditional sets — combining cutting-edge generative video models with seasoned human film direction.",
-                list: [
-                    "Art-directed generative AI brand films and high-impact commercial spots",
-                    "Futuristic architectural and product visualization before physical launch",
-                    "Hybrid workflows blending live-action cinema with AI VFX"
-                ]
-            }
+            code: "SCENE 03 // AI DIRECTORIAL LAB",
+            label: "DELIVERABLES // SCENE 03",
+            pills: ["Generative Films", "AI Ads", "Virtual Worlds", "Hybrid VFX"],
+            ar: "نختصر الزمن ونفتح عوالم بصرية غير مسبوقة عبر توليد الفيديوهات بالذكاء الاصطناعي تحت إشراف مخرجين محترفين بهوية علامتك.",
+            en: "Director-led generative AI brand films, conceptual worlds, and hybrid VFX workflows delivering bold visuals at 5× speed."
         },
         pr: {
-            code: "SCENE 04 // CORPORATE PR & COMMUNICATIONS",
-            img: "../img/studio-1.webp",
-            hudL: "STRATEGIC COMMUNICATIONS",
-            hudR: "REPUTATION & EVENTS",
-            specs: [
-                { k: "STRATEGY", ok: "LONG-TERM", v: "Media Positioning" },
-                { k: "CRISIS", ok: "GOVERNED", v: "Rapid Response" },
-                { k: "EVENTS", ok: "FLAGSHIP", v: "Press & Coverage" }
-            ],
-            formats: ["PR Strategy", "Crisis Comms", "Executive Media", "Event Coverage", "Reputation Ops"],
-            ar: {
-                tag: "اتصال مؤسسي رفيع",
-                title: "الاتصال المؤسسي والعلاقات العامة",
-                desc: "نبني استراتيجيات اتصال طويلة المدى تصنع مكانة راسخة للجهات والقيادات، مع تغطية شاملة للفعاليات الكبرى وإدارة احترافية للسمعة والأزمات بأساليب رقمية حديثة.",
-                list: [
-                    "صياغة استراتيجيات الاتصال المؤسسي وبناء الصورة الذهنية للقيادات والجهات",
-                    "تخطيط وتغطية الفعاليات والمؤتمرات الكبرى بالتعاون مع الجهات الإعلامية",
-                    "إدارة السمعة والأزمات الإعلامية مدعومة بتقنيات الرصد والتحليل الذكي"
-                ]
-            },
-            en: {
-                tag: "Strategic PR",
-                title: "Corporate PR & Communications",
-                desc: "Long-term communication strategies that anchor institutional prestige — spanning executive positioning, flagship event coverage, and modern reputation governance.",
-                list: [
-                    "Corporate communication architectures and executive media positioning",
-                    "End-to-end press strategy and coverage for flagship conferences and events",
-                    "Reputation management and crisis response backed by live media intelligence"
-                ]
-            }
+            code: "SCENE 04 // STRATEGIC PR & EVENTS",
+            label: "DELIVERABLES // SCENE 04",
+            pills: ["PR Architecture", "Crisis Comms", "Flagship Events", "Media Positioning"],
+            ar: "استراتيجيات اتصال مؤسسي طويلة المدى، تغطية الفعاليات والمؤتمرات الكبرى، وإدارة السمعة والأزمات بأساليب رقمية حديثة.",
+            en: "Long-term corporate communications, flagship conference coverage, executive positioning, and modern crisis governance."
         },
         marketing: {
-            code: "SCENE 05 // DIGITAL GROWTH & CAMPAIGNS",
-            img: "../img/studio-2.webp",
-            hudL: "OMNICHANNEL REACH",
-            hudR: "CONTENT × DATA × EXOX",
-            specs: [
-                { k: "INSIGHT", ok: "RESEARCHED", v: "Audience Strategy" },
-                { k: "CHANNELS", ok: "FULL-FUNNEL", v: "Social & Paid" },
-                { k: "SYNERGY", ok: "99 TECH", v: "EXOX Powered" }
-            ],
-            formats: ["Campaign Strategy", "Social Architecture", "Paid Media", "Brand Storytelling", "Analytics"],
-            ar: {
-                tag: "نمو وانتشار مدروس",
-                title: "التسويق الرقمي وصناعة الانتشار",
-                desc: "نبدأ بالبحث وتحديد الهدف، ثم نكتب القصة ونبني الحملات الرقمية عبر المنصات بأسلوب يجمع جودة الإبداع الإعلامي مع دقة الاستهداف وقياس العائد.",
-                list: [
-                    "بناء استراتيجيات المحتوى والحملات الرقمية المتكاملة عبر كافة المنصات",
-                    "إدارة الهوية الرقمية وإنتاج حملات إطلاق موسمية ووطنية مؤثرة",
-                    "تكامل مباشر مع تقنيات 99 الذكية لتحليل المنافسين وقياس الأداء لحظياً"
-                ]
-            },
-            en: {
-                tag: "Digital Growth",
-                title: "Digital Marketing & Reach",
-                desc: "Rooted in research and clear commercial goals — uniting high-craft storytelling with precision omnichannel campaigns and real-time performance intelligence.",
-                list: [
-                    "Integrated digital campaign architectures and monthly content systems",
-                    "High-impact product launches and seasonal brand narratives across platforms",
-                    "Seamless synergy with 99 Tech & EXOX for live analytics and optimization"
-                ]
-            }
+            code: "SCENE 05 // FULL-FUNNEL DIGITAL REACH",
+            label: "DELIVERABLES // SCENE 05",
+            pills: ["Campaign Strategy", "Social Systems", "Paid Media", "EXOX Synergy"],
+            ar: "من البحث وبناء السردية إلى إدارة الحملات الرقمية عبر المنصات بالتكامل مع منظومات 99 الذكية لتحقيق وصول ونتائج قابلة للقياس.",
+            en: "Research-led digital storytelling and omnichannel campaigns integrated with 99 Tech & EXOX for live performance intelligence."
         }
     };
 
-    let activeTrack = "broadcast";
-    const slateItems = document.querySelectorAll(".slate-item");
+    let activeScene = "broadcast";
+    const dirRows = document.querySelectorAll(".dir-row");
+    const dirBgs = document.querySelectorAll(".dir-bg");
 
-    const renderTrack = (key) => {
-        const tr = STUDIO_DATA[key];
-        if (!tr) return;
-        activeTrack = key;
+    const selectScene = (key) => {
+        const sc = SCENES[key];
+        if (!sc) return;
+        activeScene = key;
         const lang = window.currentLang === "en" ? "en" : "ar";
-        const copy = tr[lang];
 
-        const setEl = (id, text) => {
-            const el = document.getElementById(id);
-            if (el) el.textContent = text;
-        };
-
-        setEl("st-code", tr.code);
-        setEl("st-tag", copy.tag);
-        setEl("st-hud-left", tr.hudL);
-        setEl("st-hud-right", tr.hudR);
-        setEl("st-title", copy.title);
-        setEl("st-desc", copy.desc);
-
-        const imgEl = document.getElementById("st-img");
-        if (imgEl) {
-            imgEl.src = tr.img;
-            imgEl.alt = copy.title;
-            imgEl.classList.remove("vp-swap-in");
-            void imgEl.offsetWidth;
-            imgEl.classList.add("vp-swap-in");
-        }
-
-        const contentEl = document.getElementById("st-content");
-        if (contentEl) {
-            contentEl.classList.remove("vp-swap-in");
-            void contentEl.offsetWidth;
-            contentEl.classList.add("vp-swap-in");
-        }
-
-        const specsEl = document.getElementById("st-specs");
-        if (specsEl) {
-            specsEl.innerHTML = "";
-            tr.specs.forEach((sp) => {
-                const box = document.createElement("div");
-                box.className = "spec-step";
-                box.innerHTML = `<div class="spec-meta"><span>${sp.k}</span><span class="spec-ok">${sp.ok}</span></div><div class="spec-label">${sp.v}</div>`;
-                specsEl.appendChild(box);
-            });
-        }
-
-        const listEl = document.getElementById("st-list");
-        if (listEl) {
-            listEl.innerHTML = "";
-            copy.list.forEach((item) => {
-                const li = document.createElement("li");
-                li.textContent = item;
-                listEl.appendChild(li);
-            });
-        }
-
-        const fmtEl = document.getElementById("st-formats");
-        if (fmtEl) {
-            fmtEl.innerHTML = "";
-            tr.formats.forEach((f) => {
-                const chip = document.createElement("span");
-                chip.className = "vp-stack-chip";
-                chip.textContent = f;
-                fmtEl.appendChild(chip);
-            });
-        }
-
-        slateItems.forEach((btn) => {
-            const sel = btn.getAttribute("data-track") === key;
-            btn.classList.toggle("is-active", sel);
-            btn.setAttribute("aria-selected", String(sel));
+        dirRows.forEach((btn) => {
+            const on = btn.getAttribute("data-scene") === key;
+            btn.classList.toggle("is-active", on);
+            btn.setAttribute("aria-selected", String(on));
         });
+        dirBgs.forEach((img) => {
+            img.classList.toggle("is-active", img.getAttribute("data-bg") === key);
+        });
+
+        const codeEl = document.getElementById("dir-scene-code");
+        const lblEl = document.getElementById("brief-label");
+        const descEl = document.getElementById("brief-desc");
+        const pillsEl = document.getElementById("brief-pills");
+
+        if (codeEl) codeEl.textContent = sc.code;
+        if (lblEl) lblEl.textContent = sc.label;
+        if (descEl) descEl.textContent = sc[lang];
+        if (pillsEl) {
+            pillsEl.innerHTML = "";
+            sc.pills.forEach((p) => {
+                const s = document.createElement("span");
+                s.className = "brief-pill";
+                s.textContent = p;
+                pillsEl.appendChild(s);
+            });
+        }
     };
 
-    slateItems.forEach((btn) => {
-        btn.addEventListener("click", () => {
-            const k = btn.getAttribute("data-track");
-            if (k) renderTrack(k);
-        });
+    dirRows.forEach((btn) => {
+        const k = btn.getAttribute("data-scene");
+        btn.addEventListener("click", () => selectScene(k));
+        if (isFinePointer) btn.addEventListener("pointerenter", () => selectScene(k));
     });
 
-    document.addEventListener("media:langchange", () => {
-        buildManifesto();
-        renderTrack(activeTrack);
-    });
-    renderTrack(activeTrack);
+    document.addEventListener("media:langchange", () => selectScene(activeScene));
+    selectScene(activeScene);
 
     // ═══════════════════════════════════════════════════════════════════════
-    // 5. NAVIGATION, LANG TOGGLE, MOBILE DRAWER & VISIBLE REVEALS
+    // 7. NAV, LANG TOGGLE, MOBILE DRAWER, REVEALS & WEB3FORMS
     // ═══════════════════════════════════════════════════════════════════════
     const langBtn = document.getElementById("lang-toggle");
     if (langBtn) {
         langBtn.addEventListener("click", () => {
             switchLang(window.currentLang === "ar" ? "en" : "ar");
+            requestSync();
         });
     }
 
@@ -553,59 +431,20 @@ document.addEventListener("DOMContentLoaded", () => {
         document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMenu(); });
     }
 
-    const header = document.getElementById("site-header");
-    const onScrollHeader = () => { if (header) header.classList.toggle("is-scrolled", window.scrollY > 20); };
-    window.addEventListener("scroll", onScrollHeader, { passive: true });
-    onScrollHeader();
-
-    const navLinks = document.querySelectorAll(".nav-links a[href^='#']");
-    if ("IntersectionObserver" in window && navLinks.length > 0) {
-        const navObs = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.id;
-                    navLinks.forEach((a) => a.classList.toggle("is-active", a.getAttribute("href") === `#${id}`));
-                }
-            });
-        }, { rootMargin: "-38% 0px -52% 0px" });
-        ["media-partners", "media-studio", "media-pipeline", "media-synergy", "media-contact"].forEach((id) => {
-            const sec = document.getElementById(id);
-            if (sec) navObs.observe(sec);
-        });
-    }
-
-    requestAnimationFrame(() => {
-        document.querySelectorAll("[data-enter]").forEach((el) => el.classList.add("is-visible"));
-    });
-
     if (!prefersReducedMotion && "IntersectionObserver" in window) {
-        const revObs = new IntersectionObserver((entries, obs) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("is-visible");
-                    obs.unobserve(entry.target);
+        const obs = new IntersectionObserver((entries, io) => {
+            entries.forEach((e) => {
+                if (e.isIntersecting) {
+                    e.target.classList.add("is-visible");
+                    io.unobserve(e.target);
                 }
             });
-        }, { threshold: 0.02, rootMargin: "0px 0px -11% 0px" });
-        reveals.forEach((el) => revObs.observe(el));
-
-        const secObs = new IntersectionObserver((entries, obs) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("is-entered");
-                    obs.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.01, rootMargin: "0px 0px -10% 0px" });
-        sectionBlocks.forEach((sec) => secObs.observe(sec));
+        }, { threshold: 0.04, rootMargin: "0px 0px -10% 0px" });
+        reveals.forEach((el) => obs.observe(el));
     } else {
         reveals.forEach((el) => el.classList.add("is-visible"));
-        sectionBlocks.forEach((sec) => sec.classList.add("is-entered"));
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // 6. PRODUCTION SCOPE CHIPS + WEB3FORMS ASYNC SUBMISSION
-    // ═══════════════════════════════════════════════════════════════════════
     const scopeChips = document.querySelectorAll(".scope-chip");
     const scopeInput = document.getElementById("media-scope-input");
     scopeChips.forEach((chip) => {
@@ -626,7 +465,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const emailInput = mediaForm.querySelector("#media-email");
             const messageInput = mediaForm.querySelector("#media-message");
             const botcheck = mediaForm.querySelector('input[name="botcheck"]');
-
             if (botcheck && botcheck.checked) return;
 
             const isEn = document.documentElement.lang === "en";
@@ -640,13 +478,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 setStatus("err", isEn ? "Please complete all required fields." : "يرجى تعبئة جميع الحقول المطلوبة.");
                 return;
             }
-
             if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
                 setStatus("err", isEn ? "Please enter a valid work email address." : "يرجى إدخال بريد إلكتروني صحيح.");
                 return;
             }
 
-            const origText = submitBtn ? submitBtn.textContent : "";
+            const orig = submitBtn ? submitBtn.textContent : "";
             if (submitBtn) {
                 submitBtn.disabled = true;
                 submitBtn.textContent = isEn ? "Sending brief..." : "جاري إرسال الطلب...";
@@ -675,13 +512,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 setStatus(
                     "err",
                     isEn
-                        ? "Unable to send right now. Please contact Info@i99.sa or WhatsApp +966 56 611 1617."
-                        : "تعذّر الإرسال حالياً. يرجى مراسلتنا مباشرة على Info@i99.sa أو واتساب +966 56 611 1617."
+                        ? "Unable to send right now. Contact Info@i99.sa or WhatsApp +966 56 611 1617."
+                        : "تعذّر الإرسال حالياً. راسلنا مباشرة على Info@i99.sa أو واتساب +966 56 611 1617."
                 );
             } finally {
                 if (submitBtn) {
                     submitBtn.disabled = false;
-                    submitBtn.textContent = origText;
+                    submitBtn.textContent = orig;
                 }
             }
         });
