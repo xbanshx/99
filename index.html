@@ -149,13 +149,15 @@
     <!-- Official 99 Display Typeface -->
     <link rel="preload" href="assets/fonts/DGAgnadeen-Extrabold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" href="assets/fonts/DGAgnadeen-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="img/cinema/stage-hero.webp" as="image">
+    <link rel="preload" href="img/cinema/tech-portal.webp" as="image">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/splash.css?v=2.0">
+    <link rel="stylesheet" href="css/splash.css?v=2.1">
 </head>
 
 <body>
@@ -168,6 +170,14 @@
         </div>
 
         <div class="portal-brand" aria-label="99 Media &amp; Tech">
+            <span class="header-seal-mini" aria-hidden="true">
+                <svg viewBox="0 0 450 450" width="16" height="16" fill="none">
+                    <path fill-rule="evenodd" fill="#33075F"
+                        d="m259.1 219.4l-168.4 213.8c-8.9 11.1-25.1 12.9-36.2 4.1l100.9-129.4c-28.2-2.5-55-13.2-77.5-31.5-29.9-24.3-48.5-58.8-52.2-97.2-3.6-37.1 7.3-73.7 30.8-103 23.4-29.3 56.7-48 93.7-52.7q1.7-0.2 3.5-0.4c24.1-2.4 47.4 2.2 67.5 12.8 8.1 4.3 15.7 9.5 22.6 15.5 10.7 9.3 19.8 20.7 27 33.9 23.8 43.8 19.4 95.2-11.7 134.1zm-10.9-121.8c-6.4-11.8-14.8-21.7-24.6-29.5-7-5.5-14.6-10-22.8-13.3-10.8-4.3-22.6-6.6-34.7-6.6q-4.9 0-9.9 0.5-1.4 0.2-2.8 0.3c-62.4 7.9-108.2 65.1-102.1 127.7 3 31.5 18.2 59.8 42.8 79.8 23.2 18.8 52 27.9 81.7 25.9l27.5-34.5 16.3-20.3 19.4-24.3c24.5-30.6 28-71.1 9.2-105.7z" />
+                    <path fill="#33075F"
+                        d="m398.5 203.9l-183.5 229.3c-8.8 11.1-25 12.9-36.1 4.1l136.2-170.3 63.3-79.2c24.5-30.6 28-71.1 9.2-105.7-18.5-34-53.8-52.7-92-48.9q-1.4 0.2-2.9 0.3c-17.5 2.2-34.2 8.4-48.9 17.9q-6.8 4.4-12.9 9.8-3.9 3.3-7.3 6.9c-7-5.5-14.6-10-22.8-13.3q6.1-6.9 13.2-13 3.5-3.1 7.2-5.9c20-15.2 43.4-24.7 68.4-27.9q1.7-0.2 3.5-0.4c48.6-4.9 93.5 18.9 117.1 62.2 23.8 43.8 19.3 95.2-11.7 134.1z" />
+                </svg>
+            </span>
             <span class="brand-word" dir="ltr">99 MEDIA &amp; TECH</span>
             <span class="brand-est mono-meta" dir="ltr">EST. 2014</span>
         </div>
@@ -179,75 +189,100 @@
         </div>
     </header>
 
-    <!-- ═══ DUAL SOVEREIGN DOORWAY ═══ -->
-    <main class="portal-stage">
+    <!-- ═══ THE OPTICAL APERTURE — CREATIVE DUAL-WORLD STAGE ═══ -->
+    <main class="portal-stage" id="portal-stage" data-focus="idle">
         <h1 class="sr-only" data-i18n="splash-main-heading">مؤسسة 99 للإعلام والتقنية والذكاء الاصطناعي — جدة</h1>
 
+        <!-- Sculptural Architectural Watermark Behind Optical Seam -->
+        <div class="stage-watermark" aria-hidden="true" dir="ltr">99</div>
+
+        <!-- Dynamic Gliding Optical Seam + Rotating Aperture Dial (physically locked to split boundary!) -->
+        <div class="optical-seam" id="optical-seam" aria-hidden="true">
+            <div class="seam-blade"></div>
+            <div class="aperture-dial">
+                <svg class="dial-ring" viewBox="0 0 120 120" width="116" height="116" fill="none">
+                    <circle cx="60" cy="60" r="56" stroke="currentColor" stroke-width="0.75" stroke-dasharray="3 6" opacity="0.55" />
+                    <path d="M60 4 A56 56 0 0 1 116 60" stroke="#DFC492" stroke-width="1.5" stroke-linecap="round" />
+                    <path d="M60 116 A56 56 0 0 1 4 60" stroke="#B794FF" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+                <div class="center-seal">
+                    <svg viewBox="0 0 450 450" width="32" height="32" fill="none">
+                        <defs>
+                            <radialGradient id="p-g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                                gradientTransform="matrix(-47.823,-138.298,138.298,-47.823,252.777,223.62)">
+                                <stop offset=".507" stop-color="#33075F" stop-opacity="0" />
+                                <stop offset="1" stop-color="#33075F" stop-opacity="1" />
+                            </radialGradient>
+                        </defs>
+                        <path fill-rule="evenodd" fill="#33075F"
+                            d="m259.1 219.4l-168.4 213.8c-8.9 11.1-25.1 12.9-36.2 4.1l100.9-129.4c-28.2-2.5-55-13.2-77.5-31.5-29.9-24.3-48.5-58.8-52.2-97.2-3.6-37.1 7.3-73.7 30.8-103 23.4-29.3 56.7-48 93.7-52.7q1.7-0.2 3.5-0.4c24.1-2.4 47.4 2.2 67.5 12.8 8.1 4.3 15.7 9.5 22.6 15.5 10.7 9.3 19.8 20.7 27 33.9 23.8 43.8 19.4 95.2-11.7 134.1zm-10.9-121.8c-6.4-11.8-14.8-21.7-24.6-29.5-7-5.5-14.6-10-22.8-13.3-10.8-4.3-22.6-6.6-34.7-6.6q-4.9 0-9.9 0.5-1.4 0.2-2.8 0.3c-62.4 7.9-108.2 65.1-102.1 127.7 3 31.5 18.2 59.8 42.8 79.8 23.2 18.8 52 27.9 81.7 25.9l27.5-34.5 16.3-20.3 19.4-24.3c24.5-30.6 28-71.1 9.2-105.7z" />
+                        <path fill="url(#p-g1)"
+                            d="m190.7 161.2c2 20.9 9.5 40.5 21.5 57.2l-13.8 17.2-2.8 3.5c-17.2-21.5-27.8-47.6-30.5-75.4-3.9-39.8 9.3-79.2 35.7-108.9 8.2 3.3 15.8 7.8 22.8 13.3-24.1 24.7-36.3 58.8-32.9 93.1z" />
+                        <path fill="#33075F" d="m212.1 256.5q-4.6-4.1-8.8-8.6l16.3-20.3q4.5 5.1 9.6 9.7z" />
+                        <path fill="#33075F"
+                            d="m398.5 203.9l-183.5 229.3c-8.8 11.1-25 12.9-36.1 4.1l136.2-170.3 63.3-79.2c24.5-30.6 28-71.1 9.2-105.7-18.5-34-53.8-52.7-92-48.9q-1.4 0.2-2.9 0.3c-17.5 2.2-34.2 8.4-48.9 17.9q-6.8 4.4-12.9 9.8-3.9 3.3-7.3 6.9c-7-5.5-14.6-10-22.8-13.3q6.1-6.9 13.2-13 3.5-3.1 7.2-5.9c20-15.2 43.4-24.7 68.4-27.9q1.7-0.2 3.5-0.4c48.6-4.9 93.5 18.9 117.1 62.2 23.8 43.8 19.3 95.2-11.7 134.1z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
         <!-- DOORWAY 01: 99 MEDIA HOUSE -->
-        <a href="media/" class="doorway doorway-media" id="media-side">
+        <a href="media/" class="doorway doorway-media" id="media-side" data-world="media">
             <div class="door-backdrop" aria-hidden="true">
-                <img src="img/cinema/stage-hero.webp" alt="" class="door-photo">
+                <img src="img/cinema/stage-hero.webp" alt="" class="door-photo photo-media">
+                <div class="door-spot spot-media"></div>
                 <div class="door-scrim media-scrim"></div>
             </div>
 
             <div class="door-inner">
-                <div class="door-index mono-meta" dir="ltr">
-                    <span class="idx-num">01</span>
-                    <span class="idx-sep">//</span>
-                    <span>99 MEDIA HOUSE</span>
+                <div class="door-top">
+                    <div class="door-index mono-meta" dir="ltr">
+                        <span class="idx-num">01</span>
+                        <span class="idx-sep">//</span>
+                        <span>99 MEDIA HOUSE</span>
+                    </div>
+                    <span class="door-badge mono-meta" dir="ltr">2.39:1 CINEMA</span>
                 </div>
 
                 <div class="door-copy">
-                    <span class="door-kicker" data-i18n="p-media-kicker">دار الإنتاج الإعلامي والسينمائي</span>
+                    <span class="door-kicker" data-i18n="p-media-kicker">دار الإنتاج الإعلامي والسينمائي — منذ 2014</span>
                     <h2 class="door-title" data-i18n="splash-media-title">99 للإعلام</h2>
                     <p class="door-desc" data-i18n="splash-media-desc">الإنتاج التلفزيوني والسينمائي، فيديوهات الذكاء الاصطناعي، الاتصال المؤسسي والعلاقات العامة، والتسويق الرقمي.</p>
                 </div>
 
                 <div class="door-footer">
-                    <div class="door-tags mono-meta" dir="ltr">
-                        <span>4K BROADCAST</span>
-                        <span>AI CINEMA</span>
-                        <span>MBC · SBA · MISK</span>
+                    <div class="door-proof">
+                        <span class="proof-dot proof-gold" aria-hidden="true"></span>
+                        <span data-i18n="p-media-proof">شركاء MBC · هيئة الإذاعة والتلفزيون · مسك · الجمعية الفيصلية</span>
                     </div>
-                    <span class="door-cta cta-gold" data-i18n="p-media-cta">ادخل دار الإنتاج ←</span>
+                    <div class="door-bottom-row">
+                        <div class="door-tags mono-meta" dir="ltr">
+                            <span>4K BROADCAST</span>
+                            <span>AI CINEMA</span>
+                            <span>STRATEGIC PR</span>
+                        </div>
+                        <span class="door-cta cta-gold" data-i18n="p-media-cta">ادخل دار الإنتاج ←</span>
+                    </div>
                 </div>
             </div>
         </a>
 
-        <!-- CENTER SOVEREIGN #33075F PEARL SEAL -->
-        <div class="center-seal-wrap" aria-hidden="true">
-            <div class="center-seal">
-                <svg viewBox="0 0 450 450" width="32" height="32" fill="none">
-                    <defs>
-                        <radialGradient id="p-g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                            gradientTransform="matrix(-47.823,-138.298,138.298,-47.823,252.777,223.62)">
-                            <stop offset=".507" stop-color="#33075F" stop-opacity="0" />
-                            <stop offset="1" stop-color="#33075F" stop-opacity="1" />
-                        </radialGradient>
-                    </defs>
-                    <path fill-rule="evenodd" fill="#33075F"
-                        d="m259.1 219.4l-168.4 213.8c-8.9 11.1-25.1 12.9-36.2 4.1l100.9-129.4c-28.2-2.5-55-13.2-77.5-31.5-29.9-24.3-48.5-58.8-52.2-97.2-3.6-37.1 7.3-73.7 30.8-103 23.4-29.3 56.7-48 93.7-52.7q1.7-0.2 3.5-0.4c24.1-2.4 47.4 2.2 67.5 12.8 8.1 4.3 15.7 9.5 22.6 15.5 10.7 9.3 19.8 20.7 27 33.9 23.8 43.8 19.4 95.2-11.7 134.1zm-10.9-121.8c-6.4-11.8-14.8-21.7-24.6-29.5-7-5.5-14.6-10-22.8-13.3-10.8-4.3-22.6-6.6-34.7-6.6q-4.9 0-9.9 0.5-1.4 0.2-2.8 0.3c-62.4 7.9-108.2 65.1-102.1 127.7 3 31.5 18.2 59.8 42.8 79.8 23.2 18.8 52 27.9 81.7 25.9l27.5-34.5 16.3-20.3 19.4-24.3c24.5-30.6 28-71.1 9.2-105.7z" />
-                    <path fill="url(#p-g1)"
-                        d="m190.7 161.2c2 20.9 9.5 40.5 21.5 57.2l-13.8 17.2-2.8 3.5c-17.2-21.5-27.8-47.6-30.5-75.4-3.9-39.8 9.3-79.2 35.7-108.9 8.2 3.3 15.8 7.8 22.8 13.3-24.1 24.7-36.3 58.8-32.9 93.1z" />
-                    <path fill="#33075F" d="m212.1 256.5q-4.6-4.1-8.8-8.6l16.3-20.3q4.5 5.1 9.6 9.7z" />
-                    <path fill="#33075F"
-                        d="m398.5 203.9l-183.5 229.3c-8.8 11.1-25 12.9-36.1 4.1l136.2-170.3 63.3-79.2c24.5-30.6 28-71.1 9.2-105.7-18.5-34-53.8-52.7-92-48.9q-1.4 0.2-2.9 0.3c-17.5 2.2-34.2 8.4-48.9 17.9q-6.8 4.4-12.9 9.8-3.9 3.3-7.3 6.9c-7-5.5-14.6-10-22.8-13.3q6.1-6.9 13.2-13 3.5-3.1 7.2-5.9c20-15.2 43.4-24.7 68.4-27.9q1.7-0.2 3.5-0.4c48.6-4.9 93.5 18.9 117.1 62.2 23.8 43.8 19.3 95.2-11.7 134.1z" />
-                </svg>
-            </div>
-        </div>
-
         <!-- DOORWAY 02: 99 TECH & AI -->
-        <a href="tech/" class="doorway doorway-tech" id="tech-side">
+        <a href="tech/" class="doorway doorway-tech" id="tech-side" data-world="tech">
             <div class="door-backdrop" aria-hidden="true">
-                <div class="tech-grid-bg"></div>
+                <img src="img/cinema/tech-portal.webp" alt="" class="door-photo photo-tech">
+                <div class="door-spot spot-tech"></div>
                 <div class="door-scrim tech-scrim"></div>
             </div>
 
             <div class="door-inner">
-                <div class="door-index mono-meta" dir="ltr">
-                    <span class="idx-num">02</span>
-                    <span class="idx-sep">//</span>
-                    <span>99 TECH &amp; AI</span>
+                <div class="door-top">
+                    <div class="door-index mono-meta" dir="ltr">
+                        <span class="idx-num">02</span>
+                        <span class="idx-sep">//</span>
+                        <span>99 TECH &amp; AI</span>
+                    </div>
+                    <span class="door-badge badge-tech mono-meta" dir="ltr">SYSTEMS ONLINE</span>
                 </div>
 
                 <div class="door-copy">
@@ -257,12 +292,18 @@
                 </div>
 
                 <div class="door-footer">
-                    <div class="door-tags mono-meta" dir="ltr">
-                        <span>EXOX.AI</span>
-                        <span>PR MEDIA</span>
-                        <span>FIRX</span>
+                    <div class="door-proof">
+                        <span class="proof-dot proof-violet" aria-hidden="true"></span>
+                        <span data-i18n="p-tech-proof">أنظمة مطوّرة داخلياً: EXOX.AI · PR MEDIA · FIRX</span>
                     </div>
-                    <span class="door-cta cta-royal" data-i18n="p-tech-cta">استكشف 99 للتقنية ←</span>
+                    <div class="door-bottom-row">
+                        <div class="door-tags mono-meta" dir="ltr">
+                            <span>AI AGENTS</span>
+                            <span>SAAS</span>
+                            <span>ZERO-TRUST</span>
+                        </div>
+                        <span class="door-cta cta-royal" data-i18n="p-tech-cta">استكشف 99 للتقنية ←</span>
+                    </div>
                 </div>
             </div>
         </a>
@@ -280,7 +321,7 @@
         </div>
     </footer>
 
-    <script src="js/splash-i18n.js?v=2.0"></script>
+    <script src="js/splash-i18n.js?v=2.1"></script>
 </body>
 
 </html>
