@@ -14,6 +14,10 @@
       <image:loc>https://www.i99.sa/img/og-home.png</image:loc>
       <image:title>99 Media &amp; Tech — مؤسسة تسعة وتسعون للإعلام والتقنية والذكاء الاصطناعي — جدة</image:title>
     </image:image>
+    <image:image>
+      <image:loc>https://www.i99.sa/img/cinema/tech-portal.webp</image:loc>
+      <image:title>99 Tech &amp; AI — Sovereign Architectural Monolith — Jeddah</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://www.i99.sa/tech/</loc>
@@ -67,6 +71,14 @@
     <image:image>
       <image:loc>https://www.i99.sa/img/cinema/broadcast-suite.webp</image:loc>
       <image:title>99 Media Television Mastering &amp; Color Grading Suite</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.i99.sa/img/cinema/lens-portrait.webp</image:loc>
+      <image:title>99 Media 35mm Anamorphic Cinema Optics — Jeddah</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.i99.sa/img/cinema/pr-summit.webp</image:loc>
+      <image:title>99 Media Corporate PR &amp; Flagship Summit Coverage</image:title>
     </image:image>
   </url>
 </urlset>
