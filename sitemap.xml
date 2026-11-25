@@ -10,6 +10,10 @@
     <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.i99.sa/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.i99.sa/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.i99.sa/"/>
+    <image:image>
+      <image:loc>https://www.i99.sa/img/og-home.png</image:loc>
+      <image:title>99 Media &amp; Tech — مؤسسة تسعة وتسعون للإعلام والتقنية والذكاء الاصطناعي — جدة</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://www.i99.sa/tech/</loc>

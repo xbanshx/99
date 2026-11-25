@@ -38,6 +38,7 @@ const mediaTranslations = {
         "m-sc3-t": "سينما وفيديوهات الذكاء الاصطناعي",
         "m-sc4-t": "الاتصال المؤسسي والعلاقات العامة",
         "m-sc5-t": "التسويق الرقمي وصناعة الانتشار",
+        "m-brief-cta": "اطلب هذا المسار ←",
 
         "m-reel-title": "من الفكرة الأولى إلى شاشة الجمهور",
         "m-step1-t": "البحث والمعالجة الإبداعية",
@@ -82,6 +83,8 @@ const mediaTranslations = {
         "m-scope-4": "تسويق ومحتوى رقمي",
         "m-label-name": "الاسم الكامل",
         "m-label-email": "البريد الإلكتروني",
+        "m-label-phone": "رقم الجوال أو الواتساب (اختياري)",
+        "m-ph-phone": "+966 5X XXX XXXX",
         "m-label-message": "تفاصيل المشروع",
         "m-ph-name": "الاسم أو اسم الجهة",
         "m-ph-message": "نبذة عن الإنتاج المطلوب، القنوات المستهدفة، والجدول الزمني المتوقع",
@@ -132,6 +135,7 @@ const mediaTranslations = {
         "m-sc3-t": "AI Cinema & Generative Video",
         "m-sc4-t": "Corporate PR & Communications",
         "m-sc5-t": "Digital Marketing & Reach",
+        "m-brief-cta": "Request this discipline →",
 
         "m-reel-title": "From First Script to Audience Screen",
         "m-step1-t": "Research & Creative Treatment",
@@ -176,6 +180,8 @@ const mediaTranslations = {
         "m-scope-4": "Digital & Content",
         "m-label-name": "Full Name",
         "m-label-email": "Work Email",
+        "m-label-phone": "Mobile / WhatsApp (Optional)",
+        "m-ph-phone": "+966 5X XXX XXXX",
         "m-label-message": "Production Brief",
         "m-ph-name": "Your name or organization",
         "m-ph-message": "Brief overview of the production, target channels, and timeline",
@@ -206,6 +212,12 @@ function switchLang(lang) {
     document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
         const key = el.getAttribute("data-i18n-placeholder");
         if (dict[key]) el.setAttribute("placeholder", dict[key]);
+    });
+    document.querySelectorAll("[data-cursor-en]").forEach((el) => {
+        if (!el.hasAttribute("data-cursor-ar")) {
+            el.setAttribute("data-cursor-ar", el.getAttribute("data-cursor") || "");
+        }
+        el.setAttribute("data-cursor", lang === "en" ? el.getAttribute("data-cursor-en") : el.getAttribute("data-cursor-ar"));
     });
 
     const btn = document.getElementById("lang-toggle");

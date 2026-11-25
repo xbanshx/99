@@ -477,6 +477,7 @@ document.addEventListener("DOMContentLoaded", () => {
             shortCode: "SCENE 01 · CONTENT CITY",
             img: "../img/cinema/broadcast-suite.webp",
             label: "مدينة المحتوى // SCENE 01",
+            scope: "Broadcast & Cinema Production",
             pills: ["TV Programs", "Documentaries", "Digital Series", "Editorial Scripts"],
             ar: "نبتكر وننتج برامج تلفزيونية ووثائقية وسلاسل رقمية متكاملة بفرق تحرير وإخراج كوّنت خبراتها أبرز البرامج التلفزيونية في العالم العربي.",
             en: "Flagship television programs, documentaries, and digital series produced by veteran broadcast teams across the Arab world."
@@ -486,6 +487,7 @@ document.addEventListener("DOMContentLoaded", () => {
             shortCode: "SCENE 02 · BUILDING 99",
             img: "../img/videographer.webp",
             label: "مبنى 99 للإنتاج // SCENE 02",
+            scope: "Broadcast & Cinema Production",
             pills: ["Brand Films", "Commercials", "DaVinci Color", "Sound Mastering"],
             ar: "للصورة في عالم 99 هيبتها: تكوينها، لونها، إضاءتها وحركتها بأحدث المعدات السينمائية وهندسة الصوت لتروي قصة الحدث بصمت وإبهار.",
             en: "High-craft brand films, commercial cinematography, theatrical color grading, and studio sound mastering."
@@ -495,6 +497,7 @@ document.addEventListener("DOMContentLoaded", () => {
             shortCode: "SCENE 03 · AI CINEMA LAB",
             img: "../img/cinema/ai-cinema.webp",
             label: "مختبر سينما AI // SCENE 03",
+            scope: "AI Video Production",
             pills: ["Generative Films", "AI Ads", "Virtual Worlds", "Hybrid VFX"],
             ar: "نختصر الزمن ونفتح عوالم بصرية مستحيلة بالتصوير التقليدي عبر توليد الفيديوهات بالذكاء الاصطناعي تحت إشراف مخرجين محترفين.",
             en: "Director-led generative AI brand films, conceptual worlds, and hybrid VFX workflows delivering bold visuals at 5× speed."
@@ -504,6 +507,7 @@ document.addEventListener("DOMContentLoaded", () => {
             shortCode: "SCENE 04 · CREATIVITY ST.",
             img: "../img/cinema/pr-summit.webp",
             label: "شارع الإبداع // SCENE 04",
+            scope: "Corporate PR & Communications",
             pills: ["PR Architecture", "Crisis Comms", "Flagship Events", "Media Positioning"],
             ar: "استراتيجيات اتصال مؤسسي طويلة الأمد، صناعة الأحداث والفعاليات الكبرى، وإدارة الأزمات والسمعة بأساليب إبداعية ورقمية حديثة.",
             en: "Long-term corporate communications, flagship forum coverage, executive positioning, and modern crisis governance."
@@ -513,6 +517,7 @@ document.addEventListener("DOMContentLoaded", () => {
             shortCode: "SCENE 05 · INSPIRATION DIST.",
             img: "../img/studio-2.webp",
             label: "حي الإلهام // SCENE 05",
+            scope: "Digital Marketing & Content",
             pills: ["Campaign Strategy", "Social Systems", "Paid Media", "EXOX Synergy"],
             ar: "من البحث وتحديد الهدف إلى بناء السردية وإدارة الحملات الرقمية عبر المنصات بالتكامل مع منظومات 99 الذكية لتحقيق نتائج قابلة للقياس.",
             en: "Research-led digital storytelling and omnichannel campaigns integrated with 99 Tech & EXOX for live performance intelligence."
@@ -565,11 +570,32 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    dirRows.forEach((btn) => {
+    const dirRowList = Array.from(dirRows);
+    dirRowList.forEach((btn, idx) => {
         const k = btn.getAttribute("data-scene");
         btn.addEventListener("click", () => selectScene(k, true));
         if (isFinePointer) btn.addEventListener("pointerenter", () => selectScene(k, true));
+        btn.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+                e.preventDefault();
+                const next = dirRowList[(idx + (e.key === "ArrowDown" ? 1 : -1) + dirRowList.length) % dirRowList.length];
+                next.focus();
+                selectScene(next.getAttribute("data-scene"), true);
+            }
+        });
     });
+
+    // Touch-friendly true-color partner toggle on mobile / tablets
+    const partnerCards = Array.from(document.querySelectorAll(".royal-laurel"));
+    if (!isFinePointer && partnerCards.length) {
+        partnerCards.forEach((card) => {
+            card.addEventListener("click", () => {
+                const wasOn = card.classList.contains("is-colored");
+                partnerCards.forEach((c) => c.classList.remove("is-colored"));
+                if (!wasOn) card.classList.add("is-colored");
+            });
+        });
+    }
 
     // On-demand floating monitor animation (0% CPU when not hovering or settled!)
     if (floatMon && dirIndex && isFinePointer && !prefersReducedMotion) {
@@ -657,14 +683,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const scopeChips = document.querySelectorAll(".scope-chip");
     const scopeInput = document.getElementById("media-scope-input");
+    const selectScope = (scopeVal, withSound = true) => {
+        scopeChips.forEach((c) => {
+            c.classList.toggle("is-selected", c.getAttribute("data-scope") === scopeVal);
+        });
+        if (withSound) playCinemaTick(500, 0.035, 0.025);
+        if (scopeInput) scopeInput.value = scopeVal || "Broadcast & Cinema Production";
+    };
     scopeChips.forEach((chip) => {
         chip.addEventListener("click", () => {
-            scopeChips.forEach((c) => c.classList.remove("is-selected"));
-            chip.classList.add("is-selected");
-            playCinemaTick(500, 0.035, 0.025);
-            if (scopeInput) scopeInput.value = chip.getAttribute("data-scope") || "Broadcast & Cinema Production";
+            selectScope(chip.getAttribute("data-scope") || "Broadcast & Cinema Production", true);
         });
     });
+
+    const briefCta = document.getElementById("brief-cta");
+    if (briefCta) {
+        briefCta.addEventListener("click", () => {
+            const sc = SCENES[activeScene];
+            if (sc && sc.scope) selectScope(sc.scope, true);
+            const nameInput = document.getElementById("media-name");
+            if (nameInput) setTimeout(() => nameInput.focus({ preventScroll: true }), 650);
+        });
+    }
 
     const mediaForm = document.getElementById("media-form");
     if (mediaForm) {
