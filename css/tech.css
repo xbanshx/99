@@ -109,10 +109,10 @@ button {
     outline-offset: 3px;
 }
 
-/* Skip Link */
+/* Skip Link (visually hidden until keyboard focus) */
 .skip-link {
     position: fixed;
-    inset-block-start: -100px;
+    inset-block-start: 16px;
     inset-inline-start: 16px;
     z-index: 200;
     padding: 10px 16px;
@@ -121,11 +121,15 @@ button {
     color: var(--bg-base);
     font-size: 14px;
     font-weight: 600;
-    transition: inset-block-start 0.2s var(--ease);
+    clip-path: inset(50%);
+    opacity: 0;
+    pointer-events: none;
 }
 
 .skip-link:focus {
-    inset-block-start: 16px;
+    clip-path: none;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 /* Subtle Architectural Coordinate Canvas */
