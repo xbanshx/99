@@ -181,32 +181,71 @@ document.addEventListener("DOMContentLoaded", () => {
     const parallaxNodes = !prefersReducedMotion && window.innerWidth > 900
         ? Array.from(document.querySelectorAll("[data-parallax]"))
         : [];
+    const scrollAuras = !prefersReducedMotion && window.innerWidth > 900
+        ? Array.from(document.querySelectorAll(".monolith-aura"))
+        : [];
+    const reveals = Array.from(document.querySelectorAll(".reveal"));
+    const sectionBlocks = Array.from(document.querySelectorAll(".section-block"));
 
     let scrollRaf = null;
     const syncScrollEffects = () => {
         scrollRaf = null;
         const y = window.scrollY;
-        const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        const vh = window.innerHeight || 900;
+        const maxScroll = Math.max(1, document.documentElement.scrollHeight - vh);
 
         if (progressBar) {
             const ratio = Math.min(1, Math.max(0, y / maxScroll));
             progressBar.style.transform = `scaleX(${ratio.toFixed(4)})`;
         }
 
-        // Subtle Hero Depth Parallax (only while in top 120% viewport)
-        if (parallaxNodes.length > 0 && y < window.innerHeight * 1.25) {
+        // Subtle Hero Depth Parallax (only while in top 125% viewport)
+        if (parallaxNodes.length > 0 && y < vh * 1.25) {
             parallaxNodes.forEach((el) => {
                 const factor = parseFloat(el.getAttribute("data-parallax") || "0");
                 el.style.transform = `translate3d(0, ${(y * factor).toFixed(1)}px, 0)`;
             });
         }
 
+        // Continuous atmospheric depth parallax on portfolio monolith auras
+        if (scrollAuras.length > 0) {
+            scrollAuras.forEach((aura) => {
+                const parent = aura.parentElement;
+                if (!parent) return;
+                const r = parent.getBoundingClientRect();
+                if (r.bottom > -80 && r.top < vh + 80) {
+                    const norm = ((r.top + r.height * 0.5) / vh) - 0.5;
+                    aura.style.transform = `translate3d(0, ${(norm * -28).toFixed(1)}px, 0) scale(1.06)`;
+                }
+            });
+        }
+
         // Scroll-lit Delivery Pipeline Spine
         if (pipelineSec && pipelineFill) {
             const r = pipelineSec.getBoundingClientRect();
-            const vh = window.innerHeight || 900;
-            const p = Math.min(1, Math.max(0, (vh * 0.85 - r.top) / (vh * 0.65)));
+            const p = Math.min(1, Math.max(0, (vh * 0.84 - r.top) / (vh * 0.58)));
             pipelineFill.style.transform = `scaleX(${p.toFixed(3)})`;
+        }
+
+        // Safety sweep: ensure elements well inside or passed above viewport always reveal
+        if (!prefersReducedMotion) {
+            const triggerLine = vh * 0.89;
+            reveals.forEach((el) => {
+                if (!el.classList.contains("is-visible")) {
+                    const r = el.getBoundingClientRect();
+                    if (r.top <= triggerLine && r.bottom > 0) {
+                        el.classList.add("is-visible");
+                    }
+                }
+            });
+            sectionBlocks.forEach((sec) => {
+                if (!sec.classList.contains("is-entered")) {
+                    const r = sec.getBoundingClientRect();
+                    if (r.top <= vh * 0.88) {
+                        sec.classList.add("is-entered");
+                    }
+                }
+            });
         }
 
         updateManifestoScroll();
@@ -575,7 +614,19 @@ document.addEventListener("DOMContentLoaded", () => {
         setEl("vp-desc", copy.desc);
 
         const diagEl = document.getElementById("vp-diagram");
-        if (diagEl) diagEl.innerHTML = cap.diagram;
+        if (diagEl) {
+            diagEl.innerHTML = cap.diagram;
+            diagEl.classList.remove("vp-swap-in");
+            void diagEl.offsetWidth;
+            diagEl.classList.add("vp-swap-in");
+        }
+
+        const vpContent = document.querySelector(".vp-content");
+        if (vpContent) {
+            vpContent.classList.remove("vp-swap-in");
+            void vpContent.offsetWidth;
+            vpContent.classList.add("vp-swap-in");
+        }
 
         const traceEl = document.getElementById("vp-trace");
         if (traceEl) {
@@ -687,8 +738,8 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll("[data-enter]").forEach((el) => el.classList.add("is-visible"));
     });
 
-    const reveals = document.querySelectorAll(".reveal");
     if (!prefersReducedMotion && "IntersectionObserver" in window) {
+        // Trigger visibly as each element crosses ~11% into the viewport (never off-screen!)
         const revObs = new IntersectionObserver(
             (entries, obs) => {
                 entries.forEach((entry) => {
@@ -698,11 +749,25 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
             },
-            { threshold: 0.01, rootMargin: "0px 0px 90px 0px" }
+            { threshold: 0.02, rootMargin: "0px 0px -11% 0px" }
         );
         reveals.forEach((el) => revObs.observe(el));
+
+        const secObs = new IntersectionObserver(
+            (entries, obs) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-entered");
+                        obs.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.01, rootMargin: "0px 0px -10% 0px" }
+        );
+        sectionBlocks.forEach((sec) => secObs.observe(sec));
     } else {
         reveals.forEach((el) => el.classList.add("is-visible"));
+        sectionBlocks.forEach((sec) => sec.classList.add("is-entered"));
     }
 
     // ═══════════════════════════════════════════════════════════════════════
