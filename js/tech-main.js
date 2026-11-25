@@ -3,9 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const isFinePointer = window.matchMedia("(pointer: fine)").matches;
 
     // ═══════════════════════════════════════════════════════════════════════
-    // 1. BESPOKE GPU GLSL SHADER: 99 LIQUID OBSIDIAN SILK & CYAN CAUSTICS
-    //    Uses 99's true palette (#09040B obsidian, #33075F deep plum, #00FCC3 sheen)
-    //    Auto-pauses when hero is out of viewport to keep CPU/GPU ice-cold.
+    // 1. BESPOKE GPU GLSL SHADER: SOVEREIGN ROYAL INDIGO (#33075F) OBSIDIAN SILK
+    //    Obsidian (#06030A) + 99 Royal Imperial Indigo (#33075F) +
+    //    Whisper Champagne-Gold (#DFC492) & Pearl-Platinum anisotropic sheen.
+    //    Reacts smoothly to pointer inertia + hero scroll elevation.
     // ═══════════════════════════════════════════════════════════════════════
     const initSilkShader = () => {
         const canvas = document.getElementById("silk-shader");
@@ -23,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
             uniform vec2 u_res;
             uniform float u_time;
             uniform vec2 u_mouse;
+            uniform float u_scroll;
 
             float hash(vec2 p) {
                 return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
@@ -43,44 +45,46 @@ document.addEventListener("DOMContentLoaded", () => {
                 vec2 uv = gl_FragCoord.xy / u_res;
                 float aspect = u_res.x / max(u_res.y, 1.0);
                 vec2 p = (uv - 0.5) * vec2(aspect, 1.0);
+                p.y -= u_scroll * 0.22;
                 vec2 m = (u_mouse - 0.5) * vec2(aspect, 1.0);
 
-                float t = u_time * 0.22;
+                float t = u_time * 0.19;
 
-                // Subtle fluid warp toward pointer
+                // Fluid pointer warp
                 vec2 dMouse = p - m;
                 float mDist = length(dMouse);
-                p -= dMouse * exp(-mDist * 2.4) * 0.09;
+                p -= dMouse * exp(-mDist * 2.3) * 0.085;
 
-                // Rotated anisotropic silk fold coordinates
-                float ca = cos(0.46), sa = sin(0.46);
+                // Anisotropic satin folds
+                float ca = cos(0.42), sa = sin(0.42);
                 vec2 r = mat2(ca, -sa, sa, ca) * p;
 
-                float n1 = noise(vec2(r.x * 1.6 + t * 0.7, r.y * 0.9 - t * 0.4));
-                float n2 = noise(vec2(r.x * 2.8 - t * 0.5, r.y * 1.5 + t * 0.6));
+                float n1 = noise(vec2(r.x * 1.5 + t * 0.65, r.y * 0.85 - t * 0.35));
+                float n2 = noise(vec2(r.x * 2.6 - t * 0.45, r.y * 1.45 + t * 0.55));
 
-                float fold1 = sin(r.x * 5.2 + n1 * 2.4 + t * 1.1);
-                float fold2 = sin(r.x * 9.4 - n2 * 2.1 - t * 0.75) * 0.42;
-                float fold3 = sin(r.y * 3.1 + n1 * 1.8) * 0.35;
+                float fold1 = sin(r.x * 4.8 + n1 * 2.3 + t * 1.0);
+                float fold2 = sin(r.x * 8.6 - n2 * 2.0 - t * 0.7) * 0.40;
+                float fold3 = sin(r.y * 2.8 + n1 * 1.7) * 0.32;
                 float h = fold1 + fold2 + fold3;
 
-                // Anisotropic specular crest along silk folds
-                float ridge = exp(-pow(h - 0.55, 2.0) * 6.5);
-                float razor = exp(-pow(h - 0.92, 2.0) * 28.0);
+                float broadRidge = exp(-pow(h - 0.45, 2.0) * 5.2);
+                float razorCrest = exp(-pow(h - 0.94, 2.0) * 26.0);
 
-                // 99 Official Palette: #09040B void, #33075F royal plum, #00FCC3 electric mint-cyan
-                vec3 voidCol = vec3(0.035, 0.016, 0.043);
-                vec3 plumCol = vec3(0.18, 0.028, 0.34);
-                vec3 cyanCol = vec3(0.0, 0.988, 0.765);
+                // 99 Sovereign Royal Palette
+                vec3 voidCol = vec3(0.024, 0.012, 0.039);       // #06030A Obsidian-Aubergine
+                vec3 royalCol = vec3(0.200, 0.027, 0.373);      // #33075F Official 99 Royal Indigo
+                vec3 amethystCol = vec3(0.54, 0.39, 0.88);      // Brushed Amethyst-Platinum
+                vec3 champagneCol = vec3(0.875, 0.769, 0.573);  // #DFC492 Muted Champagne-Gold
 
-                float depthMix = smoothstep(-1.4, 1.2, h) * 0.55;
-                vec3 col = mix(voidCol, plumCol, depthMix * 0.72);
-                col += plumCol * ridge * 0.48;
-                col += cyanCol * razor * 0.26;
-                col += cyanCol * exp(-mDist * 3.2) * 0.09;
+                float depthMix = smoothstep(-1.35, 1.25, h) * 0.68;
+                vec3 col = mix(voidCol, royalCol, depthMix);
+                col += royalCol * broadRidge * 0.58;
+                col += amethystCol * razorCrest * 0.24;
+                col += champagneCol * pow(razorCrest, 1.6) * 0.22;
+                col += champagneCol * exp(-mDist * 3.4) * 0.075;
 
-                // Fine anti-banding film grain
-                float g = (hash(gl_FragCoord.xy + fract(u_time) * 100.0) - 0.5) * 0.018;
+                // Fine cinema film grain (eliminates 8-bit banding)
+                float g = (hash(gl_FragCoord.xy + fract(u_time) * 100.0) - 0.5) * 0.016;
                 col = max(col + g, 0.0);
 
                 gl_FragColor = vec4(col, 1.0);
@@ -115,11 +119,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const uRes = gl.getUniformLocation(prog, "u_res");
         const uTime = gl.getUniformLocation(prog, "u_time");
         const uMouse = gl.getUniformLocation(prog, "u_mouse");
+        const uScroll = gl.getUniformLocation(prog, "u_scroll");
 
-        let targetX = 0.65, targetY = 0.52;
-        let curX = 0.65, curY = 0.52;
+        let targetX = 0.62, targetY = 0.52;
+        let curX = 0.62, curY = 0.52;
         let heroVisible = true;
-        let start = performance.now();
+        let scrollNorm = 0;
+        const start = performance.now();
 
         const resize = () => {
             const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
@@ -145,13 +151,18 @@ document.addEventListener("DOMContentLoaded", () => {
             }, { threshold: 0.01 }).observe(heroEl);
         }
 
+        window.addEventListener("scroll", () => {
+            scrollNorm = Math.min(1.2, window.scrollY / Math.max(window.innerHeight, 1));
+        }, { passive: true });
+
         const render = (now) => {
             if (heroVisible) {
-                curX += (targetX - curX) * 0.045;
-                curY += (targetY - curY) * 0.045;
+                curX += (targetX - curX) * 0.04;
+                curY += (targetY - curY) * 0.04;
                 gl.uniform2f(uRes, canvas.width, canvas.height);
-                gl.uniform1f(uTime, prefersReducedMotion ? 2.4 : (now - start) * 0.001);
+                gl.uniform1f(uTime, prefersReducedMotion ? 2.6 : (now - start) * 0.001);
                 gl.uniform2f(uMouse, curX, curY);
+                gl.uniform1f(uScroll, prefersReducedMotion ? 0 : scrollNorm);
                 gl.drawArrays(gl.TRIANGLES, 0, 6);
             }
             if (!prefersReducedMotion) requestAnimationFrame(render);
@@ -160,7 +171,54 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     initSilkShader();
 
-    // Subtle 3D parallax sway on the sculptural 99 Emblem
+    // ═══════════════════════════════════════════════════════════════════════
+    // 2. CONTINUOUS SCROLL-CHOREOGRAPHED PARALLAX, PROGRESS BEAM & PIPELINE
+    //    Pure GPU translate3d / scaleX synced to scroll via single rAF loop.
+    // ═══════════════════════════════════════════════════════════════════════
+    const progressBar = document.getElementById("scroll-progress-bar");
+    const pipelineSec = document.getElementById("tech-process");
+    const pipelineFill = document.getElementById("pipeline-fill");
+    const parallaxNodes = !prefersReducedMotion && window.innerWidth > 900
+        ? Array.from(document.querySelectorAll("[data-parallax]"))
+        : [];
+
+    let scrollRaf = null;
+    const syncScrollEffects = () => {
+        scrollRaf = null;
+        const y = window.scrollY;
+        const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+
+        if (progressBar) {
+            const ratio = Math.min(1, Math.max(0, y / maxScroll));
+            progressBar.style.transform = `scaleX(${ratio.toFixed(4)})`;
+        }
+
+        // Subtle Hero Depth Parallax (only while in top 120% viewport)
+        if (parallaxNodes.length > 0 && y < window.innerHeight * 1.25) {
+            parallaxNodes.forEach((el) => {
+                const factor = parseFloat(el.getAttribute("data-parallax") || "0");
+                el.style.transform = `translate3d(0, ${(y * factor).toFixed(1)}px, 0)`;
+            });
+        }
+
+        // Scroll-lit Delivery Pipeline Spine
+        if (pipelineSec && pipelineFill) {
+            const r = pipelineSec.getBoundingClientRect();
+            const vh = window.innerHeight || 900;
+            const p = Math.min(1, Math.max(0, (vh * 0.85 - r.top) / (vh * 0.65)));
+            pipelineFill.style.transform = `scaleX(${p.toFixed(3)})`;
+        }
+
+        updateManifestoScroll();
+    };
+
+    const requestScrollSync = () => {
+        if (!scrollRaf) scrollRaf = requestAnimationFrame(syncScrollEffects);
+    };
+
+    window.addEventListener("scroll", requestScrollSync, { passive: true });
+
+    // Subtle 3D Pointer Depth on Hero 99 Emblem + Monolith Stages
     const emblemShell = document.getElementById("emblem-99-shell");
     const heroSection = document.getElementById("tech-hero");
     if (emblemShell && heroSection && isFinePointer && !prefersReducedMotion) {
@@ -175,10 +233,21 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // 2. SPECULAR POINTER-TRACKING BORDER LIGHT ON MONOLITH CARDS
-    // ═══════════════════════════════════════════════════════════════════════
-    if (isFinePointer) {
+    if (isFinePointer && !prefersReducedMotion) {
+        document.querySelectorAll("[data-depth-stage]").forEach((stage) => {
+            const layer = stage.querySelector("[data-depth-layer]");
+            if (!layer) return;
+            stage.addEventListener("pointermove", (e) => {
+                const r = stage.getBoundingClientRect();
+                const nx = (e.clientX - r.left) / r.width - 0.5;
+                const ny = (e.clientY - r.top) / r.height - 0.5;
+                layer.style.transform = `translate3d(${(nx * 14).toFixed(1)}px, ${(ny * 10).toFixed(1)}px, 0) scale(1.02)`;
+            }, { passive: true });
+            stage.addEventListener("pointerleave", () => {
+                layer.style.transform = "translate3d(0, 0, 0) scale(1)";
+            });
+        });
+
         document.querySelectorAll(".specular-card").forEach((card) => {
             card.addEventListener("pointermove", (e) => {
                 const r = card.getBoundingClientRect();
@@ -189,7 +258,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ═══════════════════════════════════════════════════════════════════════
-    // 3. SCROLL-SCRUBBED CINEMATIC MANIFESTO (WORD-BY-WORD ILLUMINATION)
+    // 3. SCROLL-SCRUBBED CINEMATIC MANIFESTO
     // ═══════════════════════════════════════════════════════════════════════
     const MANIFESTO_COPY = {
         ar: [
@@ -237,7 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateManifestoScroll();
     };
 
-    const updateManifestoScroll = () => {
+    function updateManifestoScroll() {
         if (!manifestoSec || wordSpans.length === 0) return;
         if (prefersReducedMotion) {
             wordSpans.forEach((s) => s.classList.add("is-lit"));
@@ -246,40 +315,45 @@ document.addEventListener("DOMContentLoaded", () => {
         const rect = manifestoSec.getBoundingClientRect();
         const vh = window.innerHeight || 900;
         const start = vh * 0.85;
-        const end = vh * 0.22;
+        const end = vh * 0.20;
         const progress = Math.min(1, Math.max(0, (start - rect.top) / (start - end + rect.height * 0.35)));
         const litCount = Math.ceil(progress * wordSpans.length);
         wordSpans.forEach((s, i) => s.classList.toggle("is-lit", i < litCount));
-    };
+    }
 
-    window.addEventListener("scroll", updateManifestoScroll, { passive: true });
     buildManifesto();
+    syncScrollEffects();
 
     // ═══════════════════════════════════════════════════════════════════════
-    // 4. INTERACTIVE CAPABILITIES ARCHITECTURE EXPLORER (5 BESPOKE DIAGRAMS)
+    // 4. INTERACTIVE CAPABILITIES ARCHITECTURE EXPLORER + LIVE TELEMETRY TRACE
     // ═══════════════════════════════════════════════════════════════════════
     const CAP_DATA = {
         ai: {
             code: "01 // AI SYSTEMS ARCHITECTURE",
             stack: ["Multi-Agent Core", "Arabic RAG", "LLM Guardrails", "Structured Memory", "Tool Execution"],
+            trace: [
+                { step: "STEP 01", state: "READY", label: "Context Ingestion" },
+                { step: "STEP 02", state: "ACTIVE", label: "Arabic Reasoning" },
+                { step: "STEP 03", state: "VERIFIED", label: "Approval Gate" }
+            ],
             diagram: `
-                <svg viewBox="0 0 540 148" fill="none">
-                    <path d="M96 74 H202" stroke="rgba(255,255,255,0.16)" stroke-width="1.2"/>
-                    <path d="M338 74 H444" stroke="rgba(255,255,255,0.16)" stroke-width="1.2"/>
-                    <path d="M270 30 V118" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="3 4"/>
-                    <path class="vp-pulse" d="M96 74 H202"/>
-                    <path class="vp-pulse" d="M338 74 H444"/>
-                    <rect x="14" y="48" width="82" height="52" rx="10" fill="#120918" stroke="rgba(255,255,255,0.16)"/>
-                    <text x="55" y="70" text-anchor="middle" fill="#7A7088" font-family="IBM Plex Mono" font-size="9">CONTEXT</text>
-                    <text x="55" y="86" text-anchor="middle" fill="#F7F8FC" font-family="IBM Plex Sans" font-size="11">Brand Data</text>
-                    <rect x="202" y="42" width="136" height="64" rx="12" fill="#170C20" stroke="#00FCC3" stroke-opacity="0.55"/>
-                    <text x="270" y="68" text-anchor="middle" fill="#00FCC3" font-family="IBM Plex Mono" font-size="9">99 AI CORE</text>
-                    <text x="270" y="88" text-anchor="middle" fill="#FFFFFF" font-family="IBM Plex Sans" font-size="12.5" font-weight="600">Agent Orchestrator</text>
-                    <circle cx="270" cy="20" r="4" fill="#00FCC3"/>
-                    <circle cx="270" cy="128" r="4" fill="#00FCC3"/>
-                    <rect x="444" y="48" width="82" height="52" rx="10" fill="#120918" stroke="rgba(255,255,255,0.16)"/>
-                    <text x="485" y="70" text-anchor="middle" fill="#7A7088" font-family="IBM Plex Mono" font-size="9">GOVERNED</text>
-                    <text x="485" y="86" text-anchor="middle" fill="#F7F8FC" font-family="IBM Plex Sans" font-size="11">Execution</text>
+                <svg viewBox="0 0 540 144" fill="none">
+                    <path d="M96 72 H202" stroke="rgba(246,244,250,0.16)" stroke-width="1.2"/>
+                    <path d="M338 72 H444" stroke="rgba(246,244,250,0.16)" stroke-width="1.2"/>
+                    <path d="M270 28 V116" stroke="rgba(246,244,250,0.12)" stroke-width="1" stroke-dasharray="3 4"/>
+                    <path class="vp-pulse" d="M96 72 H202"/>
+                    <path class="vp-pulse" d="M338 72 H444"/>
+                    <rect x="14" y="46" width="82" height="52" rx="10" fill="#10091B" stroke="rgba(246,244,250,0.16)"/>
+                    <text x="55" y="68" text-anchor="middle" fill="#7A718C" font-family="IBM Plex Mono" font-size="9">CONTEXT</text>
+                    <text x="55" y="84" text-anchor="middle" fill="#F6F4FA" font-family="IBM Plex Sans" font-size="11">Brand Data</text>
+                    <rect x="202" y="40" width="136" height="64" rx="12" fill="#190E2A" stroke="#DFC492" stroke-opacity="0.6"/>
+                    <text x="270" y="66" text-anchor="middle" fill="#DFC492" font-family="IBM Plex Mono" font-size="9">99 AI CORE</text>
+                    <text x="270" y="86" text-anchor="middle" fill="#FFFFFF" font-family="IBM Plex Sans" font-size="12.5" font-weight="600">Agent Orchestrator</text>
+                    <circle cx="270" cy="18" r="4" fill="#DFC492"/>
+                    <circle cx="270" cy="126" r="4" fill="#C4AEFF"/>
+                    <rect x="444" y="46" width="82" height="52" rx="10" fill="#10091B" stroke="rgba(246,244,250,0.16)"/>
+                    <text x="485" y="68" text-anchor="middle" fill="#7A718C" font-family="IBM Plex Mono" font-size="9">GOVERNED</text>
+                    <text x="485" y="84" text-anchor="middle" fill="#F6F4FA" font-family="IBM Plex Sans" font-size="11">Execution</text>
                 </svg>`,
             ar: {
                 tag: "التخصص المحوري",
@@ -305,22 +379,27 @@ document.addEventListener("DOMContentLoaded", () => {
         software: {
             code: "02 // ENTERPRISE SOFTWARE & SAAS",
             stack: ["TypeScript", "Modular APIs", "Multi-Tenant SaaS", "ERP / CRM Sync", "RBAC Auth"],
+            trace: [
+                { step: "LAYER 01", state: "TLS 1.3", label: "API Gateway" },
+                { step: "LAYER 02", state: "ISOLATED", label: "Domain Services" },
+                { step: "LAYER 03", state: "ENCRYPTED", label: "Tenant Store" }
+            ],
             diagram: `
-                <svg viewBox="0 0 540 148" fill="none">
-                    <path d="M126 74 H210" stroke="rgba(255,255,255,0.16)" stroke-width="1.2"/>
-                    <path d="M330 74 H414" stroke="rgba(255,255,255,0.16)" stroke-width="1.2"/>
-                    <path class="vp-pulse" d="M126 74 H210"/>
-                    <path class="vp-pulse" d="M330 74 H414"/>
-                    <rect x="20" y="34" width="106" height="80" rx="10" fill="#120918" stroke="rgba(255,255,255,0.16)"/>
-                    <text x="73" y="64" text-anchor="middle" fill="#00FCC3" font-family="IBM Plex Mono" font-size="9">GATEWAY</text>
-                    <text x="73" y="84" text-anchor="middle" fill="#F7F8FC" font-family="IBM Plex Sans" font-size="11.5">REST / GraphQL</text>
-                    <rect x="210" y="28" width="120" height="92" rx="12" fill="#170C20" stroke="#00FCC3" stroke-opacity="0.5"/>
-                    <text x="270" y="56" text-anchor="middle" fill="#00FCC3" font-family="IBM Plex Mono" font-size="9">CORE ENGINE</text>
-                    <text x="270" y="78" text-anchor="middle" fill="#FFFFFF" font-family="IBM Plex Sans" font-size="12" font-weight="600">Domain Services</text>
-                    <text x="270" y="98" text-anchor="middle" fill="#B2A9BE" font-family="IBM Plex Mono" font-size="9">RBAC · AUDIT</text>
-                    <rect x="414" y="34" width="106" height="80" rx="10" fill="#120918" stroke="rgba(255,255,255,0.16)"/>
-                    <text x="467" y="64" text-anchor="middle" fill="#7A7088" font-family="IBM Plex Mono" font-size="9">PERSISTENCE</text>
-                    <text x="467" y="84" text-anchor="middle" fill="#F7F8FC" font-family="IBM Plex Sans" font-size="11.5">Encrypted DB</text>
+                <svg viewBox="0 0 540 144" fill="none">
+                    <path d="M126 72 H210" stroke="rgba(246,244,250,0.16)" stroke-width="1.2"/>
+                    <path d="M330 72 H414" stroke="rgba(246,244,250,0.16)" stroke-width="1.2"/>
+                    <path class="vp-pulse" d="M126 72 H210"/>
+                    <path class="vp-pulse" d="M330 72 H414"/>
+                    <rect x="20" y="32" width="106" height="80" rx="10" fill="#10091B" stroke="rgba(246,244,250,0.16)"/>
+                    <text x="73" y="62" text-anchor="middle" fill="#DFC492" font-family="IBM Plex Mono" font-size="9">GATEWAY</text>
+                    <text x="73" y="82" text-anchor="middle" fill="#F6F4FA" font-family="IBM Plex Sans" font-size="11.5">REST / GraphQL</text>
+                    <rect x="210" y="26" width="120" height="92" rx="12" fill="#190E2A" stroke="#DFC492" stroke-opacity="0.58"/>
+                    <text x="270" y="54" text-anchor="middle" fill="#DFC492" font-family="IBM Plex Mono" font-size="9">CORE ENGINE</text>
+                    <text x="270" y="76" text-anchor="middle" fill="#FFFFFF" font-family="IBM Plex Sans" font-size="12" font-weight="600">Domain Services</text>
+                    <text x="270" y="96" text-anchor="middle" fill="#B6AEC5" font-family="IBM Plex Mono" font-size="9">RBAC · AUDIT</text>
+                    <rect x="414" y="32" width="106" height="80" rx="10" fill="#10091B" stroke="rgba(246,244,250,0.16)"/>
+                    <text x="467" y="62" text-anchor="middle" fill="#7A718C" font-family="IBM Plex Mono" font-size="9">PERSISTENCE</text>
+                    <text x="467" y="82" text-anchor="middle" fill="#F6F4FA" font-family="IBM Plex Sans" font-size="11.5">Encrypted DB</text>
                 </svg>`,
             ar: {
                 tag: "معمارية صلبة",
@@ -346,18 +425,23 @@ document.addEventListener("DOMContentLoaded", () => {
         interfaces: {
             code: "03 // INTERACTIVE WEB & MOBILE",
             stack: ["React / Next.js", "WebGL Shaders", "iOS & Android", "RTL/LTR Craft", "SEO & GEO"],
+            trace: [
+                { step: "RENDER", state: "60 FPS", label: "GPU Composited" },
+                { step: "SCRIPT", state: "AR + EN", label: "Logical RTL/LTR" },
+                { step: "INDEX", state: "SEO/GEO", label: "AI Discoverable" }
+            ],
             diagram: `
-                <svg viewBox="0 0 540 148" fill="none">
-                    <rect x="52" y="22" width="286" height="104" rx="12" fill="#120918" stroke="rgba(255,255,255,0.18)"/>
-                    <line x1="52" y1="44" x2="338" y2="44" stroke="rgba(255,255,255,0.1)"/>
-                    <text x="195" y="36" text-anchor="middle" fill="#7A7088" font-family="IBM Plex Mono" font-size="9">DESKTOP · 60FPS WEB EXPERIENCE</text>
-                    <rect x="72" y="58" width="130" height="12" rx="4" fill="#00FCC3" fill-opacity="0.22"/>
-                    <rect x="72" y="78" width="246" height="32" rx="6" fill="#1A0F24" stroke="rgba(255,255,255,0.08)"/>
-                    <path class="vp-pulse" d="M338 74 H396"/>
-                    <rect x="396" y="18" width="90" height="112" rx="14" fill="#170C20" stroke="#00FCC3" stroke-opacity="0.5"/>
-                    <rect x="427" y="26" width="28" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
-                    <rect x="410" y="44" width="62" height="34" rx="6" fill="rgba(0,252,195,0.12)"/>
-                    <rect x="410" y="88" width="62" height="26" rx="6" fill="rgba(255,255,255,0.06)"/>
+                <svg viewBox="0 0 540 144" fill="none">
+                    <rect x="52" y="20" width="286" height="104" rx="12" fill="#10091B" stroke="rgba(246,244,250,0.18)"/>
+                    <line x1="52" y1="42" x2="338" y2="42" stroke="rgba(246,244,250,0.1)"/>
+                    <text x="195" y="34" text-anchor="middle" fill="#7A718C" font-family="IBM Plex Mono" font-size="9">DESKTOP · 60FPS WEB EXPERIENCE</text>
+                    <rect x="72" y="56" width="130" height="12" rx="4" fill="#DFC492" fill-opacity="0.24"/>
+                    <rect x="72" y="76" width="246" height="32" rx="6" fill="#190E2A" stroke="rgba(246,244,250,0.08)"/>
+                    <path class="vp-pulse" d="M338 72 H396"/>
+                    <rect x="396" y="16" width="90" height="112" rx="14" fill="#190E2A" stroke="#DFC492" stroke-opacity="0.58"/>
+                    <rect x="427" y="24" width="28" height="4" rx="2" fill="rgba(246,244,250,0.2)"/>
+                    <rect x="410" y="42" width="62" height="34" rx="6" fill="rgba(223,196,146,0.14)"/>
+                    <rect x="410" y="86" width="62" height="26" rx="6" fill="rgba(246,244,250,0.06)"/>
                 </svg>`,
             ar: {
                 tag: "دقة وتجربة فاخرة",
@@ -383,17 +467,22 @@ document.addEventListener("DOMContentLoaded", () => {
         data: {
             code: "04 // DATA & DECISION INTELLIGENCE",
             stack: ["Data Pipelines", "Executive BI", "Anomaly Detection", "Forecasting", "SQL / Warehouse"],
+            trace: [
+                { step: "INGEST", state: "STREAM", label: "Unified Sources" },
+                { step: "MODEL", state: "CLEAN", label: "Metric Layer" },
+                { step: "VIEW", state: "LIVE", label: "Executive Board" }
+            ],
             diagram: `
-                <svg viewBox="0 0 540 148" fill="none">
-                    <line x1="40" y1="118" x2="500" y2="118" stroke="rgba(255,255,255,0.14)"/>
-                    <line x1="40" y1="78" x2="500" y2="78" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4 6"/>
-                    <line x1="40" y1="38" x2="500" y2="38" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4 6"/>
-                    <path d="M56 106 L138 92 L218 96 L296 68 L380 54 L478 32" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
-                    <path class="vp-pulse" d="M56 106 L138 92 L218 96 L296 68 L380 54 L478 32"/>
-                    <circle cx="296" cy="68" r="4" fill="#00FCC3"/>
-                    <circle cx="478" cy="32" r="5" fill="#00FCC3"/>
-                    <circle cx="478" cy="32" r="11" stroke="#00FCC3" stroke-opacity="0.35"/>
-                    <text x="56" y="26" fill="#00FCC3" font-family="IBM Plex Mono" font-size="9.5">LIVE TELEMETRY STREAM // EXECUTIVE BI</text>
+                <svg viewBox="0 0 540 144" fill="none">
+                    <line x1="40" y1="116" x2="500" y2="116" stroke="rgba(246,244,250,0.14)"/>
+                    <line x1="40" y1="76" x2="500" y2="76" stroke="rgba(246,244,250,0.06)" stroke-dasharray="4 6"/>
+                    <line x1="40" y1="36" x2="500" y2="36" stroke="rgba(246,244,250,0.06)" stroke-dasharray="4 6"/>
+                    <path d="M56 104 L138 90 L218 94 L296 66 L380 52 L478 30" stroke="rgba(196,174,255,0.34)" stroke-width="1.5"/>
+                    <path class="vp-pulse" d="M56 104 L138 90 L218 94 L296 66 L380 52 L478 30"/>
+                    <circle cx="296" cy="66" r="4" fill="#C4AEFF"/>
+                    <circle cx="478" cy="30" r="5" fill="#DFC492"/>
+                    <circle cx="478" cy="30" r="11" stroke="#DFC492" stroke-opacity="0.38"/>
+                    <text x="56" y="24" fill="#DFC492" font-family="IBM Plex Mono" font-size="9.5">LIVE TELEMETRY STREAM // EXECUTIVE BI</text>
                 </svg>`,
             ar: {
                 tag: "رؤية تنفيذية",
@@ -419,23 +508,28 @@ document.addEventListener("DOMContentLoaded", () => {
         cloud: {
             code: "05 // CLOUD EDGE & ZERO-TRUST OPS",
             stack: ["Cloudflare Edge", "AWS / K8s", "Zero-Trust WAF", "CI/CD Pipelines", "24/7 Observability"],
+            trace: [
+                { step: "EDGE", state: "GLOBAL", label: "Zero-Trust WAF" },
+                { step: "DEPLOY", state: "CI/CD", label: "Zero-Downtime" },
+                { step: "OPS", state: "24/7", label: "Live Telemetry" }
+            ],
             diagram: `
-                <svg viewBox="0 0 540 148" fill="none">
-                    <rect x="190" y="34" width="160" height="80" rx="14" fill="#170C20" stroke="#00FCC3" stroke-opacity="0.55"/>
-                    <text x="270" y="68" text-anchor="middle" fill="#00FCC3" font-family="IBM Plex Mono" font-size="9.5">ZERO-TRUST CORE</text>
-                    <text x="270" y="88" text-anchor="middle" fill="#FFFFFF" font-family="IBM Plex Sans" font-size="12" font-weight="600">Edge &amp; Cloud Mesh</text>
-                    <path class="vp-pulse" d="M88 46 L190 66"/>
-                    <path class="vp-pulse" d="M88 102 L190 82"/>
-                    <path class="vp-pulse" d="M350 66 L452 46"/>
-                    <path class="vp-pulse" d="M350 82 L452 102"/>
-                    <rect x="26" y="30" width="62" height="32" rx="8" fill="#120918" stroke="rgba(255,255,255,0.16)"/>
-                    <text x="57" y="50" text-anchor="middle" fill="#F7F8FC" font-family="IBM Plex Mono" font-size="10">WAF</text>
-                    <rect x="26" y="86" width="62" height="32" rx="8" fill="#120918" stroke="rgba(255,255,255,0.16)"/>
-                    <text x="57" y="106" text-anchor="middle" fill="#F7F8FC" font-family="IBM Plex Mono" font-size="10">CDN</text>
-                    <rect x="452" y="30" width="62" height="32" rx="8" fill="#120918" stroke="rgba(255,255,255,0.16)"/>
-                    <text x="483" y="50" text-anchor="middle" fill="#F7F8FC" font-family="IBM Plex Mono" font-size="10">CI/CD</text>
-                    <rect x="452" y="86" width="62" height="32" rx="8" fill="#120918" stroke="rgba(255,255,255,0.16)"/>
-                    <text x="483" y="106" text-anchor="middle" fill="#F7F8FC" font-family="IBM Plex Mono" font-size="10">24/7</text>
+                <svg viewBox="0 0 540 144" fill="none">
+                    <rect x="190" y="32" width="160" height="80" rx="14" fill="#190E2A" stroke="#DFC492" stroke-opacity="0.6"/>
+                    <text x="270" y="66" text-anchor="middle" fill="#DFC492" font-family="IBM Plex Mono" font-size="9.5">ZERO-TRUST CORE</text>
+                    <text x="270" y="86" text-anchor="middle" fill="#FFFFFF" font-family="IBM Plex Sans" font-size="12" font-weight="600">Edge &amp; Cloud Mesh</text>
+                    <path class="vp-pulse" d="M88 44 L190 64"/>
+                    <path class="vp-pulse" d="M88 100 L190 80"/>
+                    <path class="vp-pulse" d="M350 64 L452 44"/>
+                    <path class="vp-pulse" d="M350 80 L452 100"/>
+                    <rect x="26" y="28" width="62" height="32" rx="8" fill="#10091B" stroke="rgba(246,244,250,0.16)"/>
+                    <text x="57" y="48" text-anchor="middle" fill="#F6F4FA" font-family="IBM Plex Mono" font-size="10">WAF</text>
+                    <rect x="26" y="84" width="62" height="32" rx="8" fill="#10091B" stroke="rgba(246,244,250,0.16)"/>
+                    <text x="57" y="104" text-anchor="middle" fill="#F6F4FA" font-family="IBM Plex Mono" font-size="10">CDN</text>
+                    <rect x="452" y="28" width="62" height="32" rx="8" fill="#10091B" stroke="rgba(246,244,250,0.16)"/>
+                    <text x="483" y="48" text-anchor="middle" fill="#F6F4FA" font-family="IBM Plex Mono" font-size="10">CI/CD</text>
+                    <rect x="452" y="84" width="62" height="32" rx="8" fill="#10091B" stroke="rgba(246,244,250,0.16)"/>
+                    <text x="483" y="104" text-anchor="middle" fill="#F6F4FA" font-family="IBM Plex Mono" font-size="10">24/7</text>
                 </svg>`,
             ar: {
                 tag: "جاهزية مستمرة",
@@ -482,6 +576,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const diagEl = document.getElementById("vp-diagram");
         if (diagEl) diagEl.innerHTML = cap.diagram;
+
+        const traceEl = document.getElementById("vp-trace");
+        if (traceEl) {
+            traceEl.innerHTML = "";
+            cap.trace.forEach((tr) => {
+                const box = document.createElement("div");
+                box.className = "trace-step";
+                box.innerHTML = `<div class="trace-meta"><span>${tr.step}</span><span class="trace-ok">${tr.state}</span></div><div class="trace-label">${tr.label}</div>`;
+                traceEl.appendChild(box);
+            });
+        }
 
         const listEl = document.getElementById("vp-list");
         if (listEl) {

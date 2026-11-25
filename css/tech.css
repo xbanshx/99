@@ -1,10 +1,11 @@
 /* ==========================================================================
-   99 TECH & AI — AWWWARDS FLAGSHIP OBSIDIAN SYSTEM (v11.0)
-   100% Authentic to 99's official brand DNA:
-   - Ground: #09040B (Nocturnal Velvet Obsidian from i99.sa)
-   - Emblem Accent: #00FCC3 (Official 99 Mint-Cyan from main-logo.svg)
-   - Deep Brand Depth: #33075F (Official 99 Royal Plum from sec-logo.svg)
-   - Display Typeface: DGAgnadeen (99's official local Arabic font)
+   99 TECH & AI — SOVEREIGN ROYAL OBSIDIAN SYSTEM (v12.0)
+   Scientifically calibrated 2026 Luxury-Tech Color Psychology around
+   99's true official emblem (#33075F Imperial Royal Indigo):
+   - 60% Obsidian-Aubergine Base (#06030A / #0C0714 / #120B1D)
+   - 20% 99 Royal Imperial Indigo (#33075F -> #5E1FA8 sculptural depth)
+   - 15% Organic Pearl (#F6F4FA) & Brushed Platinum (#B8B0C6)
+   -  5% Muted Champagne-Gold (#DFC492) for sovereign focal precision
    ========================================================================== */
 
 @font-face {
@@ -28,28 +29,39 @@
     src: url('../assets/fonts/DGAgnadeen-Extrabold.woff2') format('woff2');
 }
 
+@property --beam-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
 :root {
-    /* 99 Official Nocturnal Velvet-Obsidian Ramp */
-    --bg-void: #09040B;
-    --bg-velvet: #0E0713;
-    --bg-card: #120918;
-    --bg-elevated: #180D21;
+    /* 60% Obsidian-Aubergine Ramp (rooted in #33075F) */
+    --bg-void: #06030A;
+    --bg-velvet: #0B0613;
+    --bg-card: #10091B;
+    --bg-elevated: #170E27;
 
-    /* Precision Hairlines */
-    --line-subtle: rgba(255, 255, 255, 0.08);
-    --line-mid: rgba(255, 255, 255, 0.14);
-    --line-strong: rgba(255, 255, 255, 0.24);
+    /* 99 Official Royal Imperial Indigo */
+    --royal-99: #33075F;
+    --royal-mid: #571D96;
+    --royal-glow: rgba(94, 31, 168, 0.28);
+    --amethyst-silk: #C4AEFF;
 
-    /* Text Tiers */
-    --ink-1: #F7F8FC;
-    --ink-2: #B2A9BE;
-    --ink-3: #7A7088;
+    /* 15% Pearl & Brushed Platinum */
+    --ink-1: #F6F4FA;
+    --ink-2: #B6AEC5;
+    --ink-3: #7A718C;
 
-    /* 99 Brand Accents (Official main-logo.svg + sec-logo.svg) */
-    --cyan-99: #00FCC3;
-    --cyan-soft: rgba(0, 252, 195, 0.10);
-    --cyan-border: rgba(0, 252, 195, 0.34);
-    --plum-99: #33075F;
+    /* 5% Sovereign Champagne-Gold Accent (Zero Neon Cliché) */
+    --champagne: #DFC492;
+    --champagne-soft: rgba(223, 196, 146, 0.11);
+    --champagne-border: rgba(223, 196, 146, 0.34);
+
+    /* Precision Platinum Hairlines */
+    --line-subtle: rgba(246, 244, 250, 0.075);
+    --line-mid: rgba(246, 244, 250, 0.14);
+    --line-strong: rgba(246, 244, 250, 0.25);
 
     /* Typography */
     --font-display: 'DGAgnadeen', 'IBM Plex Sans Arabic', sans-serif;
@@ -129,7 +141,7 @@ button {
 }
 
 :focus-visible {
-    outline: 2px solid var(--cyan-99);
+    outline: 2px solid var(--champagne);
     outline-offset: 3px;
 }
 
@@ -140,7 +152,7 @@ button {
     z-index: 300;
     padding: 10px 18px;
     border-radius: var(--r-ctrl);
-    background: var(--cyan-99);
+    background: var(--ink-1);
     color: var(--bg-void);
     font-weight: 600;
     font-size: 14px;
@@ -174,7 +186,7 @@ button {
 }
 
 .mono-meta.accent {
-    color: var(--cyan-99);
+    color: var(--champagne);
 }
 
 .mono-meta.muted {
@@ -182,7 +194,7 @@ button {
 }
 
 /* ==========================================================================
-   HEADER
+   HEADER + OFFICIAL #33075F PEARL MEDALLION + SCROLL PROGRESS HAIRLINE
    ========================================================================== */
 
 .site-header {
@@ -191,15 +203,15 @@ button {
     inset-inline: 0;
     z-index: 120;
     height: var(--header-h);
-    background: rgba(9, 4, 11, 0.42);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(6, 3, 10, 0.45);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(246, 244, 250, 0.05);
     transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease);
 }
 
 .site-header.is-scrolled {
-    background: rgba(9, 4, 11, 0.88);
+    background: rgba(6, 3, 10, 0.90);
     border-bottom-color: var(--line-subtle);
 }
 
@@ -218,10 +230,27 @@ button {
     flex-shrink: 0;
 }
 
-.brand-mark {
-    width: 34px;
-    height: 34px;
-    object-fit: contain;
+/* Jewel-like Pearl Medallion displaying 99's exact official #33075F emblem */
+.brand-seal {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--ink-1);
+    display: grid;
+    place-items: center;
+    box-shadow: 0 0 0 1px rgba(223, 196, 146, 0.32), 0 6px 18px rgba(51, 7, 95, 0.35);
+    transition: transform 0.22s var(--ease), box-shadow 0.22s var(--ease);
+}
+
+.brand-lockup:hover .brand-seal {
+    transform: translateY(-1px);
+    box-shadow: 0 0 0 1px rgba(223, 196, 146, 0.65), 0 8px 22px rgba(94, 31, 168, 0.45);
+}
+
+.brand-seal.seal-sm {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
 }
 
 .brand-divider {
@@ -264,7 +293,7 @@ button {
     inset-inline: 0;
     inset-block-end: 0;
     height: 1.5px;
-    background: var(--cyan-99);
+    background: var(--champagne);
 }
 
 .nav-division {
@@ -292,31 +321,59 @@ button {
 }
 
 .lang-btn:hover {
-    color: var(--cyan-99);
-    border-color: var(--cyan-border);
-    background: var(--cyan-soft);
+    color: var(--champagne);
+    border-color: var(--champagne-border);
+    background: var(--champagne-soft);
 }
 
-/* Flagship Buttons */
+/* Continuous Reading Progress Hairline */
+.scroll-progress-track {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    height: 2px;
+    background: transparent;
+    pointer-events: none;
+}
+
+.scroll-progress-bar {
+    height: 100%;
+    width: 100%;
+    transform-origin: inline-start;
+    transform: scaleX(0);
+    background: linear-gradient(90deg, var(--royal-mid), var(--amethyst-silk), var(--champagne));
+    will-change: transform;
+}
+
+html[dir="rtl"] .scroll-progress-bar {
+    transform-origin: right center;
+}
+
+html[dir="ltr"] .scroll-progress-bar {
+    transform-origin: left center;
+}
+
+/* Executive Luxury Buttons (Pearl Primary + Frosted Obsidian Ghost) */
 .btn-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     min-height: 48px;
-    padding-inline: 26px;
+    padding-inline: 28px;
     border-radius: 999px;
-    background: var(--cyan-99);
-    color: #09040B;
+    background: var(--ink-1);
+    color: #08040E;
     font-size: 14.5px;
     font-weight: 600;
-    transition: transform 0.18s var(--ease), background-color 0.2s var(--ease), box-shadow 0.25s var(--ease);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 10px 30px rgba(51, 7, 95, 0.32);
+    transition: transform 0.2s var(--ease), background-color 0.2s var(--ease), box-shadow 0.25s var(--ease);
 }
 
 .btn-primary:hover {
-    background: #38FFD2;
+    background: #FFFFFF;
     transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(0, 252, 195, 0.24);
+    box-shadow: 0 0 0 1px var(--champagne-border), 0 14px 36px rgba(94, 31, 168, 0.36);
 }
 
 .btn-primary:active {
@@ -338,17 +395,17 @@ button {
     padding-inline: 24px;
     border-radius: 999px;
     border: 1px solid var(--line-mid);
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(246, 244, 250, 0.04);
     backdrop-filter: blur(12px);
     color: var(--ink-1);
     font-size: 14.5px;
     font-weight: 500;
-    transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease), transform 0.18s var(--ease);
+    transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease), transform 0.2s var(--ease);
 }
 
 .btn-glass:hover {
-    border-color: var(--line-strong);
-    background: rgba(255, 255, 255, 0.09);
+    border-color: var(--champagne-border);
+    background: rgba(223, 196, 146, 0.08);
     transform: translateY(-2px);
 }
 
@@ -388,7 +445,7 @@ button {
     position: fixed;
     inset-block-start: var(--header-h);
     inset-inline: 0;
-    background: rgba(9, 4, 11, 0.98);
+    background: rgba(6, 3, 10, 0.98);
     border-bottom: 1px solid var(--line-mid);
     padding: 20px 24px 28px;
 }
@@ -416,7 +473,7 @@ button {
 }
 
 /* ==========================================================================
-   ACT I: CINEMATIC HERO WITH LIVING GLSL SHADER + SCULPTURAL 99 EMBLEM
+   ACT I: SOVEREIGN HERO (ROYAL #33075F SILK SHADER + PARALLAX 99 SCULPTURE)
    ========================================================================== */
 
 .hero-cinema {
@@ -427,7 +484,7 @@ button {
     justify-content: space-between;
     padding-block-start: calc(var(--header-h) + 32px);
     overflow: hidden;
-    background: radial-gradient(ellipse 80% 70% at 72% 45%, rgba(51, 7, 95, 0.34) 0%, #09040B 72%);
+    background: radial-gradient(ellipse 80% 70% at 70% 45%, rgba(51, 7, 95, 0.44) 0%, #06030A 74%);
 }
 
 .hero-shader {
@@ -445,14 +502,14 @@ button {
     z-index: 1;
     pointer-events: none;
     background:
-        radial-gradient(ellipse 65% 80% at 22% 52%, rgba(9, 4, 11, 0.72) 0%, transparent 70%),
-        linear-gradient(180deg, rgba(9, 4, 11, 0.45) 0%, transparent 22%, transparent 78%, #09040B 100%);
+        radial-gradient(ellipse 68% 82% at 24% 52%, rgba(6, 3, 10, 0.72) 0%, transparent 70%),
+        linear-gradient(180deg, rgba(6, 3, 10, 0.42) 0%, transparent 22%, transparent 78%, #06030A 100%);
 }
 
 html[dir="rtl"] .hero-veil {
     background:
-        radial-gradient(ellipse 65% 80% at 78% 52%, rgba(9, 4, 11, 0.74) 0%, transparent 70%),
-        linear-gradient(180deg, rgba(9, 4, 11, 0.45) 0%, transparent 22%, transparent 78%, #09040B 100%);
+        radial-gradient(ellipse 68% 82% at 76% 52%, rgba(6, 3, 10, 0.74) 0%, transparent 70%),
+        linear-gradient(180deg, rgba(6, 3, 10, 0.42) 0%, transparent 22%, transparent 78%, #06030A 100%);
 }
 
 .hero-gridlines {
@@ -461,8 +518,8 @@ html[dir="rtl"] .hero-veil {
     z-index: 1;
     pointer-events: none;
     background-image:
-        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        linear-gradient(to right, rgba(246, 244, 250, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(246, 244, 250, 0.03) 1px, transparent 1px);
     background-size: 96px 96px;
     mask-image: radial-gradient(ellipse 85% 75% at 50% 48%, black 15%, transparent 80%);
     -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 48%, black 15%, transparent 80%);
@@ -481,11 +538,11 @@ html[dir="rtl"] .hero-veil {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 7px 14px;
+    padding: 7px 15px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(246, 244, 250, 0.04);
     border: 1px solid var(--line-mid);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     margin-block-end: 28px;
 }
 
@@ -493,14 +550,14 @@ html[dir="rtl"] .hero-veil {
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: var(--cyan-99);
-    box-shadow: 0 0 12px rgba(0, 252, 195, 0.85);
+    background: var(--champagne);
+    box-shadow: 0 0 12px rgba(223, 196, 146, 0.8);
 }
 
 .hero-headline {
     font-family: var(--font-display);
     font-weight: 800;
-    font-size: clamp(2.55rem, 5.1vw, 4.45rem);
+    font-size: clamp(2.6rem, 5.1vw, 4.45rem);
     line-height: 1.24;
     color: var(--ink-1);
     margin-block-end: 24px;
@@ -535,6 +592,7 @@ html[lang="en"] .hero-headline {
     display: flex;
     align-items: center;
     justify-content: center;
+    will-change: transform;
 }
 
 .sculpture-stage {
@@ -553,34 +611,34 @@ html[lang="en"] .hero-headline {
 }
 
 .ring-outer {
-    stroke: rgba(255, 255, 255, 0.11);
+    stroke: rgba(246, 244, 250, 0.11);
     stroke-width: 1;
     stroke-dasharray: 4 8;
     transform-origin: center;
-    animation: orbitSpinSlow 46s linear infinite;
+    animation: orbitSpinSlow 48s linear infinite;
 }
 
 .ring-mid {
-    stroke: rgba(0, 252, 195, 0.22);
+    stroke: rgba(223, 196, 146, 0.28);
     stroke-width: 1;
-    stroke-dasharray: 84 260;
+    stroke-dasharray: 88 260;
     transform-origin: center;
-    animation: orbitSpinReverse 28s linear infinite;
+    animation: orbitSpinReverse 30s linear infinite;
 }
 
 .ring-inner {
-    stroke: rgba(255, 255, 255, 0.08);
+    stroke: rgba(196, 174, 255, 0.14);
     stroke-width: 1;
 }
 
 .ring-tick {
-    stroke: rgba(0, 252, 195, 0.55);
+    stroke: rgba(223, 196, 146, 0.58);
     stroke-width: 1.2;
 }
 
 .orbit-beacon {
     transform-origin: 230px 230px;
-    animation: orbitSpinSlow 18s linear infinite;
+    animation: orbitSpinSlow 20s linear infinite;
 }
 
 @keyframes orbitSpinSlow {
@@ -595,7 +653,7 @@ html[lang="en"] .hero-headline {
 
 .emblem-99-shell {
     position: relative;
-    width: 54%;
+    width: 56%;
     aspect-ratio: 1;
     display: grid;
     place-items: center;
@@ -603,12 +661,12 @@ html[lang="en"] .hero-headline {
     will-change: transform;
 }
 
-.emblem-99-shell::before {
-    content: "";
+.emblem-halo {
     position: absolute;
-    inset: -28%;
+    inset: -34%;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 252, 195, 0.18) 0%, rgba(51, 7, 95, 0.22) 45%, transparent 72%);
+    background:
+        radial-gradient(circle, rgba(94, 31, 168, 0.42) 0%, rgba(51, 7, 95, 0.28) 42%, transparent 72%);
     pointer-events: none;
 }
 
@@ -617,7 +675,7 @@ html[lang="en"] .hero-headline {
     z-index: 2;
     width: 100%;
     height: 100%;
-    filter: drop-shadow(0 0 28px rgba(0, 252, 195, 0.26));
+    filter: drop-shadow(0 18px 42px rgba(51, 7, 95, 0.65));
 }
 
 .coord-tag {
@@ -627,13 +685,8 @@ html[lang="en"] .hero-headline {
     white-space: nowrap;
 }
 
-.coord-top {
-    inset-block-start: -14px;
-}
-
-.coord-bottom {
-    inset-block-end: -14px;
-}
+.coord-top { inset-block-start: -14px; }
+.coord-bottom { inset-block-end: -14px; }
 
 /* Hero Bottom Dock */
 .hero-dock-wrap {
@@ -671,7 +724,7 @@ html[lang="en"] .hero-headline {
     padding-inline: 14px;
     border-radius: 999px;
     border: 1px solid var(--line-subtle);
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(246, 244, 250, 0.03);
     font-family: var(--font-mono);
     font-size: 12px;
     color: var(--ink-2);
@@ -680,16 +733,16 @@ html[lang="en"] .hero-headline {
 
 .dock-pill:hover,
 .dock-pill.is-live {
-    border-color: var(--cyan-border);
+    border-color: var(--champagne-border);
     color: var(--ink-1);
-    background: rgba(0, 252, 195, 0.06);
+    background: var(--champagne-soft);
 }
 
 .dock-dot {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--cyan-99);
+    background: var(--champagne);
 }
 
 .scroll-cue {
@@ -708,13 +761,13 @@ html[lang="en"] .scroll-label {
 }
 
 .scroll-cue:hover {
-    color: var(--cyan-99);
+    color: var(--champagne);
 }
 
 .scroll-line {
     width: 36px;
     height: 1px;
-    background: linear-gradient(90deg, var(--cyan-99), transparent);
+    background: linear-gradient(90deg, var(--champagne), transparent);
 }
 
 .hero-horizon-line {
@@ -722,7 +775,7 @@ html[lang="en"] .scroll-label {
     z-index: 2;
     height: 1px;
     width: 100%;
-    background: linear-gradient(90deg, transparent 5%, rgba(0, 252, 195, 0.5) 50%, transparent 95%);
+    background: linear-gradient(90deg, transparent 5%, rgba(223, 196, 146, 0.45) 50%, transparent 95%);
 }
 
 /* ==========================================================================
@@ -730,8 +783,8 @@ html[lang="en"] .scroll-label {
    ========================================================================== */
 
 .manifesto-section {
-    padding-block: 128px;
-    background: linear-gradient(180deg, #09040B 0%, #0D0612 50%, #09040B 100%);
+    padding-block: 132px;
+    background: linear-gradient(180deg, #06030A 0%, #0C0615 50%, #06030A 100%);
 }
 
 .manifesto-inner {
@@ -755,8 +808,8 @@ html[lang="en"] .manifesto-copy {
 }
 
 .m-word {
-    color: rgba(247, 248, 252, 0.16);
-    transition: color 0.22s var(--ease);
+    color: rgba(246, 244, 250, 0.16);
+    transition: color 0.24s var(--ease);
 }
 
 .m-word.is-lit {
@@ -764,11 +817,11 @@ html[lang="en"] .manifesto-copy {
 }
 
 .m-word.is-accent.is-lit {
-    color: var(--cyan-99);
+    color: var(--champagne);
 }
 
 /* ==========================================================================
-   SHARED SECTION ARCHITECTURE + SPECULAR POINTER BORDER CARDS
+   SHARED SECTION ARCHITECTURE + 2026 CONIC BORDER BEAM + SPECULAR CARDS
    ========================================================================== */
 
 .section-block {
@@ -828,7 +881,7 @@ html[lang="en"] .section-title {
     max-width: 58ch;
 }
 
-/* Linear/Vercel-Grade Specular Pointer-Tracking Border Effect */
+/* Linear/Vercel Specular Pointer Border */
 .specular-card {
     position: relative;
     --mx: 50%;
@@ -841,22 +894,50 @@ html[lang="en"] .section-title {
     inset: -1px;
     border-radius: inherit;
     padding: 1px;
-    background: radial-gradient(360px circle at var(--mx) var(--my), rgba(0, 252, 195, 0.52), transparent 55%);
+    background: radial-gradient(380px circle at var(--mx) var(--my), rgba(223, 196, 146, 0.56), transparent 55%);
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s var(--ease);
-    z-index: 3;
+    z-index: 4;
 }
 
 .specular-card:hover::before {
     opacity: 1;
 }
 
+/* 2026 MagicUI Conic Border Beam (Surgical Restraint — Flagship Cards Only) */
+.border-beam-card::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(
+        from var(--beam-angle),
+        transparent 0deg,
+        transparent 285deg,
+        rgba(196, 174, 255, 0.55) 315deg,
+        rgba(223, 196, 146, 0.85) 342deg,
+        transparent 360deg
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: beamOrbit 9s linear infinite;
+    z-index: 3;
+}
+
+@keyframes beamOrbit {
+    from { --beam-angle: 0deg; }
+    to { --beam-angle: 360deg; }
+}
+
 /* ==========================================================================
-   ACT III: SHIPPED FLAGSHIP MONOLITHS
+   ACT III: FLAGSHIP MONOLITHS
    ========================================================================== */
 
 .monolith-flagship {
@@ -872,7 +953,7 @@ html[lang="en"] .section-title {
 .monolith-visual {
     position: relative;
     min-height: 360px;
-    background: #050207;
+    background: #050208;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -890,25 +971,23 @@ html[lang="en"] .section-title {
 }
 
 .aura-exox {
-    background: radial-gradient(ellipse 75% 60% at 50% 45%, rgba(255, 255, 255, 0.08) 0%, rgba(0, 252, 195, 0.06) 45%, transparent 75%);
+    background: radial-gradient(ellipse 75% 60% at 50% 45%, rgba(246, 244, 250, 0.08) 0%, rgba(94, 31, 168, 0.14) 48%, transparent 78%);
 }
 
 .aura-pr {
-    background: radial-gradient(ellipse 75% 65% at 50% 45%, rgba(0, 252, 195, 0.09) 0%, rgba(51, 7, 95, 0.16) 55%, transparent 80%);
+    background: radial-gradient(ellipse 75% 65% at 50% 45%, rgba(94, 31, 168, 0.18) 0%, rgba(51, 7, 95, 0.16) 55%, transparent 82%);
 }
 
 .aura-firx {
-    background: radial-gradient(ellipse 75% 65% at 50% 45%, rgba(0, 252, 195, 0.11) 0%, rgba(14, 116, 144, 0.14) 55%, transparent 80%);
+    background: radial-gradient(ellipse 75% 65% at 50% 45%, rgba(223, 196, 146, 0.10) 0%, rgba(51, 7, 95, 0.18) 55%, transparent 82%);
 }
 
-.monolith-logo-btn {
+.monolith-logo-btn,
+[data-depth-layer] {
     position: relative;
     z-index: 2;
-    transition: transform 0.25s var(--ease);
-}
-
-.monolith-logo-btn:hover {
-    transform: scale(1.03);
+    transition: transform 0.35s var(--ease);
+    will-change: transform;
 }
 
 .monolith-logo {
@@ -929,7 +1008,7 @@ html[lang="en"] .section-title {
     gap: 10px;
     padding: 8px 14px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(246, 244, 250, 0.03);
     border: 1px solid var(--line-subtle);
     font-family: var(--font-mono);
     font-size: 10.5px;
@@ -937,13 +1016,13 @@ html[lang="en"] .section-title {
 }
 
 .sig-core {
-    color: var(--cyan-99);
+    color: var(--champagne);
 }
 
 .sig-line {
     width: 20px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--cyan-99), transparent);
+    background: linear-gradient(90deg, transparent, var(--champagne), transparent);
 }
 
 .stage-horizon-beam {
@@ -951,7 +1030,7 @@ html[lang="en"] .section-title {
     inset-inline: 10%;
     inset-block-end: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(0, 252, 195, 0.65), transparent);
+    background: linear-gradient(90deg, transparent, rgba(223, 196, 146, 0.62), transparent);
 }
 
 .monolith-body {
@@ -973,11 +1052,11 @@ html[lang="en"] .section-title {
 .live-pill {
     font-size: 12px;
     font-weight: 500;
-    color: var(--cyan-99);
+    color: var(--champagne);
     padding: 4px 12px;
     border-radius: 999px;
-    background: var(--cyan-soft);
-    border: 1px solid var(--cyan-border);
+    background: var(--champagne-soft);
+    border: 1px solid var(--champagne-border);
 }
 
 .soft-chip {
@@ -986,7 +1065,7 @@ html[lang="en"] .section-title {
     padding: 4px 12px;
     border-radius: 999px;
     border: 1px solid var(--line-subtle);
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(246, 244, 250, 0.03);
 }
 
 .monolith-title {
@@ -997,7 +1076,7 @@ html[lang="en"] .section-title {
 }
 
 .monolith-title a:hover {
-    color: var(--cyan-99);
+    color: var(--champagne);
 }
 
 .monolith-desc {
@@ -1018,7 +1097,7 @@ html[lang="en"] .section-title {
     position: relative;
     padding-inline-start: 18px;
     font-size: 14px;
-    color: #DCD6E5;
+    color: #DFD9EB;
 }
 
 .monolith-specs li::before,
@@ -1030,7 +1109,7 @@ html[lang="en"] .section-title {
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background: var(--cyan-99);
+    background: var(--champagne);
 }
 
 .monolith-pair {
@@ -1057,7 +1136,7 @@ html[lang="en"] .section-title {
 .monolith-card-stage {
     position: relative;
     min-height: 196px;
-    background: #07030A;
+    background: #07030C;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1095,7 +1174,7 @@ html[lang="en"] .section-title {
     gap: 36px;
     padding: 30px 38px;
     border-radius: var(--r-card);
-    background: linear-gradient(135deg, rgba(0, 132, 61, 0.08) 0%, var(--bg-card) 55%);
+    background: linear-gradient(135deg, rgba(51, 7, 95, 0.22) 0%, var(--bg-card) 58%);
     border: 1px solid var(--line-mid);
 }
 
@@ -1134,12 +1213,12 @@ html[lang="en"] .saudi-seal-copy h3 {
 }
 
 /* ==========================================================================
-   ACT IV: INTERACTIVE ARCHITECTURE EXPLORER
+   ACT IV: INTERACTIVE ARCHITECTURE EXPLORER + LIVE TELEMETRY TRACE
    ========================================================================== */
 
 .explorer-layout {
     display: grid;
-    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    grid-template-columns: minmax(0, 0.90fr) minmax(0, 1.10fr);
     gap: 28px;
     align-items: start;
 }
@@ -1159,8 +1238,8 @@ html[lang="en"] .saudi-seal-copy h3 {
     padding: 20px 22px;
     border-radius: var(--r-card);
     border: 1px solid var(--line-subtle);
-    background: rgba(9, 4, 11, 0.65);
-    transition: border-color 0.22s var(--ease), background-color 0.22s var(--ease);
+    background: rgba(6, 3, 10, 0.65);
+    transition: border-color 0.22s var(--ease), background-color 0.22s var(--ease), transform 0.2s var(--ease);
 }
 
 .rail-item:hover {
@@ -1170,7 +1249,7 @@ html[lang="en"] .saudi-seal-copy h3 {
 
 .rail-item.is-active {
     background: var(--bg-elevated);
-    border-color: var(--cyan-border);
+    border-color: var(--champagne-border);
 }
 
 .rail-num {
@@ -1180,7 +1259,7 @@ html[lang="en"] .saudi-seal-copy h3 {
 }
 
 .rail-item.is-active .rail-num {
-    color: var(--cyan-99);
+    color: var(--champagne);
 }
 
 .rail-copy {
@@ -1204,7 +1283,6 @@ html[lang="en"] .saudi-seal-copy h3 {
     color: var(--ink-2);
 }
 
-/* Sticky Blueprint Viewport */
 .explorer-viewport {
     position: sticky;
     top: calc(var(--header-h) + 24px);
@@ -1214,7 +1292,8 @@ html[lang="en"] .saudi-seal-copy h3 {
     padding: 32px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
+    overflow: hidden;
 }
 
 .vp-head {
@@ -1229,19 +1308,19 @@ html[lang="en"] .saudi-seal-copy h3 {
 
 .vp-pill {
     font-size: 12px;
-    color: var(--cyan-99);
+    color: var(--champagne);
     padding: 4px 12px;
     border-radius: 999px;
-    background: var(--cyan-soft);
-    border: 1px solid var(--cyan-border);
+    background: var(--champagne-soft);
+    border: 1px solid var(--champagne-border);
 }
 
 .vp-diagram {
-    background: #060208;
+    background: #050208;
     border: 1px solid var(--line-subtle);
     border-radius: 14px;
     padding: 18px 14px;
-    min-height: 172px;
+    min-height: 164px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1250,11 +1329,11 @@ html[lang="en"] .saudi-seal-copy h3 {
 .vp-diagram svg {
     width: 100%;
     height: auto;
-    max-height: 152px;
+    max-height: 146px;
 }
 
 .vp-pulse {
-    stroke: var(--cyan-99);
+    stroke: var(--champagne);
     stroke-width: 1.8;
     stroke-linecap: round;
     stroke-dasharray: 22 140;
@@ -1266,10 +1345,60 @@ html[lang="en"] .saudi-seal-copy h3 {
     to { stroke-dashoffset: 0; }
 }
 
+/* 2026 Live Architectural Execution Trace */
+.vp-trace {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.trace-step {
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: var(--bg-card);
+    border: 1px solid var(--line-subtle);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    opacity: 0;
+    transform: translateY(6px);
+    animation: traceReveal 0.42s var(--ease) forwards;
+}
+
+.trace-step:nth-child(2) { animation-delay: 0.1s; }
+.trace-step:nth-child(3) { animation-delay: 0.2s; }
+
+@keyframes traceReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.trace-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--ink-3);
+}
+
+.trace-ok {
+    color: var(--champagne);
+}
+
+.trace-label {
+    font-family: var(--font-en);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-1);
+}
+
 .vp-content {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
 }
 
 .vp-title {
@@ -1307,8 +1436,28 @@ html[lang="en"] .vp-title {
 }
 
 /* ==========================================================================
-   ACT V & VI: PIPELINE + WHY 99
+   ACT V & VI: SCROLL-LIT PIPELINE + WHY 99
    ========================================================================== */
+
+.pipeline-spine {
+    height: 2px;
+    width: 100%;
+    background: var(--line-subtle);
+    border-radius: 999px;
+    margin-block-end: 24px;
+    overflow: hidden;
+}
+
+.pipeline-fill {
+    height: 100%;
+    width: 100%;
+    transform: scaleX(0);
+    background: linear-gradient(90deg, var(--royal-mid), var(--amethyst-silk), var(--champagne));
+    transition: transform 0.25s var(--ease);
+}
+
+html[dir="rtl"] .pipeline-fill { transform-origin: right center; }
+html[dir="ltr"] .pipeline-fill { transform-origin: left center; }
 
 .pipeline-row {
     display: grid;
@@ -1373,7 +1522,7 @@ html[lang="en"] .vp-title {
 
 .metric-num {
     font-size: 24px;
-    color: var(--cyan-99);
+    color: var(--champagne);
 }
 
 .metric-lbl {
@@ -1468,7 +1617,7 @@ html[lang="en"] .contact-title {
 }
 
 .contact-list a:hover {
-    color: var(--cyan-99);
+    color: var(--champagne);
 }
 
 .contact-form {
@@ -1518,9 +1667,9 @@ html[lang="en"] .contact-title {
 }
 
 .scope-chip.is-selected {
-    color: var(--cyan-99);
-    border-color: var(--cyan-border);
-    background: var(--cyan-soft);
+    color: var(--champagne);
+    border-color: var(--champagne-border);
+    background: var(--champagne-soft);
 }
 
 .field-input,
@@ -1552,7 +1701,7 @@ html[dir="rtl"] .input-ltr {
 .field-input:focus,
 .field-textarea:focus {
     outline: none;
-    border-color: var(--cyan-99);
+    border-color: var(--champagne);
 }
 
 .field-textarea {
@@ -1574,9 +1723,9 @@ html[dir="rtl"] .input-ltr {
 
 .form-status.is-success {
     display: block;
-    background: var(--cyan-soft);
-    border: 1px solid var(--cyan-border);
-    color: var(--cyan-99);
+    background: var(--champagne-soft);
+    border: 1px solid var(--champagne-border);
+    color: var(--champagne);
 }
 
 .form-status.is-error {
@@ -1627,7 +1776,7 @@ html[dir="rtl"] .input-ltr {
 }
 
 .footer-links a:hover {
-    color: var(--cyan-99);
+    color: var(--champagne);
 }
 
 .footer-copy {
@@ -1639,14 +1788,14 @@ html[dir="rtl"] .input-ltr {
 }
 
 /* ==========================================================================
-   GPU-COMPOSITED REVEALS + REDUCED MOTION
+   GPU-COMPOSITED SCALE & SETTLE REVEALS + REDUCED MOTION
    ========================================================================== */
 
 [data-enter],
 .reveal {
     opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    transform: translateY(22px) scale(0.985);
+    transition: opacity 0.78s var(--ease), transform 0.78s var(--ease);
 }
 
 [data-delay="1"] { transition-delay: 0.1s; }
@@ -1655,7 +1804,7 @@ html[dir="rtl"] .input-ltr {
 [data-enter].is-visible,
 .reveal.is-visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1669,14 +1818,16 @@ html[dir="rtl"] .input-ltr {
     .ring-outer,
     .ring-mid,
     .orbit-beacon,
-    .vp-pulse {
+    .vp-pulse,
+    .border-beam-card::after {
         animation: none;
     }
-    .m-word {
-        color: var(--ink-1);
-    }
-    .m-word.is-accent {
-        color: var(--cyan-99);
+    .m-word { color: var(--ink-1); }
+    .m-word.is-accent { color: var(--champagne); }
+    .trace-step {
+        opacity: 1;
+        transform: none;
+        animation: none;
     }
 }
 
@@ -1720,7 +1871,8 @@ html[dir="rtl"] .input-ltr {
 
     .monolith-pair,
     .pillars-2x2,
-    .form-row-2 {
+    .form-row-2,
+    .vp-trace {
         grid-template-columns: 1fr;
     }
 
