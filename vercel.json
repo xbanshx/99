@@ -64,6 +64,15 @@
       ]
     },
     {
+      "source": "/(favicon\\.ico|favicon-32x32\\.png|apple-touch-icon\\.png)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, must-revalidate"
+        }
+      ]
+    },
+    {
       "source": "/(assets|img|css|js)/(.*)",
       "headers": [
         {
@@ -73,7 +82,7 @@
       ]
     },
     {
-      "source": "/(.*\\.(?:ico|png|svg|webp|woff2|woff|ttf))",
+      "source": "/(.*\\.(?:webp|woff2|woff|ttf))",
       "headers": [
         {
           "key": "Cache-Control",
