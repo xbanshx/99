@@ -157,7 +157,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/splash.css?v=2.1">
+    <link rel="stylesheet" href="css/splash.css?v=2.2">
 </head>
 
 <body>
@@ -189,14 +189,31 @@
         </div>
     </header>
 
-    <!-- ═══ THE OPTICAL APERTURE — CREATIVE DUAL-WORLD STAGE ═══ -->
+    <!-- ═══ THE OPTICAL APERTURE — 100% GPU COMPOSITOR STAGE (ZERO REFLOW) ═══ -->
     <main class="portal-stage" id="portal-stage" data-focus="idle">
         <h1 class="sr-only" data-i18n="splash-main-heading">مؤسسة 99 للإعلام والتقنية والذكاء الاصطناعي — جدة</h1>
 
-        <!-- Sculptural Architectural Watermark Behind Optical Seam -->
+        <!-- Desktop Pure-GPU Split Backdrop Curtain (Zero flex-basis / layout thrash!) -->
+        <div class="gpu-backdrops" aria-hidden="true">
+            <!-- Base World: 99 Tech & AI -->
+            <div class="world-layer world-tech">
+                <img src="img/cinema/tech-portal.webp" alt="" class="world-photo photo-tech">
+                <div class="world-scrim tech-scrim"></div>
+            </div>
+
+            <!-- Sliding Optical Curtain: 99 Media House (pure translate3d mask!) -->
+            <div class="media-curtain" id="media-curtain">
+                <div class="media-curtain-inner" id="media-curtain-inner">
+                    <img src="img/cinema/stage-hero.webp" alt="" class="world-photo photo-media">
+                    <div class="world-scrim media-scrim"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sculptural Architectural Watermark (GPU translate3d only!) -->
         <div class="stage-watermark" aria-hidden="true" dir="ltr">99</div>
 
-        <!-- Dynamic Gliding Optical Seam + Rotating Aperture Dial (physically locked to split boundary!) -->
+        <!-- Synchronized Gliding Optical Seam + Rotating 99 Aperture Dial (GPU translate3d only!) -->
         <div class="optical-seam" id="optical-seam" aria-hidden="true">
             <div class="seam-blade"></div>
             <div class="aperture-dial">
@@ -226,12 +243,11 @@
             </div>
         </div>
 
-        <!-- DOORWAY 01: 99 MEDIA HOUSE -->
+        <!-- Static 50/50 Doorway Columns (Zero text reflow on hover!) -->
         <a href="media/" class="doorway doorway-media" id="media-side" data-world="media">
-            <div class="door-backdrop" aria-hidden="true">
-                <img src="img/cinema/stage-hero.webp" alt="" class="door-photo photo-media">
-                <div class="door-spot spot-media"></div>
-                <div class="door-scrim media-scrim"></div>
+            <div class="mobile-backdrop" aria-hidden="true">
+                <img src="img/cinema/stage-hero.webp" alt="" class="world-photo photo-media">
+                <div class="world-scrim media-scrim"></div>
             </div>
 
             <div class="door-inner">
@@ -267,12 +283,10 @@
             </div>
         </a>
 
-        <!-- DOORWAY 02: 99 TECH & AI -->
         <a href="tech/" class="doorway doorway-tech" id="tech-side" data-world="tech">
-            <div class="door-backdrop" aria-hidden="true">
-                <img src="img/cinema/tech-portal.webp" alt="" class="door-photo photo-tech">
-                <div class="door-spot spot-tech"></div>
-                <div class="door-scrim tech-scrim"></div>
+            <div class="mobile-backdrop" aria-hidden="true">
+                <img src="img/cinema/tech-portal.webp" alt="" class="world-photo photo-tech">
+                <div class="world-scrim tech-scrim"></div>
             </div>
 
             <div class="door-inner">
@@ -321,7 +335,7 @@
         </div>
     </footer>
 
-    <script src="js/splash-i18n.js?v=2.1"></script>
+    <script src="js/splash-i18n.js?v=2.2"></script>
 </body>
 
 </html>

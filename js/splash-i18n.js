@@ -37,17 +37,6 @@ const splashTranslations = {
 
 let currentLang = localStorage.getItem("lang") || "ar";
 
-function syncSeamPosition(focusWorld) {
-    const stage = document.getElementById("portal-stage");
-    if (!stage) return;
-    const isRtl = document.documentElement.dir === "rtl";
-    let seamX = "50%";
-    if (focusWorld === "media") seamX = isRtl ? "41%" : "59%";
-    else if (focusWorld === "tech") seamX = isRtl ? "59%" : "41%";
-    stage.setAttribute("data-focus", focusWorld || "idle");
-    stage.style.setProperty("--seam-x", seamX);
-}
-
 function switchLang(lang) {
     currentLang = lang;
     localStorage.setItem("lang", lang);
@@ -70,9 +59,6 @@ function switchLang(lang) {
     document.title = lang === "en"
         ? "99 Media & Tech | Broadcast Production & AI Engineering in Jeddah | i99.sa"
         : "99 Media & Tech | مؤسسة تسعة وتسعون للإعلام والتقنية والذكاء الاصطناعي — جدة | i99.sa";
-
-    const stage = document.getElementById("portal-stage");
-    if (stage) syncSeamPosition(stage.getAttribute("data-focus") || "idle");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -85,7 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Live Jeddah Clock (Asia/Riyadh)
     const clockEl = document.getElementById("portal-clock");
     const updateClock = () => {
         if (!clockEl) return;
@@ -103,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateClock();
     setInterval(updateClock, 30000);
 
-    // Synchronized Optical Seam + Lightweight CSS Spotlight + Curtain-Wipe Click
+    // Pure attribute toggle (ZERO pointermove paint, ZERO layout reflow!)
     const stage = document.getElementById("portal-stage");
     const doors = Array.from(document.querySelectorAll(".doorway"));
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -112,19 +97,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (stage && doors.length) {
         doors.forEach((door) => {
             const world = door.getAttribute("data-world");
-
             if (isFine) {
-                door.addEventListener("pointerenter", () => syncSeamPosition(world));
-                door.addEventListener("pointermove", (e) => {
-                    const r = door.getBoundingClientRect();
-                    door.style.setProperty("--mx", `${(e.clientX - r.left).toFixed(0)}px`);
-                    door.style.setProperty("--my", `${(e.clientY - r.top).toFixed(0)}px`);
-                }, { passive: true });
+                door.addEventListener("pointerenter", () => stage.setAttribute("data-focus", world));
             }
+            door.addEventListener("focus", () => stage.setAttribute("data-focus", world));
 
-            door.addEventListener("focus", () => syncSeamPosition(world));
-
-            // Theatrical 260ms curtain-wipe navigation (respects Cmd/Ctrl new-tab)
             door.addEventListener("click", (e) => {
                 if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0 || prefersReduced || window.innerWidth <= 900) {
                     return;
@@ -132,18 +109,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 e.preventDefault();
                 const href = door.getAttribute("href");
                 stage.classList.add(world === "media" ? "is-entering-media" : "is-entering-tech");
-                setTimeout(() => { window.location.href = href; }, 260);
+                setTimeout(() => { window.location.href = href; }, 240);
             });
         });
 
-        stage.addEventListener("pointerleave", () => syncSeamPosition("idle"));
+        stage.addEventListener("pointerleave", () => stage.setAttribute("data-focus", "idle"));
     }
 
-    // Reset curtain state if user navigates back via browser bfcache
     window.addEventListener("pageshow", () => {
         if (stage) {
             stage.classList.remove("is-entering-media", "is-entering-tech");
-            syncSeamPosition("idle");
+            stage.setAttribute("data-focus", "idle");
         }
     });
 });

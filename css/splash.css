@@ -1,8 +1,10 @@
 /* ==========================================================================
-   99 MEDIA & TECH — THE OPTICAL APERTURE PORTAL (v2.1)
-   Dual full-bleed photographic worlds + synchronized gliding seam & rotating
-   99 Aperture Medallion + subtle pointer spotlight + curtain-wipe navigation.
-   Zero WebGL, zero idle rAF — silky 60fps on Intel Macs and mobile.
+   99 MEDIA & TECH — THE OPTICAL APERTURE PORTAL (v2.2 · INTEL-MAC 60FPS)
+   100% GPU-Composited (transform + opacity ONLY):
+   - Zero flex-basis/left layout reflows on hover
+   - Zero pointermove gradient repaints
+   - Zero CSS filter animations
+   - Counter-translated GPU curtain mask + synchronized rotating 99 seal
    ========================================================================== */
 
 @font-face {
@@ -36,7 +38,7 @@
     --font-en: "IBM Plex Sans", sans-serif;
     --font-mono: "IBM Plex Mono", monospace;
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
-    --seam-x: 50%;
+    --dur: 0.48s;
 }
 
 *, *::before, *::after {
@@ -96,7 +98,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     height: 6px;
     border-radius: 50%;
     background: var(--champagne);
-    box-shadow: 0 0 8px rgba(223, 196, 146, 0.65);
 }
 
 .clock-val { color: var(--ink); }
@@ -166,7 +167,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     background: rgba(51, 7, 95, 0.5);
 }
 
-/* ═══ THE OPTICAL APERTURE STAGE ═══ */
+/* ═══ STAGE & 100% GPU SPLIT CURTAIN BACKDROPS ═══ */
 .portal-stage {
     position: relative;
     display: flex;
@@ -176,45 +177,159 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     background: var(--obsidian);
 }
 
-/* Monumental Sculptural 99 Watermark Behind Seam */
+.gpu-backdrops {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.world-layer,
+.media-curtain,
+.media-curtain-inner {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.media-curtain {
+    overflow: hidden;
+    will-change: transform;
+    transition: transform var(--dur) var(--ease);
+}
+
+.media-curtain-inner {
+    will-change: transform;
+    transition: transform var(--dur) var(--ease);
+}
+
+/*
+   RTL (Arabic): Media is RIGHT half, Tech is LEFT half.
+   Idle: Curtain translates +50%, inner counter-translates -50% (shows right 50%).
+   Hover Media: Curtain translates +43%, inner -43% (Media reveals 57% smoothly!).
+   Hover Tech:  Curtain translates +57%, inner -57% (Tech reveals 57% smoothly!).
+*/
+html[dir="rtl"] .media-curtain       { transform: translate3d(50%, 0, 0); }
+html[dir="rtl"] .media-curtain-inner { transform: translate3d(-50%, 0, 0); }
+
+html[dir="rtl"] .portal-stage[data-focus="media"] .media-curtain       { transform: translate3d(43%, 0, 0); }
+html[dir="rtl"] .portal-stage[data-focus="media"] .media-curtain-inner { transform: translate3d(-43%, 0, 0); }
+
+html[dir="rtl"] .portal-stage[data-focus="tech"] .media-curtain       { transform: translate3d(57%, 0, 0); }
+html[dir="rtl"] .portal-stage[data-focus="tech"] .media-curtain-inner { transform: translate3d(-57%, 0, 0); }
+
+html[dir="rtl"] .portal-stage.is-entering-media .media-curtain       { transform: translate3d(0%, 0, 0); }
+html[dir="rtl"] .portal-stage.is-entering-media .media-curtain-inner { transform: translate3d(0%, 0, 0); }
+html[dir="rtl"] .portal-stage.is-entering-tech  .media-curtain       { transform: translate3d(100%, 0, 0); }
+html[dir="rtl"] .portal-stage.is-entering-tech  .media-curtain-inner { transform: translate3d(-100%, 0, 0); }
+
+/*
+   LTR (English): Media is LEFT half, Tech is RIGHT half.
+   Idle: Curtain translates -50%, inner counter-translates +50% (shows left 50%).
+*/
+html[dir="ltr"] .media-curtain       { transform: translate3d(-50%, 0, 0); }
+html[dir="ltr"] .media-curtain-inner { transform: translate3d(50%, 0, 0); }
+
+html[dir="ltr"] .portal-stage[data-focus="media"] .media-curtain       { transform: translate3d(-43%, 0, 0); }
+html[dir="ltr"] .portal-stage[data-focus="media"] .media-curtain-inner { transform: translate3d(43%, 0, 0); }
+
+html[dir="ltr"] .portal-stage[data-focus="tech"] .media-curtain       { transform: translate3d(-57%, 0, 0); }
+html[dir="ltr"] .portal-stage[data-focus="tech"] .media-curtain-inner { transform: translate3d(57%, 0, 0); }
+
+html[dir="ltr"] .portal-stage.is-entering-media .media-curtain       { transform: translate3d(0%, 0, 0); }
+html[dir="ltr"] .portal-stage.is-entering-media .media-curtain-inner { transform: translate3d(0%, 0, 0); }
+html[dir="ltr"] .portal-stage.is-entering-tech  .media-curtain       { transform: translate3d(-100%, 0, 0); }
+html[dir="ltr"] .portal-stage.is-entering-tech  .media-curtain-inner { transform: translate3d(100%, 0, 0); }
+
+.world-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.62;
+    transform: scale3d(1.01, 1.01, 1);
+    will-change: transform, opacity;
+    transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease);
+}
+
+/* Frame each photographic focal point cleanly in its visible half (RTL mirrors monolith into left half!) */
+html[dir="rtl"] .world-tech .world-photo  { transform: scale3d(-1.01, 1.01, 1); object-position: 62% 48%; }
+html[dir="rtl"] .photo-media              { transform: scale3d(-1.01, 1.01, 1); object-position: 35% 50%; }
+html[dir="ltr"] .photo-media              { object-position: 35% 50%; }
+html[dir="ltr"] .photo-tech               { object-position: 62% 48%; }
+
+html[dir="rtl"] .portal-stage[data-focus="media"] .photo-media              { opacity: 0.84; transform: scale3d(-1.035, 1.035, 1); }
+html[dir="rtl"] .portal-stage[data-focus="tech"]  .world-tech .world-photo  { opacity: 0.86; transform: scale3d(-1.035, 1.035, 1); }
+html[dir="ltr"] .portal-stage[data-focus="media"] .photo-media              { opacity: 0.84; transform: scale3d(1.035, 1.035, 1); }
+html[dir="ltr"] .portal-stage[data-focus="tech"]  .photo-tech               { opacity: 0.86; transform: scale3d(1.035, 1.035, 1); }
+
+.portal-stage[data-focus="media"] .photo-tech  { opacity: 0.36; }
+.portal-stage[data-focus="tech"]  .photo-media { opacity: 0.36; }
+
+.world-scrim {
+    position: absolute;
+    inset: 0;
+}
+
+.media-scrim {
+    background: linear-gradient(180deg, rgba(5, 2, 9, 0.72) 0%, rgba(16, 6, 30, 0.34) 48%, rgba(5, 2, 9, 0.90) 100%);
+}
+
+.tech-scrim {
+    background: linear-gradient(180deg, rgba(5, 2, 9, 0.72) 0%, rgba(10, 4, 22, 0.32) 48%, rgba(5, 2, 9, 0.92) 100%);
+}
+
+/* ═══ SCULPTURAL 99 WATERMARK & SYNCHRONIZED SEAM (PURE GPU TRANSLATE3D!) ═══ */
 .stage-watermark {
     position: absolute;
     top: 50%;
-    left: var(--seam-x);
-    transform: translate(-50%, -52%);
+    left: 50%;
+    transform: translate3d(-50%, -52%, 0);
     z-index: 4;
     font-family: var(--font-display);
     font-weight: 800;
-    font-size: clamp(14rem, 25vw, 24rem);
+    font-size: clamp(13rem, 23vw, 22rem);
     line-height: 0.85;
     color: transparent;
-    -webkit-text-stroke: 1px rgba(247, 244, 238, 0.075);
+    -webkit-text-stroke: 1px rgba(247, 244, 238, 0.08);
     pointer-events: none;
     user-select: none;
-    transition: left 0.68s var(--ease), -webkit-text-stroke-color 0.45s ease, transform 0.68s var(--ease);
+    will-change: transform, opacity;
+    transition: transform var(--dur) var(--ease), opacity var(--dur) ease;
 }
 
-.portal-stage[data-focus="media"] .stage-watermark {
-    -webkit-text-stroke-color: rgba(223, 196, 146, 0.14);
-}
-
-.portal-stage[data-focus="tech"] .stage-watermark {
-    -webkit-text-stroke-color: rgba(183, 148, 255, 0.14);
-}
-
-/* Synchronized Gliding Optical Seam + Rotating Aperture Dial */
 .optical-seam {
     position: absolute;
     inset-block: 0;
-    left: var(--seam-x);
-    transform: translateX(-50%);
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
     z-index: 16;
     pointer-events: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: left 0.68s var(--ease), opacity 0.35s ease;
+    will-change: transform, opacity;
+    transition: transform var(--dur) var(--ease), opacity 0.25s ease;
 }
+
+/* Exact ±7vw shift matches the 43%/57% curtain boundary mathematically with ZERO layout! */
+html[dir="rtl"] .portal-stage[data-focus="media"] .optical-seam    { transform: translate3d(calc(-50% - 7vw), 0, 0); }
+html[dir="rtl"] .portal-stage[data-focus="media"] .stage-watermark { transform: translate3d(calc(-50% - 7vw), -52%, 0); opacity: 0.9; }
+html[dir="rtl"] .portal-stage[data-focus="tech"]  .optical-seam    { transform: translate3d(calc(-50% + 7vw), 0, 0); }
+html[dir="rtl"] .portal-stage[data-focus="tech"]  .stage-watermark { transform: translate3d(calc(-50% + 7vw), -52%, 0); opacity: 0.9; }
+
+html[dir="ltr"] .portal-stage[data-focus="media"] .optical-seam    { transform: translate3d(calc(-50% + 7vw), 0, 0); }
+html[dir="ltr"] .portal-stage[data-focus="media"] .stage-watermark { transform: translate3d(calc(-50% + 7vw), -52%, 0); opacity: 0.9; }
+html[dir="ltr"] .portal-stage[data-focus="tech"]  .optical-seam    { transform: translate3d(calc(-50% - 7vw), 0, 0); }
+html[dir="ltr"] .portal-stage[data-focus="tech"]  .stage-watermark { transform: translate3d(calc(-50% - 7vw), -52%, 0); opacity: 0.9; }
+
+.portal-stage.is-entering-media .optical-seam,
+.portal-stage.is-entering-tech  .optical-seam,
+.portal-stage.is-entering-media .stage-watermark,
+.portal-stage.is-entering-tech  .stage-watermark { opacity: 0; }
 
 .seam-blade {
     position: absolute;
@@ -223,20 +338,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     background: linear-gradient(
         180deg,
         transparent 0%,
-        rgba(223, 196, 146, 0.42) 22%,
-        rgba(247, 244, 238, 0.65) 50%,
-        rgba(183, 148, 255, 0.42) 78%,
+        rgba(223, 196, 146, 0.45) 22%,
+        rgba(247, 244, 238, 0.72) 50%,
+        rgba(183, 148, 255, 0.45) 78%,
         transparent 100%
     );
-    transition: background 0.4s ease, box-shadow 0.4s ease;
-}
-
-.portal-stage[data-focus="media"] .seam-blade {
-    box-shadow: 0 0 18px rgba(223, 196, 146, 0.42);
-}
-
-.portal-stage[data-focus="tech"] .seam-blade {
-    box-shadow: 0 0 18px rgba(183, 148, 255, 0.48);
 }
 
 .aperture-dial {
@@ -245,173 +351,63 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     height: 116px;
     display: grid;
     place-items: center;
-    animation: dialReveal 0.55s var(--ease) both;
 }
 
 .dial-ring {
     position: absolute;
     inset: 0;
-    color: rgba(247, 244, 238, 0.45);
-    transition: transform 0.72s var(--ease);
+    color: rgba(247, 244, 238, 0.48);
+    will-change: transform;
+    transition: transform var(--dur) var(--ease);
 }
 
-.portal-stage[data-focus="media"] .dial-ring { transform: rotate(52deg) scale(1.06); }
-.portal-stage[data-focus="tech"] .dial-ring { transform: rotate(-52deg) scale(1.06); }
+.portal-stage[data-focus="media"] .dial-ring { transform: rotate(52deg) scale3d(1.06, 1.06, 1); }
+.portal-stage[data-focus="tech"]  .dial-ring { transform: rotate(-52deg) scale3d(1.06, 1.06, 1); }
 
 .center-seal {
     position: relative;
     z-index: 2;
-    width: 70px;
-    height: 70px;
+    width: 68px;
+    height: 68px;
     border-radius: 50%;
     background: var(--ivory);
     display: grid;
     place-items: center;
-    box-shadow:
-        0 0 0 7px rgba(5, 2, 9, 0.88),
-        0 0 0 8px rgba(223, 196, 146, 0.34),
-        0 20px 44px rgba(0, 0, 0, 0.6);
-    transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease);
+    box-shadow: 0 0 0 7px rgba(5, 2, 9, 0.9), 0 0 0 8px rgba(223, 196, 146, 0.42);
+    will-change: transform;
+    transition: transform 0.35s var(--ease);
 }
 
-.portal-stage[data-focus="media"] .center-seal {
-    transform: scale(1.05);
-    box-shadow:
-        0 0 0 7px rgba(5, 2, 9, 0.9),
-        0 0 0 9px rgba(223, 196, 146, 0.75),
-        0 20px 48px rgba(223, 196, 146, 0.18);
-}
+.portal-stage[data-focus="media"] .center-seal,
+.portal-stage[data-focus="tech"]  .center-seal { transform: scale3d(1.06, 1.06, 1); }
 
-.portal-stage[data-focus="tech"] .center-seal {
-    transform: scale(1.05);
-    box-shadow:
-        0 0 0 7px rgba(5, 2, 9, 0.9),
-        0 0 0 9px rgba(183, 148, 255, 0.75),
-        0 20px 48px rgba(106, 47, 217, 0.3);
-}
-
-/* ═══ DUAL PHOTOGRAPHIC DOORWAYS ═══ */
+/* ═══ STATIC 50/50 EDITORIAL DOORWAYS (ZERO REFLOW!) ═══ */
 .doorway {
     position: relative;
+    z-index: 6;
     flex: 1 1 50%;
     min-width: 0;
     display: flex;
     align-items: stretch;
-    overflow: hidden;
-    padding: 96px clamp(28px, 4.5vw, 72px) 78px;
-    transition: flex-basis 0.68s var(--ease), opacity 0.45s ease;
-    --mx: 50%;
-    --my: 50%;
+    padding: 96px clamp(28px, 5vw, 76px) 78px;
+    transition: opacity 0.35s ease;
 }
 
-/* Synchronized Desktop Expansion (59% / 41% matches --seam-x exactly!) */
-@media (min-width: 901px) {
-    .portal-stage[data-focus="media"] .doorway-media { flex-basis: 59%; }
-    .portal-stage[data-focus="media"] .doorway-tech  { flex-basis: 41%; }
-    .portal-stage[data-focus="tech"]  .doorway-tech  { flex-basis: 59%; }
-    .portal-stage[data-focus="tech"]  .doorway-media { flex-basis: 41%; }
+.mobile-backdrop { display: none; }
 
-    /* Curtain-wipe page transition on click */
-    .portal-stage.is-entering-media .doorway-media { flex-basis: 100%; }
-    .portal-stage.is-entering-media .doorway-tech  { flex-basis: 0%; opacity: 0; padding-inline: 0; }
-    .portal-stage.is-entering-tech  .doorway-tech  { flex-basis: 100%; }
-    .portal-stage.is-entering-tech  .doorway-media { flex-basis: 0%; opacity: 0; padding-inline: 0; }
-    .portal-stage.is-entering-media .optical-seam,
-    .portal-stage.is-entering-tech  .optical-seam  { opacity: 0; }
-}
+.portal-stage[data-focus="media"] .doorway-tech  { opacity: 0.62; }
+.portal-stage[data-focus="tech"]  .doorway-media { opacity: 0.62; }
+.portal-stage.is-entering-media .doorway-tech,
+.portal-stage.is-entering-tech  .doorway-media   { opacity: 0; }
 
-.door-backdrop {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.door-photo {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.56;
-    transform: scale(1.02);
-    filter: contrast(1.06) saturate(0.95);
-    transition: transform 0.85s var(--ease), opacity 0.6s var(--ease), filter 0.6s var(--ease);
-    animation: photoSettle 0.7s var(--ease) both;
-}
-
-/* Precision framing of each subject inside its doorway */
-.photo-media { object-position: 48% 50%; }
-.photo-tech  { object-position: 66% 48%; }
-
-.portal-stage[data-focus="media"] .doorway-media .door-photo {
-    opacity: 0.82;
-    transform: scale(1.065);
-    filter: contrast(1.08) saturate(1.04);
-}
-.portal-stage[data-focus="media"] .doorway-tech .door-photo {
-    opacity: 0.34;
-    transform: scale(1);
-}
-
-.portal-stage[data-focus="tech"] .doorway-tech .door-photo {
-    opacity: 0.84;
-    transform: scale(1.065);
-    filter: contrast(1.08) saturate(1.06);
-}
-.portal-stage[data-focus="tech"] .doorway-media .door-photo {
-    opacity: 0.34;
-    transform: scale(1);
-}
-
-/* Lightweight Pointer Optical Spotlight (CSS variables only — 0% idle CPU) */
-.door-spot {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 0.45s ease;
-}
-
-.doorway:hover .door-spot { opacity: 1; }
-
-.spot-media {
-    background: radial-gradient(520px circle at var(--mx) var(--my), rgba(223, 196, 146, 0.16), transparent 65%);
-}
-
-.spot-tech {
-    background: radial-gradient(520px circle at var(--mx) var(--my), rgba(167, 123, 255, 0.19), transparent 65%);
-}
-
-.door-scrim {
-    position: absolute;
-    inset: 0;
-}
-
-.media-scrim {
-    background:
-        radial-gradient(ellipse 80% 70% at 50% 44%, rgba(51, 7, 95, 0.24), transparent 72%),
-        linear-gradient(180deg, rgba(5, 2, 9, 0.74) 0%, rgba(5, 2, 9, 0.32) 48%, rgba(5, 2, 9, 0.90) 100%);
-}
-
-.tech-scrim {
-    background:
-        radial-gradient(ellipse 80% 70% at 56% 44%, rgba(51, 7, 95, 0.28), transparent 72%),
-        linear-gradient(180deg, rgba(5, 2, 9, 0.74) 0%, rgba(7, 3, 14, 0.30) 48%, rgba(5, 2, 9, 0.92) 100%);
-}
-
-/* ═══ INNER EDITORIAL COMPOSITION ═══ */
 .door-inner {
-    position: relative;
-    z-index: 6;
     width: 100%;
-    max-width: 560px;
+    max-width: 520px;
     margin-inline: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 24px;
-    animation: copyRise 0.55s var(--ease) 0.08s both;
 }
 
 .door-top {
@@ -434,13 +430,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .door-badge {
     font-size: 10px;
     padding: 4px 10px;
-    border: 1px solid rgba(223, 196, 146, 0.32);
+    border: 1px solid rgba(223, 196, 146, 0.34);
     color: var(--champagne);
-    background: rgba(5, 2, 9, 0.52);
+    background: rgba(5, 2, 9, 0.56);
 }
 
 .badge-tech {
-    border-color: rgba(183, 148, 255, 0.34);
+    border-color: rgba(183, 148, 255, 0.36);
     color: var(--royal-violet);
 }
 
@@ -462,11 +458,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .door-title {
     font-family: var(--font-display);
     font-weight: 800;
-    font-size: clamp(2.2rem, 4.2vw, 3.8rem);
-    line-height: 1.14;
+    font-size: clamp(2.15rem, 4vw, 3.65rem);
+    line-height: 1.15;
     color: var(--ink);
-    text-shadow: 0 8px 28px rgba(5, 2, 9, 0.45);
-    transition: transform 0.45s var(--ease), color 0.3s ease;
+    transition: transform 0.35s var(--ease), color 0.25s ease;
 }
 
 html[lang="en"] .door-title {
@@ -475,14 +470,14 @@ html[lang="en"] .door-title {
     letter-spacing: -0.025em;
 }
 
-.doorway-media:hover .door-title { color: var(--champagne); transform: translateY(-3px); }
-.doorway-tech:hover  .door-title { color: #F1E8FF; transform: translateY(-3px); }
+.doorway-media:hover .door-title { color: var(--champagne); transform: translate3d(0, -3px, 0); }
+.doorway-tech:hover  .door-title { color: #F1E8FF; transform: translate3d(0, -3px, 0); }
 
 .door-desc {
     font-size: clamp(14.5px, 1.08vw, 16px);
     line-height: 1.82;
     color: var(--ink-2);
-    max-width: 44ch;
+    max-width: 42ch;
 }
 
 .door-footer {
@@ -508,8 +503,8 @@ html[lang="en"] .door-title {
     flex-shrink: 0;
 }
 
-.proof-gold   { background: var(--champagne); box-shadow: 0 0 10px rgba(223, 196, 146, 0.7); }
-.proof-violet { background: var(--royal-violet); box-shadow: 0 0 10px rgba(183, 148, 255, 0.8); }
+.proof-gold   { background: var(--champagne); }
+.proof-violet { background: var(--royal-violet); }
 
 .door-bottom-row {
     display: flex;
@@ -543,7 +538,7 @@ html[lang="en"] .door-title {
     font-size: 13.5px;
     font-weight: 600;
     white-space: nowrap;
-    transition: transform 0.25s var(--ease), background-color 0.25s ease, border-color 0.25s ease;
+    transition: transform 0.25s var(--ease), background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .cta-gold {
@@ -554,11 +549,11 @@ html[lang="en"] .door-title {
 .doorway-media:hover .cta-gold,
 .doorway-media:focus-visible .cta-gold {
     background: var(--champagne);
-    transform: translateY(-2px);
+    transform: translate3d(0, -2px, 0);
 }
 
 .cta-royal {
-    background: rgba(51, 7, 95, 0.82);
+    background: rgba(51, 7, 95, 0.85);
     border: 1px solid rgba(194, 168, 255, 0.48);
     color: var(--ink);
 }
@@ -567,7 +562,7 @@ html[lang="en"] .door-title {
 .doorway-tech:focus-visible .cta-royal {
     background: var(--royal-99);
     border-color: #D8C4FF;
-    transform: translateY(-2px);
+    transform: translate3d(0, -2px, 0);
 }
 
 /* ═══ MINIMAL FOOTER STRIP ═══ */
@@ -609,25 +604,10 @@ html[lang="en"] .door-title {
     outline-offset: -4px;
 }
 
-/* ═══ CHOREOGRAPHED ZERO-LOADER ENTRANCE ═══ */
-@keyframes photoSettle {
-    from { transform: scale(1.07); opacity: 0.15; }
-    to   { transform: scale(1.02); opacity: 0.56; }
-}
-
-@keyframes copyRise {
-    from { opacity: 0; transform: translateY(14px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes dialReveal {
-    from { opacity: 0; transform: scale(0.84); }
-    to   { opacity: 1; transform: scale(1); }
-}
-
 @media (prefers-reduced-motion: reduce) {
-    .door-photo, .door-inner, .aperture-dial { animation: none !important; }
-    .doorway, .optical-seam, .stage-watermark, .dial-ring, .door-photo { transition: none !important; }
+    .media-curtain, .media-curtain-inner, .optical-seam, .stage-watermark, .dial-ring, .world-photo {
+        transition: none !important;
+    }
 }
 
 /* ═══ RESPONSIVE (TABLET & MOBILE) ═══ */
@@ -635,7 +615,7 @@ html[lang="en"] .door-title {
     .portal-header {
         grid-template-columns: auto auto;
         padding-inline: 18px;
-        background: rgba(5, 2, 9, 0.90);
+        background: rgba(5, 2, 9, 0.92);
         border-bottom: 1px solid var(--line);
     }
     .portal-live, .portal-wa, .brand-est { display: none; }
@@ -646,16 +626,25 @@ html[lang="en"] .door-title {
         padding-block-start: 68px;
     }
 
-    .stage-watermark, .optical-seam { display: none; }
+    .gpu-backdrops, .stage-watermark, .optical-seam { display: none; }
 
     .doorway {
         flex: 1 1 auto;
         min-height: 50dvh;
         padding: 40px 22px 44px;
+        overflow: hidden;
         border-bottom: 1px solid rgba(223, 196, 146, 0.22);
     }
 
-    .door-photo { opacity: 0.58; }
+    .mobile-backdrop {
+        display: block;
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .door-inner { position: relative; z-index: 2; }
 
     .portal-footer {
         position: static;
