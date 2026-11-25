@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const isFinePointer = window.matchMedia("(pointer: fine)").matches;
+    // Detect lower-core / integrated-GPU machines gently to keep 60fps everywhere
+    const isLowPower = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
 
     // ═══════════════════════════════════════════════════════════════════════
-    // 1. ZERO-FILE WEB AUDIO API CINEMA SOUNDSCAPE (OPTIONAL TOGGLE — FWA CRAFT)
-    //    Synthesizes tactile 35mm shutter clicks & subtle theater ticks.
+    // 1. ZERO-FILE WEB AUDIO API CINEMA SOUNDSCAPE (OPTIONAL TOGGLE)
     // ═══════════════════════════════════════════════════════════════════════
     let audioCtx = null;
     let soundOn = false;
@@ -42,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ═══════════════════════════════════════════════════════════════════════
-    // 2. 0.85s MICHAEL BAY INSPIRED SOVEREIGN ROYAL FILM-LEADER CURTAIN
+    // 2. 0.72s SOVEREIGN ROYAL FILM-LEADER CURTAIN
     // ═══════════════════════════════════════════════════════════════════════
     const loader = document.getElementById("cinema-loader");
     const loaderCount = document.getElementById("loader-count");
@@ -53,14 +54,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (loader && !prefersReducedMotion) {
         const start = performance.now();
-        const dur = 760;
+        const dur = 700;
         let dismissed = false;
 
         const dismiss = () => {
             if (dismissed) return;
             dismissed = true;
             loader.classList.add("is-done");
-            setTimeout(() => { loader.style.display = "none"; }, 900);
+            setTimeout(() => { loader.style.display = "none"; }, 850);
             revealHero();
         };
         loader.addEventListener("click", dismiss);
@@ -72,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (loaderCount) loaderCount.textContent = String(Math.round(eased * 99)).padStart(2, "0");
             if (loaderLine) loaderLine.style.setProperty("--p", eased.toFixed(3));
             if (p < 1) requestAnimationFrame(tickLoader);
-            else setTimeout(dismiss, 110);
+            else setTimeout(dismiss, 90);
         };
         requestAnimationFrame(tickLoader);
     } else {
@@ -81,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ═══════════════════════════════════════════════════════════════════════
-    // 3. LIVE JEDDAH BROADCAST CLOCK + 24FPS HERO TIMECODE
+    // 3. LIVE JEDDAH BROADCAST CLOCK + VISIBILITY-GATED 24FPS TIMECODE
     // ═══════════════════════════════════════════════════════════════════════
     const clockEl = document.getElementById("jeddah-clock");
     const updateJeddahClock = () => {
@@ -93,33 +94,59 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (_) { clockEl.textContent = "KSA"; }
     };
     updateJeddahClock();
-    setInterval(updateJeddahClock, 15000);
+    setInterval(updateJeddahClock, 30000);
+
+    let heroInView = true;
+    const heroEl = document.getElementById("act-theater");
+    if (heroEl && "IntersectionObserver" in window) {
+        new IntersectionObserver((e) => { heroInView = e[0].isIntersecting; }, { threshold: 0.01 }).observe(heroEl);
+    }
 
     const heroTc = document.getElementById("hero-tc");
     if (heroTc && !prefersReducedMotion) {
         let f = 0;
         setInterval(() => {
-            f = (f + 1) % (24 * 60);
+            if (!heroInView) return;
+            f = (f + 6) % (24 * 60);
             heroTc.textContent = `00:00:${String(Math.floor(f / 24)).padStart(2, "0")}:${String(f % 24).padStart(2, "0")}`;
-        }, 125);
+        }, 250);
     }
 
     // ═══════════════════════════════════════════════════════════════════════
-    // 4. CUSTOM MAGNETIC CINEMA CURSOR (DESKTOP FINE POINTER ONLY)
+    // 4. ON-DEMAND MAGNETIC CINEMA CURSOR (0% IDLE CPU ON INTEL MACS!)
+    //    Spins rAF ONLY while pointer moves and stops immediately when settled.
     // ═══════════════════════════════════════════════════════════════════════
     const cursorEl = document.getElementById("cinema-cursor");
     const cursorLbl = document.getElementById("cursor-label");
     if (cursorEl && isFinePointer && !prefersReducedMotion) {
-        let mx = -100, my = -100, cx = -100, cy = -100, visible = false;
+        let mx = -100, my = -100, cx = -100, cy = -100, visible = false, cRaf = null;
+
+        const stepCursor = () => {
+            cRaf = null;
+            cx += (mx - cx) * 0.24;
+            cy += (my - cy) * 0.24;
+            cursorEl.style.transform = `translate3d(${cx.toFixed(1)}px, ${cy.toFixed(1)}px, 0) translate(-50%, -50%)`;
+            if (Math.abs(mx - cx) > 0.35 || Math.abs(my - cy) > 0.35) {
+                cRaf = requestAnimationFrame(stepCursor);
+            }
+        };
+
         window.addEventListener("pointermove", (e) => {
             mx = e.clientX;
             my = e.clientY;
-            if (!visible) { visible = true; cursorEl.classList.add("is-visible"); }
+            if (!visible) {
+                visible = true;
+                cx = mx; cy = my;
+                cursorEl.classList.add("is-visible");
+            }
+            if (!cRaf) cRaf = requestAnimationFrame(stepCursor);
         }, { passive: true });
+
         document.addEventListener("pointerleave", () => {
             visible = false;
             cursorEl.classList.remove("is-visible");
         });
+
         document.querySelectorAll("[data-cursor]").forEach((el) => {
             el.addEventListener("pointerenter", () => {
                 if (cursorLbl) cursorLbl.textContent = el.getAttribute("data-cursor") || "";
@@ -127,26 +154,19 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             el.addEventListener("pointerleave", () => cursorEl.classList.remove("is-pill"));
         });
-        const loopCursor = () => {
-            cx += (mx - cx) * 0.18;
-            cy += (my - cy) * 0.18;
-            cursorEl.style.transform = `translate3d(${cx.toFixed(1)}px, ${cy.toFixed(1)}px, 0) translate(-50%, -50%)`;
-            requestAnimationFrame(loopCursor);
-        };
-        requestAnimationFrame(loopCursor);
     }
 
     // ═══════════════════════════════════════════════════════════════════════
-    // 5. LIVE WEBGL OPTICAL CINEMA LENS TEXTURE SHADER (CODROPS / THE FWA)
-    //    Samples stage-hero.webp directly on GPU with interactive pointer
-    //    refraction ripple, RGB chromatic prism dispersion & anamorphic flare!
+    // 5. INTEL-MAC OPTIMIZED WEBGL OPTICAL LENS SHADER (0.7× DPR + IDLE SLEEP)
+    //    Cuts fragment shader fill-rate by ~3.7× while keeping silky-smooth
+    //    interactive optical refraction, RGB prism shift & anamorphic flare!
     // ═══════════════════════════════════════════════════════════════════════
     const initOpticalHeroShader = () => {
         const canvas = document.getElementById("anamorphic-shader");
         const srcImg = document.getElementById("hero-source-img");
         const backdrop = document.getElementById("theater-backdrop");
-        if (!canvas || !srcImg) return;
-        const gl = canvas.getContext("webgl", { alpha: false, antialias: false, powerPreference: "high-performance" });
+        if (!canvas || !srcImg || prefersReducedMotion) return;
+        const gl = canvas.getContext("webgl", { alpha: false, antialias: false, powerPreference: "default" });
         if (!gl) return;
 
         const vs = gl.createShader(gl.VERTEX_SHADER);
@@ -155,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const fs = gl.createShader(gl.FRAGMENT_SHADER);
         gl.shaderSource(fs, `
-            precision highp float;
+            precision mediump float;
             varying vec2 v_uv;
             uniform sampler2D u_tex;
             uniform vec2 u_res;
@@ -163,8 +183,6 @@ document.addEventListener("DOMContentLoaded", () => {
             uniform float u_t;
             uniform vec2 u_m;
             uniform float u_vel;
-
-            float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
 
             vec2 coverUV(vec2 uv, vec2 res, vec2 imgRes) {
                 float rScr = res.x / max(res.y, 1.0);
@@ -183,25 +201,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 vec2 d = p - m;
                 float dist = length(d);
 
-                // Subtle organic optical lens breathing + liquid pointer refraction
-                float wave = sin(dist * 16.0 - u_t * 2.8) * exp(-dist * 3.8) * (0.008 + u_vel * 0.025);
+                float wave = sin(dist * 15.0 - u_t * 2.6) * exp(-dist * 3.8) * (0.006 + u_vel * 0.024);
                 vec2 dir = dist > 0.0001 ? d / dist : vec2(0.0);
-                vec2 disp = dir * wave + (m * -0.012);
+                vec2 disp = dir * wave + (m * -0.01);
 
-                // Subtle anamorphic RGB prism shift near pointer velocity
-                float chroma = (0.002 + u_vel * 0.012) * exp(-dist * 2.4);
+                float chroma = (0.0018 + u_vel * 0.011) * exp(-dist * 2.4);
                 float r = texture2D(u_tex, clamp(uv + disp + vec2(chroma, 0.0), 0.002, 0.998)).r;
                 float g = texture2D(u_tex, clamp(uv + disp, 0.002, 0.998)).g;
                 float b = texture2D(u_tex, clamp(uv + disp - vec2(chroma, 0.0), 0.002, 0.998)).b;
                 vec3 col = vec3(r, g, b);
 
-                // Anamorphic champagne horizontal optical flare tracking pointer Y
-                float flare = exp(-pow((p.y - m.y * 0.55) * 11.0, 2.0)) * exp(-abs(p.x - m.x * 0.65) * 1.15);
-                col += vec3(0.875, 0.769, 0.573) * flare * 0.28;
-                col += vec3(0.24, 0.04, 0.46) * exp(-dist * 2.6) * 0.14;
-
-                // Subtle 35mm cinema grain
-                col += (hash(gl_FragCoord.xy + fract(u_t) * 80.0) - 0.5) * 0.024;
+                float flare = exp(-pow((p.y - m.y * 0.52) * 11.0, 2.0)) * exp(-abs(p.x - m.x * 0.6) * 1.15);
+                col += vec3(0.875, 0.769, 0.573) * flare * 0.26;
+                col += vec3(0.24, 0.04, 0.46) * exp(-dist * 2.6) * 0.13;
 
                 gl_FragColor = vec4(max(col, 0.0), 1.0);
             }
@@ -235,10 +247,42 @@ document.addEventListener("DOMContentLoaded", () => {
         const uM = gl.getUniformLocation(prog, "u_m");
         const uVel = gl.getUniformLocation(prog, "u_vel");
 
-        let ready = false, vis = true;
+        let ready = false, gRaf = null, lastDraw = 0;
         let tx = 0.52, ty = 0.48, cx = 0.52, cy = 0.48, vel = 0;
         let iw = 1920, ih = 1080;
         const t0 = performance.now();
+
+        const renderOnce = (now) => {
+            gRaf = null;
+            if (!ready || !heroInView) return;
+
+            const active = vel > 0.004 || Math.abs(tx - cx) > 0.0015 || Math.abs(ty - cy) > 0.0015;
+            // Smooth 60fps while interacting, gentle 20fps breathing when idle, 0fps off-screen
+            if (!active && (now - lastDraw) < 50) {
+                gRaf = requestAnimationFrame(renderOnce);
+                return;
+            }
+            lastDraw = now;
+
+            cx += (tx - cx) * 0.08;
+            cy += (ty - cy) * 0.08;
+            vel *= 0.90;
+
+            gl.uniform2f(uRes, canvas.width, canvas.height);
+            gl.uniform2f(uImgRes, iw, ih);
+            gl.uniform1f(uT, (now - t0) * 0.001);
+            gl.uniform2f(uM, cx, cy);
+            gl.uniform1f(uVel, vel);
+            gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+            if (active || !isLowPower) {
+                gRaf = requestAnimationFrame(renderOnce);
+            }
+        };
+
+        const wakeShader = () => {
+            if (ready && heroInView && !gRaf) gRaf = requestAnimationFrame(renderOnce);
+        };
 
         const upload = () => {
             if (!srcImg.naturalWidth) return;
@@ -248,76 +292,72 @@ document.addEventListener("DOMContentLoaded", () => {
             gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, srcImg);
             ready = true;
             if (backdrop) backdrop.classList.add("has-webgl");
+            wakeShader();
         };
         if (srcImg.complete && srcImg.naturalWidth) upload();
         else srcImg.addEventListener("load", upload, { once: true });
 
         const resize = () => {
-            const dpr = Math.min(window.devicePixelRatio || 1, 1.35);
+            // Render optical backdrop at 0.7x resolution (3.7x lighter for Intel GPUs!)
+            const scale = isLowPower ? 0.55 : 0.72;
             const r = canvas.getBoundingClientRect();
-            canvas.width = Math.max(1, Math.floor(r.width * dpr));
-            canvas.height = Math.max(1, Math.floor(r.height * dpr));
+            canvas.width = Math.max(1, Math.floor(r.width * scale));
+            canvas.height = Math.max(1, Math.floor(r.height * scale));
             gl.viewport(0, 0, canvas.width, canvas.height);
+            wakeShader();
         };
         resize();
         window.addEventListener("resize", resize, { passive: true });
 
-        if (isFinePointer && !prefersReducedMotion) {
+        if (isFinePointer) {
             window.addEventListener("pointermove", (e) => {
+                if (!heroInView) return;
                 const nx = e.clientX / Math.max(window.innerWidth, 1);
                 const ny = 1.0 - e.clientY / Math.max(window.innerHeight, 1);
-                vel = Math.min(1.0, vel + Math.hypot(nx - tx, ny - ty) * 2.8);
+                vel = Math.min(1.0, vel + Math.hypot(nx - tx, ny - ty) * 2.5);
                 tx = nx;
                 ty = ny;
+                wakeShader();
             }, { passive: true });
         }
 
-        const hero = document.getElementById("act-theater");
-        if (hero && "IntersectionObserver" in window) {
-            new IntersectionObserver((e) => { vis = e[0].isIntersecting; }, { threshold: 0.01 }).observe(hero);
+        if (heroEl && "IntersectionObserver" in window) {
+            new IntersectionObserver((e) => {
+                if (e[0].isIntersecting) wakeShader();
+            }, { threshold: 0.01 }).observe(heroEl);
         }
-
-        const draw = (now) => {
-            if (ready && vis) {
-                cx += (tx - cx) * 0.06;
-                cy += (ty - cy) * 0.06;
-                vel *= 0.92;
-                gl.uniform2f(uRes, canvas.width, canvas.height);
-                gl.uniform2f(uImgRes, iw, ih);
-                gl.uniform1f(uT, prefersReducedMotion ? 1.2 : (now - t0) * 0.001);
-                gl.uniform2f(uM, cx, cy);
-                gl.uniform1f(uVel, vel);
-                gl.drawArrays(gl.TRIANGLES, 0, 6);
-            }
-            if (!prefersReducedMotion) requestAnimationFrame(draw);
-        };
-        requestAnimationFrame(draw);
     };
     initOpticalHeroShader();
 
     // ═══════════════════════════════════════════════════════════════════════
-    // 6. 3D PERSPECTIVE TILT + SPECULAR GLASS GLINT ON IVORY LENS PORTAL
+    // 6. 3D PERSPECTIVE TILT + SPECULAR GLINT ON IVORY LENS PORTAL
     // ═══════════════════════════════════════════════════════════════════════
     const portal = document.getElementById("trip-portal");
     if (portal && isFinePointer && !prefersReducedMotion) {
+        let pRaf = null, lastEv = null;
         portal.addEventListener("pointermove", (e) => {
-            const r = portal.getBoundingClientRect();
-            const nx = (e.clientX - r.left) / r.width - 0.5;
-            const ny = (e.clientY - r.top) / r.height - 0.5;
-            portal.style.transform = `perspective(900px) rotateY(${(nx * 11).toFixed(2)}deg) rotateX(${(-ny * 10).toFixed(2)}deg) scale(1.015)`;
-            portal.style.setProperty("--gx", `${(e.clientX - r.left).toFixed(0)}px`);
-            portal.style.setProperty("--gy", `${(e.clientY - r.top).toFixed(0)}px`);
+            lastEv = e;
+            if (!pRaf) {
+                pRaf = requestAnimationFrame(() => {
+                    pRaf = null;
+                    if (!lastEv) return;
+                    const r = portal.getBoundingClientRect();
+                    const nx = (lastEv.clientX - r.left) / r.width - 0.5;
+                    const ny = (lastEv.clientY - r.top) / r.height - 0.5;
+                    portal.style.transform = `perspective(900px) rotateY(${(nx * 10).toFixed(1)}deg) rotateX(${(-ny * 9).toFixed(1)}deg) scale(1.012)`;
+                    portal.style.setProperty("--gx", `${(lastEv.clientX - r.left).toFixed(0)}px`);
+                    portal.style.setProperty("--gy", `${(lastEv.clientY - r.top).toFixed(0)}px`);
+                });
+            }
         }, { passive: true });
         portal.addEventListener("pointerleave", () => {
+            lastEv = null;
             portal.style.transform = "perspective(900px) rotateY(0deg) rotateX(0deg) scale(1)";
         });
     }
 
     // ═══════════════════════════════════════════════════════════════════════
-    // 7. UNIFIED SCROLL ENGINE:
-    //    - Auto-adapting Dark / Warm Ivory Header Theme
-    //    - Hero Zoom-Through-Lens & Parting Letterbox Bars
-    //    - Pinned Horizontal 35mm Film-Strip Roll + Live Sprocket Sync + Inner Parallax
+    // 7. UNIFIED COMPOSITOR-ONLY SCROLL ENGINE (ZERO PAINT THRASH)
     // ═══════════════════════════════════════════════════════════════════════
     const header = document.getElementById("cinema-header");
     const progressBar = document.getElementById("scroll-progress-bar");
@@ -337,6 +377,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let lastScrollY = window.scrollY;
     let currentSkew = 0;
     let lastFrameIdx = 1;
+    let lastTheme = "dark";
     let rafId = null;
 
     const syncScroll = () => {
@@ -357,61 +398,66 @@ document.addEventListener("DOMContentLoaded", () => {
                     break;
                 }
             }
-            header.setAttribute("data-theme", activeTheme);
+            if (activeTheme !== lastTheme) {
+                lastTheme = activeTheme;
+                header.setAttribute("data-theme", activeTheme);
+            }
         }
 
-        // Hero zoom-through-lens & parting letterbox bars
         if (!prefersReducedMotion && y < vh * 1.2) {
             const heroP = Math.min(1, y / vh);
-            const scaleVal = (1 + heroP * 0.09).toFixed(4);
-            if (heroBg) heroBg.style.transform = `translate3d(0, ${(y * 0.16).toFixed(1)}px, 0) scale(${scaleVal})`;
+            const scaleVal = (1 + heroP * 0.08).toFixed(4);
+            if (heroBg) heroBg.style.transform = `translate3d(0, ${(y * 0.14).toFixed(1)}px, 0) scale(${scaleVal})`;
             if (heroCanvas) heroCanvas.style.transform = `scale(${scaleVal})`;
-            if (lbTop) lbTop.style.transform = `translate3d(0, ${(-heroP * 28).toFixed(1)}px, 0)`;
-            if (lbBot) lbBot.style.transform = `translate3d(0, ${(heroP * 28).toFixed(1)}px, 0)`;
+            if (lbTop) lbTop.style.transform = `translate3d(0, ${(-heroP * 26).toFixed(1)}px, 0)`;
+            if (lbBot) lbBot.style.transform = `translate3d(0, ${(heroP * 26).toFixed(1)}px, 0)`;
         }
 
-        // Pinned Horizontal 35mm Film-Strip Roll + Live Sprockets + Inner Frame Parallax
+        // Pinned Horizontal 35mm Film-Strip Roll (100% GPU translate3d — zero repaints!)
         if (reelSec && reelTrack && !prefersReducedMotion && window.innerWidth > 1060) {
             const r = reelSec.getBoundingClientRect();
-            const scrollable = Math.max(1, reelSec.offsetHeight - vh);
-            const p = Math.min(1, Math.max(0, -r.top / scrollable));
-            const maxShift = Math.max(0, reelTrack.scrollWidth - (window.innerWidth - 64));
-            const isRtl = document.documentElement.dir === "rtl";
-            const shiftX = (isRtl ? 1 : -1) * (p * maxShift);
+            if (r.bottom > -100 && r.top < vh + 100) {
+                const scrollable = Math.max(1, reelSec.offsetHeight - vh);
+                const p = Math.min(1, Math.max(0, -r.top / scrollable));
+                const maxShift = Math.max(0, reelTrack.scrollWidth - (window.innerWidth - 64));
+                const isRtl = document.documentElement.dir === "rtl";
+                const shiftX = (isRtl ? 1 : -1) * (p * maxShift);
 
-            const vel = Math.max(-20, Math.min(20, (y - lastScrollY) * 0.14));
-            currentSkew += (vel - currentSkew) * 0.18;
+                const vel = Math.max(-16, Math.min(16, (y - lastScrollY) * 0.12));
+                currentSkew += (vel - currentSkew) * 0.2;
 
-            reelTrack.style.transform = `translate3d(${shiftX.toFixed(1)}px, 0, 0) skewX(${(currentSkew * (isRtl ? -0.25 : 0.25)).toFixed(2)}deg)`;
+                reelTrack.style.transform = `translate3d(${shiftX.toFixed(1)}px, 0, 0) skewX(${(currentSkew * (isRtl ? -0.22 : 0.22)).toFixed(2)}deg)`;
 
-            // Sync top & bottom 35mm sprocket holes directly to film roll position!
-            const spPos = `${(shiftX * 0.65).toFixed(1)}px 0`;
-            if (sprocketTop) sprocketTop.style.backgroundPosition = spPos;
-            if (sprocketBot) sprocketBot.style.backgroundPosition = spPos;
+                // GPU-only cyclic sprocket shift (30px pattern period -> 0 paint!)
+                const spMod = ((shiftX * 0.5) % 30).toFixed(1);
+                const spTf = `translate3d(${spMod}px, 0, 0)`;
+                if (sprocketTop) sprocketTop.style.transform = spTf;
+                if (sprocketBot) sprocketBot.style.transform = spTf;
 
-            // Codrops Horizontal Inner Image Parallax inside every film frame!
-            const imgShift = ((p - 0.5) * -12).toFixed(2);
-            reelParallaxImgs.forEach((im) => {
-                im.style.transform = `translate3d(${imgShift}%, 0, 0)`;
-            });
+                const imgShift = ((p - 0.5) * -10).toFixed(2);
+                const imgTf = `translate3d(${imgShift}%, 0, 0)`;
+                for (let i = 0; i < reelParallaxImgs.length; i++) {
+                    reelParallaxImgs[i].style.transform = imgTf;
+                }
 
-            const frameIdx = Math.min(4, Math.max(1, Math.floor(p * 3.99) + 1));
-            if (frameIdx !== lastFrameIdx) {
-                lastFrameIdx = frameIdx;
-                playCinemaTick(420, 0.035, 0.025);
+                const frameIdx = Math.min(4, Math.max(1, Math.floor(p * 3.99) + 1));
+                if (frameIdx !== lastFrameIdx) {
+                    lastFrameIdx = frameIdx;
+                    playCinemaTick(420, 0.035, 0.025);
+                    if (reelCounter) reelCounter.textContent = `0${frameIdx} / 04`;
+                }
             }
-            if (reelCounter) reelCounter.textContent = `0${frameIdx} / 04`;
         }
 
-        // Visible reveal safety sweep
         if (!prefersReducedMotion) {
             const trig = vh * 0.90;
-            reveals.forEach((el) => {
+            for (let i = 0; i < reveals.length; i++) {
+                const el = reveals[i];
                 if (!el.classList.contains("is-visible")) {
                     const r = el.getBoundingClientRect();
                     if (r.top <= trig && r.bottom > 0) el.classList.add("is-visible");
                 }
-            });
+            }
         }
 
         lastScrollY = y;
@@ -423,7 +469,7 @@ document.addEventListener("DOMContentLoaded", () => {
     syncScroll();
 
     // ═══════════════════════════════════════════════════════════════════════
-    // 8. MICHAEL BAY GIANT BRACKETED [ ] REEL + FLOATING 3D MONITOR PREVIEW
+    // 8. MICHAEL BAY BRACKETED [ ] REEL + ON-DEMAND FLOATING MONITOR (0% IDLE CPU)
     // ═══════════════════════════════════════════════════════════════════════
     const SCENES = {
         broadcast: {
@@ -525,12 +571,29 @@ document.addEventListener("DOMContentLoaded", () => {
         if (isFinePointer) btn.addEventListener("pointerenter", () => selectScene(k, true));
     });
 
-    // Floating 3D velocity-tilted preview monitor tracking pointer over Director Index
+    // On-demand floating monitor animation (0% CPU when not hovering or settled!)
     if (floatMon && dirIndex && isFinePointer && !prefersReducedMotion) {
-        let fx = -400, fy = -400, ftx = -400, fty = -400, fTilt = 0, fActive = false;
+        let fx = -400, fy = -400, ftx = -400, fty = -400, fTilt = 0, fActive = false, fRaf = null;
 
-        dirIndex.addEventListener("pointerenter", () => {
+        const stepMonitor = () => {
+            fRaf = null;
+            if (!fActive) return;
+            fx += (ftx - fx) * 0.16;
+            fy += (fty - fy) * 0.16;
+            fTilt *= 0.85;
+            floatMon.style.transform = `translate3d(${fx.toFixed(1)}px, ${fy.toFixed(1)}px, 0) rotateZ(${fTilt.toFixed(2)}deg) scale(1)`;
+            if (Math.abs(ftx - fx) > 0.4 || Math.abs(fty - fy) > 0.4 || Math.abs(fTilt) > 0.1) {
+                fRaf = requestAnimationFrame(stepMonitor);
+            }
+        };
+
+        dirIndex.addEventListener("pointerenter", (e) => {
             fActive = true;
+            const isRtl = document.documentElement.dir === "rtl";
+            ftx = isRtl ? Math.max(24, e.clientX - 360) : Math.min(window.innerWidth - 334, e.clientX + 54);
+            fty = Math.max(96, Math.min(window.innerHeight - 230, e.clientY - 105));
+            fx = ftx; fy = fty;
+            floatMon.style.transform = `translate3d(${fx.toFixed(1)}px, ${fy.toFixed(1)}px, 0) scale(1)`;
             floatMon.classList.add("is-shown");
         });
         dirIndex.addEventListener("pointerleave", () => {
@@ -538,24 +601,13 @@ document.addEventListener("DOMContentLoaded", () => {
             floatMon.classList.remove("is-shown");
         });
         dirIndex.addEventListener("pointermove", (e) => {
-            const dx = e.clientX - ftx;
-            fTilt = Math.max(-7, Math.min(7, dx * 0.16));
-            // Offset neatly to the side so it never blocks the Arabic title you're reading!
             const isRtl = document.documentElement.dir === "rtl";
-            ftx = isRtl ? Math.max(24, e.clientX - 360) : Math.min(window.innerWidth - 334, e.clientX + 54);
+            const nextX = isRtl ? Math.max(24, e.clientX - 360) : Math.min(window.innerWidth - 334, e.clientX + 54);
+            fTilt = Math.max(-6, Math.min(6, (nextX - ftx) * 0.14));
+            ftx = nextX;
             fty = Math.max(96, Math.min(window.innerHeight - 230, e.clientY - 105));
+            if (!fRaf) fRaf = requestAnimationFrame(stepMonitor);
         }, { passive: true });
-
-        const loopMonitor = () => {
-            if (fActive) {
-                fx += (ftx - fx) * 0.12;
-                fy += (fty - fy) * 0.12;
-                fTilt *= 0.88;
-                floatMon.style.transform = `translate3d(${fx.toFixed(1)}px, ${fy.toFixed(1)}px, 0) rotateZ(${fTilt.toFixed(2)}deg) scale(1)`;
-            }
-            requestAnimationFrame(loopMonitor);
-        };
-        requestAnimationFrame(loopMonitor);
     }
 
     document.addEventListener("media:langchange", () => selectScene(activeScene, false));

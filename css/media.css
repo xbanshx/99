@@ -245,16 +245,16 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
     inset-inline: 0;
     z-index: 200;
     height: var(--header-h);
-    background: rgba(5, 2, 9, 0.36);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    background: rgba(5, 2, 9, 0.78);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border-bottom: 1px solid rgba(247, 244, 238, 0.08);
     color: var(--ink-light);
-    transition: background-color 0.4s var(--ease), color 0.35s var(--ease), border-color 0.35s var(--ease);
+    transition: background-color 0.35s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease);
 }
 
 .cinema-header[data-theme="light"] {
-    background: rgba(244, 239, 230, 0.86);
+    background: rgba(244, 239, 230, 0.94);
     border-bottom-color: rgba(51, 7, 95, 0.12);
     color: var(--royal-99);
 }
@@ -832,8 +832,8 @@ html[lang="en"] .ivory-h2 { font-family: var(--font-en); font-weight: 600; }
 }
 
 .royal-laurel {
-    min-height: 164px;
-    padding: 28px 20px 20px;
+    min-height: 168px;
+    padding: 26px 20px 18px;
     border-inline-end: 1px solid var(--line-dark);
     border-bottom: 1px solid var(--line-dark);
     display: flex;
@@ -844,23 +844,38 @@ html[lang="en"] .ivory-h2 { font-family: var(--font-en); font-weight: 600; }
     transition: background-color 0.28s var(--ease);
 }
 
-.royal-laurel:hover { background: var(--ivory-soft); }
+.royal-laurel:hover { background: #FFFFFF; }
 
-.royal-laurel img {
-    max-height: 58px;
-    max-width: 152px;
-    object-fit: contain;
-    opacity: 0.86;
-    transition: opacity 0.25s ease, transform 0.35s var(--ease-expo);
+.laurel-media {
+    position: relative;
+    width: 160px;
+    height: 62px;
+    display: grid;
+    place-items: center;
 }
 
-.royal-laurel:hover img { opacity: 1; transform: scale(1.06); }
+.laurel-media img {
+    position: absolute;
+    max-height: 58px;
+    max-width: 156px;
+    object-fit: contain;
+    transition: opacity 0.32s var(--ease), transform 0.35s var(--ease-expo);
+}
 
-.royal-laurel span {
+.laurel-mono { opacity: 0.86; transform: scale(1); }
+.laurel-color { opacity: 0; transform: scale(0.96); }
+
+.royal-laurel:hover .laurel-mono { opacity: 0; transform: scale(1.04); }
+.royal-laurel:hover .laurel-color { opacity: 1; transform: scale(1.04); }
+
+.laurel-caption {
     font-size: 12.5px;
     font-weight: 500;
     color: var(--ink-dark-2);
+    transition: color 0.25s ease;
 }
+
+.royal-laurel:hover .laurel-caption { color: var(--royal-99); }
 
 /* ==========================================================================
    ACT III: MICHAEL BAY GIANT BRACKETED [ ] DIRECTOR'S REEL THEATER
@@ -918,14 +933,13 @@ html[lang="en"] .ivory-h2 { font-family: var(--font-en); font-weight: 600; }
     z-index: 1;
     width: 320px;
     padding: 8px;
-    background: rgba(10, 5, 18, 0.90);
+    background: rgba(10, 5, 18, 0.94);
     border: 1px solid rgba(223, 196, 146, 0.56);
-    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.78), 0 0 42px rgba(51, 7, 95, 0.5);
-    backdrop-filter: blur(12px);
+    box-shadow: 0 22px 54px rgba(0, 0, 0, 0.72);
     pointer-events: none;
     opacity: 0;
-    transform: translate3d(-500px, -500px, 0) scale(0.88);
-    transition: opacity 0.3s var(--ease);
+    transform: translate3d(-500px, -500px, 0) scale(0.92);
+    transition: opacity 0.26s var(--ease);
     will-change: transform, opacity;
 }
 
@@ -1051,9 +1065,8 @@ html[lang="en"] .dir-title {
     gap: 28px;
     align-items: center;
     padding: 24px 28px;
-    background: rgba(14, 8, 23, 0.78);
+    background: rgba(12, 6, 20, 0.90);
     border: 1px solid rgba(223, 196, 146, 0.28);
-    backdrop-filter: blur(18px);
 }
 
 .brief-copy { display: flex; flex-direction: column; gap: 6px; }
@@ -1116,10 +1129,11 @@ html[lang="en"] .reel-heading { font-family: var(--font-en); font-weight: 600; }
 
 .reel-counter { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; color: var(--ink-light-3); }
 
-/* Authentic 35mm Cinema Sprocket Holes */
+/* Authentic 35mm Cinema Sprocket Holes (GPU translate3d — zero repaint cost!) */
 .sprockets {
     height: 18px;
-    width: 100%;
+    width: calc(100% + 120px);
+    margin-inline: -60px;
     opacity: 0.28;
     background-image: repeating-linear-gradient(
         90deg,
@@ -1130,6 +1144,7 @@ html[lang="en"] .reel-heading { font-family: var(--font-en); font-weight: 600; }
     );
     mask-image: linear-gradient(180deg, transparent 2px, black 2px, black 16px, transparent 16px);
     -webkit-mask-image: linear-gradient(180deg, transparent 2px, black 2px, black 16px, transparent 16px);
+    will-change: transform;
 }
 
 .reel-viewport {
