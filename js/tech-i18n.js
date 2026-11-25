@@ -1,236 +1,287 @@
 const techTranslations = {
     ar: {
-        "t-nav-services": "الخدمات التقنية",
-        "t-nav-works": "أعمالنا",
-        "t-nav-process": "منهجية العمل",
-        "t-nav-why": "لماذا 99 تقنية",
-        "t-nav-contact": "ابدأ مشروعك",
-        "t-header-cta": '<span class="btn-text">تواصل معنا</span>',
-        "t-badge": "نبني المستقبل الرقمي",
-        "t-hero-title": 'نحوّل أفكارك إلى حلول تقنية <span class="gradient-text">ذكية</span> تقود نجاحك.',
-        "t-hero-desc": "نصمم ونطور حلولاً برمجية متكاملة وأنظمة ذكاء اصطناعي مبتكرة تمكّن مؤسستك من التحول الرقمي والتفوق في سوق المنافسة.",
-        "t-hero-cta": '<span class="btn-text">ابدأ مشروعك</span>',
-        "t-hero-explore": "استكشف خدماتنا",
-        "t-back-media": "← قسم الإعلام",
+        "t-skip": "الانتقال إلى المحتوى الرئيسي",
+        "t-nav-works": "أنظمتنا",
+        "t-nav-services": "القدرات الهندسية",
+        "t-nav-process": "منهجية البناء",
+        "t-nav-why": "لماذا 99",
+        "t-nav-media": "99 للإعلام",
+        "t-nav-contact": "تواصل معنا",
+        "t-header-cta": "ابدأ مشروعك",
 
-        "t-hud-live": "نشط",
-        "t-hud-ai-title": "محرك الذكاء الاصطناعي والأتمتة",
-        "t-hud-m1": "استقرار وجاهزية السحابة",
-        "t-hud-m2": "تشفير وأمان مؤسسي",
-        "t-hud-m3": "مراقبة ودعم فني",
+        "t-hero-title": "نهندس أنظمة ذكاء اصطناعي وبرمجيات مؤسسية مصمّمة لتقود قطاعها",
+        "t-hero-desc": "ذراع الهندسة والتقنية في 99 — نصمم ونبني أنظمة تشغيل ذكية، منصات برمجية عالية الاعتمادية، وبنية سحابية تجمع دقة الهندسة مع عمق التأثير.",
+        "t-hero-cta": "ابدأ مشروعك التقني",
+        "t-hero-explore": "استعرض الأنظمة المطوّرة",
+        "t-proof-1": "منظومات ذكاء اصطناعي مطوّرة داخلياً",
+        "t-proof-2": "تشغيل ومراقبة هندسية مستمرة",
 
-        "t-services-eyebrow": "منظومة الحلول الرقمية",
-        "t-services-title": "خدماتنا التقنية",
-        "t-services-sub": "نبتكر ونطوّر حلولاً تقنية متكاملة مصممة لرفع كفاءة الأعمال وتسريع النمو الرقمي.",
+        "t-spec-domain": "المجال",
+        "t-spec-stack": "المعمارية",
+        "t-spec-gov": "الضبط والأمان",
+        "t-spec-visit": "معاينة المنصة ↗",
 
-        "t-vis-ai1": "بيانات المؤسسة",
-        "t-vis-ai2": "أتمتة وقرارات ذكية",
-        "t-svc3-tag": "الذكاء الاصطناعي · AI",
-        "t-svc3-title": "حلول الذكاء الاصطناعي",
-        "t-svc3-desc": "روبوتات محادثة ذكية، أنظمة تحليل تنبؤي، أتمتة العمليات، ونماذج AI مخصصة تمنح مؤسستك ميزة تنافسية فريدة في السوق.",
-        "t-ai-c1": "وكلاء ذكاء اصطناعي ومحادثة",
-        "t-ai-c2": "أتمتة العمليات وسير العمل",
-        "t-ai-c3": "نماذج تنبؤية ومعالجة لغة طبيعية",
+        "t-works-eyebrow": "أنظمة ومنتجات هندسناها من الصفر",
+        "t-works-title": "منصات حقيقية تثبت قدرتنا الهندسية",
+        "t-works-sub": "لا نكتفي بالوعود النظرية؛ نبني منظومات ذكاء اصطناعي ومنتجات تقنية متكاملة تعمل بمعايير إنتاجية صارمة.",
 
-        "t-svc1-tag": "هندسة البرمجيات",
-        "t-svc1-title": "تطوير البرمجيات",
-        "t-svc1-desc": "أنظمة ومنصات مخصصة تلبي احتياجات مؤسستك بأحدث التقنيات وأفضل الممارسات العالمية، من التصميم إلى الإطلاق والدعم المستمر.",
-        "t-svc1-c1": "أنظمة مؤسسية ومنصات SaaS",
-        "t-svc1-c2": "واجهات برمجية APIs وتكامل أنظمة",
+        "t-work1-tag": "نظام تشغيل الأعمال بالذكاء الاصطناعي",
+        "t-work1-long": "منظومة تشغيل ذكية موحّدة تحفظ هوية المنشأة وسياقها، وتبني الحضور الرقمي، المحتوى الإعلاني، وجداول النشر والحملات عبر القنوات تحت صلاحية واعتماد المالك.",
+        "t-work1-p1": "ذاكرة مؤسسية وهوية بصرية موحّدة",
+        "t-work1-p2": "بناء مواقع وصفحات هبوط مهيأة لـ SEO و GEO",
+        "t-work1-p3": "بوابة اعتماد وتحكم وإيقاف فوري",
+        "t-work1-cta": "زيارة exox.ai ↗",
 
-        "t-svc2-tag": "المنصات الرقمية",
-        "t-svc2-title": "المواقع والتطبيقات",
-        "t-svc2-desc": "مواقع إلكترونية وتطبيقات موبايل تفاعلية بتصاميم عصرية وتجربة مستخدم استثنائية تعكس هوية علامتك التجارية وتحقق أهدافك.",
-        "t-svc2-c1": "تطبيقات iOS و Android",
-        "t-svc2-c2": "منصات ويب وتجربة UI/UX",
+        "t-work2-tag": "ذكاء إعلامي واتصال استراتيجي",
+        "t-work2-long": "منصة ذكاء إعلامي واتصال مؤسسي تحوّل رصد التغطيات وإشارات السمعة إلى قرارات تواصلية دقيقة ومحتوى استراتيجي موجّه.",
 
-        "t-svc4-tag": "ذكاء الأعمال",
-        "t-svc4-title": "تحليل البيانات",
-        "t-svc4-desc": "لوحات تحكم تفاعلية وتقارير ذكية تحوّل بياناتك إلى رؤى قابلة للتنفيذ، تمكّنك من اتخاذ قرارات مبنية على معطيات دقيقة.",
-        "t-svc4-c1": "لوحات مؤشرات أداء لحظية",
-        "t-svc4-c2": "تقارير تنفيذية لدعم القرار",
+        "t-work3-tag": "حوكمة وتحقق الذكاء الاصطناعي",
+        "t-work3-long": "طبقة حوكمة وتحقق وتنفيذ موثوق للأنظمة الذكية؛ تضمن امتثال المخرجات، تتبع القرارات، وسلامة التشغيل داخل البيئات الحساسة.",
 
-        "t-svc5-tag": "البنية التحتية",
-        "t-svc5-title": "الحوسبة السحابية",
-        "t-svc5-desc": "بنية تحتية سحابية آمنة ومرنة وقابلة للتوسع، مع خدمات الاستضافة والنشر والمراقبة على مدار الساعة لضمان استمرارية أعمالك.",
-        "t-svc5-c1": "هندسة سحابية وتوسع تلقائي",
-        "t-svc5-c2": "أتمتة النشر ومراقبة 24/7",
+        "t-saudi-tech-desc": "تقنيات سعودية مطوّرة بمعايير هندسية عالمية لخدمة المنشآت والجهات الطموحة في المملكة والمنطقة.",
 
-        "t-works-eyebrow": "منتجات ومشاريع نفخر بها",
-        "t-works-title": "أعمالنا",
-        "t-works-sub": "منصات وأنظمة وحلول رائدة طورناها لتقود الابتكار والتحول الرقمي في قطاعاتها.",
-        "t-work1-tag": "أتمتة وأنظمة ذكية",
-        "t-work1-desc": "AI-Powered Business Operating System",
-        "t-work2-tag": "إعلام وعلاقات عامة",
-        "t-work2-desc": "AI-Powered Media Intelligence & Strategic Communications",
-        "t-work3-tag": "حوكمة وأمان AI",
-        "t-work3-desc": "AI Governance, Verification & Trusted Execution",
+        "t-services-eyebrow": "القدرات الهندسية",
+        "t-services-title": "خمس ركائز تقنية تحت سقف هندسي واحد",
+        "t-services-sub": "نصمم كل نظام كمعمارية طويلة الأمد — قابلة للتوسع، محصّنة أمنياً، ومصمّمة لأداء مستقر تحت الضغط.",
 
-        "t-process-eyebrow": "منهجية العمل",
-        "t-process-title": "مسار هندسي من الفكرة إلى الإطلاق",
-        "t-process-sub": "نتبع خطوات عمل مدروسة تضمن أعلى معايير الجودة والأمان وسرعة الإنجاز.",
-        "t-step1-title": "الاكتشاف والتحليل",
-        "t-step1-desc": "ندرس أهدافك وتحدياتك بعمق ونحلل متطلبات المستخدمين لرسم خارطة طريق تقنية واضحة.",
-        "t-step2-title": "التصميم والمعمارية",
-        "t-step2-desc": "نصمم واجهات وتجربة مستخدم عصرية ونبني معمارية برمجية متينة قابلة للتوسع المستقبلي.",
-        "t-step3-title": "التطوير والاختبار",
-        "t-step3-desc": "نطوّر الأنظمة بدورات عمل مرنة وسريعة مع اختبارات دقيقة للأداء والأمان وجودة الكود.",
-        "t-step4-title": "الإطلاق والدعم المستمر",
-        "t-step4-desc": "نطلق مشروعك على بيئة سحابية مستقرة ونواصل مرافقتك بالتطوير والمراقبة والدعم الفني.",
+        "t-svc1-badge": "التخصص المحوري",
+        "t-svc1-title": "هندسة أنظمة ووكلاء الذكاء الاصطناعي",
+        "t-svc1-desc": "بناء وكلاء ذكاء اصطناعي إنتاجيين، أنظمة استرجاع معرفي (RAG) متقنة للغة العربية، وأتمتة ذكية للعمليات التشغيلية مع ضوابط حوكمة دقيقة.",
+        "t-svc1-l1": "وكلاء تنفيذ ذكيون متعددو الخطوات مع بوابات اعتماد",
+        "t-svc1-l2": "معالجة لغة عربية متقدمة وفهم سياق الأعمال",
+        "t-svc1-l3": "دمج نماذج الذكاء الاصطناعي داخل أنظمة المؤسسة القائمة",
 
-        "t-about-eyebrow": "القيمة المضافة",
-        "t-about-title": "لماذا 99 تقنية؟",
-        "t-about-desc": "نجمع بين الخبرة الإعلامية العميقة والقدرات التقنية المتقدمة لنقدم حلولاً رقمية شاملة. فريقنا من المهندسين والمطورين وخبراء الذكاء الاصطناعي يعمل بشغف لتحويل تحدياتك إلى فرص نمو حقيقية.",
-        "t-stat3": "دعم فني متواصل",
-        "t-p1-title": "الأمان والموثوقية أولاً",
-        "t-p1-desc": "نطبق أفضل ممارسات الأمن السيبراني وحماية البيانات في كل سطر برمجي منذ اليوم الأول.",
-        "t-p2-title": "بنية قابلة للتوسع",
-        "t-p2-desc": "معمارية برمجية مرنة تستوعب نمو أعمالك وتوسع قاعدة مستخدميك بكفاءة عالية.",
-        "t-p3-title": "الذكاء الاصطناعي في الجوهر",
-        "t-p3-desc": "ندمج تقنيات الذكاء الاصطناعي والأتمتة في صميم الحلول لمضاعفة الإنتاجية وتقليل التكاليف.",
-        "t-p4-title": "تكامل الإعلام والتقنية",
-        "t-p4-desc": "ميزة 99 الفريدة في المزج بين الهندسة التقنية القوية والصورة الإعلامية الجذابة لمنتجك.",
+        "t-svc2-title": "تطوير البرمجيات ومنصات SaaS",
+        "t-svc2-desc": "تصميم وبناء أنظمة مؤسسية مخصصة، منصات اشتراك سحابية، وواجهات برمجية عالية الكفاءة تتكامل بسلاسة مع منظومة عملك.",
+        "t-svc2-l1": "منصات SaaS وأنظمة تشغيل داخلية مخصصة",
+        "t-svc2-l2": "تكامل APIs مع أنظمة ERP و CRM والمدفوعات",
 
-        "t-contact-eyebrow": "تواصل معنا",
-        "t-contact-title": "ابدأ مشروعك معنا",
-        "t-contact-sub": "شاركنا تفاصيل مشروعك أو فكرتك التقنية، وسيتواصل معك فريقنا المتخصص في أقرب وقت.",
-        "t-contact-card-desc": "نحن هنا لمساعدتك في تصميم وتطوير حلول تقنية تصنع الفارق لمؤسستك.",
-        "t-label-name": "الاسم",
+        "t-svc3-title": "المنصات التفاعلية والتطبيقات",
+        "t-svc3-desc": "واجهات ويب وتطبيقات جوال فائقة السرعة بدقة تصميمية عالية، وتجربة استخدام ثنائية اللغة (عربي/إنجليزي) تعكس هيبة علامتك.",
+        "t-svc3-l1": "منصات ويب متقدمة ومهيأة للبحث والاكتشاف",
+        "t-svc3-l2": "تطبيقات iOS و Android وتجارب UI/UX مصمّمة خصيصاً",
+
+        "t-svc4-title": "هندسة البيانات وذكاء الأعمال",
+        "t-svc4-desc": "توحيد مصادر البيانات المتفرقة في لوحات قرار تنفيذية واضحة، وتقارير لحظية تمنح القيادة رؤية دقيقة دون ضجيج.",
+        "t-svc4-l1": "خطوط تجميع وتنظيف بيانات مؤسسية",
+        "t-svc4-l2": "لوحات مؤشرات تنفيذية ونماذج تنبؤية",
+
+        "t-svc5-title": "البنية السحابية والأمن السيبراني",
+        "t-svc5-desc": "هندسة سحابية مرنة على الحافة (Edge) والخدمات المدارة، مع أتمتة النشر، التشفير الشامل، والمراقبة المستمرة 24/7.",
+        "t-svc5-l1": "معمارية Zero-Trust وحماية طبقة التطبيقات",
+        "t-svc5-l2": "نشر آلي CI/CD ومراقبة أداء فورية",
+
+        "t-process-eyebrow": "منهجية الهندسة والتسليم",
+        "t-process-title": "مسار منضبط من المعمارية إلى التشغيل الإنتاجي",
+        "t-process-sub": "أربع مراحل هندسية واضحة بمخرجات ملموسة في كل محطة — بلا غموض وبلا حلول مؤقتة.",
+
+        "t-step1-title": "الاكتشاف وتصميم المعمارية",
+        "t-step1-desc": "تحليل دقيق للأهداف التشغيلية، نموذج البيانات، ومخاطر الأمان لصياغة وثيقة معمارية واضحة قبل كتابة أول سطر كود.",
+        "t-step2-title": "التصميم والنمذجة التفاعلية",
+        "t-step2-desc": "بناء نظام تصميم متماسك ونماذج تفاعلية حقيقية تختبر رحلة المستخدم وتفاصيل الواجهة على الحاسوب والجوال مبكراً.",
+        "t-step3-title": "الهندسة والاختبار الصارم",
+        "t-step3-desc": "تطوير مرحلي بدورات تسليم منتظمة، مع اختبارات آلية للأداء، الأمان، وتكامل الـ APIs لضمان جاهزية إنتاجية كاملة.",
+        "t-step4-title": "الإطلاق والمراقبة المستمرة",
+        "t-step4-desc": "إطلاق سلس بدون توقف على بنية سحابية مستقرة، مع متابعة هندسية مستمرة وتطوير متدرج يواكب نمو منشأتك.",
+
+        "t-about-eyebrow": "الميزة التنافسية",
+        "t-about-title": "لماذا 99 للتقنية والذكاء الاصطناعي؟",
+        "t-about-desc": "معظم الشركات التقنية تبني أنظمة جافة تفتقر للهوية، ومعظم الوكالات الإبداعية تفتقر للعمق الهندسي. في 99 نجمع الاثنين معاً: هندسة ذكاء اصطناعي وبرمجيات صلبة، مدعومة بخبرة إعلامية وإبداعية تمتد منذ 2014.",
+        "t-stat3": "مراقبة تشغيلية ودعم هندسي متواصل",
+
+        "t-p1-title": "الأمان والخصوصية في الأساس",
+        "t-p1-desc": "تشفير البيانات، عزل الصلاحيات، ومراجعة أمنية مضمّنة في صميم المعمارية منذ اليوم الأول.",
+        "t-p2-title": "معمارية قابلة للتوسع الحقيقي",
+        "t-p2-desc": "تصميم برمجي معياري ينمو بسلاسة من الإصدار الأول إلى آلاف المستخدمين دون إعادة بناء.",
+        "t-p3-title": "ذكاء اصطناعي إنتاجي لا استعراضي",
+        "t-p3-desc": "أنظمة AI محكومة بضوابط تحقق ومخرجات موثوقة تخدم التشغيل الفعلي لا العروض المؤقتة.",
+        "t-p4-title": "تكامل الهندسة مع هيبة العلامة",
+        "t-p4-desc": "منتجات تقنية تُبنى بعقلية هندسية دقيقة وتظهر بواجهة وهوية تليق بمكانة مؤسستك.",
+
+        "t-contact-eyebrow": "ابدأ مشروعك",
+        "t-contact-title": "ناقش مشروعك مع فريقنا الهندسي",
+        "t-contact-sub": "شاركنا فكرتك أو التحدي التقني في مؤسستك، وسيتواصل معك فريق 99 للتقنية والذكاء الاصطناعي بخطة واضحة.",
+        "t-ch-email": "البريد الرسمي",
+        "t-ch-phone": "الهاتف",
+        "t-ch-loc": "المقر",
+        "t-ch-loc-val": "الرياض، المملكة العربية السعودية",
+
+        "t-scope-label": "نوع المشروع",
+        "t-scope-1": "أنظمة ذكاء اصطناعي",
+        "t-scope-2": "برمجيات ومنصات SaaS",
+        "t-scope-3": "مواقع وتطبيقات",
+        "t-scope-4": "سحابة وبيانات",
+        "t-label-name": "الاسم الكامل",
         "t-label-email": "البريد الإلكتروني",
         "t-label-message": "تفاصيل المشروع",
-        "t-submit-btn": '<span class="btn-text">أرسل طلبك</span>',
+        "t-ph-name": "الاسم أو اسم الجهة",
+        "t-ph-message": "نبذة مختصرة عن النظام المطلوب، الأهداف، والجدول الزمني المتوقع",
+        "t-submit-btn": "إرسال طلب المشروع",
+
         "t-footer-home": "الرئيسية",
-        "t-footer-media": "قسم الإعلام"
+        "t-footer-media": "99 للإعلام",
+        "t-footer-copy": "© 2026 مؤسسة تسعة وتسعون (i99.sa). جميع الحقوق محفوظة."
     },
     en: {
-        "t-nav-services": "Tech Services",
-        "t-nav-works": "Our Works",
+        "t-skip": "Skip to main content",
+        "t-nav-works": "Systems",
+        "t-nav-services": "Capabilities",
         "t-nav-process": "Methodology",
-        "t-nav-why": "Why 99 Tech",
-        "t-nav-contact": "Start Project",
-        "t-header-cta": '<span class="btn-text">Contact Us</span>',
-        "t-badge": "Building the Digital Future",
-        "t-hero-title": 'We Transform Your Ideas into <span class="gradient-text">Smart</span> Tech Solutions That Drive Success.',
-        "t-hero-desc": "We design and develop comprehensive software solutions and innovative AI systems that empower your organization's digital transformation and competitive advantage.",
-        "t-hero-cta": '<span class="btn-text">Start Your Project</span>',
-        "t-hero-explore": "Explore Services",
-        "t-back-media": "→ Media Division",
+        "t-nav-why": "Why 99",
+        "t-nav-media": "99 Media",
+        "t-nav-contact": "Contact",
+        "t-header-cta": "Start a Project",
 
-        "t-hud-live": "ONLINE",
-        "t-hud-ai-title": "AI & Automation Core Engine",
-        "t-hud-m1": "Cloud Uptime & SLA",
-        "t-hud-m2": "Enterprise Security",
-        "t-hud-m3": "Monitoring & Support",
+        "t-hero-title": "We engineer AI systems and enterprise software built to lead their category",
+        "t-hero-desc": "The engineering and AI division of 99 — designing and shipping intelligent operating systems, resilient software platforms, and cloud infrastructure from Riyadh.",
+        "t-hero-cta": "Start Your Technical Project",
+        "t-hero-explore": "Explore Shipped Systems",
+        "t-proof-1": "Flagship AI systems engineered in-house",
+        "t-proof-2": "Continuous engineering operations & monitoring",
 
-        "t-services-eyebrow": "Digital Solutions Ecosystem",
-        "t-services-title": "Our Tech Services",
-        "t-services-sub": "We engineer and deliver integrated technology solutions designed to maximize operational efficiency and accelerate digital growth.",
+        "t-spec-domain": "Domain",
+        "t-spec-stack": "Architecture",
+        "t-spec-gov": "Governance",
+        "t-spec-visit": "Visit Platform ↗",
 
-        "t-vis-ai1": "Enterprise Data",
-        "t-vis-ai2": "Smart Automation",
-        "t-svc3-tag": "Artificial Intelligence · AI",
-        "t-svc3-title": "AI Solutions",
-        "t-svc3-desc": "Intelligent chatbots, predictive analytics, process automation, and custom AI models that give your organization a unique competitive edge in the market.",
-        "t-ai-c1": "AI Agents & Conversational Bots",
-        "t-ai-c2": "Workflow & Process Automation",
-        "t-ai-c3": "Predictive Models & NLP",
+        "t-works-eyebrow": "Systems Engineered From First Principles",
+        "t-works-title": "Real platforms proving our technical depth",
+        "t-works-sub": "We prove capability through shipped architecture — building production AI systems and software platforms governed by strict engineering standards.",
 
-        "t-svc1-tag": "Software Engineering",
-        "t-svc1-title": "Software Development",
-        "t-svc1-desc": "Custom systems and platforms tailored to your organization's needs, built with the latest technologies and global best practices, from design to launch and continuous support.",
-        "t-svc1-c1": "Enterprise Systems & SaaS",
-        "t-svc1-c2": "APIs & System Integration",
+        "t-work1-tag": "AI Business Operating System",
+        "t-work1-long": "A unified intelligent operating system that preserves brand context and builds digital presence, ad creatives, publishing calendars, and multi-channel campaigns under strict owner approval.",
+        "t-work1-p1": "Unified institutional memory & visual charter",
+        "t-work1-p2": "SEO & GEO-ready websites and landing pages",
+        "t-work1-p3": "Owner approval gate & instant pause control",
+        "t-work1-cta": "Visit exox.ai ↗",
 
-        "t-svc2-tag": "Digital Platforms",
-        "t-svc2-title": "Web & Mobile Apps",
-        "t-svc2-desc": "Interactive websites and mobile applications with modern designs and exceptional user experience that reflect your brand identity and achieve your goals.",
-        "t-svc2-c1": "iOS & Android Applications",
-        "t-svc2-c2": "Web Platforms & Modern UI/UX",
+        "t-work2-tag": "Media Intelligence & Strategic PR",
+        "t-work2-long": "An AI media intelligence platform transforming coverage signals and reputation tracking into disciplined executive communications.",
 
-        "t-svc4-tag": "Business Intelligence",
-        "t-svc4-title": "Data Analytics",
-        "t-svc4-desc": "Interactive dashboards and smart reports that transform your data into actionable insights, enabling you to make decisions based on precise data.",
-        "t-svc4-c1": "Real-Time KPI Dashboards",
-        "t-svc4-c2": "Executive Decision Analytics",
+        "t-work3-tag": "AI Governance & Verification",
+        "t-work3-long": "A trusted execution and verification layer for AI systems — enforcing output compliance, decision traceability, and operational safety in sensitive environments.",
 
-        "t-svc5-tag": "Cloud Infrastructure",
-        "t-svc5-title": "Cloud Computing",
-        "t-svc5-desc": "Secure, flexible, and scalable cloud infrastructure with 24/7 hosting, deployment, and monitoring services to ensure your business continuity.",
-        "t-svc5-c1": "Cloud Architecture & Auto-Scaling",
-        "t-svc5-c2": "CI/CD & 24/7 Monitoring",
+        "t-saudi-tech-desc": "Saudi-engineered technology built to global architectural standards for ambitious organizations across the Kingdom and region.",
 
-        "t-works-eyebrow": "Featured Products & Projects",
-        "t-works-title": "Our Works",
-        "t-works-sub": "Flagship platforms, systems, and solutions engineered to drive innovation and digital transformation.",
-        "t-work1-tag": "AI & Smart Automation",
-        "t-work1-desc": "AI-Powered Business Operating System",
-        "t-work2-tag": "PR & Media Agency",
-        "t-work2-desc": "AI-Powered Media Intelligence & Strategic Communications",
-        "t-work3-tag": "AI Governance & Security",
-        "t-work3-desc": "AI Governance, Verification & Trusted Execution",
+        "t-services-eyebrow": "Engineering Capabilities",
+        "t-services-title": "Five technical disciplines under one roof",
+        "t-services-sub": "We architect every system for longevity — modular at scale, hardened for security, and fast under real production load.",
 
-        "t-process-eyebrow": "How We Work",
-        "t-process-title": "Engineering Pipeline from Idea to Launch",
-        "t-process-sub": "A structured delivery framework that guarantees quality, security, and rapid execution.",
-        "t-step1-title": "Discovery & Analysis",
-        "t-step1-desc": "We analyze your business objectives, technical requirements, and user journeys to define a clear roadmap.",
-        "t-step2-title": "Design & Architecture",
-        "t-step2-desc": "We craft intuitive UI/UX experiences and engineer a scalable, future-ready software architecture.",
-        "t-step3-title": "Development & QA",
-        "t-step3-desc": "We build in agile sprints with rigorous testing for performance, security, and code quality.",
-        "t-step4-title": "Launch & Continuous Support",
-        "t-step4-desc": "We deploy smoothly to production and accompany your growth with monitoring, updates, and 24/7 support.",
+        "t-svc1-badge": "Core Practice",
+        "t-svc1-title": "AI Systems & Autonomous Agents",
+        "t-svc1-desc": "Production multi-agent workflows, Arabic-native RAG knowledge architectures, and governed operational automation tailored to enterprise reality.",
+        "t-svc1-l1": "Multi-step execution agents with human approval gates",
+        "t-svc1-l2": "Native Arabic & bilingual business context modeling",
+        "t-svc1-l3": "Secure AI integration inside existing enterprise systems",
 
-        "t-about-eyebrow": "Our Advantage",
-        "t-about-title": "Why 99 Tech?",
-        "t-about-desc": "We combine deep media expertise with advanced technical capabilities to deliver comprehensive digital solutions. Our team of engineers, developers, and AI experts works passionately to turn your challenges into real growth opportunities.",
-        "t-stat3": "24/7 Technical Support",
-        "t-p1-title": "Security & Reliability First",
-        "t-p1-desc": "We apply strict cybersecurity and data protection standards across every layer from day one.",
-        "t-p2-title": "Built to Scale",
-        "t-p2-desc": "Modular, resilient architectures that scale effortlessly as your business and user base grow.",
-        "t-p3-title": "AI at the Core",
-        "t-p3-desc": "We embed artificial intelligence and automation at the heart of your product to multiply efficiency.",
-        "t-p4-title": "Media + Tech Synergy",
-        "t-p4-desc": "99's unique edge in uniting rock-solid software engineering with compelling brand and media presence.",
+        "t-svc2-title": "Software Engineering & SaaS",
+        "t-svc2-desc": "Custom enterprise platforms, multi-tenant SaaS architectures, and high-throughput APIs cleanly integrated with your core operations.",
+        "t-svc2-l1": "Custom SaaS products & internal operating platforms",
+        "t-svc2-l2": "API orchestration with ERP, CRM & payment gateways",
 
-        "t-contact-eyebrow": "Get in Touch",
-        "t-contact-title": "Start Your Project With Us",
-        "t-contact-sub": "Share your project details or technical vision, and our specialists will get back to you promptly.",
-        "t-contact-card-desc": "We are here to help you design, engineer, and scale technology solutions that make an impact.",
-        "t-label-name": "Name",
-        "t-label-email": "Email",
-        "t-label-message": "Project Details",
-        "t-submit-btn": '<span class="btn-text">Submit Request</span>',
+        "t-svc3-title": "Web Platforms & Mobile Apps",
+        "t-svc3-desc": "High-speed web interfaces and native mobile applications crafted with bilingual RTL/LTR precision and unmistakable brand authority.",
+        "t-svc3-l1": "Modern web platforms engineered for search & AI discovery",
+        "t-svc3-l2": "iOS & Android applications with bespoke UI/UX systems",
+
+        "t-svc4-title": "Data Engineering & BI",
+        "t-svc4-desc": "Consolidating scattered operational data into executive decision dashboards and reliable analytics without visual noise.",
+        "t-svc4-l1": "Structured enterprise data pipelines & warehousing",
+        "t-svc4-l2": "Executive KPI telemetry & forecasting models",
+
+        "t-svc5-title": "Cloud Architecture & Security",
+        "t-svc5-desc": "Resilient edge and cloud infrastructure backed by automated CI/CD, end-to-end encryption, and 24/7 operational observability.",
+        "t-svc5-l1": "Zero-Trust architecture & application-layer defense",
+        "t-svc5-l2": "Automated CI/CD pipelines & live observability",
+
+        "t-process-eyebrow": "Delivery Methodology",
+        "t-process-title": "A disciplined path from architecture to production",
+        "t-process-sub": "Four structured engineering phases with tangible artifacts at every milestone — zero guesswork and zero brittle shortcuts.",
+
+        "t-step1-title": "Discovery & Architecture",
+        "t-step1-desc": "Deep analysis of business objectives, data models, and threat boundaries to lock a crisp technical blueprint before coding begins.",
+        "t-step2-title": "Interface & System Design",
+        "t-step2-desc": "Cohesive design systems and interactive prototypes validating user workflows across desktop and mobile early.",
+        "t-step3-title": "Engineering & Hard QA",
+        "t-step3-desc": "Iterative sprint delivery backed by automated testing for performance, security, and API integrity.",
+        "t-step4-title": "Launch & 24/7 Operations",
+        "t-step4-desc": "Zero-downtime deployment on resilient cloud infrastructure with continuous monitoring and iterative growth.",
+
+        "t-about-eyebrow": "Our Edge",
+        "t-about-title": "Why 99 Tech & AI?",
+        "t-about-desc": "Most software houses ship rigid tools lacking brand poise, while creative agencies lack deep engineering rigor. At 99 we unite both: production AI and software engineering reinforced by media authority since 2014.",
+        "t-stat3": "Continuous engineering monitoring & support",
+
+        "t-p1-title": "Security & Privacy by Design",
+        "t-p1-desc": "Encryption, strict role isolation, and security verification embedded across every layer from day one.",
+        "t-p2-title": "Engineered for Real Scale",
+        "t-p2-desc": "Modular software architectures that scale cleanly from initial launch to thousands of users without rewrites.",
+        "t-p3-title": "Production AI, Not Demos",
+        "t-p3-desc": "Governed AI pipelines with verification gates built for dependable operations rather than fragile prototypes.",
+        "t-p4-title": "Engineering Meets Brand Authority",
+        "t-p4-desc": "Software crafted with architectural discipline and presented with the polish your organization commands.",
+
+        "t-contact-eyebrow": "Start a Project",
+        "t-contact-title": "Discuss your project with our engineering team",
+        "t-contact-sub": "Share your technical vision or operational challenge, and our Riyadh engineering specialists will respond with a structured path forward.",
+        "t-ch-email": "Official Email",
+        "t-ch-phone": "Phone",
+        "t-ch-loc": "Headquarters",
+        "t-ch-loc-val": "Riyadh, Saudi Arabia",
+
+        "t-scope-label": "Project Scope",
+        "t-scope-1": "AI Systems",
+        "t-scope-2": "Software & SaaS",
+        "t-scope-3": "Web & Mobile",
+        "t-scope-4": "Cloud & Data",
+        "t-label-name": "Full Name",
+        "t-label-email": "Work Email",
+        "t-label-message": "Project Brief",
+        "t-ph-name": "Your name or organization",
+        "t-ph-message": "Brief overview of the system, objectives, and expected timeline",
+        "t-submit-btn": "Submit Project Inquiry",
+
         "t-footer-home": "Home",
-        "t-footer-media": "Media Division"
+        "t-footer-media": "99 Media",
+        "t-footer-copy": "© 2026 99 Establishment (i99.sa). All rights reserved."
     }
 };
 
-let currentLang = localStorage.getItem("lang") || "ar";
+window.currentLang = localStorage.getItem("lang") || "ar";
 
 function switchLang(lang) {
-    currentLang = lang;
+    window.currentLang = lang;
     localStorage.setItem("lang", lang);
+
     const html = document.documentElement;
     html.lang = lang;
     html.dir = lang === "ar" ? "rtl" : "ltr";
 
-    document.querySelectorAll("[data-i18n]").forEach(el => {
+    const dict = techTranslations[lang] || techTranslations.ar;
+
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
         const key = el.getAttribute("data-i18n");
-        if (techTranslations[lang] && techTranslations[lang][key]) {
-            el.innerHTML = techTranslations[lang][key];
+        if (dict[key]) {
+            el.textContent = dict[key];
+        }
+    });
+
+    document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+        const key = el.getAttribute("data-i18n-placeholder");
+        if (dict[key]) {
+            el.setAttribute("placeholder", dict[key]);
         }
     });
 
     const btn = document.getElementById("lang-toggle");
-    if (btn) btn.textContent = lang === "ar" ? "EN" : "عربي";
-
-    if (lang === "en") {
-        document.body.style.fontFamily = "'Inter', sans-serif";
-    } else {
-        document.body.style.fontFamily = "";
+    if (btn) {
+        btn.textContent = lang === "ar" ? "EN" : "عربي";
+        btn.setAttribute("aria-label", lang === "ar" ? "Switch to English" : "التبديل إلى العربية");
     }
+
+    document.dispatchEvent(new CustomEvent("tech:langchange", { detail: { lang } }));
 }
 
-document.addEventListener("DOMContentLoaded", () => switchLang(currentLang));
+document.addEventListener("DOMContentLoaded", () => {
+    switchLang(window.currentLang);
+});

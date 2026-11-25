@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>99 Tech &amp; AI | حلول ذكاء اصطناعي وتطوير برمجيات متقدمة | i99.sa</title>
-    <meta name="description" content="99 للتقنية والذكاء الاصطناعي: نصمم ونطور حلولاً برمجية متكاملة، أنظمة AI ذكية، مواقع وتطبيقات تفاعلية، وتحليلات بيانات متقدمة لدعم التحول الرقمي لمؤسستك.">
-    <meta name="theme-color" content="#06070B">
+    <title>99 Tech &amp; AI | هندسة أنظمة الذكاء الاصطناعي والبرمجيات المؤسسية | i99.sa</title>
+    <meta name="description"
+        content="99 للتقنية والذكاء الاصطناعي: نهندس أنظمة ذكاء اصطناعي إنتاجية، برمجيات مؤسسية، منصات SaaS، وبنية سحابية فائقة الموثوقية من الرياض — مطوّرو EXOX و PR MEDIA و FIRX.">
+    <meta name="theme-color" content="#040608">
     <link rel="canonical" href="https://www.i99.sa/tech/">
 
     <!-- Favicons -->
@@ -13,19 +15,22 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.i99.sa/tech/">
-    <meta property="og:title" content="99 Tech &amp; AI | حلول ذكاء اصطناعي وتطوير برمجيات">
-    <meta property="og:description" content="تطوير برمجيات، حلول ذكاء اصطناعي، تطبيقات ومواقع ذكية، وبنية سحابية للمؤسسات.">
+    <meta property="og:title" content="99 Tech &amp; AI | هندسة أنظمة الذكاء الاصطناعي والبرمجيات المؤسسية">
+    <meta property="og:description"
+        content="نهندس أنظمة ذكاء اصطناعي إنتاجية، برمجيات مؤسسية، وبنية سحابية متكاملة — مطوّرو EXOX و PR MEDIA و FIRX.">
     <meta property="og:image" content="https://www.i99.sa/img/blue-logo.png">
     <meta property="og:locale" content="ar_SA">
+    <meta property="og:locale:alternate" content="en_US">
     <meta property="og:site_name" content="99 Tech &amp; AI">
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="99 Tech &amp; AI | حلول ذكاء اصطناعي وتطوير برمجيات">
-    <meta name="twitter:description" content="تطوير برمجيات، حلول ذكاء اصطناعي، تطبيقات ومواقع ذكية، وبنية سحابية للمؤسسات.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="99 Tech &amp; AI | هندسة أنظمة الذكاء الاصطناعي والبرمجيات">
+    <meta name="twitter:description"
+        content="أنظمة ذكاء اصطناعي، هندسة برمجيات، وبنية سحابية مؤسسية من الرياض.">
     <meta name="twitter:image" content="https://www.i99.sa/img/blue-logo.png">
 
     <!-- JSON-LD Structured Data -->
@@ -40,8 +45,12 @@
       "image": "https://www.i99.sa/img/blue-logo.png",
       "telephone": "+966566111617",
       "email": "Info@i99.sa",
-      "priceRange": "$$",
       "areaServed": "SA",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Riyadh",
+        "addressCountry": "SA"
+      },
       "parentOrganization": {
         "@type": "Organization",
         "name": "99 Media & Tech",
@@ -50,576 +59,630 @@
     }
     </script>
 
+    <!-- Fonts: IBM Plex Arabic + IBM Plex Sans + IBM Plex Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/tech.css?v=9.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/tech.css?v=10.0">
 </head>
-<body>
 
-    <!-- Ambient Background Grid & Glows -->
-    <div class="bg-grid" aria-hidden="true"></div>
-    <div class="bg-orb orb-blue" aria-hidden="true"></div>
-    <div class="bg-orb orb-purple" aria-hidden="true"></div>
+<body>
+    <a href="#main-content" class="skip-link" data-i18n="t-skip">الانتقال إلى المحتوى الرئيسي</a>
+
+    <!-- Subtle Coordinate Field Canvas -->
+    <canvas id="arch-canvas" class="arch-canvas" aria-hidden="true"></canvas>
 
     <!-- ═══ HEADER ═══ -->
-    <header class="site-header">
+    <header class="site-header" id="site-header">
         <div class="container header-inner">
-            <a href="../" class="logo" aria-label="99 Media &amp; Tech">
-                <img src="../img/blue-logo.png" alt="شعار 99 للتقنية والذكاء الاصطناعي">
+            <a href="../" class="brand-lockup" aria-label="99 Tech &amp; AI">
+                <img src="../img/blue-logo.png" alt="99 Tech" class="brand-mark" width="34" height="34">
+                <span class="brand-divider" aria-hidden="true"></span>
+                <span class="brand-name" dir="ltr">99 TECH</span>
             </a>
+
             <nav class="nav-links" aria-label="التنقل الرئيسي">
-                <a href="#tech-services" data-i18n="t-nav-services">الخدمات التقنية</a>
-                <a href="#tech-works" data-i18n="t-nav-works">أعمالنا</a>
-                <a href="#tech-process" data-i18n="t-nav-process">منهجية العمل</a>
-                <a href="#tech-about" data-i18n="t-nav-why">لماذا 99 تقنية</a>
-                <a href="#tech-contact" data-i18n="t-nav-contact">ابدأ مشروعك</a>
+                <a href="#tech-works" data-i18n="t-nav-works">أنظمتنا</a>
+                <a href="#tech-services" data-i18n="t-nav-services">القدرات الهندسية</a>
+                <a href="#tech-process" data-i18n="t-nav-process">منهجية البناء</a>
+                <a href="#tech-about" data-i18n="t-nav-why">لماذا 99</a>
+                <a href="../media/" class="nav-division-link" data-i18n="t-nav-media">99 للإعلام</a>
             </nav>
+
             <div class="header-actions">
-                <button id="lang-toggle" type="button" onclick="switchLang(currentLang === 'ar' ? 'en' : 'ar')">EN</button>
-                <a href="#tech-contact" class="btn magnetic-btn" data-i18n="t-header-cta"><span class="btn-text">تواصل معنا</span></a>
+                <button id="lang-toggle" class="lang-btn" type="button" aria-label="Switch language">EN</button>
+                <a href="#tech-contact" class="btn-primary btn-sm" data-i18n="t-header-cta">ابدأ مشروعك</a>
+                <button id="mobile-menu-btn" class="menu-toggle" type="button" aria-expanded="false"
+                    aria-controls="mobile-drawer" aria-label="فتح القائمة">
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-drawer" class="mobile-drawer" hidden>
+            <nav class="mobile-nav" aria-label="قائمة الجوال">
+                <a href="#tech-works" data-i18n="t-nav-works">أنظمتنا</a>
+                <a href="#tech-services" data-i18n="t-nav-services">القدرات الهندسية</a>
+                <a href="#tech-process" data-i18n="t-nav-process">منهجية البناء</a>
+                <a href="#tech-about" data-i18n="t-nav-why">لماذا 99</a>
+                <a href="../media/" data-i18n="t-nav-media">99 للإعلام</a>
+                <a href="#tech-contact" class="btn-primary mobile-cta" data-i18n="t-header-cta">ابدأ مشروعك</a>
+            </nav>
         </div>
     </header>
 
-    <!-- ═══ HERO (SPLIT ARCHITECTURE + HUD CONTROL CENTER) ═══ -->
-    <section id="tech-hero">
-        <div id="vanta-bg" aria-hidden="true"></div>
-        <div class="hero-vignette" aria-hidden="true"></div>
+    <main id="main-content">
 
-        <div class="container hero-layout">
-            <!-- Hero Text Column -->
-            <div class="hero-copy">
-                <div class="badge-wrap hidden">
-                    <span class="badge-dot" aria-hidden="true"></span>
-                    <span class="badge" data-i18n="t-badge">نبني المستقبل الرقمي</span>
-                </div>
+        <!-- ═══ HERO: ARCHITECTURAL SYSTEMS STAGE ═══ -->
+        <section id="tech-hero" class="hero-section">
+            <div class="container hero-grid">
 
-                <h1 class="title-font-family hidden" data-i18n="t-hero-title">نحوّل أفكارك إلى حلول تقنية <span class="gradient-text">ذكية</span> تقود نجاحك.</h1>
-
-                <p class="hero-desc hidden" data-i18n="t-hero-desc">نصمم ونطور حلولاً برمجية متكاملة وأنظمة ذكاء اصطناعي مبتكرة تمكّن مؤسستك من التحول الرقمي والتفوق في سوق المنافسة.</p>
-
-                <div class="btns hidden">
-                    <a href="#tech-contact" class="btn glow-btn magnetic-btn" data-i18n="t-hero-cta"><span class="btn-text">ابدأ مشروعك</span></a>
-                    <a href="#tech-services" class="btn-secondary" data-i18n="t-hero-explore">استكشف خدماتنا</a>
-                    <a href="../" class="btn-outline" data-i18n="t-back-media">← قسم الإعلام</a>
-                </div>
-            </div>
-
-            <!-- Hero Visual: 99 Tech Architecture Command Center -->
-            <div class="hero-Console hidden" aria-hidden="true">
-                <div class="console-window">
-                    <div class="console-topbar">
-                        <div class="console-dots">
-                            <span class="dot-red"></span>
-                            <span class="dot-amber"></span>
-                            <span class="dot-green"></span>
-                        </div>
-                        <span class="console-title" dir="ltr">99-TECH // ENTERPRISE ARCHITECTURE</span>
-                        <span class="console-status"><i class="live-dot"></i><span data-i18n="t-hud-live">نشط</span></span>
+                <!-- Start Column: Executive Thesis -->
+                <div class="hero-copy" data-enter>
+                    <div class="status-line">
+                        <span class="status-dot" aria-hidden="true"></span>
+                        <span class="mono-meta" dir="ltr">99 TECH &amp; AI // RIYADH</span>
                     </div>
 
-                    <div class="console-body">
-                        <!-- Module 1: AI Engine -->
-                        <div class="hud-module mod-ai">
-                            <div class="hud-mod-head">
-                                <span class="hud-mod-title" data-i18n="t-hud-ai-title">محرك الذكاء الاصطناعي والأتمتة</span>
-                                <span class="hud-mod-badge badge-purple" dir="ltr">AI CORE v4</span>
+                    <h1 class="hero-title" data-i18n="t-hero-title">نهندس أنظمة ذكاء اصطناعي وبرمجيات مؤسسية مصمّمة لتقود قطاعها</h1>
+
+                    <p class="hero-desc" data-i18n="t-hero-desc">ذراع الهندسة والتقنية في 99 — نصمم ونبني أنظمة تشغيل ذكية، منصات برمجية عالية الاعتمادية، وبنية سحابية تجمع دقة الهندسة مع عمق التأثير.</p>
+
+                    <div class="hero-actions">
+                        <a href="#tech-contact" class="btn-primary" data-i18n="t-hero-cta">ابدأ مشروعك التقني</a>
+                        <a href="#tech-works" class="btn-ghost" data-i18n="t-hero-explore">استعرض الأنظمة المطوّرة</a>
+                    </div>
+
+                    <div class="hero-proof">
+                        <div class="proof-item">
+                            <span class="proof-key mono-meta" dir="ltr">03</span>
+                            <span class="proof-val" data-i18n="t-proof-1">منظومات ذكاء اصطناعي مطوّرة داخلياً</span>
+                        </div>
+                        <div class="proof-item">
+                            <span class="proof-key mono-meta" dir="ltr">24/7</span>
+                            <span class="proof-val" data-i18n="t-proof-2">تشغيل ومراقبة هندسية مستمرة</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End Column: Interactive 99 Architecture Inspector -->
+                <div class="hero-stage" data-enter data-delay="1">
+                    <div class="arch-panel" role="region" aria-label="99 Systems Architecture">
+                        <span class="corner-mark tl" aria-hidden="true">+</span>
+                        <span class="corner-mark tr" aria-hidden="true">+</span>
+                        <span class="corner-mark bl" aria-hidden="true">+</span>
+                        <span class="corner-mark br" aria-hidden="true">+</span>
+
+                        <div class="arch-panel-head">
+                            <div class="arch-id">
+                                <span class="mono-meta" dir="ltr">SYS.BLUEPRINT</span>
+                                <span class="arch-sep" aria-hidden="true">/</span>
+                                <span class="mono-meta accent" id="arch-active-code" dir="ltr">EXOX-OS</span>
                             </div>
-                            <svg class="hud-wave" viewBox="0 0 360 64" fill="none" preserveAspectRatio="none">
-                                <defs>
-                                    <linearGradient id="aiGrad" x1="0" y1="0" x2="1" y2="0">
-                                        <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.1"/>
-                                        <stop offset="50%" stop-color="#B526FF" stop-opacity="0.9"/>
-                                        <stop offset="100%" stop-color="#00FCC3" stop-opacity="0.9"/>
-                                    </linearGradient>
-                                </defs>
-                                <path d="M0 48 Q 45 14, 90 36 T 180 24 T 270 38 T 360 16" stroke="url(#aiGrad)" stroke-width="2.5" fill="none"/>
-                                <path d="M0 54 Q 60 32, 120 44 T 240 28 T 360 34" stroke="rgba(59,130,246,0.35)" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/>
+                            <div class="arch-tabs" role="tablist" aria-label="اختيار المنظومة">
+                                <button type="button" class="arch-tab is-active" role="tab" aria-selected="true"
+                                    data-system="exox" dir="ltr">EXOX</button>
+                                <button type="button" class="arch-tab" role="tab" aria-selected="false"
+                                    data-system="prmedia" dir="ltr">PR MEDIA</button>
+                                <button type="button" class="arch-tab" role="tab" aria-selected="false"
+                                    data-system="firx" dir="ltr">FIRX</button>
+                            </div>
+                        </div>
+
+                        <!-- Live Interactive Topology Diagram -->
+                        <div class="topology-frame" dir="ltr" aria-hidden="true">
+                            <svg class="topology-svg" viewBox="0 0 520 148" fill="none">
+                                <!-- Static Hairline Tracks -->
+                                <path class="topo-track" d="M84 74 H188" />
+                                <path class="topo-track" d="M332 74 H436" />
+                                <path class="topo-track" d="M260 36 V112" />
+                                <path class="topo-track-branch" d="M188 74 C210 74 214 36 244 36" />
+                                <path class="topo-track-branch" d="M188 74 C210 74 214 112 244 112" />
+                                <path class="topo-track-branch" d="M276 36 C306 36 310 74 332 74" />
+                                <path class="topo-track-branch" d="M276 112 C306 112 310 74 332 74" />
+
+                                <!-- Precision Animated Signal Pulses -->
+                                <path class="topo-pulse" d="M84 74 H188" />
+                                <path class="topo-pulse pulse-delay" d="M332 74 H436" />
+
+                                <!-- Node 1: Context / Input -->
+                                <rect x="14" y="48" width="70" height="52" rx="8" class="topo-node" />
+                                <text x="49" y="70" text-anchor="middle" class="topo-label-sm" id="topo-n1-sub">INPUT</text>
+                                <text x="49" y="86" text-anchor="middle" class="topo-label" id="topo-n1-main">Context</text>
+
+                                <!-- Center Core -->
+                                <rect x="188" y="44" width="144" height="60" rx="10" class="topo-core" />
+                                <text x="260" y="69" text-anchor="middle" class="topo-core-sub" id="topo-core-sub">ORCHESTRATION</text>
+                                <text x="260" y="88" text-anchor="middle" class="topo-core-title" id="topo-core-main">EXOX Engine</text>
+
+                                <!-- Satellite Guardrail Top/Bottom Dots -->
+                                <circle cx="260" cy="24" r="4" class="topo-dot" />
+                                <circle cx="260" cy="124" r="4" class="topo-dot" />
+
+                                <!-- Node 3: Edge Delivery -->
+                                <rect x="436" y="48" width="70" height="52" rx="8" class="topo-node" />
+                                <text x="471" y="70" text-anchor="middle" class="topo-label-sm" id="topo-n3-sub">OUTPUT</text>
+                                <text x="471" y="86" text-anchor="middle" class="topo-label" id="topo-n3-main">Scale</text>
                             </svg>
-                            <div class="hud-chips" dir="ltr">
-                                <span>LLM Agents</span>
-                                <span>NLP Arabic</span>
-                                <span>Predictive Analytics</span>
-                                <span>Smart Workflows</span>
+                        </div>
+
+                        <!-- System Spec Sheet -->
+                        <div class="arch-specs">
+                            <div class="spec-row">
+                                <span class="spec-k" data-i18n="t-spec-domain">المجال</span>
+                                <span class="spec-v" id="spec-domain">نظام تشغيل ذكي لنمو الأعمال</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-k" data-i18n="t-spec-stack">المعمارية</span>
+                                <span class="spec-v mono-spec" id="spec-stack" dir="ltr">Multi-Agent Core · Edge API · Structured Memory</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-k" data-i18n="t-spec-gov">الضبط والأمان</span>
+                                <span class="spec-v" id="spec-gov">بوابة اعتماد المالك · عزل بيانات المنشأة</span>
                             </div>
                         </div>
 
-                        <!-- Module 2: Cloud & Security Metrics -->
-                        <div class="hud-metrics-row">
-                            <div class="hud-metric-box">
-                                <span class="hm-val cyan-text" dir="ltr">99.99%</span>
-                                <span class="hm-lbl" data-i18n="t-hud-m1">استقرار وجاهزية السحابة</span>
-                            </div>
-                            <div class="hud-metric-box">
-                                <span class="hm-val blue-text" dir="ltr">Zero-Trust</span>
-                                <span class="hm-lbl" data-i18n="t-hud-m2">تشفير وأمان مؤسسي</span>
-                            </div>
-                            <div class="hud-metric-box">
-                                <span class="hm-val purple-text" dir="ltr">24/7</span>
-                                <span class="hm-lbl" data-i18n="t-hud-m3">مراقبة ودعم فني</span>
-                            </div>
+                        <div class="arch-panel-foot">
+                            <span class="mono-meta muted" id="spec-status" dir="ltr">STATUS // ACTIVE DEPLOYMENT</span>
+                            <a href="https://exox.ai" target="_blank" rel="noopener noreferrer" id="spec-link"
+                                class="arch-foot-link" data-i18n="t-spec-visit">معاينة المنصة ↗</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ═══ TICKER ═══ -->
-    <div class="ticker-container" dir="ltr">
-        <div class="ticker-content">
-            <span>Software Engineering</span><span class="ticker-dot">◆</span>
-            <span>Artificial Intelligence</span><span class="ticker-dot">◆</span>
-            <span>Web &amp; Mobile Apps</span><span class="ticker-dot">◆</span>
-            <span>Data &amp; Business Intelligence</span><span class="ticker-dot">◆</span>
-            <span>Cloud &amp; DevOps</span><span class="ticker-dot">◆</span>
-            <span>تطوير البرمجيات</span><span class="ticker-dot">◆</span>
-            <span>حلول الذكاء الاصطناعي</span><span class="ticker-dot">◆</span>
-            <span>المواقع والتطبيقات</span><span class="ticker-dot">◆</span>
-            <span>تحليل البيانات</span><span class="ticker-dot">◆</span>
-            <span>الحوسبة السحابية</span><span class="ticker-dot">◆</span>
-            <span aria-hidden="true">Software Engineering</span><span class="ticker-dot" aria-hidden="true">◆</span>
-            <span aria-hidden="true">Artificial Intelligence</span><span class="ticker-dot" aria-hidden="true">◆</span>
-            <span aria-hidden="true">Web &amp; Mobile Apps</span><span class="ticker-dot" aria-hidden="true">◆</span>
-            <span aria-hidden="true">Data &amp; Business Intelligence</span><span class="ticker-dot" aria-hidden="true">◆</span>
-            <span aria-hidden="true">Cloud &amp; DevOps</span><span class="ticker-dot" aria-hidden="true">◆</span>
-            <span aria-hidden="true">تطوير البرمجيات</span><span class="ticker-dot" aria-hidden="true">◆</span>
-            <span aria-hidden="true">حلول الذكاء الاصطناعي</span><span class="ticker-dot" aria-hidden="true">◆</span>
-            <span aria-hidden="true">المواقع والتطبيقات</span><span class="ticker-dot" aria-hidden="true">◆</span>
-            <span aria-hidden="true">تحليل البيانات</span><span class="ticker-dot" aria-hidden="true">◆</span>
-            <span aria-hidden="true">الحوسبة السحابية</span><span class="ticker-dot" aria-hidden="true">◆</span>
-        </div>
-    </div>
+        <!-- ═══ SECTION 2: FLAGSHIP SYSTEMS WE ENGINEERED (SHOW, DON'T TELL) ═══ -->
+        <section id="tech-works" class="section-block">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div class="section-index">
+                        <span class="mono-meta accent" dir="ltr">01</span>
+                        <span class="index-rule" aria-hidden="true"></span>
+                        <span class="eyebrow-text" data-i18n="t-works-eyebrow">أنظمة ومنتجات هندسناها من الصفر</span>
+                    </div>
+                    <h2 class="section-title" data-i18n="t-works-title">منصات حقيقية تثبت قدرتنا الهندسية</h2>
+                    <p class="section-sub" data-i18n="t-works-sub">لا نكتفي بالوعود النظرية؛ نبني منظومات ذكاء اصطناعي ومنتجات تقنية متكاملة تعمل بمعايير إنتاجية صارمة.</p>
+                </div>
 
-    <!-- ═══ SERVICES (12-COL ARCHITECTURAL BENTO: 7+5 / 4+4+4) ═══ -->
-    <section id="tech-services">
-        <div class="container">
-            <div class="section-header hidden">
-                <span class="section-eyebrow" data-i18n="t-services-eyebrow">منظومة الحلول الرقمية</span>
-                <h2 class="section-title title-font-family" data-i18n="t-services-title">خدماتنا التقنية</h2>
-                <p class="section-subtitle" data-i18n="t-services-sub">نبتكر ونطوّر حلولاً تقنية متكاملة مصممة لرفع كفاءة الأعمال وتسريع النمو الرقمي.</p>
+                <!-- Featured Flagship: EXOX -->
+                <article class="flagship-card reveal">
+                    <div class="flagship-stage">
+                        <div class="stage-horizon" aria-hidden="true"></div>
+                        <a href="https://exox.ai" target="_blank" rel="noopener noreferrer" class="flagship-logo-link"
+                            aria-label="EXOX — https://exox.ai">
+                            <img src="../img/works/exox.png" alt="EXOX — AI Business Operating System"
+                                class="work-logo-img logo-exox" loading="lazy">
+                        </a>
+                        <div class="stage-meta mono-meta" dir="ltr">EXOX.AI // LIVE PRE-LAUNCH</div>
+                    </div>
+
+                    <div class="flagship-content">
+                        <div class="work-meta-row">
+                            <span class="mono-meta accent" dir="ltr">01 · FLAGSHIP OS</span>
+                            <span class="work-chip" data-i18n="t-work1-tag">نظام تشغيل الأعمال بالذكاء الاصطناعي</span>
+                        </div>
+                        <h3 class="flagship-title">
+                            <a href="https://exox.ai" target="_blank" rel="noopener noreferrer" dir="ltr">EXOX</a>
+                        </h3>
+                        <p class="flagship-desc" data-i18n="t-work1-long">منظومة تشغيل ذكية موحّدة تحفظ هوية المنشأة وسياقها، وتبني الحضور الرقمي، المحتوى الإعلاني، وجداول النشر والحملات عبر القنوات تحت صلاحية واعتماد المالك.</p>
+                        <ul class="spec-tags">
+                            <li data-i18n="t-work1-p1">ذاكرة مؤسسية وهوية بصرية موحّدة</li>
+                            <li data-i18n="t-work1-p2">بناء مواقع وصفحات هبوط مهيأة لـ SEO و GEO</li>
+                            <li data-i18n="t-work1-p3">بوابة اعتماد وتحكم وإيقاف فوري</li>
+                        </ul>
+                        <div class="flagship-actions">
+                            <a href="https://exox.ai" target="_blank" rel="noopener noreferrer" class="btn-primary btn-sm"
+                                data-i18n="t-work1-cta">زيارة exox.ai ↗</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Secondary Flagships: PR MEDIA + FIRX -->
+                <div class="works-pair">
+                    <article class="system-card reveal">
+                        <div class="system-stage">
+                            <img src="../img/works/pr-media.png"
+                                alt="PR MEDIA — AI-Powered Media Intelligence &amp; Strategic Communications"
+                                class="work-logo-img logo-prmedia" loading="lazy">
+                        </div>
+                        <div class="system-body">
+                            <div class="work-meta-row">
+                                <span class="mono-meta accent" dir="ltr">02 · MEDIA INTEL</span>
+                                <span class="work-chip" data-i18n="t-work2-tag">ذكاء إعلامي واتصال استراتيجي</span>
+                            </div>
+                            <h3 class="system-title" dir="ltr">PR MEDIA</h3>
+                            <p class="system-desc" data-i18n="t-work2-long">منصة ذكاء إعلامي واتصال مؤسسي تحوّل رصد التغطيات وإشارات السمعة إلى قرارات تواصلية دقيقة ومحتوى استراتيجي موجّه.</p>
+                            <p class="system-en-sub mono-meta" dir="ltr">AI-Powered Media Intelligence &amp; Strategic Communications</p>
+                        </div>
+                    </article>
+
+                    <article class="system-card reveal" data-delay="1">
+                        <div class="system-stage">
+                            <img src="../img/works/firx.png"
+                                alt="FIRX — AI Governance, Verification &amp; Trusted Execution"
+                                class="work-logo-img logo-firx" loading="lazy">
+                        </div>
+                        <div class="system-body">
+                            <div class="work-meta-row">
+                                <span class="mono-meta accent" dir="ltr">03 · GOVERNANCE</span>
+                                <span class="work-chip" data-i18n="t-work3-tag">حوكمة وتحقق الذكاء الاصطناعي</span>
+                            </div>
+                            <h3 class="system-title" dir="ltr">FIRX</h3>
+                            <p class="system-desc" data-i18n="t-work3-long">طبقة حوكمة وتحقق وتنفيذ موثوق للأنظمة الذكية؛ تضمن امتثال المخرجات، تتبع القرارات، وسلامة التشغيل داخل البيئات الحساسة.</p>
+                            <p class="system-en-sub mono-meta" dir="ltr">AI Governance, Verification &amp; Trusted Execution</p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Sovereign Seal: SAUDI TECH -->
+                <div class="saudi-tech-bar reveal">
+                    <div class="saudi-tech-brand">
+                        <img src="../img/saudi-tech.png" alt="SAUDI TECH" class="saudi-tech-img" loading="lazy">
+                    </div>
+                    <div class="saudi-tech-copy">
+                        <span class="mono-meta accent" dir="ltr">ENGINEERED IN RIYADH · KSA</span>
+                        <p data-i18n="t-saudi-tech-desc">تقنيات سعودية مطوّرة بمعايير هندسية عالمية لخدمة المنشآت والجهات الطموحة في المملكة والمنطقة.</p>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="bento-grid">
-
-                <!-- ROW 1, CARD 1 (7 Cols): AI Solutions -->
-                <article class="bento-card span-7 theme-purple spotlight hidden">
-                    <div class="bento-visual vis-ai" aria-hidden="true">
-                        <div class="ai-pipeline">
-                            <div class="pipe-node">
-                                <span class="pn-tag" dir="ltr">DATA INPUT</span>
-                                <strong data-i18n="t-vis-ai1">بيانات المؤسسة</strong>
-                            </div>
-                            <div class="pipe-arrow"><span></span></div>
-                            <div class="pipe-core">
-                                <div class="core-ring"></div>
-                                <strong dir="ltr">99 AI CORE</strong>
-                                <span dir="ltr">LLM · NLP · Vision</span>
-                            </div>
-                            <div class="pipe-arrow"><span></span></div>
-                            <div class="pipe-node">
-                                <span class="pn-tag cyan" dir="ltr">OUTPUT</span>
-                                <strong data-i18n="t-vis-ai2">أتمتة وقرارات ذكية</strong>
-                            </div>
-                        </div>
+        <!-- ═══ SECTION 3: CORE ENGINEERING CAPABILITIES ═══ -->
+        <section id="tech-services" class="section-block section-surface">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div class="section-index">
+                        <span class="mono-meta accent" dir="ltr">02</span>
+                        <span class="index-rule" aria-hidden="true"></span>
+                        <span class="eyebrow-text" data-i18n="t-services-eyebrow">القدرات الهندسية</span>
                     </div>
+                    <h2 class="section-title" data-i18n="t-services-title">خمس ركائز تقنية تحت سقف هندسي واحد</h2>
+                    <p class="section-sub" data-i18n="t-services-sub">نصمم كل نظام كمعمارية طويلة الأمد — قابلة للتوسع، محصّنة أمنياً، ومصمّمة لأداء مستقر تحت الضغط.</p>
+                </div>
 
-                    <div class="bento-body">
-                        <div class="bento-meta">
-                            <span class="bento-num">01</span>
-                            <span class="bento-tag tag-purple" data-i18n="t-svc3-tag">الذكاء الاصطناعي · AI</span>
+                <div class="cap-grid">
+
+                    <!-- 01: AI Systems (Featured 7-Col) -->
+                    <article class="cap-card cap-wide reveal">
+                        <div class="cap-head">
+                            <span class="mono-meta accent" dir="ltr">01 // AI SYSTEMS</span>
+                            <span class="cap-badge" data-i18n="t-svc1-badge">التخصص المحوري</span>
                         </div>
-                        <h3 class="ai-text" data-i18n="t-svc3-title">حلول الذكاء الاصطناعي</h3>
-                        <p data-i18n="t-svc3-desc">روبوتات محادثة ذكية، أنظمة تحليل تنبؤي، أتمتة العمليات، ونماذج AI مخصصة تمنح مؤسستك ميزة تنافسية فريدة في السوق.</p>
-                        <ul class="bento-pills">
-                            <li data-i18n="t-ai-c1">وكلاء ذكاء اصطناعي ومحادثة</li>
-                            <li data-i18n="t-ai-c2">أتمتة العمليات وسير العمل</li>
-                            <li data-i18n="t-ai-c3">نماذج تنبؤية ومعالجة لغة طبيعية</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <!-- ROW 1, CARD 2 (5 Cols): Software Engineering -->
-                <article class="bento-card span-5 theme-blue spotlight hidden">
-                    <div class="bento-visual vis-software" aria-hidden="true">
-                        <div class="arch-diagram" dir="ltr">
-                            <div class="arch-layer">
-                                <span class="arch-box">API Gateway</span>
-                                <span class="arch-box active">Core Microservices</span>
+                        <div class="cap-wide-split">
+                            <div class="cap-text">
+                                <h3 data-i18n="t-svc1-title">هندسة أنظمة ووكلاء الذكاء الاصطناعي</h3>
+                                <p data-i18n="t-svc1-desc">بناء وكلاء ذكاء اصطناعي إنتاجيين، أنظمة استرجاع معرفي (RAG) متقنة للغة العربية، وأتمتة ذكية للعمليات التشغيلية مع ضوابط حوكمة دقيقة.</p>
+                                <ul class="cap-list">
+                                    <li data-i18n="t-svc1-l1">وكلاء تنفيذ ذكيون متعددو الخطوات مع بوابات اعتماد</li>
+                                    <li data-i18n="t-svc1-l2">معالجة لغة عربية متقدمة وفهم سياق الأعمال</li>
+                                    <li data-i18n="t-svc1-l3">دمج نماذج الذكاء الاصطناعي داخل أنظمة المؤسسة القائمة</li>
+                                </ul>
                             </div>
-                            <div class="arch-connector"></div>
-                            <div class="arch-layer">
-                                <span class="arch-box">Auth &amp; RBAC</span>
-                                <span class="arch-box">Encrypted DB</span>
-                                <span class="arch-box cyan">ERP / CRM</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bento-body">
-                        <div class="bento-meta">
-                            <span class="bento-num">02</span>
-                            <span class="bento-tag tag-blue" data-i18n="t-svc1-tag">هندسة البرمجيات</span>
-                        </div>
-                        <h3 data-i18n="t-svc1-title">تطوير البرمجيات</h3>
-                        <p data-i18n="t-svc1-desc">أنظمة ومنصات مخصصة تلبي احتياجات مؤسستك بأحدث التقنيات وأفضل الممارسات العالمية، من التصميم إلى الإطلاق والدعم المستمر.</p>
-                        <ul class="bento-pills">
-                            <li data-i18n="t-svc1-c1">أنظمة مؤسسية ومنصات SaaS</li>
-                            <li data-i18n="t-svc1-c2">واجهات برمجية APIs وتكامل أنظمة</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <!-- ROW 2, CARD 3 (4 Cols): Web & Mobile Apps -->
-                <article class="bento-card span-4 theme-blue spotlight hidden">
-                    <div class="bento-visual vis-apps" aria-hidden="true">
-                        <div class="ui-showcase" dir="ltr">
-                            <div class="ui-desktop">
-                                <div class="uid-bar"><i></i><i></i><i></i><span>app.i99.sa</span></div>
-                                <div class="uid-grid">
-                                    <div class="uid-hero"></div>
-                                    <div class="uid-cards"><span></span><span></span></div>
+                            <div class="cap-schematic" dir="ltr" aria-hidden="true">
+                                <div class="schem-step">
+                                    <span class="schem-idx">IN</span>
+                                    <span class="schem-name">Enterprise Knowledge</span>
+                                </div>
+                                <div class="schem-link"></div>
+                                <div class="schem-step is-core">
+                                    <span class="schem-idx">AI</span>
+                                    <span class="schem-name">Reasoning &amp; Orchestration</span>
+                                </div>
+                                <div class="schem-link"></div>
+                                <div class="schem-step">
+                                    <span class="schem-idx">QA</span>
+                                    <span class="schem-name">Verification Gate</span>
+                                </div>
+                                <div class="schem-link"></div>
+                                <div class="schem-step">
+                                    <span class="schem-idx">OUT</span>
+                                    <span class="schem-name">Governed Execution</span>
                                 </div>
                             </div>
-                            <div class="ui-mobile">
-                                <div class="uim-notch"></div>
-                                <div class="uim-screen">
-                                    <span class="uim-pill"></span>
-                                    <span class="uim-block"></span>
-                                </div>
-                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 02: Software Engineering (5-Col) -->
+                    <article class="cap-card cap-narrow reveal" data-delay="1">
+                        <div class="cap-head">
+                            <span class="mono-meta accent" dir="ltr">02 // SOFTWARE</span>
+                        </div>
+                        <h3 data-i18n="t-svc2-title">تطوير البرمجيات ومنصات SaaS</h3>
+                        <p data-i18n="t-svc2-desc">تصميم وبناء أنظمة مؤسسية مخصصة، منصات اشتراك سحابية، وواجهات برمجية عالية الكفاءة تتكامل بسلاسة مع منظومة عملك.</p>
+                        <div class="arch-stack-bars" dir="ltr" aria-hidden="true">
+                            <div class="stack-row"><span>API Gateway</span><span>GraphQL / REST</span></div>
+                            <div class="stack-row is-hl"><span>Domain Services</span><span>Modular Core</span></div>
+                            <div class="stack-row"><span>Auth &amp; Data</span><span>RBAC · Encrypted DB</span></div>
+                        </div>
+                        <ul class="cap-list">
+                            <li data-i18n="t-svc2-l1">منصات SaaS وأنظمة تشغيل داخلية مخصصة</li>
+                            <li data-i18n="t-svc2-l2">تكامل APIs مع أنظمة ERP و CRM والمدفوعات</li>
+                        </ul>
+                    </article>
+
+                    <!-- 03: Digital Products & Web/Mobile (4-Col) -->
+                    <article class="cap-card cap-third reveal">
+                        <div class="cap-head">
+                            <span class="mono-meta accent" dir="ltr">03 // INTERFACES</span>
+                        </div>
+                        <h3 data-i18n="t-svc3-title">المنصات التفاعلية والتطبيقات</h3>
+                        <p data-i18n="t-svc3-desc">واجهات ويب وتطبيقات جوال فائقة السرعة بدقة تصميمية عالية، وتجربة استخدام ثنائية اللغة (عربي/إنجليزي) تعكس هيبة علامتك.</p>
+                        <ul class="cap-list">
+                            <li data-i18n="t-svc3-l1">منصات ويب متقدمة ومهيأة للبحث والاكتشاف</li>
+                            <li data-i18n="t-svc3-l2">تطبيقات iOS و Android وتجارب UI/UX مصمّمة خصيصاً</li>
+                        </ul>
+                    </article>
+
+                    <!-- 04: Data & BI (4-Col) -->
+                    <article class="cap-card cap-third reveal" data-delay="1">
+                        <div class="cap-head">
+                            <span class="mono-meta accent" dir="ltr">04 // DATA &amp; BI</span>
+                        </div>
+                        <h3 data-i18n="t-svc4-title">هندسة البيانات وذكاء الأعمال</h3>
+                        <p data-i18n="t-svc4-desc">توحيد مصادر البيانات المتفرقة في لوحات قرار تنفيذية واضحة، وتقارير لحظية تمنح القيادة رؤية دقيقة دون ضجيج.</p>
+                        <ul class="cap-list">
+                            <li data-i18n="t-svc4-l1">خطوط تجميع وتنظيف بيانات مؤسسية</li>
+                            <li data-i18n="t-svc4-l2">لوحات مؤشرات تنفيذية ونماذج تنبؤية</li>
+                        </ul>
+                    </article>
+
+                    <!-- 05: Cloud & Security (4-Col) -->
+                    <article class="cap-card cap-third reveal" data-delay="2">
+                        <div class="cap-head">
+                            <span class="mono-meta accent" dir="ltr">05 // CLOUD &amp; OPS</span>
+                        </div>
+                        <h3 data-i18n="t-svc5-title">البنية السحابية والأمن السيبراني</h3>
+                        <p data-i18n="t-svc5-desc">هندسة سحابية مرنة على الحافة (Edge) والخدمات المدارة، مع أتمتة النشر، التشفير الشامل، والمراقبة المستمرة 24/7.</p>
+                        <ul class="cap-list">
+                            <li data-i18n="t-svc5-l1">معمارية Zero-Trust وحماية طبقة التطبيقات</li>
+                            <li data-i18n="t-svc5-l2">نشر آلي CI/CD ومراقبة أداء فورية</li>
+                        </ul>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ SECTION 4: ENGINEERING METHODOLOGY ═══ -->
+        <section id="tech-process" class="section-block">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div class="section-index">
+                        <span class="mono-meta accent" dir="ltr">03</span>
+                        <span class="index-rule" aria-hidden="true"></span>
+                        <span class="eyebrow-text" data-i18n="t-process-eyebrow">منهجية الهندسة والتسليم</span>
+                    </div>
+                    <h2 class="section-title" data-i18n="t-process-title">مسار منضبط من المعمارية إلى التشغيل الإنتاجي</h2>
+                    <p class="section-sub" data-i18n="t-process-sub">أربع مراحل هندسية واضحة بمخرجات ملموسة في كل محطة — بلا غموض وبلا حلول مؤقتة.</p>
+                </div>
+
+                <div class="process-grid reveal">
+                    <article class="process-card">
+                        <div class="process-top">
+                            <span class="mono-meta accent" dir="ltr">01</span>
+                            <span class="process-deliverable mono-meta" dir="ltr">SPEC &amp; ARCH</span>
+                        </div>
+                        <h3 data-i18n="t-step1-title">الاكتشاف وتصميم المعمارية</h3>
+                        <p data-i18n="t-step1-desc">تحليل دقيق للأهداف التشغيلية، نموذج البيانات، ومخاطر الأمان لصياغة وثيقة معمارية واضحة قبل كتابة أول سطر كود.</p>
+                    </article>
+
+                    <article class="process-card">
+                        <div class="process-top">
+                            <span class="mono-meta accent" dir="ltr">02</span>
+                            <span class="process-deliverable mono-meta" dir="ltr">UX &amp; SYSTEM</span>
+                        </div>
+                        <h3 data-i18n="t-step2-title">التصميم والنمذجة التفاعلية</h3>
+                        <p data-i18n="t-step2-desc">بناء نظام تصميم متماسك ونماذج تفاعلية حقيقية تختبر رحلة المستخدم وتفاصيل الواجهة على الحاسوب والجوال مبكراً.</p>
+                    </article>
+
+                    <article class="process-card">
+                        <div class="process-top">
+                            <span class="mono-meta accent" dir="ltr">03</span>
+                            <span class="process-deliverable mono-meta" dir="ltr">BUILD &amp; QA</span>
+                        </div>
+                        <h3 data-i18n="t-step3-title">الهندسة والاختبار الصارم</h3>
+                        <p data-i18n="t-step3-desc">تطوير مرحلي بدورات تسليم منتظمة، مع اختبارات آلية للأداء، الأمان، وتكامل الـ APIs لضمان جاهزية إنتاجية كاملة.</p>
+                    </article>
+
+                    <article class="process-card">
+                        <div class="process-top">
+                            <span class="mono-meta accent" dir="ltr">04</span>
+                            <span class="process-deliverable mono-meta" dir="ltr">EDGE &amp; 24/7</span>
+                        </div>
+                        <h3 data-i18n="t-step4-title">الإطلاق والمراقبة المستمرة</h3>
+                        <p data-i18n="t-step4-desc">إطلاق سلس بدون توقف على بنية سحابية مستقرة، مع متابعة هندسية مستمرة وتطوير متدرج يواكب نمو منشأتك.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ SECTION 5: WHY 99 TECH (THE UNFAIR ADVANTAGE) ═══ -->
+        <section id="tech-about" class="section-block section-surface">
+            <div class="container">
+                <div class="why-layout reveal">
+                    <div class="why-lead">
+                        <div class="section-index">
+                            <span class="mono-meta accent" dir="ltr">04</span>
+                            <span class="index-rule" aria-hidden="true"></span>
+                            <span class="eyebrow-text" data-i18n="t-about-eyebrow">الميزة التنافسية</span>
+                        </div>
+                        <h2 class="section-title" data-i18n="t-about-title">لماذا 99 للتقنية والذكاء الاصطناعي؟</h2>
+                        <p class="why-desc" data-i18n="t-about-desc">معظم الشركات التقنية تبني أنظمة جافة تفتقر للهوية، ومعظم الوكالات الإبداعية تفتقر للعمق الهندسي. في 99 نجمع الاثنين معاً: هندسة ذكاء اصطناعي وبرمجيات صلبة، مدعومة بخبرة إعلامية وإبداعية تمتد منذ 2014.</p>
+
+                        <div class="ops-strip">
+                            <span class="status-dot" aria-hidden="true"></span>
+                            <span class="mono-meta" dir="ltr">24/7</span>
+                            <span class="ops-label" data-i18n="t-stat3">مراقبة تشغيلية ودعم هندسي متواصل</span>
                         </div>
                     </div>
 
-                    <div class="bento-body">
-                        <div class="bento-meta">
-                            <span class="bento-num">03</span>
-                            <span class="bento-tag tag-blue" data-i18n="t-svc2-tag">المنصات الرقمية</span>
+                    <div class="pillars-grid">
+                        <div class="pillar-cell">
+                            <div class="pillar-icon" aria-hidden="true">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                    <path d="m9 12 2 2 4-4" />
+                                </svg>
+                            </div>
+                            <h3 data-i18n="t-p1-title">الأمان والخصوصية في الأساس</h3>
+                            <p data-i18n="t-p1-desc">تشفير البيانات، عزل الصلاحيات، ومراجعة أمنية مضمّنة في صميم المعمارية منذ اليوم الأول.</p>
                         </div>
-                        <h3 data-i18n="t-svc2-title">المواقع والتطبيقات</h3>
-                        <p data-i18n="t-svc2-desc">مواقع إلكترونية وتطبيقات موبايل تفاعلية بتصاميم عصرية وتجربة مستخدم استثنائية تعكس هوية علامتك التجارية وتحقق أهدافك.</p>
-                        <ul class="bento-pills">
-                            <li data-i18n="t-svc2-c1">تطبيقات iOS و Android</li>
-                            <li data-i18n="t-svc2-c2">منصات ويب وتجربة UI/UX</li>
+
+                        <div class="pillar-cell">
+                            <div class="pillar-icon" aria-hidden="true">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="m12 2 10 5-10 5L2 7l10-5z" />
+                                    <path d="m2 17 10 5 10-5" />
+                                    <path d="m2 12 10 5 10-5" />
+                                </svg>
+                            </div>
+                            <h3 data-i18n="t-p2-title">معمارية قابلة للتوسع الحقيقي</h3>
+                            <p data-i18n="t-p2-desc">تصميم برمجي معياري ينمو بسلاسة من الإصدار الأول إلى آلاف المستخدمين دون إعادة بناء.</p>
+                        </div>
+
+                        <div class="pillar-cell">
+                            <div class="pillar-icon" aria-hidden="true">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="4" y="4" width="16" height="16" rx="2" />
+                                    <rect x="9" y="9" width="6" height="6" />
+                                    <path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3" />
+                                </svg>
+                            </div>
+                            <h3 data-i18n="t-p3-title">ذكاء اصطناعي إنتاجي لا استعراضي</h3>
+                            <p data-i18n="t-p3-desc">أنظمة AI محكومة بضوابط تحقق ومخرجات موثوقة تخدم التشغيل الفعلي لا العروض المؤقتة.</p>
+                        </div>
+
+                        <div class="pillar-cell">
+                            <div class="pillar-icon" aria-hidden="true">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="9" />
+                                    <path d="M12 7v5l3 2" />
+                                </svg>
+                            </div>
+                            <h3 data-i18n="t-p4-title">تكامل الهندسة مع هيبة العلامة</h3>
+                            <p data-i18n="t-p4-desc">منتجات تقنية تُبنى بعقلية هندسية دقيقة وتظهر بواجهة وهوية تليق بمكانة مؤسستك.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ SECTION 6: EXECUTIVE PROJECT INQUIRY ═══ -->
+        <section id="tech-contact" class="section-block">
+            <div class="container">
+                <div class="contact-panel reveal">
+                    <div class="contact-info">
+                        <div class="section-index">
+                            <span class="mono-meta accent" dir="ltr">05</span>
+                            <span class="index-rule" aria-hidden="true"></span>
+                            <span class="eyebrow-text" data-i18n="t-contact-eyebrow">ابدأ مشروعك</span>
+                        </div>
+                        <h2 class="contact-title" data-i18n="t-contact-title">ناقش مشروعك مع فريقنا الهندسي</h2>
+                        <p class="contact-desc" data-i18n="t-contact-sub">شاركنا فكرتك أو التحدي التقني في مؤسستك، وسيتواصل معك فريق 99 للتقنية والذكاء الاصطناعي بخطة واضحة.</p>
+
+                        <ul class="contact-channels">
+                            <li>
+                                <span class="ch-label" data-i18n="t-ch-email">البريد الرسمي</span>
+                                <a href="mailto:Info@i99.sa" dir="ltr">Info@i99.sa</a>
+                            </li>
+                            <li>
+                                <span class="ch-label" data-i18n="t-ch-phone">الهاتف</span>
+                                <a href="tel:+966566111617" dir="ltr">+966 56 611 1617</a>
+                            </li>
+                            <li>
+                                <span class="ch-label" data-i18n="t-ch-loc">المقر</span>
+                                <span data-i18n="t-ch-loc-val">الرياض، المملكة العربية السعودية</span>
+                            </li>
                         </ul>
                     </div>
-                </article>
 
-                <!-- ROW 2, CARD 4 (4 Cols): Data Analytics -->
-                <article class="bento-card span-4 theme-cyan spotlight hidden">
-                    <div class="bento-visual vis-data" aria-hidden="true">
-                        <div class="analytics-widget" dir="ltr">
-                            <div class="aw-head">
-                                <span class="aw-label">REAL-TIME BI</span>
-                                <span class="aw-trend">+184% ▲</span>
-                            </div>
-                            <div class="aw-bars">
-                                <span style="height:38%"></span>
-                                <span style="height:52%"></span>
-                                <span style="height:45%"></span>
-                                <span style="height:70%"></span>
-                                <span style="height:64%"></span>
-                                <span style="height:86%"></span>
-                                <span class="bar-peak" style="height:100%"></span>
-                            </div>
-                        </div>
-                    </div>
+                    <form id="tech-form" class="contact-form" action="https://api.web3forms.com/submit" method="POST"
+                        novalidate>
+                        <input type="hidden" name="access_key" value="928f6b69-1a8e-4438-baaa-460f5fc70074">
+                        <input type="hidden" name="subject" value="New Project Inquiry — 99 Tech & AI (i99.sa)">
+                        <input type="hidden" name="scope" id="tech-scope-input" value="AI Systems">
+                        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"
+                            style="display:none;position:absolute;opacity:0;pointer-events:none;">
 
-                    <div class="bento-body">
-                        <div class="bento-meta">
-                            <span class="bento-num">04</span>
-                            <span class="bento-tag tag-cyan" data-i18n="t-svc4-tag">ذكاء الأعمال</span>
-                        </div>
-                        <h3 data-i18n="t-svc4-title">تحليل البيانات</h3>
-                        <p data-i18n="t-svc4-desc">لوحات تحكم تفاعلية وتقارير ذكية تحوّل بياناتك إلى رؤى قابلة للتنفيذ، تمكّنك من اتخاذ قرارات مبنية على معطيات دقيقة.</p>
-                        <ul class="bento-pills">
-                            <li data-i18n="t-svc4-c1">لوحات مؤشرات أداء لحظية</li>
-                            <li data-i18n="t-svc4-c2">تقارير تنفيذية لدعم القرار</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <!-- ROW 2, CARD 5 (4 Cols): Cloud Computing -->
-                <article class="bento-card span-4 theme-pink spotlight hidden">
-                    <div class="bento-visual vis-cloud" aria-hidden="true">
-                        <div class="cloud-widget" dir="ltr">
-                            <div class="cw-top">
-                                <span class="cw-status"><i class="live-dot"></i>99.99% SLA</span>
-                                <span class="cw-region">SA-RIYADH-1</span>
-                            </div>
-                            <div class="cw-nodes">
-                                <div class="cw-node"><span>CDN</span><i></i></div>
-                                <div class="cw-node"><span>K8s</span><i></i></div>
-                                <div class="cw-node"><span>CI/CD</span><i></i></div>
-                                <div class="cw-node"><span>WAF</span><i></i></div>
+                        <div class="field-group">
+                            <span class="field-label" data-i18n="t-scope-label">نوع المشروع</span>
+                            <div class="scope-chips" role="group" aria-label="نوع المشروع">
+                                <button type="button" class="scope-chip is-selected" data-scope="AI Systems"
+                                    data-i18n="t-scope-1">أنظمة ذكاء اصطناعي</button>
+                                <button type="button" class="scope-chip" data-scope="Software & SaaS"
+                                    data-i18n="t-scope-2">برمجيات ومنصات SaaS</button>
+                                <button type="button" class="scope-chip" data-scope="Web & Mobile"
+                                    data-i18n="t-scope-3">مواقع وتطبيقات</button>
+                                <button type="button" class="scope-chip" data-scope="Cloud & Data"
+                                    data-i18n="t-scope-4">سحابة وبيانات</button>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="bento-body">
-                        <div class="bento-meta">
-                            <span class="bento-num">05</span>
-                            <span class="bento-tag tag-pink" data-i18n="t-svc5-tag">البنية التحتية</span>
-                        </div>
-                        <h3 data-i18n="t-svc5-title">الحوسبة السحابية</h3>
-                        <p data-i18n="t-svc5-desc">بنية تحتية سحابية آمنة ومرنة وقابلة للتوسع، مع خدمات الاستضافة والنشر والمراقبة على مدار الساعة لضمان استمرارية أعمالك.</p>
-                        <ul class="bento-pills">
-                            <li data-i18n="t-svc5-c1">هندسة سحابية وتوسع تلقائي</li>
-                            <li data-i18n="t-svc5-c2">أتمتة النشر ومراقبة 24/7</li>
-                        </ul>
-                    </div>
-                </article>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══ OUR WORKS (PORTFOLIO & PRODUCTS) ═══ -->
-    <section id="tech-works">
-        <div class="container">
-            <div class="section-header hidden">
-                <span class="section-eyebrow" data-i18n="t-works-eyebrow">منتجات ومشاريع نفخر بها</span>
-                <h2 class="section-title title-font-family" data-i18n="t-works-title">أعمالنا</h2>
-                <p class="section-subtitle" data-i18n="t-works-sub">منصات وأنظمة وحلول رائدة طورناها لتقود الابتكار والتحول الرقمي في قطاعاتها.</p>
-            </div>
-
-            <div class="works-grid">
-                <!-- Work 1: EXOX -->
-                <article class="work-card theme-purple spotlight hidden">
-                    <a href="http://exox.ai" target="_blank" rel="noopener noreferrer" class="work-logo-stage work-logo-link" aria-label="EXOX - http://exox.ai">
-                        <img src="../img/works/exox.png" alt="EXOX - AI-Powered Business Operating System" class="work-logo logo-exox" loading="lazy">
-                    </a>
-                    <div class="work-body">
-                        <div class="work-head">
-                            <h3 dir="ltr"><a href="http://exox.ai" target="_blank" rel="noopener noreferrer" class="work-title-link">EXOX</a></h3>
-                            <span class="bento-tag tag-purple" data-i18n="t-work1-tag">أتمتة وأنظمة ذكية</span>
-                        </div>
-                        <p class="work-tagline" dir="ltr" data-i18n="t-work1-desc">AI-Powered Business Operating System</p>
-                    </div>
-                </article>
-
-                <!-- Work 2: PR MEDIA -->
-                <article class="work-card theme-blue spotlight hidden">
-                    <div class="work-logo-stage">
-                        <img src="../img/works/pr-media.png" alt="PR MEDIA - AI-Powered Media Intelligence &amp; Strategic Communications" class="work-logo logo-prmedia" loading="lazy">
-                    </div>
-                    <div class="work-body">
-                        <div class="work-head">
-                            <h3 dir="ltr">PR MEDIA</h3>
-                            <span class="bento-tag tag-blue" data-i18n="t-work2-tag">إعلام وعلاقات عامة</span>
-                        </div>
-                        <p class="work-tagline" dir="ltr" data-i18n="t-work2-desc">AI-Powered Media Intelligence &amp; Strategic Communications</p>
-                    </div>
-                </article>
-
-                <!-- Work 3: FIRX -->
-                <article class="work-card theme-cyan spotlight hidden">
-                    <div class="work-logo-stage">
-                        <img src="../img/works/firx.png" alt="FIRX - AI Governance, Verification &amp; Trusted Execution" class="work-logo logo-firx" loading="lazy">
-                    </div>
-                    <div class="work-body">
-                        <div class="work-head">
-                            <h3 dir="ltr">FIRX</h3>
-                            <span class="bento-tag tag-cyan" data-i18n="t-work3-tag">حوكمة وأمان AI</span>
-                        </div>
-                        <p class="work-tagline" dir="ltr" data-i18n="t-work3-desc">AI Governance, Verification &amp; Trusted Execution</p>
-                    </div>
-                </article>
-            </div>
-
-            <!-- SAUDI TECH BADGE SHOWCASE -->
-            <div class="saudi-tech-showcase hidden">
-                <div class="saudi-tech-badge spotlight">
-                    <img src="../img/saudi-tech.png" alt="SAUDI TECH" class="saudi-tech-logo" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══ ENGINEERING METHODOLOGY (CONNECTED PIPELINE) ═══ -->
-    <section id="tech-process">
-        <div class="container">
-            <div class="section-header hidden">
-                <span class="section-eyebrow" data-i18n="t-process-eyebrow">منهجية العمل</span>
-                <h2 class="section-title title-font-family" data-i18n="t-process-title">مسار هندسي من الفكرة إلى الإطلاق</h2>
-                <p class="section-subtitle" data-i18n="t-process-sub">نتبع خطوات عمل مدروسة تضمن أعلى معايير الجودة والأمان وسرعة الإنجاز.</p>
-            </div>
-
-            <div class="pipeline-track hidden">
-                <div class="pipeline-step">
-                    <div class="ps-header">
-                        <span class="ps-num">01</span>
-                        <span class="ps-line"></span>
-                    </div>
-                    <h3 data-i18n="t-step1-title">الاكتشاف والتحليل</h3>
-                    <p data-i18n="t-step1-desc">ندرس أهدافك وتحدياتك بعمق ونحلل متطلبات المستخدمين لرسم خارطة طريق تقنية واضحة.</p>
-                </div>
-
-                <div class="pipeline-step">
-                    <div class="ps-header">
-                        <span class="ps-num">02</span>
-                        <span class="ps-line"></span>
-                    </div>
-                    <h3 data-i18n="t-step2-title">التصميم والمعمارية</h3>
-                    <p data-i18n="t-step2-desc">نصمم واجهات وتجربة مستخدم عصرية ونبني معمارية برمجية متينة قابلة للتوسع المستقبلي.</p>
-                </div>
-
-                <div class="pipeline-step">
-                    <div class="ps-header">
-                        <span class="ps-num">03</span>
-                        <span class="ps-line"></span>
-                    </div>
-                    <h3 data-i18n="t-step3-title">التطوير والاختبار</h3>
-                    <p data-i18n="t-step3-desc">نطوّر الأنظمة بدورات عمل مرنة وسريعة مع اختبارات دقيقة للأداء والأمان وجودة الكود.</p>
-                </div>
-
-                <div class="pipeline-step">
-                    <div class="ps-header">
-                        <span class="ps-num">04</span>
-                        <span class="ps-line"></span>
-                    </div>
-                    <h3 data-i18n="t-step4-title">الإطلاق والدعم المستمر</h3>
-                    <p data-i18n="t-step4-desc">نطلق مشروعك على بيئة سحابية مستقرة ونواصل مرافقتك بالتطوير والمراقبة والدعم الفني.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══ WHY 99 TECH (UNIFIED ARCHITECTURAL MATRIX) ═══ -->
-    <section id="tech-about">
-        <div class="container">
-            <div class="why-panel hidden">
-                <div class="why-summary">
-                    <span class="section-eyebrow" data-i18n="t-about-eyebrow">القيمة المضافة</span>
-                    <h2 class="section-title title-font-family" data-i18n="t-about-title">لماذا 99 تقنية؟</h2>
-                    <p class="about-desc" data-i18n="t-about-desc">نجمع بين الخبرة الإعلامية العميقة والقدرات التقنية المتقدمة لنقدم حلولاً رقمية شاملة. فريقنا من المهندسين والمطورين وخبراء الذكاء الاصطناعي يعمل بشغف لتحويل تحدياتك إلى فرص نمو حقيقية.</p>
-
-                    <div class="stats-row">
-                        <div class="stat support-badge-card">
-                            <div class="support-pulse" aria-hidden="true">
-                                <span></span>
+                        <div class="form-row-2">
+                            <div class="field-group">
+                                <label for="tech-name" class="field-label" data-i18n="t-label-name">الاسم الكامل</label>
+                                <input type="text" name="name" id="tech-name" class="field-input" required
+                                    autocomplete="name" data-i18n-placeholder="t-ph-name"
+                                    placeholder="الاسم أو اسم الجهة">
                             </div>
-                            <div class="support-info">
-                                <span class="stat-number" dir="ltr">24/7</span>
-                                <span class="stat-label" data-i18n="t-stat3">دعم فني متواصل</span>
+                            <div class="field-group">
+                                <label for="tech-email" class="field-label" data-i18n="t-label-email">البريد الإلكتروني</label>
+                                <input type="email" name="email" id="tech-email" class="field-input input-ltr" dir="ltr"
+                                    required autocomplete="email" placeholder="name@company.com">
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="why-matrix">
-                    <div class="matrix-cell">
-                        <div class="mc-icon blue-glow">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                        <div class="field-group">
+                            <label for="tech-message" class="field-label" data-i18n="t-label-message">تفاصيل المشروع</label>
+                            <textarea name="message" id="tech-message" class="field-textarea" rows="4" required
+                                data-i18n-placeholder="t-ph-message"
+                                placeholder="نبذة مختصرة عن النظام المطلوب، الأهداف، والجدول الزمني المتوقع"></textarea>
                         </div>
-                        <h3 data-i18n="t-p1-title">الأمان والموثوقية أولاً</h3>
-                        <p data-i18n="t-p1-desc">نطبق أفضل ممارسات الأمن السيبراني وحماية البيانات في كل سطر برمجي منذ اليوم الأول.</p>
-                    </div>
 
-                    <div class="matrix-cell">
-                        <div class="mc-icon cyan-glow">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 10 5-10 5L2 7l10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>
-                        </div>
-                        <h3 data-i18n="t-p2-title">بنية قابلة للتوسع</h3>
-                        <p data-i18n="t-p2-desc">معمارية برمجية مرنة تستوعب نمو أعمالك وتوسع قاعدة مستخدميك بكفاءة عالية.</p>
-                    </div>
-
-                    <div class="matrix-cell">
-                        <div class="mc-icon purple-glow">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
-                        </div>
-                        <h3 data-i18n="t-p3-title">الذكاء الاصطناعي في الجوهر</h3>
-                        <p data-i18n="t-p3-desc">ندمج تقنيات الذكاء الاصطناعي والأتمتة في صميم الحلول لمضاعفة الإنتاجية وتقليل التكاليف.</p>
-                    </div>
-
-                    <div class="matrix-cell">
-                        <div class="mc-icon pink-glow">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                        </div>
-                        <h3 data-i18n="t-p4-title">تكامل الإعلام والتقنية</h3>
-                        <p data-i18n="t-p4-desc">ميزة 99 الفريدة في المزج بين الهندسة التقنية القوية والصورة الإعلامية الجذابة لمنتجك.</p>
-                    </div>
+                        <button type="submit" class="btn-primary submit-btn" data-i18n="t-submit-btn">إرسال طلب المشروع</button>
+                        <div class="form-status" role="status" aria-live="polite"></div>
+                    </form>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ═══ CONTACT ═══ -->
-    <section id="tech-contact">
-        <div class="container">
-            <div class="section-header hidden">
-                <span class="section-eyebrow" data-i18n="t-contact-eyebrow">تواصل معنا</span>
-                <h2 class="section-title title-font-family" data-i18n="t-contact-title">ابدأ مشروعك معنا</h2>
-                <p class="section-subtitle" data-i18n="t-contact-sub">شاركنا تفاصيل مشروعك أو فكرتك التقنية، وسيتواصل معك فريقنا المتخصص في أقرب وقت.</p>
-            </div>
+    </main>
 
-            <div class="contact-wrapper hidden">
-                <div class="infos">
-                    <img src="../img/blue-logo.png" alt="شعار 99 للتقنية" loading="lazy">
-                    <p class="infos-desc" data-i18n="t-contact-card-desc">نحن هنا لمساعدتك في تصميم وتطوير حلول تقنية تصنع الفارق لمؤسستك.</p>
-                    <ul>
-                        <li>
-                            <span class="info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
-                            <a href="https://www.i99.sa/">www.i99.sa</a>
-                        </li>
-                        <li>
-                            <span class="info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
-                            <a href="mailto:Info@i99.sa">Info@i99.sa</a>
-                        </li>
-                        <li>
-                            <span class="info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-                            <a href="tel:+966566111617" dir="ltr">+966566111617</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <form id="tech-form" action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="928f6b69-1a8e-4438-baaa-460f5fc70074">
-                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-                    <div class="input-parent">
-                        <input type="text" name="name" id="tech-name" required>
-                        <label for="tech-name" data-i18n="t-label-name">الاسم</label>
-                    </div>
-                    <div class="input-parent">
-                        <input type="email" name="email" id="tech-email" required>
-                        <label for="tech-email" data-i18n="t-label-email">البريد الإلكتروني</label>
-                    </div>
-                    <div class="input-parent">
-                        <textarea name="message" id="tech-message" required></textarea>
-                        <label for="tech-message" data-i18n="t-label-message">تفاصيل المشروع</label>
-                    </div>
-                    <button type="submit" class="btn glow-btn magnetic-btn" data-i18n="t-submit-btn"><span class="btn-text">أرسل طلبك</span></button>
-                    <div class="form-status" style="display: none; font-family: var(--font-ar); margin-top: 15px; font-size: 1rem; text-align: center;"></div>
-                </form>
-            </div>
-        </div>
-    </section>
-
+    <!-- ═══ FOOTER ═══ -->
     <footer class="site-footer">
         <div class="container footer-inner">
             <div class="footer-brand">
-                <img src="../img/blue-logo.png" alt="شعار 99 للتقنية والذكاء الاصطناعي" loading="lazy">
-                <span style="font-size:26px">🇸🇦</span>
+                <a href="../" class="brand-lockup" aria-label="99 Media &amp; Tech">
+                    <img src="../img/blue-logo.png" alt="99 Tech" class="brand-mark" width="28" height="28" loading="lazy">
+                    <span class="brand-divider" aria-hidden="true"></span>
+                    <span class="brand-name" dir="ltr">99 TECH &amp; AI</span>
+                </a>
+                <span class="footer-loc mono-meta" dir="ltr">RIYADH · KSA</span>
             </div>
-            <div class="footer-links">
+
+            <nav class="footer-links" aria-label="روابط التذييل">
                 <a href="../" data-i18n="t-footer-home">الرئيسية</a>
-                <a href="../media/" data-i18n="t-footer-media">قسم الإعلام</a>
-                <a href="#tech-services" data-i18n="t-nav-services">الخدمات التقنية</a>
-                <a href="#tech-works" data-i18n="t-nav-works">أعمالنا</a>
-                <a href="#tech-contact" data-i18n="t-nav-contact">ابدأ مشروعك</a>
-            </div>
+                <a href="../media/" data-i18n="t-footer-media">99 للإعلام</a>
+                <a href="https://exox.ai" target="_blank" rel="noopener noreferrer" dir="ltr">EXOX.AI ↗</a>
+                <a href="#tech-works" data-i18n="t-nav-works">أنظمتنا</a>
+                <a href="#tech-contact" data-i18n="t-nav-contact">تواصل معنا</a>
+            </nav>
+
+            <p class="footer-copy" data-i18n="t-footer-copy">© 2026 مؤسسة تسعة وتسعون (i99.sa). جميع الحقوق محفوظة.</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-
-    <script src="../js/tech-i18n.js?v=9.0"></script>
-    <script src="../js/tech-main.js?v=9.0"></script>
+    <script src="../js/tech-i18n.js?v=10.0"></script>
+    <script src="../js/tech-main.js?v=10.0"></script>
 </body>
+
 </html>
