@@ -98,6 +98,8 @@ const techTranslations = {
         "t-contact-sub": "شاركنا رؤيتك أو التحدي التقني في مؤسستك، وسيتواصل معك فريقنا الهندسي في جدة بخطوات عملية واضحة.",
         "t-ch-email": "البريد الرسمي",
         "t-ch-phone": "الهاتف المباشر",
+        "t-ch-whatsapp": "واتساب مباشر",
+        "t-ch-whatsapp-val": "محادثة فورية عبر واتساب ↗",
         "t-ch-loc": "المقر",
         "t-ch-loc-val": "جدة، المملكة العربية السعودية",
 
@@ -216,6 +218,8 @@ const techTranslations = {
         "t-contact-sub": "Share your technical vision or operational challenge, and our Jeddah engineering team will respond with a structured roadmap.",
         "t-ch-email": "Official Email",
         "t-ch-phone": "Direct Line",
+        "t-ch-whatsapp": "Direct WhatsApp",
+        "t-ch-whatsapp-val": "Start a WhatsApp chat ↗",
         "t-ch-loc": "Headquarters",
         "t-ch-loc-val": "Jeddah, Saudi Arabia",
 
@@ -263,6 +267,20 @@ function switchLang(lang) {
     if (btn) {
         btn.textContent = lang === "ar" ? "EN" : "عربي";
         btn.setAttribute("aria-label", lang === "ar" ? "Switch to English" : "التبديل إلى العربية");
+    }
+
+    document.title = lang === "en"
+        ? "99 Tech & AI | AI Systems & Software Engineering in Jeddah | i99.sa"
+        : "99 Tech & AI | هندسة أنظمة الذكاء الاصطناعي والبرمجيات من جدة | i99.sa";
+
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+        metaDesc.setAttribute(
+            "content",
+            lang === "en"
+                ? "99 Tech & AI in Jeddah (est. 2014): engineering autonomous AI systems, enterprise SaaS platforms, and Zero-Trust cloud infrastructure — creators of EXOX, PR MEDIA, and FIRX."
+                : "99 للتقنية والذكاء الاصطناعي في جدة (منذ 2014): نهندس أنظمة ذكاء اصطناعي مستقلة، منصات SaaS وبرمجيات مؤسسية، وبنية سحابية فائقة الموثوقية — مطوّرو EXOX و PR MEDIA و FIRX."
+        );
     }
 
     document.dispatchEvent(new CustomEvent("tech:langchange", { detail: { lang } }));
