@@ -696,8 +696,15 @@ html[lang="en"] .hero-headline {
     display: inline-flex;
     align-items: center;
     gap: 12px;
+    font-size: 13px;
     color: var(--ink-3);
     transition: color 0.2s var(--ease);
+}
+
+html[lang="en"] .scroll-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
 }
 
 .scroll-cue:hover {
