@@ -211,7 +211,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="../css/media.css?v=3.1">
+    <link rel="stylesheet" href="../css/media.css?v=4.1">
 </head>
 
 <body>
@@ -276,6 +276,10 @@
                     <a href="#act-reel" data-i18n="m-nav-reel">شريط الإنتاج</a>
                     <a href="../tech/" class="nav-tech-pill" data-i18n="m-nav-tech">99 للتقنية ↗</a>
                 </nav>
+                <button id="sound-toggle" class="sound-btn" type="button" aria-pressed="false" aria-label="تفعيل المؤثرات الصوتية السينمائية" data-cursor="SOUND">
+                    <span class="eq-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="sound-txt mono-meta" dir="ltr">SFX</span>
+                </button>
                 <button id="lang-toggle" class="lang-btn" type="button" aria-label="Switch language">EN</button>
                 <a href="#act-slate" class="header-cta" data-i18n="m-header-cta">ابدأ إنتاجك</a>
                 <button id="mobile-menu-btn" class="menu-toggle" type="button" aria-expanded="false"
@@ -309,7 +313,7 @@
              ═══════════════════════════════════════════════════════════════════ -->
         <section id="act-theater" class="act-theater" data-section-theme="dark">
             <div class="theater-backdrop" id="theater-backdrop" aria-hidden="true">
-                <img src="../img/studio-2.webp" alt="" class="theater-still">
+                <img id="hero-source-img" src="../img/cinema/stage-hero.webp" alt="" class="theater-still" crossorigin="anonymous">
             </div>
             <canvas id="anamorphic-shader" class="theater-shader" aria-hidden="true"></canvas>
             <div class="theater-vignette" aria-hidden="true"></div>
@@ -371,9 +375,10 @@
                         <span class="trip-note" data-i18n="m-trip-left-sub">خبرة تلفزيونية وسينمائية راسخة</span>
                     </div>
 
-                    <figure class="trip-portal" id="trip-portal" data-cursor="99 STUDIO">
-                        <img src="../img/videographer.webp" alt="فريق الإخراج والتصوير السينمائي في 99 للإعلام" class="trip-photo" id="trip-photo">
-                        <figcaption class="trip-cap mono-meta" dir="ltr">— 99 CINEMA UNIT · JEDDAH</figcaption>
+                    <figure class="trip-portal" id="trip-portal" data-cursor="35MM OPTICS">
+                        <img src="../img/cinema/lens-portrait.webp" alt="عدسة سينمائية احترافية في دار 99 للإعلام" class="trip-photo" id="trip-photo">
+                        <span class="portal-glint" id="portal-glint" aria-hidden="true"></span>
+                        <figcaption class="trip-cap mono-meta" dir="ltr">— 99 CINEMA OPTICS · JEDDAH</figcaption>
                     </figure>
 
                     <div class="trip-word trip-end">
@@ -391,7 +396,7 @@
                 <div class="ivory-partners-wrap reveal" id="media-partners">
                     <div class="partners-head">
                         <span class="mono-meta royal-meta" dir="ltr">OFFICIAL SELECTION // TRUSTED BY</span>
-                        <h2 class="ivory-h2" data-i18n="m-partners-title">شركاء النجاح والثقة</h2>
+                        <h2 class="ivory-h2" data-i18n="m-partners-title">صافحنا مهنياً</h2>
                     </div>
 
                     <div class="royal-laurels">
@@ -437,27 +442,38 @@
              Full-bleed dynamic cinema stills crossfade behind giant bracketed titles
              ═══════════════════════════════════════════════════════════════════ -->
         <section id="act-director" class="act-director" data-section-theme="dark">
-            <!-- Full-bleed crossfading backdrop stills -->
+            <!-- Full-bleed crossfading bespoke cinema stills -->
             <div class="director-bg-stack" aria-hidden="true">
-                <img src="../img/studio-2.webp" alt="" class="dir-bg is-active" data-bg="broadcast">
+                <img src="../img/cinema/broadcast-suite.webp" alt="" class="dir-bg is-active" data-bg="broadcast">
                 <img src="../img/videographer.webp" alt="" class="dir-bg" data-bg="cinema">
-                <img src="../img/tv.webp" alt="" class="dir-bg" data-bg="aivideo">
-                <img src="../img/studio-1.webp" alt="" class="dir-bg" data-bg="pr">
-                <img src="../img/studio-2.webp" alt="" class="dir-bg dir-bg-marketing" data-bg="marketing">
+                <img src="../img/cinema/ai-cinema.webp" alt="" class="dir-bg" data-bg="aivideo">
+                <img src="../img/cinema/pr-summit.webp" alt="" class="dir-bg" data-bg="pr">
+                <img src="../img/studio-2.webp" alt="" class="dir-bg" data-bg="marketing">
                 <div class="director-scrim"></div>
+            </div>
+
+            <!-- FWA Signature: Floating 3D Velocity-Tilted Anamorphic Preview Monitor -->
+            <div class="dir-float-monitor" id="dir-float-monitor" aria-hidden="true">
+                <div class="dfm-head mono-meta" dir="ltr">
+                    <span id="dfm-code" class="accent">SCENE 01</span>
+                    <span>2.39:1</span>
+                </div>
+                <div class="dfm-screen">
+                    <img id="dfm-img" src="../img/cinema/broadcast-suite.webp" alt="">
+                </div>
             </div>
 
             <div class="director-stage">
                 <div class="director-top-bar mono-meta" dir="ltr">
-                    <span>CHAPTER 02 // FIVE PRODUCTION DISCIPLINES</span>
+                    <span>CHAPTER 02 // عنوان 99 · FIVE PRODUCTION DISCIPLINES</span>
                     <span id="dir-scene-code" class="accent">SCENE 01 // 4K BROADCAST MASTER</span>
                 </div>
 
                 <!-- Giant Michael Bay Bracketed Typography Selector -->
                 <div class="director-index" role="tablist" aria-label="مسارات الإنتاج في 99 للإعلام">
                     <button type="button" class="dir-row is-active" role="tab" aria-selected="true"
-                        data-scene="broadcast" data-cursor="المشهد 01">
-                        <span class="dir-side-meta mono-meta" dir="ltr">01 // TV &amp; DIGITAL</span>
+                        data-scene="broadcast" data-cursor="مدينة المحتوى">
+                        <span class="dir-side-meta mono-meta" dir="ltr">01 // CONTENT CITY</span>
                         <span class="dir-title-wrap">
                             <span class="dir-bracket" aria-hidden="true">[</span>
                             <span class="dir-title" data-i18n="m-sc1-t">الإنتاج التلفزيوني والمحتوى</span>
@@ -467,8 +483,8 @@
                     </button>
 
                     <button type="button" class="dir-row" role="tab" aria-selected="false"
-                        data-scene="cinema" data-cursor="المشهد 02">
-                        <span class="dir-side-meta mono-meta" dir="ltr">02 // FILM &amp; AUDIO</span>
+                        data-scene="cinema" data-cursor="مبنى 99">
+                        <span class="dir-side-meta mono-meta" dir="ltr">02 // BUILDING 99</span>
                         <span class="dir-title-wrap">
                             <span class="dir-bracket" aria-hidden="true">[</span>
                             <span class="dir-title" data-i18n="m-sc2-t">الإنتاج المرئي والصوتي السينمائي</span>
@@ -478,30 +494,30 @@
                     </button>
 
                     <button type="button" class="dir-row" role="tab" aria-selected="false"
-                        data-scene="aivideo" data-cursor="المشهد 03">
-                        <span class="dir-side-meta mono-meta" dir="ltr">03 // GEN-AI FILM</span>
+                        data-scene="aivideo" data-cursor="مختبر AI">
+                        <span class="dir-side-meta mono-meta" dir="ltr">03 // AI CINEMA LAB</span>
                         <span class="dir-title-wrap">
                             <span class="dir-bracket" aria-hidden="true">[</span>
                             <span class="dir-title" data-i18n="m-sc3-t">سينما وفيديوهات الذكاء الاصطناعي</span>
                             <span class="dir-bracket" aria-hidden="true">]</span>
                         </span>
-                        <span class="dir-side-tag mono-meta" dir="ltr">AI DIRECTOR LAB</span>
+                        <span class="dir-side-tag mono-meta" dir="ltr">GEN-AI DIRECTED</span>
                     </button>
 
                     <button type="button" class="dir-row" role="tab" aria-selected="false"
-                        data-scene="pr" data-cursor="المشهد 04">
-                        <span class="dir-side-meta mono-meta" dir="ltr">04 // STRATEGIC PR</span>
+                        data-scene="pr" data-cursor="شارع الإبداع">
+                        <span class="dir-side-meta mono-meta" dir="ltr">04 // CREATIVITY ST.</span>
                         <span class="dir-title-wrap">
                             <span class="dir-bracket" aria-hidden="true">[</span>
                             <span class="dir-title" data-i18n="m-sc4-t">الاتصال المؤسسي والعلاقات العامة</span>
                             <span class="dir-bracket" aria-hidden="true">]</span>
                         </span>
-                        <span class="dir-side-tag mono-meta" dir="ltr">REPUTATION OPS</span>
+                        <span class="dir-side-tag mono-meta" dir="ltr">STRATEGIC PR</span>
                     </button>
 
                     <button type="button" class="dir-row" role="tab" aria-selected="false"
-                        data-scene="marketing" data-cursor="المشهد 05">
-                        <span class="dir-side-meta mono-meta" dir="ltr">05 // DIGITAL REACH</span>
+                        data-scene="marketing" data-cursor="حي الإلهام">
+                        <span class="dir-side-meta mono-meta" dir="ltr">05 // INSPIRATION DIST.</span>
                         <span class="dir-title-wrap">
                             <span class="dir-bracket" aria-hidden="true">[</span>
                             <span class="dir-title" data-i18n="m-sc5-t">التسويق الرقمي وصناعة الانتشار</span>
@@ -539,14 +555,14 @@
                     </div>
                 </div>
 
-                <!-- 35mm Top Sprocket Perforations -->
-                <div class="sprockets" aria-hidden="true"></div>
+                <!-- 35mm Top Sprocket Perforations (Synced Live to Reel Movement!) -->
+                <div class="sprockets" id="sprocket-top" aria-hidden="true"></div>
 
                 <div class="reel-viewport">
                     <div class="reel-track" id="reel-track">
-                        <article class="film-frame" data-cursor="01">
+                        <article class="film-frame" data-cursor="01 · SCRIPT">
                             <div class="frame-media">
-                                <img src="../img/studio-1.webp" alt="المعالجة الإبداعية والسيناريو" loading="lazy">
+                                <img src="../img/cinema/pr-summit.webp" alt="المعالجة الإبداعية والسيناريو" class="reel-parallax-img" loading="lazy">
                                 <span class="frame-num mono-meta" dir="ltr">FRAME 01 // SCRIPT</span>
                             </div>
                             <div class="frame-body">
@@ -555,9 +571,9 @@
                             </div>
                         </article>
 
-                        <article class="film-frame" data-cursor="02">
+                        <article class="film-frame" data-cursor="02 · STAGE">
                             <div class="frame-media">
-                                <img src="../img/studio-2.webp" alt="الإخراج الفني وتجهيز الاستوديو" loading="lazy">
+                                <img src="../img/cinema/stage-hero.webp" alt="الإخراج الفني وتجهيز الاستوديو" class="reel-parallax-img" loading="lazy">
                                 <span class="frame-num mono-meta" dir="ltr">FRAME 02 // ART DIRECTION</span>
                             </div>
                             <div class="frame-body">
@@ -566,9 +582,9 @@
                             </div>
                         </article>
 
-                        <article class="film-frame" data-cursor="03">
+                        <article class="film-frame" data-cursor="03 · AI LAB">
                             <div class="frame-media">
-                                <img src="../img/videographer.webp" alt="التصوير السينمائي ومختبر الذكاء الاصطناعي" loading="lazy">
+                                <img src="../img/cinema/ai-cinema.webp" alt="التصوير السينمائي ومختبر الذكاء الاصطناعي" class="reel-parallax-img" loading="lazy">
                                 <span class="frame-num mono-meta" dir="ltr">FRAME 03 // SHOOT &amp; AI LAB</span>
                             </div>
                             <div class="frame-body">
@@ -577,9 +593,9 @@
                             </div>
                         </article>
 
-                        <article class="film-frame" data-cursor="04">
+                        <article class="film-frame" data-cursor="04 · MASTER">
                             <div class="frame-media">
-                                <img src="../img/tv.webp" alt="التلوين السينمائي والبث والانتشار" loading="lazy">
+                                <img src="../img/cinema/broadcast-suite.webp" alt="التلوين السينمائي والبث والانتشار" class="reel-parallax-img" loading="lazy">
                                 <span class="frame-num mono-meta" dir="ltr">FRAME 04 // GRADE &amp; BROADCAST</span>
                             </div>
                             <div class="frame-body">
@@ -591,7 +607,7 @@
                 </div>
 
                 <!-- 35mm Bottom Sprocket Perforations -->
-                <div class="sprockets" aria-hidden="true"></div>
+                <div class="sprockets" id="sprocket-bot" aria-hidden="true"></div>
             </div>
         </section>
 
@@ -788,8 +804,8 @@
         </div>
     </footer>
 
-    <script src="../js/media-i18n.js?v=3.1"></script>
-    <script src="../js/media-main.js?v=3.1"></script>
+    <script src="../js/media-i18n.js?v=4.0"></script>
+    <script src="../js/media-main.js?v=4.0"></script>
 </body>
 
 </html>

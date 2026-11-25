@@ -53,12 +53,16 @@
       <image:title>99 Media — دار الإنتاج الإعلامي والسينمائي وفيديوهات الذكاء الاصطناعي من جدة</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://www.i99.sa/img/studio-2.webp</image:loc>
-      <image:title>99 Media Broadcast &amp; Cinema Soundstage</image:title>
+      <image:loc>https://www.i99.sa/img/cinema/stage-hero.webp</image:loc>
+      <image:title>99 Media Broadcast &amp; Cinema Soundstage — Jeddah</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://www.i99.sa/img/videographer.webp</image:loc>
-      <image:title>99 Media Cinema Production</image:title>
+      <image:loc>https://www.i99.sa/img/cinema/ai-cinema.webp</image:loc>
+      <image:title>99 Media Generative AI Cinema Lab</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.i99.sa/img/cinema/broadcast-suite.webp</image:loc>
+      <image:title>99 Media Television Mastering &amp; Color Grading Suite</image:title>
     </image:image>
   </url>
 </urlset>
