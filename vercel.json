@@ -34,7 +34,7 @@
       ]
     },
     {
-      "source": "/(llms\\.txt|llms-full\\.txt)",
+      "source": "/(llms\\.txt|llms-full\\.txt|e99a4b7c2d8f10365e4c8a9b7d2f1990\\.txt)",
       "headers": [
         {
           "key": "Content-Type",
