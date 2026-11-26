@@ -860,6 +860,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             if (statusDiv) statusDiv.className = "form-status";
 
+            const leadMeta = window.i99Analytics ? window.i99Analytics.prepareFormForSubmission(mediaForm) : {};
+            const selectedScope = (scopeInput && scopeInput.value) || "Broadcast & Cinema Production";
+
             try {
                 const res = await fetch("https://api.web3forms.com/submit", {
                     method: "POST",
@@ -868,6 +871,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
                 const result = await res.json();
                 if (res.status === 200 && result.success) {
+                    if (window.i99Analytics) {
+                        window.i99Analytics.trackLeadConfirmed({
+                            formId: "media-form",
+                            division: "media",
+                            scope: selectedScope,
+                            leadId: leadMeta.leadId,
+                            isQuote: true
+                        });
+                    }
                     mediaForm.reset();
                     playCinemaTick(760, 0.08, 0.04);
                     setStatus(

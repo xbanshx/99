@@ -821,6 +821,10 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             if (statusDiv) statusDiv.className = "form-status";
 
+            const leadMeta = window.i99Analytics ? window.i99Analytics.prepareFormForSubmission(techForm) : {};
+            const techScopeInput = techForm.querySelector('input[name="scope"], #tech-scope-input');
+            const selectedScope = (techScopeInput && techScopeInput.value) || "AI & Enterprise Engineering";
+
             try {
                 const response = await fetch("https://api.web3forms.com/submit", {
                     method: "POST",
@@ -829,6 +833,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
                 const result = await response.json();
                 if (response.status === 200 && result.success) {
+                    if (window.i99Analytics) {
+                        window.i99Analytics.trackLeadConfirmed({
+                            formId: "tech-form",
+                            division: "tech",
+                            scope: selectedScope,
+                            leadId: leadMeta.leadId,
+                            isQuote: true
+                        });
+                    }
                     techForm.reset();
                     setStatus(
                         "ok",
