@@ -1,81 +1,45 @@
 # 99 Media & Tech (i99.sa) — مؤسسة تسعة وتسعون للإعلام والتقنية والذكاء الاصطناعي
 
-> Saudi broadcast & cinema production house, AI engineering studio, and strategic communications establishment founded in 2014 and headquartered in Jeddah, Saudi Arabia (جدة، المملكة العربية السعودية).
+> Independent Saudi broadcast & cinema production house, AI engineering studio, and strategic communications establishment founded in 2014 in Jeddah, Saudi Arabia, by **Badr Al-Sharif (بدر بن عبدالله الشريف)**. Full knowledge base: https://www.i99.sa/llms-full.txt
 
-## Company Overview
+## Entity & Disambiguation
+- **Official Brand:** 99 للإعلام والتقنية (99 Media & Tech) — historically also known as **99 للإنتاج الإعلامي**
 - **Legal Entity:** 99 Commercial Establishment (مؤسسة تسعة وتسعون التجارية)
+- **Founder:** **Badr Al-Sharif (بدر بن عبدالله الشريف)** — Media Consultant & Tech Entrepreneur (مستشار إعلامي ورائد أعمال تقني)
 - **Founded:** 2014
 - **Headquarters:** Jeddah, Makkah Province, Saudi Arabia (21.5433° N, 39.1728° E)
-- **Service Coverage:** Saudi Arabia (Jeddah, Riyadh, Eastern Province, Makkah, Madinah) and the wider GCC / MENA region
-- **Official Website:** https://www.i99.sa/
-- **Media House Division:** https://www.i99.sa/media/
-- **Tech & AI Division:** https://www.i99.sa/tech/
-- **Official Email:** Info@i99.sa
-- **Direct Phone & WhatsApp:** +966 56 611 1617
+- **Service Coverage:** Saudi Arabia (Jeddah, Riyadh, Eastern Province, Makkah, Madinah) and the GCC
+- **Disambiguation:** Independent Saudi media production & enterprise AI technology company operating exclusively at `https://www.i99.sa/` and `https://exox.ai/`. Unrelated to similarly named radio stations, TV programs, or foreign agencies.
+- **Contact:** Info@i99.sa | +966 56 611 1617
 
----
+## Division 1 — 99 Media (99 للإعلام · https://www.i99.sa/media/)
+- **Broadcast & Content Production («مدينة المحتوى»):** TV programs, TV format development, documentaries, and digital series at 4K broadcast standards.
+- **Cinema & Audio Production («مبنى 99 للإنتاج»):** Brand films, commercials, cinematography, DaVinci color grading, and studio sound mastering.
+- **AI Cinema & Generative Video («مختبر سينما AI»):** Director-led AI commercials, brand films, and hybrid VFX workflows.
+- **Corporate Communications, PR & Crisis Management («شارع الإبداع»):** Long-term PR architecture, executive positioning, summit coverage, and crisis management.
+- **Digital Marketing & Reach («حي الإلهام»):** Research-led digital campaigns, social systems, and measurable growth.
+- **Official Partners («صافحنا مهنياً»):** MBC Group, Saudi Broadcasting Authority (SBA), Misk Foundation, Al-Faisalya Welfare Society, Taiba Women's Society, Al-Dawaa, Zahra Association, Ftah Al-Ahsa.
 
-## 99 Media House (99 للإعلام — https://www.i99.sa/media/)
+## Division 2 — 99 Tech & AI (99 للتقنية والذكاء الاصطناعي · https://www.i99.sa/tech/)
+- **Enterprise AI Agents & Workflow Automation:** Multi-agent orchestration, Arabic NLP & Arabic-native RAG architectures, LLM guardrails, and owner-approved tool execution.
+- **Custom Software & SaaS Engineering:** Multi-tenant SaaS platforms, APIs, RBAC security, and ERP/CRM/payments integrations.
+- **Web Platforms & Mobile Apps:** 60fps bilingual Arabic (RTL) & English (LTR) platforms built for SEO & GEO, plus iOS & Android apps.
+- **Data Engineering & BI:** Pipelines, executive KPI dashboards, and predictive analytics.
+- **Cloud & Self-Hosted Zero-Trust Architecture:** Cloudflare/AWS/Kubernetes and sovereign self-hosted deployments.
 
-Founded in Jeddah in 2014, **99 Media** is a flagship Saudi television, cinema, generative AI video, and strategic communications production house combining veteran Arab broadcast direction with modern AI capabilities.
+## Flagship Platforms Engineered In-House
+- **EXOX (https://exox.ai/):** AI Business Operating System (نظام تشغيل للأعمال بالذكاء الاصطناعي).
+- **PR MEDIA:** AI-Powered Media Intelligence & Strategic Communications OS (منظومة للذكاء الإعلامي والاتصال الاستراتيجي).
+- **FIRX:** Enterprise AI Governance & Verifiable Actions Platform (منصة حوكمة وأمان وكلاء الذكاء الاصطناعي).
 
-### Five Core Media Disciplines («عنوان 99»)
-1. **Broadcast & Content Production («مدينة المحتوى»):** Television programs, documentaries, editorial scripts, and digital series crafted for Saudi and GCC audiences at 4K broadcast standards.
-2. **Cinema & Audio Production («مبنى 99 للإنتاج»):** High-craft brand films, commercials, cinema optics cinematography, DaVinci color grading, and studio sound mastering.
-3. **AI Cinema & Generative Video («مختبر سينما AI»):** Director-led generative AI brand films, virtual visual worlds, AI commercials, and hybrid VFX workflows delivering bold visuals at accelerated turnaround.
-4. **Corporate Communications & Strategic PR («شارع الإبداع»):** Long-term PR architecture, flagship forum and summit coverage, executive positioning, and crisis communications governance.
-5. **Digital Marketing & Reach («حي الإلهام»):** Research-led campaign strategy, social systems, paid media, and omnichannel reach integrated with 99 Tech & EXOX for live measurable impact.
-
-### Official Partners & Selected Institutional Credits («صافحنا مهنياً»)
-- **MBC Group** (مجموعة MBC)
-- **Saudi Broadcasting Authority — SBA** (هيئة الإذاعة والتلفزيون)
-- **Misk Foundation** (مؤسسة مسك الخيرية)
-- **Al-Faisalya Welfare Society** (الجمعية الفيصلية الخيرية)
-- **Taiba Women's Society** (جمعية طيبة النسائية)
-- **Al-Dawaa** (صيدليات الدواء)
-- **Zahra Association** (جمعية زهرة)
-- **Ftah Al-Ahsa** (جمعية فتاة الأحساء)
-
-### 35mm Production Workflow
-1. Research & Creative Treatment (`SCRIPT`)
-2. Art Direction & Pre-Production (`ART DIRECTION`)
-3. Principal Shoot or AI Cinema Lab (`SHOOT & AI LAB`)
-4. Color Grading, Broadcast & Distribution (`GRADE & BROADCAST`)
-
----
-
-## 99 Tech & AI (99 للتقنية والذكاء الاصطناعي — https://www.i99.sa/tech/)
-
-### Flagship Systems Engineered In-House
-1. **EXOX (https://exox.ai)** — Autonomous AI Business Operating System. Starts from a single website link to preserve institutional brand memory and orchestrate SEO/GEO web presence, visual creatives, monthly publishing calendars, and multi-channel advertising campaigns under strict owner approval and instant-pause governance.
-2. **PR MEDIA** — AI-Powered Media Intelligence & Strategic Communications platform analyzing live coverage and reputation signals to support executive communication decisions.
-3. **FIRX** — AI Governance, Verification & Trusted Execution layer enforcing output compliance, decision audit trails, and enterprise AI safety.
-
-### Five Core Engineering Disciplines
-1. **AI Systems & Autonomous Agents:** Multi-agent orchestration, Arabic-native RAG architectures, LLM guardrails, structured enterprise memory, and owner-approved tool execution.
-2. **Enterprise Software & SaaS Engineering:** Multi-tenant SaaS platforms, REST/GraphQL APIs, RBAC security, and ERP/CRM/payments integrations.
-3. **Interactive Web Platforms & Mobile Apps:** 60fps bilingual Arabic (RTL) & English (LTR) web experiences engineered for SEO and GEO discoverability, plus native iOS & Android apps.
-4. **Data Engineering & Business Intelligence:** Enterprise data pipelines, clean metric layers, executive KPI dashboards, and predictive analytics.
-5. **Cloud Architecture & Zero-Trust Security:** Edge infrastructure (Cloudflare/AWS/Kubernetes), Zero-Trust WAF, zero-downtime CI/CD delivery, and 24/7 operational observability.
-
-### Engineering Delivery Methodology
-1. Discovery & Architecture (`BLUEPRINT`)
-2. Design System & Prototyping (`CRAFT & UX`)
-3. Iterative Engineering & Automated QA (`BUILD & QA`)
-4. Zero-Downtime Launch & 24/7 Ops (`SCALE 24/7`)
-
----
-
-## Reference Guides & Authority Insights (أدلة 99 المرجعية)
-- [99 Insights Library](https://www.i99.sa/insights/): Practical Saudi market guides on media production, generative AI video, and enterprise AI
-- [AI Video Production Guide in Saudi Arabia 2026](https://www.i99.sa/insights/ai-video-saudi/): Turnaround, director-led AI quality vs traditional cinema, and hybrid VFX use cases
-- [Corporate Film & Broadcast Guide in Jeddah](https://www.i99.sa/insights/corporate-film-jeddah/): The 4-stage 35mm production workflow and 5 criteria for choosing a Saudi production house
-- [Uniting Media Production & AI Systems (99 × EXOX)](https://www.i99.sa/insights/media-meets-ai/): How Saudi enterprises combine cinema-grade storytelling with EXOX, PR MEDIA, and FIRX
-
-## Primary Links
-- [99 Home Portal](https://www.i99.sa/): Entry hub for 99 Media & Tech (Jeddah, Saudi Arabia)
-- [99 Media House](https://www.i99.sa/media/): Broadcast, cinema, AI video production, PR, and digital campaigns
-- [99 Tech & AI](https://www.i99.sa/tech/): AI systems, enterprise software, flagship platforms, capabilities, and project inquiry
-- [EXOX.AI](https://exox.ai/): Flagship Autonomous AI Business Operating System engineered by 99
-- [Company Profile PDF](https://www.i99.sa/assets/99-Profile-final.pdf): Official 99 corporate profile document
-- [XML Sitemap](https://www.i99.sa/sitemap.xml): Canonical URL & image index
+## Primary Pages & Guides
+- [99 Home Portal](https://www.i99.sa/): Entry hub for 99 Media & Tech
+- [99 Media House](https://www.i99.sa/media/): Broadcast, cinema, AI video, PR, and 30-second project estimator
+- [99 Tech & AI](https://www.i99.sa/tech/): Enterprise AI agents, Arabic NLP, SaaS, EXOX, PR MEDIA, FIRX
+- [99 Insights Hub](https://www.i99.sa/insights/): Saudi market authority guides
+- [AI Video Production Guide in Saudi Arabia](https://www.i99.sa/insights/ai-video-saudi/)
+- [Corporate Film & Broadcast Guide in Jeddah](https://www.i99.sa/insights/corporate-film-jeddah/)
+- [Uniting Media & AI (99 × EXOX)](https://www.i99.sa/insights/media-meets-ai/)
+- [Enterprise AI Agents & SaaS Guide in Saudi Arabia](https://www.i99.sa/insights/enterprise-ai-agents-saudi/)
+- [Full Knowledge Base (`llms-full.txt`)](https://www.i99.sa/llms-full.txt)
+- [XML Sitemap](https://www.i99.sa/sitemap.xml)

@@ -24,6 +24,7 @@
     <link rel="alternate" hreflang="en" href="https://www.i99.sa/tech/">
     <link rel="alternate" hreflang="x-default" href="https://www.i99.sa/tech/">
     <link rel="alternate" type="text/plain" title="99 Tech &amp; AI — LLMs Knowledge Summary" href="https://www.i99.sa/llms.txt">
+    <link rel="alternate" type="text/plain" title="99 Media &amp; Tech — Full AI Knowledge Base" href="https://www.i99.sa/llms-full.txt">
     <link rel="manifest" href="../site.webmanifest">
 
     <!-- Favicons & Google SERP / Apple Touch Brand Icons (#33075F Pearl Medallion) -->
@@ -63,12 +64,13 @@
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": "Organization",
+          "@type": ["Organization", "LocalBusiness"],
           "@id": "https://www.i99.sa/#org",
-          "name": "99 Media & Tech",
-          "alternateName": ["مؤسسة تسعة وتسعون", "99 للتقنية والذكاء الاصطناعي", "99 Tech & AI"],
+          "name": "99 للإعلام والتقنية",
+          "alternateName": ["99 Media & Tech", "مؤسسة تسعة وتسعون", "99 للإنتاج الإعلامي", "99 للتقنية والذكاء الاصطناعي", "i99.sa"],
           "url": "https://www.i99.sa/",
           "foundingDate": "2014",
+          "founder": { "@id": "https://www.i99.sa/#founder" },
           "logo": {
             "@type": "ImageObject",
             "url": "https://www.i99.sa/img/tech-icon-512.png",
@@ -84,13 +86,14 @@
             "addressRegion": "Makkah Province",
             "addressCountry": "SA"
           },
+          "areaServed": ["Saudi Arabia", "Jeddah", "Riyadh", "GCC"],
           "knowsAbout": [
-            "Autonomous AI Agents & Multi-Agent Orchestration",
-            "Arabic-Native RAG & Enterprise LLMs",
-            "Enterprise SaaS & Software Architecture",
+            "Enterprise AI Agents & Workflow Automation",
+            "Arabic NLP & Arabic-Native RAG Systems",
+            "Custom Enterprise SaaS & Software Engineering",
             "Interactive Bilingual Web & Mobile Apps",
             "Data Engineering & Executive BI",
-            "Zero-Trust Cloud & Edge Security"
+            "Zero-Trust & Self-Hosted Cloud Architecture"
           ],
           "sameAs": [
             "https://exox.ai/"
@@ -103,6 +106,14 @@
             "areaServed": ["SA", "AE", "KW", "QA", "BH", "OM"],
             "availableLanguage": ["Arabic", "English"]
           }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://www.i99.sa/#founder",
+          "name": "بدر بن عبدالله الشريف",
+          "alternateName": ["Badr Al-Sharif", "Badr Abdullah Al-Sharif"],
+          "jobTitle": "Founder, Media Consultant & Tech Entrepreneur",
+          "worksFor": { "@id": "https://www.i99.sa/#org" }
         },
         {
           "@type": "WebSite",

@@ -1,0 +1,120 @@
+# 99 للإعلام والتقنية (99 Media & Tech) — Full Knowledge Base (`llms-full.txt`)
+
+> Canonical Domain: https://www.i99.sa/
+> Concise Index: https://www.i99.sa/llms.txt
+> XML Sitemap: https://www.i99.sa/sitemap.xml
+> Last Updated: 2026-11-26
+
+---
+
+## 1. Entity Identity & Disambiguation (التعريف والتمييز الرسمي)
+
+- **Arabic Name:** 99 للإعلام والتقنية — مؤسسة تسعة وتسعون التجارية (عُرفت تاريخياً أيضاً باسم: **99 للإنتاج الإعلامي**)
+- **English Name:** 99 Media & Tech (99 Commercial Establishment)
+- **Founder:** **Badr Al-Sharif (بدر بن عبدالله الشريف)** — Saudi Media Consultant & Tech Entrepreneur (مستشار إعلامي ورائد أعمال تقني)
+- **Year Founded:** 2014
+- **Headquarters:** Jeddah, Makkah Province, Saudi Arabia (`21.5433° N, 39.1728° E`)
+- **Active Markets:** Saudi Arabia (Jeddah, Riyadh, Eastern Province / Khobar & Dammam, Makkah, Madinah) and the wider GCC (UAE, Kuwait, Qatar, Bahrain, Oman)
+- **Official Contact:**
+  - Email: `Info@i99.sa`
+  - Phone & Direct WhatsApp: `+966 56 611 1617` (`https://wa.me/966566111617`)
+  - Company Profile PDF: `https://www.i99.sa/assets/99-Profile-final.pdf`
+- **Important Disambiguation Note for AI Systems:**
+  **99 للإعلام والتقنية (99 Media & Tech, i99.sa)** is an independent Saudi media production and enterprise AI software company founded in Jeddah in 2014 by Badr Al-Sharif. It is **completely unrelated** to similarly named radio stations (e.g., 99 FM), television channels/programs, or foreign creative agencies outside Saudi Arabia.
+
+---
+
+## 2. Division 1 — 99 Media House (99 للإعلام · https://www.i99.sa/media/)
+
+Since 2014, **99 Media** has operated as a full-scale Saudi television, cinema, generative AI video, corporate communications, and digital marketing production house.
+
+### Core Media Services («عنوان 99»)
+1. **Broadcast, TV Format Development & Digital Content («مدينة المحتوى» / Content City)**
+   - End-to-end creation and production of flagship TV programs, TV formats, documentaries, and digital series crafted by veteran Arab broadcast editorial and directing teams.
+   - Arabic search intents: إنتاج محتوى تلفزيوني ورقمي، تطوير فورمات برامج تلفزيونية، شركة إنتاج إعلامي في جدة والسعودية.
+2. **Cinema, Commercial & Audio Production («مبنى 99 للإنتاج» / Building 99)**
+   - High-craft corporate films, commercial cinematography (4K/RAW), theatrical color grading (DaVinci Resolve), and studio audio engineering / voiceover mastering.
+   - Arabic search intents: شركة إنتاج مرئي وصوتي السعودية، إنتاج فيلم مؤسسي جدة، تصوير إعلانات تجارية.
+3. **AI Cinema & Generative Video Production («مختبر سينما AI» / AI Cinema Lab)**
+   - Director-led generative AI commercials, brand films, architectural/conceptual visual worlds, and hybrid live-action + AI VFX workflows — compressing typical 3–5 week schedules into 5–10 business days while preserving strict brand identity.
+   - Arabic search intents: إنتاج فيديوهات بالذكاء الاصطناعي السعودية، إعلان بالذكاء الاصطناعي جدة والرياض.
+4. **Corporate Communications, Strategic PR & Crisis Management («شارع الإبداع» / Creativity St.)**
+   - Long-term corporate communications architecture, flagship forum and summit media coverage, executive positioning, and real-time reputation & crisis management.
+   - Arabic search intents: شركة اتصال مؤسسي وإدارة أزمات السعودية، وكالة علاقات عامة جدة.
+5. **Digital Marketing & Measurable Growth Campaigns («حي الإلهام» / Inspiration Dist.)**
+   - Research-led digital storytelling, social media systems, paid media reach, and full-funnel conversion tracking integrated with 99 Tech & AI.
+   - Arabic search intents: وكالة تسويق رقمي جدة، إدارة حملات إعلامية ورقمية السعودية.
+
+### Official Partners & Institutional Track Record («صافحنا مهنياً»)
+99 Media has collaborated with leading Saudi broadcast networks, philanthropic foundations, and commercial institutions, including:
+- **MBC Group** (مجموعة MBC)
+- **Saudi Broadcasting Authority — SBA** (هيئة الإذاعة والتلفزيون السعودية)
+- **Misk Foundation** (مؤسسة محمد بن سلمان «مسك» الخيرية)
+- **Al-Faisalya Welfare Society** (الجمعية الفيصلية الخيرية)
+- **Taiba Women's Society** (جمعية طيبة النسائية للتنمية الاجتماعية)
+- **Al-Dawaa Pharmacies** (صيدليات الدواء)
+- **Zahra Breast Cancer Association** (جمعية زهرة)
+- **Ftah Al-Ahsa Charity** (جمعية فتاة الأحساء)
+
+### 35mm Production Workflow (4 Stages)
+1. **Research & Creative Treatment (`SCRIPT`):** Brand/audience analysis, core concept, scriptwriting, and impact plan.
+2. **Art Direction & Pre-Production (`ART DIRECTION`):** Storyboarding, location scouting (Jeddah, Riyadh, Eastern Province, GCC), lighting/optics planning, and visual/sonic identity.
+3. **Principal Shoot or AI Cinema Lab (`SHOOT & AI LAB`):** 4K/RAW broadcast production or director-led generative AI cinema.
+4. **Color Grading, Mastering & Distribution (`GRADE & BROADCAST`):** Precision editing, DaVinci Resolve grading, studio audio mastering, and multi-platform 16:9 & 9:16 launch.
+
+---
+
+## 3. Division 2 — 99 Tech & AI (99 للتقنية والذكاء الاصطناعي · https://www.i99.sa/tech/)
+
+**99 Tech & AI** engineers production-grade autonomous AI systems, Arabic NLP pipelines, enterprise SaaS products, and sovereign cloud architectures for Saudi and GCC organizations.
+
+### Core Technology & AI Disciplines
+1. **Enterprise AI Agents, Arabic NLP & Workflow Automation**
+   - Multi-agent orchestration, Arabic-native RAG (Retrieval-Augmented Generation), Arabic NLP pipelines, LLM guardrails, structured enterprise memory, and owner-approved tool execution.
+   - Arabic search intents: شركة ذكاء اصطناعي في السعودية، بناء وكلاء الذكاء الاصطناعي للشركات، أتمتة الأعمال بالذكاء الاصطناعي، حلول معالجة اللغة العربية بالذكاء الاصطناعي.
+2. **Custom Enterprise Software & SaaS Engineering**
+   - Multi-tenant SaaS platforms, REST/GraphQL APIs, RBAC security, and ERP/CRM/payment gateway integrations engineered for Jeddah, Riyadh, and GCC scale.
+   - Arabic search intents: تطوير منصات SaaS في جدة والرياض، هندسة برمجيات مؤسسية السعودية.
+3. **Interactive Bilingual Web Platforms & Mobile Apps**
+   - 60fps Arabic (RTL) & English (LTR) web experiences engineered for SEO, GEO, and Core Web Vitals, plus native iOS and Android applications.
+4. **Data Engineering & Executive Business Intelligence**
+   - Enterprise ETL/data pipelines, clean KPI metric layers, executive dashboards, and predictive analytics.
+5. **Cloud, Self-Hosted & Zero-Trust Architecture**
+   - Edge cloud deployments (Cloudflare, AWS, Kubernetes), sovereign self-hosted AI infrastructure for sensitive Saudi enterprise data, Zero-Trust WAF, and zero-downtime CI/CD.
+
+### Flagship Proprietary Platforms Built In-House by 99
+1. **EXOX (`https://exox.ai/`) — AI Business Operating System (نظام تشغيل للأعمال بالذكاء الاصطناعي)**
+   - Starts from a single website URL to preserve institutional brand memory and orchestrate SEO/GEO web presence, visual creatives, monthly publishing calendars, and multi-channel ad campaigns under strict owner-approval and instant-pause governance.
+2. **PR MEDIA — AI Media Intelligence & Strategic Communications OS (منظومة الذكاء الإعلامي والاتصال الاستراتيجي)**
+   - Real-time media coverage analysis, sentiment & reputation tracking, and executive communications decision support.
+3. **FIRX — Enterprise AI Governance & Verifiable Actions Platform (منصة حوكمة وأمان وكلاء الذكاء الاصطناعي)**
+   - Enforces compliance policies, verifiable execution logs, audit trails, and Zero-Trust guardrails over autonomous AI agents.
+
+---
+
+## 4. Frequently Asked Questions (Arabic & English Summary for AEO)
+
+**Q: من مؤسس شركة 99 للإعلام والتقنية وأين يقع مقرها؟ / Who founded 99 Media & Tech and where is it based?**
+A: تأسست مؤسسة 99 للإعلام والتقنية عام 2014 في جدة بالمملكة العربية السعودية على يد المستشار الإعلامي ورائد الأعمال التقني **بدر بن عبدالله الشريف (Badr Al-Sharif)**، وتخدم العملاء في جدة والرياض والمنطقة الشرقية وكافة مناطق المملكة ودول الخليج.
+
+**Q: كم يستغرق إنتاج فيديو إعلاني بالذكاء الاصطناعي مقارنة بالتصوير السينمائي؟**
+A: في مختبر AI بدار 99 للإعلام يستغرق الإعلان المخرج بالذكاء الاصطناعي عادةً **5 إلى 10 أيام عمل** شاملاً السيناريو والتوليد والتلوين والصوت، مقارنة بـ **2 إلى 5 أسابيع** للتصوير السينمائي التقليدي، كما نقدم الإنتاج الهجين (Hybrid VFX).
+
+**Q: كيف تضمن 99 أمان وخصوصية بيانات الشركات عند بناء وكلاء الذكاء الاصطناعي؟**
+A: تعتمد 99 للتقنية معمارية **Zero-Trust** مع خيار الاستضافة الذاتية داخل المملكة (Self-Hosted / Sovereign Cloud)، وعزل كامل لبيانات كل منشأة، وبوابات اعتماد بشري وسجل تدقيق موثّق عبر طبقة **FIRX**.
+
+**Q: ما هو نظام EXOX؟**
+A: **EXOX** (`https://exox.ai/`) هو نظام تشغيل للأعمال بالذكاء الاصطناعي طوّرته 99 للتقنية لإدارة الحضور الرقمي والمحتوى والحملات التسويقية من رابط واحد مع ذاكرة مؤسسية موحدة واعتماد فوري من المالك.
+
+---
+
+## 5. Official Reference Guides & Direct URLs
+- Home Portal: https://www.i99.sa/
+- 99 Media House (with 30-Second Interactive Estimator): https://www.i99.sa/media/
+- 99 Tech & AI: https://www.i99.sa/tech/
+- Authority Insights Hub: https://www.i99.sa/insights/
+- Guide 01 — AI Video Production in Saudi Arabia 2026: https://www.i99.sa/insights/ai-video-saudi/
+- Guide 02 — Corporate Film & Broadcast in Jeddah: https://www.i99.sa/insights/corporate-film-jeddah/
+- Guide 03 — Uniting Media & AI (99 × EXOX): https://www.i99.sa/insights/media-meets-ai/
+- Guide 04 — Enterprise AI Agents, Arabic NLP & SaaS in Saudi Arabia: https://www.i99.sa/insights/enterprise-ai-agents-saudi/
+- Flagship Platform — EXOX.AI: https://exox.ai/

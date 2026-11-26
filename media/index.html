@@ -25,6 +25,8 @@
     <link rel="alternate" hreflang="x-default" href="https://www.i99.sa/media/">
     <link rel="alternate" type="text/plain" title="99 Media &amp; Tech — LLMs Knowledge Summary"
         href="https://www.i99.sa/llms.txt">
+    <link rel="alternate" type="text/plain" title="99 Media &amp; Tech — Full AI Knowledge Base"
+        href="https://www.i99.sa/llms-full.txt">
     <link rel="manifest" href="../site.webmanifest">
 
     <!-- Official #33075F Pearl Medallion Icons -->
@@ -64,12 +66,13 @@
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": "Organization",
+          "@type": ["Organization", "LocalBusiness"],
           "@id": "https://www.i99.sa/#org",
-          "name": "99 Media & Tech",
-          "alternateName": ["مؤسسة تسعة وتسعون", "99 للإعلام", "99 Media"],
+          "name": "99 للإعلام والتقنية",
+          "alternateName": ["99 Media & Tech", "مؤسسة تسعة وتسعون", "99 للإنتاج الإعلامي", "99 للإعلام", "i99.sa"],
           "url": "https://www.i99.sa/",
           "foundingDate": "2014",
+          "founder": { "@id": "https://www.i99.sa/#founder" },
           "logo": {
             "@type": "ImageObject",
             "url": "https://www.i99.sa/img/tech-icon-512.png",
@@ -85,12 +88,14 @@
             "addressRegion": "Makkah Province",
             "addressCountry": "SA"
           },
+          "areaServed": ["Saudi Arabia", "Jeddah", "Riyadh", "GCC"],
           "knowsAbout": [
             "Television & Broadcast Production",
+            "TV Format Development",
             "Cinema & Brand Film Direction",
             "Generative AI Video Production",
             "Corporate Communications & Strategic PR",
-            "Crisis Communications & Event Coverage",
+            "Crisis Management & Event Coverage",
             "Digital Marketing & Social Systems"
           ],
           "sameAs": ["https://exox.ai/"],
@@ -102,6 +107,14 @@
             "areaServed": ["SA", "AE", "KW", "QA", "BH", "OM"],
             "availableLanguage": ["Arabic", "English"]
           }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://www.i99.sa/#founder",
+          "name": "بدر بن عبدالله الشريف",
+          "alternateName": ["Badr Al-Sharif", "Badr Abdullah Al-Sharif"],
+          "jobTitle": "Founder, Media Consultant & Tech Entrepreneur",
+          "worksFor": { "@id": "https://www.i99.sa/#org" }
         },
         {
           "@type": "WebSite",
