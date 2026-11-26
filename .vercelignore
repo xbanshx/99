@@ -1,36 +1,4 @@
-# System & OS files
+.github
+scripts
+*.log
 .DS_Store
-Thumbs.db
-*.swp
-
-# Secrets & credentials
-.env*
-*.pem
-*.key
-*.duck
-
-# Local IDE & tooling
-.git
-.gitignore
-.vscode/
-qa_reports/
-
-# Archives & old website copies (kept locally, never deployed)
-untitled folder/
-*.zip
-*.rar
-*.7z
-*_backup*/
-_backups/
-
-# Unused heavy legacy assets (~8MB preserved locally on disk, excluded from production deploy)
-img/videographer.jpg
-img/studio-1.jpg
-img/studio-2.jpg
-img/tv.jpg
-img/main-logo.svg
-img/sec-logo.svg
-img/icons/pink-star.svg
-img/icons/purple-star.svg
-img/icons/yellow-star.svg
-img/icons/question-mark.svg
