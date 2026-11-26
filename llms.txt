@@ -66,6 +66,12 @@ Founded in Jeddah in 2014, **99 Media** is a flagship Saudi television, cinema, 
 
 ---
 
+## Reference Guides & Authority Insights (أدلة 99 المرجعية)
+- [99 Insights Library](https://www.i99.sa/insights/): Practical Saudi market guides on media production, generative AI video, and enterprise AI
+- [AI Video Production Guide in Saudi Arabia 2026](https://www.i99.sa/insights/ai-video-saudi/): Turnaround, director-led AI quality vs traditional cinema, and hybrid VFX use cases
+- [Corporate Film & Broadcast Guide in Jeddah](https://www.i99.sa/insights/corporate-film-jeddah/): The 4-stage 35mm production workflow and 5 criteria for choosing a Saudi production house
+- [Uniting Media Production & AI Systems (99 × EXOX)](https://www.i99.sa/insights/media-meets-ai/): How Saudi enterprises combine cinema-grade storytelling with EXOX, PR MEDIA, and FIRX
+
 ## Primary Links
 - [99 Home Portal](https://www.i99.sa/): Entry hub for 99 Media & Tech (Jeddah, Saudi Arabia)
 - [99 Media House](https://www.i99.sa/media/): Broadcast, cinema, AI video production, PR, and digital campaigns

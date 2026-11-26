@@ -13,6 +13,7 @@ const splashTranslations = {
         "p-tech-proof": "أنظمة مطوّرة داخلياً: EXOX.AI · PR MEDIA · FIRX",
         "p-tech-cta": "استكشف 99 للتقنية ←",
         "splash-footer": "من جدة إلى المملكة والخليج — إعلام يصنع الهيبة، وتقنية تقود المستقبل",
+        "p-insights": "أدلة 99",
         "p-pdf": "ملف الشركة PDF",
         "splash-main-heading": "مؤسسة 99 للإعلام والتقنية والذكاء الاصطناعي — جدة"
     },
@@ -30,6 +31,7 @@ const splashTranslations = {
         "p-tech-proof": "Engineered in-house: EXOX.AI · PR MEDIA · FIRX",
         "p-tech-cta": "Explore 99 Tech →",
         "splash-footer": "From Jeddah to Saudi Arabia & GCC — Cinema-grade media & sovereign AI engineering",
+        "p-insights": "99 Guides",
         "p-pdf": "Company Profile PDF",
         "splash-main-heading": "99 Media & Tech — Jeddah, Saudi Arabia"
     }

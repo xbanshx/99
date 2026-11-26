@@ -117,6 +117,7 @@ const techTranslations = {
 
         "t-footer-home": "الرئيسية",
         "t-footer-media": "99 للإعلام",
+        "t-footer-insights": "أدلة 99",
         "t-footer-copy": "© 2026 مؤسسة تسعة وتسعون (i99.sa). جميع الحقوق محفوظة."
     },
     en: {
@@ -237,6 +238,7 @@ const techTranslations = {
 
         "t-footer-home": "Home",
         "t-footer-media": "99 Media",
+        "t-footer-insights": "99 Guides",
         "t-footer-copy": "© 2026 99 Establishment (i99.sa). All rights reserved."
     }
 };

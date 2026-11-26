@@ -81,4 +81,28 @@
       <image:title>99 Media Corporate PR &amp; Flagship Summit Coverage</image:title>
     </image:image>
   </url>
+  <url>
+    <loc>https://www.i99.sa/insights/</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.i99.sa/insights/ai-video-saudi/</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.i99.sa/insights/corporate-film-jeddah/</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.i99.sa/insights/media-meets-ai/</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
 </urlset>

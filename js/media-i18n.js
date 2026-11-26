@@ -92,9 +92,31 @@ const mediaTranslations = {
 
         "m-footer-home": "الرئيسية",
         "m-footer-tech": "99 للتقنية والذكاء الاصطناعي",
+        "m-footer-insights": "أدلة 99 المرجعية",
         "m-footer-pdf": "الملف التعريفي PDF",
         "m-footer-contact": "تواصل معنا",
-        "m-footer-copy": "© 2026 مؤسسة تسعة وتسعون (i99.sa). جميع الحقوق محفوظة."
+        "m-footer-copy": "© 2026 مؤسسة تسعة وتسعون (i99.sa). جميع الحقوق محفوظة.",
+
+        "m-est-title": "قدّر مشروعك الإعلامي في 30 ثانية",
+        "m-est-sub": "اختر 3 تفاصيل سريعة لنعرض لك المدة التقديرية والمخرجات المقترحة ونجهّز طلبك فوراً.",
+        "m-est-q1": "1. نوع الإنتاج المطلوب",
+        "m-est-t1": "فيلم / إعلان سينمائي",
+        "m-est-t2": "فيديو ذكاء اصطناعي AI",
+        "m-est-t3": "تغطية فعالية / قمة",
+        "m-est-t4": "حملة اتصال وتسويق",
+        "m-est-q2": "2. المدة أو النطاق",
+        "m-est-s1": "قصير (15 – 45 ثانية)",
+        "m-est-s2": "فيلم رئيسي (1 – 3 دقائق)",
+        "m-est-s3": "سلسلة / حملة متعددة",
+        "m-est-q3": "3. موقع التنفيذ",
+        "m-est-c1": "جدة ومكة",
+        "m-est-c2": "الرياض",
+        "m-est-c3": "المنطقة الشرقية",
+        "m-est-c4": "عن بُعد / الخليج",
+        "m-est-time-lbl": "الجدول الزمني التقديري",
+        "m-est-deliv-lbl": "المخرجات المقترحة",
+        "m-est-wa": "إرسال التصور عبر واتساب ↗",
+        "m-est-fill": "تعبئة النموذج أدناه ↓"
     },
     en: {
         "m-skip": "Skip to main content",
@@ -189,9 +211,31 @@ const mediaTranslations = {
 
         "m-footer-home": "Home",
         "m-footer-tech": "99 Tech & AI",
+        "m-footer-insights": "99 Guides",
         "m-footer-pdf": "Company Profile PDF",
         "m-footer-contact": "Contact Us",
-        "m-footer-copy": "© 2026 99 Establishment (i99.sa). All rights reserved."
+        "m-footer-copy": "© 2026 99 Establishment (i99.sa). All rights reserved.",
+
+        "m-est-title": "Estimate Your Production in 30 Seconds",
+        "m-est-sub": "Select 3 quick details for an instant timeline, deliverables roadmap, and pre-filled brief.",
+        "m-est-q1": "1. Production Discipline",
+        "m-est-t1": "Cinema / TV Commercial",
+        "m-est-t2": "AI Generative Video",
+        "m-est-t3": "Summit / Event Coverage",
+        "m-est-t4": "PR & Digital Campaign",
+        "m-est-q2": "2. Duration or Scale",
+        "m-est-s1": "Short (15 – 45 sec)",
+        "m-est-s2": "Hero Film (1 – 3 min)",
+        "m-est-s3": "Multi-Asset Series / Campaign",
+        "m-est-q3": "3. Location",
+        "m-est-c1": "Jeddah & Makkah",
+        "m-est-c2": "Riyadh",
+        "m-est-c3": "Eastern Province",
+        "m-est-c4": "Remote / GCC",
+        "m-est-time-lbl": "Estimated Turnaround",
+        "m-est-deliv-lbl": "Recommended Deliverables",
+        "m-est-wa": "Send Scope via WhatsApp ↗",
+        "m-est-fill": "Pre-fill Inquiry Form ↓"
     }
 };
 

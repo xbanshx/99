@@ -706,6 +706,125 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // ═══════════════════════════════════════════════════════════════════════
+    // 10. 30-SECOND INTERACTIVE PRODUCTION ESTIMATOR (INSTANT, ZERO-LAG)
+    // ═══════════════════════════════════════════════════════════════════════
+    const estRoot = document.getElementById("media-estimator");
+    if (estRoot) {
+        const estState = { type: "cinema", scale: "short", city: "jeddah" };
+        const EST_MAP = {
+            cinema: {
+                scope: "Broadcast & Cinema Production",
+                arName: "فيلم / إعلان سينمائي", enName: "Cinema / TV Commercial",
+                time: { short: ["2 – 3 أسابيع", "2 – 3 weeks"], mid: ["3 – 4 أسابيع", "3 – 4 weeks"], series: ["4 – 8 أسابيع", "4 – 8 weeks"] },
+                deliv: [
+                    "معالجة إبداعية وسيناريو + تصوير سينمائي 4K + تلوين DaVinci ومكساج صوت + نسخ 16:9 و 9:16.",
+                    "Creative treatment & script + 4K cinema shoot + DaVinci color grading & audio mastering + 16:9 & 9:16 masters."
+                ]
+            },
+            aivideo: {
+                scope: "AI Video Production",
+                arName: "فيديو ذكاء اصطناعي AI", enName: "AI Generative Video",
+                time: { short: ["5 – 8 أيام عمل", "5 – 8 business days"], mid: ["8 – 12 يوم عمل", "8 – 12 business days"], series: ["2 – 3 أسابيع", "2 – 3 weeks"] },
+                deliv: [
+                    "سيناريو ولوحة مشاهد + إخراج وتوليد مشاهد AI بهوية متسقة + تلوين سينمائي وتعليق صوتي + نسخ جاهزة لجميع المنصات.",
+                    "Storyboard + director-led AI video generation + cinema color grade & voiceover + multi-platform exports."
+                ]
+            },
+            event: {
+                scope: "Corporate PR & Communications",
+                arName: "تغطية فعالية / قمة", enName: "Summit / Event Coverage",
+                time: { short: ["تسليم فوري + 48 ساعة", "Same-day + 48 hrs"], mid: ["3 – 5 أيام بعد الحدث", "3 – 5 days post-event"], series: ["تغطية يومية حية + فيلم ختامي", "Daily live recaps + hero film"] },
+                deliv: [
+                    "فريق تصوير متعدد الكاميرات + لقطات فورية للنشر أثناء الفعالية + فيلم توثيقي ختامي وتغطية إعلامية.",
+                    "Multi-cam crew + real-time social reels during the event + flagship recap film & PR coverage."
+                ]
+            },
+            campaign: {
+                scope: "Digital Marketing & Content",
+                arName: "حملة اتصال وتسويق", enName: "PR & Digital Campaign",
+                time: { short: ["1 – 2 أسبوع إطلاق", "1 – 2 weeks to launch"], mid: ["2 – 4 أسابيع", "2 – 4 weeks"], series: ["إدارة شهرية / ربع سنوية", "Monthly / Quarterly retainer"] },
+                deliv: [
+                    "استراتيجية الحملة والسردية + باقة محتوى مرئي متكامل + إدارة النشر والإعلانات وتقارير أداء قابلة للقياس.",
+                    "Campaign strategy & narrative + full visual content suite + publishing, paid reach & measurable KPIs."
+                ]
+            }
+        };
+        const SCALE_TXT = {
+            short: ["قصير (15 – 45 ثانية)", "Short (15 – 45 sec)"],
+            mid: ["فيلم رئيسي (1 – 3 دقائق)", "Hero Film (1 – 3 min)"],
+            series: ["سلسلة / حملة متعددة", "Multi-Asset Series"]
+        };
+        const CITY_TXT = {
+            jeddah: ["جدة ومكة", "Jeddah & Makkah"],
+            riyadh: ["الرياض", "Riyadh"],
+            east: ["المنطقة الشرقية", "Eastern Province"],
+            remote: ["عن بُعد / الخليج", "Remote / GCC"]
+        };
+
+        const elTime = document.getElementById("est-timeline");
+        const elDeliv = document.getElementById("est-deliverables");
+        const elWa = document.getElementById("est-wa-btn");
+        const elFill = document.getElementById("est-fill-btn");
+
+        const renderEstimator = () => {
+            const isEn = window.currentLang === "en";
+            const idx = isEn ? 1 : 0;
+            const cfg = EST_MAP[estState.type] || EST_MAP.cinema;
+            const timeStr = (cfg.time[estState.scale] || cfg.time.short)[idx];
+            const delivStr = cfg.deliv[idx];
+            const typeLbl = isEn ? cfg.enName : cfg.arName;
+            const scaleLbl = SCALE_TXT[estState.scale][idx];
+            const cityLbl = CITY_TXT[estState.city][idx];
+
+            if (elTime) elTime.textContent = timeStr;
+            if (elDeliv) elDeliv.textContent = delivStr;
+
+            const waMsg = isEn
+                ? `Hello 99 Media, I used the 30-sec estimator on i99.sa:\n• Discipline: ${typeLbl}\n• Scale: ${scaleLbl}\n• Location: ${cityLbl}\n• Est. Timeline: ${timeStr}`
+                : `السلام عليكم 99 للإعلام، استخدمت مُقدّر المشروع في i99.sa:\n• نوع الإنتاج: ${typeLbl}\n• النطاق: ${scaleLbl}\n• الموقع: ${cityLbl}\n• الجدول المقترح: ${timeStr}`;
+            if (elWa) elWa.href = `https://wa.me/966566111617?text=${encodeURIComponent(waMsg)}`;
+        };
+
+        estRoot.querySelectorAll(".est-chips").forEach((groupEl) => {
+            const key = groupEl.getAttribute("data-est-group");
+            groupEl.querySelectorAll(".est-chip").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    groupEl.querySelectorAll(".est-chip").forEach((b) => b.classList.remove("is-active"));
+                    btn.classList.add("is-active");
+                    estState[key] = btn.getAttribute("data-val");
+                    playCinemaTick(520, 0.035, 0.025);
+                    renderEstimator();
+                });
+            });
+        });
+
+        if (elFill) {
+            elFill.addEventListener("click", () => {
+                const isEn = window.currentLang === "en";
+                const idx = isEn ? 1 : 0;
+                const cfg = EST_MAP[estState.type] || EST_MAP.cinema;
+                selectScope(cfg.scope, true);
+                const msgEl = document.getElementById("media-message");
+                const nameEl = document.getElementById("media-name");
+                const typeLbl = isEn ? cfg.enName : cfg.arName;
+                const scaleLbl = SCALE_TXT[estState.scale][idx];
+                const cityLbl = CITY_TXT[estState.city][idx];
+                if (msgEl) {
+                    msgEl.value = isEn
+                        ? `Production Track: ${typeLbl}\nScale: ${scaleLbl}\nLocation: ${cityLbl}\nAdditional notes: `
+                        : `نوع الإنتاج: ${typeLbl}\nالمدة / النطاق: ${scaleLbl}\nموقع التنفيذ: ${cityLbl}\nملاحظات إضافية: `;
+                }
+                const formEl = document.getElementById("media-form");
+                if (formEl) formEl.scrollIntoView({ behavior: "smooth", block: "center" });
+                if (nameEl) setTimeout(() => nameEl.focus({ preventScroll: true }), 500);
+            });
+        }
+
+        document.addEventListener("media:langchange", renderEstimator);
+        renderEstimator();
+    }
+
     const mediaForm = document.getElementById("media-form");
     if (mediaForm) {
         mediaForm.addEventListener("submit", async (e) => {
