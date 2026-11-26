@@ -337,11 +337,11 @@
         document.querySelectorAll("form").forEach((form) => {
             prepareFormForSubmission(form);
 
-            // Track official GA4 `form_start` ONCE per form per session on real user input
+            // Track custom enriched `inquiry_form_start` ONCE per form per session (avoids collision with GA4 auto Enhanced Measurement `form_start`)
             const onFormStart = () => {
                 const formId = form.id || "inquiry_form";
                 track(
-                    "form_start",
+                    "inquiry_form_start",
                     {
                         form_id: formId,
                         form_name: formId === "media-form" ? "99_media_production_brief" : "99_tech_project_inquiry",
@@ -395,13 +395,13 @@
                     return;
                 }
 
-                // Robust PDF detection (works WITH query strings like ?v=2026!)
+                // Robust PDF detection (works WITH query strings like ?v=2026! Uses `profile_download` to avoid collision with GA4 auto Enhanced Measurement `file_download`)
                 try {
                     const resolved = new URL(rawHref, window.location.href);
                     if (resolved.pathname.toLowerCase().endsWith(".pdf")) {
                         const fileName = resolved.pathname.split("/").pop() || "99-Profile-final.pdf";
                         track(
-                            "file_download",
+                            "profile_download",
                             {
                                 file_name: fileName,
                                 file_extension: "pdf",
@@ -543,7 +543,7 @@
     // 8. PUBLIC API FOR SERVER-CONFIRMED LEADS, CRM & PRIVACY CONTROLS
     // -----------------------------------------------------------------------
     window.i99Analytics = {
-        version: "2.0.0",
+        version: "2.1.0",
         debug: DEBUG_MODE,
         prepareFormForSubmission,
         getAttribution,
@@ -553,9 +553,10 @@
         trackEvent: track,
 
         // MUST be called ONLY AFTER backend/Web3Forms confirms HTTP 200 + success!
-        trackLeadConfirmed: ({ formId, division, scope, leadId, isQuote }) => {
+        // Fires official GA4 `generate_lead` EXACTLY ONCE per confirmed submission (zero duplication).
+        trackLeadConfirmed: ({ formId, division, scope, leadId }) => {
             const lid = leadId || generateLeadId(division || getDivision());
-            const ok = track(
+            track(
                 "generate_lead",
                 {
                     lead_id: lid,
@@ -567,17 +568,6 @@
                 },
                 { onceKey: `lead_${lid}` }
             );
-            if (ok && isQuote) {
-                track(
-                    "quote_request",
-                    {
-                        lead_id: lid,
-                        quote_channel: "website_form_confirmed",
-                        service_category: scope || "general_inquiry"
-                    },
-                    { onceKey: `quote_conf_${lid}` }
-                );
-            }
             return lid;
         }
     };
