@@ -59,8 +59,8 @@ function switchLang(lang) {
     }
 
     document.title = lang === "en"
-        ? "99 Media & Tech | Broadcast Production & AI Engineering in Jeddah | i99.sa"
-        : "99 Media & Tech | مؤسسة تسعة وتسعون للإعلام والتقنية والذكاء الاصطناعي — جدة | i99.sa";
+        ? "99 Media & Tech | Production & AI in Jeddah | i99.sa"
+        : "99 للإعلام والتقنية والذكاء الاصطناعي — جدة | i99.sa";
 }
 
 document.addEventListener("DOMContentLoaded", () => {

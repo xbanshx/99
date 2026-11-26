@@ -272,16 +272,16 @@ function switchLang(lang) {
     }
 
     document.title = lang === "en"
-        ? "99 Tech & AI | AI Systems & Software Engineering in Jeddah | i99.sa"
-        : "99 Tech & AI | هندسة أنظمة الذكاء الاصطناعي والبرمجيات من جدة | i99.sa";
+        ? "99 Tech & AI | Enterprise AI Agents & SaaS — Jeddah"
+        : "99 للتقنية والذكاء الاصطناعي | وكلاء AI وSaaS — جدة";
 
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
         metaDesc.setAttribute(
             "content",
             lang === "en"
-                ? "99 Tech & AI in Jeddah (est. 2014): engineering autonomous AI systems, enterprise SaaS platforms, and Zero-Trust cloud infrastructure — creators of EXOX, PR MEDIA, and FIRX."
-                : "99 للتقنية والذكاء الاصطناعي في جدة (منذ 2014): نهندس أنظمة ذكاء اصطناعي مستقلة، منصات SaaS وبرمجيات مؤسسية، وبنية سحابية فائقة الموثوقية — مطوّرو EXOX و PR MEDIA و FIRX."
+                ? "99 Tech & AI in Jeddah: enterprise AI agents, Arabic NLP, workflow automation, and custom SaaS — creators of EXOX, PR MEDIA, and FIRX."
+                : "99 للتقنية في جدة: هندسة وكلاء الذكاء الاصطناعي، معالجة اللغة العربية NLP، أتمتة الأعمال، ومنصات SaaS — مطوّرو EXOX وPR MEDIA وFIRX."
         );
     }
 

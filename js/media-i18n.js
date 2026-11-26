@@ -271,16 +271,16 @@ function switchLang(lang) {
     }
 
     document.title = lang === "en"
-        ? "99 Media | Broadcast, Cinema & AI Video Production House in Jeddah | i99.sa"
-        : "99 Media | دار الإنتاج الإعلامي والسينمائي وفيديوهات الذكاء الاصطناعي من جدة | i99.sa";
+        ? "99 Media | Broadcast, Cinema & AI Video — Jeddah"
+        : "99 للإعلام | إنتاج إعلامي وسينمائي وفيديوهات AI — جدة";
 
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
         metaDesc.setAttribute(
             "content",
             lang === "en"
-                ? "99 Media in Jeddah (est. 2014): broadcast and cinema production, AI video creation, corporate PR, and digital campaigns — trusted by MBC, SBA, Misk, and Al-Faisalya."
-                : "99 للإعلام (منذ 2014 في جدة): دار إنتاج تلفزيوني وسينمائي ورقمي، فيديوهات الذكاء الاصطناعي، الاتصال المؤسسي والعلاقات العامة، والتسويق الرقمي — شركاء MBC وهيئة الإذاعة والتلفزيون ومسك والجمعية الفيصلية الخيرية."
+                ? "99 Media in Jeddah since 2014: broadcast and cinema production, AI video, corporate PR, and digital campaigns — partners of MBC & Misk."
+                : "دار 99 للإعلام في جدة منذ 2014: إنتاج تلفزيوني وسينمائي، فيديوهات الذكاء الاصطناعي، اتصال مؤسسي وعلاقات عامة — شركاء MBC ومسك."
         );
     }
 
