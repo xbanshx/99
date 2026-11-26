@@ -11,9 +11,9 @@
 
     // Paste your free IDs below when ready (leave empty to stay dormant with 0 requests):
     const CONFIG = {
-        GA4_ID: "",      // e.g. "G-XXXXXXXXXX" from analytics.google.com
-        CLARITY_ID: "",  // e.g. "abc123xyz" from clarity.microsoft.com
-        GTM_ID: ""       // e.g. "GTM-XXXXXXX" (optional — manages Meta/TikTok/Snap/LinkedIn pixels)
+        GA4_ID: "",             // Loaded directly in <head> (G-SBQ4DKVCV8)
+        CLARITY_ID: "zjf4dy26hv", // Microsoft Clarity (Heatmaps & Session Recordings — idle-deferred)
+        GTM_ID: ""              // Optional GTM container
     };
 
     // 1. Capture UTM & Landing Attribution silently on first visit
