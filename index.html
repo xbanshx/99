@@ -80,6 +80,7 @@
           "image": "https://www.i99.sa/img/og-home.png",
           "email": "Info@i99.sa",
           "telephone": "+966566111617",
+          "priceRange": "$$$",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Jeddah",
@@ -182,11 +183,14 @@
     <link rel="preload" href="img/cinema/stage-hero.webp" as="image">
     <link rel="preload" href="img/cinema/tech-portal.webp" as="image">
 
+    <link rel="preload" as="image" href="img/cinema/stage-hero.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="img/cinema/tech-portal.webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
-        rel="stylesheet">
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="css/splash.css?v=2.2">
 
     <!-- Google Analytics 4 (G-SBQ4DKVCV8 — async non-blocking) -->
@@ -236,14 +240,14 @@
         <div class="gpu-backdrops" aria-hidden="true">
             <!-- Base World: 99 Tech & AI -->
             <div class="world-layer world-tech">
-                <img src="img/cinema/tech-portal.webp" alt="99 للتقنية والذكاء الاصطناعي — هندسة أنظمة AI والبرمجيات المؤسسية في جدة" class="world-photo photo-tech">
+                <img src="img/cinema/tech-portal.webp" alt="99 للتقنية والذكاء الاصطناعي — هندسة أنظمة AI والبرمجيات المؤسسية في جدة" width="1376" height="768" decoding="async" class="world-photo photo-tech">
                 <div class="world-scrim tech-scrim"></div>
             </div>
 
             <!-- Sliding Optical Curtain: 99 Media House (pure translate3d mask!) -->
             <div class="media-curtain" id="media-curtain">
                 <div class="media-curtain-inner" id="media-curtain-inner">
-                    <img src="img/cinema/stage-hero.webp" alt="99 للإعلام — دار الإنتاج التلفزيوني والسينمائي وفيديوهات الذكاء الاصطناعي في جدة" class="world-photo photo-media">
+                    <img src="img/cinema/stage-hero.webp" alt="99 للإعلام — دار الإنتاج التلفزيوني والسينمائي وفيديوهات الذكاء الاصطناعي في جدة" width="1376" height="768" fetchpriority="high" decoding="sync" class="world-photo photo-media">
                     <div class="world-scrim media-scrim"></div>
                 </div>
             </div>
@@ -285,7 +289,7 @@
         <!-- Static 50/50 Doorway Columns (Zero text reflow on hover!) -->
         <a href="media/" class="doorway doorway-media" id="media-side" data-world="media">
             <div class="mobile-backdrop" aria-hidden="true">
-                <img src="img/cinema/stage-hero.webp" alt="99 للإعلام — دار الإنتاج التلفزيوني والسينمائي وفيديوهات الذكاء الاصطناعي في جدة" class="world-photo photo-media">
+                <img src="img/cinema/stage-hero.webp" alt="99 للإعلام — دار الإنتاج التلفزيوني والسينمائي وفيديوهات الذكاء الاصطناعي في جدة" width="1376" height="768" fetchpriority="high" decoding="sync" class="world-photo photo-media">
                 <div class="world-scrim media-scrim"></div>
             </div>
 
@@ -324,7 +328,7 @@
 
         <a href="tech/" class="doorway doorway-tech" id="tech-side" data-world="tech">
             <div class="mobile-backdrop" aria-hidden="true">
-                <img src="img/cinema/tech-portal.webp" alt="99 للتقنية والذكاء الاصطناعي — هندسة أنظمة AI والبرمجيات المؤسسية في جدة" class="world-photo photo-tech">
+                <img src="img/cinema/tech-portal.webp" alt="99 للتقنية والذكاء الاصطناعي — هندسة أنظمة AI والبرمجيات المؤسسية في جدة" width="1376" height="768" decoding="async" class="world-photo photo-tech">
                 <div class="world-scrim tech-scrim"></div>
             </div>
 
@@ -376,7 +380,7 @@
         </div>
     </footer>
 
-    <script src="js/splash-i18n.js?v=2.3"></script>
+    <script src="js/splash-i18n.js?v=2.3" defer></script>
     <script src="js/analytics-bridge.js?v=2.1" defer></script>
 </body>
 
