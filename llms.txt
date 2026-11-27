@@ -29,7 +29,7 @@
 
 ## Flagship Platforms Engineered In-House
 - **EXOX (https://exox.ai/):** AI Business Operating System (نظام تشغيل للأعمال بالذكاء الاصطناعي).
-- **PRCI (https://prci.top/):** AI-Powered Media Intelligence & Strategic Communications OS (منظومة للذكاء الإعلامي والاتصال الاستراتيجي).
+- **PRCI — Public Relations & Communications Intelligence (https://prci.top/):** Institutional Communications Intelligence & Operating System — *"From Intelligence to Impact."* (نظام تشغيل واستخبارات للاتصال المؤسسي والعلاقات العامة).
 - **FIRX:** Enterprise AI Governance & Verifiable Actions Platform (منصة حوكمة وأمان وكلاء الذكاء الاصطناعي).
 
 ## Primary Pages & Guides

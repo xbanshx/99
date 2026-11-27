@@ -29,7 +29,7 @@ const techTranslations = {
         "t-work1-cta": "استكشف exox.ai ↗",
 
         "t-work2-tag": "مُطلق الآن · prci.top",
-        "t-work2-long": "منصة ذكاء إعلامي واتصال استراتيجي تحلّل التغطيات وإشارات السمعة لحظياً وتصوغ قرارات تواصلية دقيقة للقيادات والمؤسسات.",
+        "t-work2-long": "نظام تشغيل واستخبارات للاتصال المؤسسي والعلاقات العامة — يحلّل التغطيات وإشارات السمعة لحظياً ليحوّل الذكاء الإعلامي إلى قرارات استراتيجية وأثر ملموس.",
         "t-work2-cta": "استكشف prci.top ↗",
 
         "t-work3-tag": "حوكمة وتحقق AI",
@@ -86,7 +86,7 @@ const techTranslations = {
         "t-faq1-q": "ما هي 99 للتقنية والذكاء الاصطناعي (99 Tech & AI)؟",
         "t-faq1-a": "99 للتقنية هي ذراع الذكاء الاصطناعي وهندسة البرمجيات التابعة لمؤسسة تسعة وتسعون (i99.sa) التي تأسست عام 2014 ومقرها جدة، المملكة العربية السعودية. نتخصص في بناء أنظمة الذكاء الاصطناعي المستقلة، منصات SaaS المؤسسية، المنصات التفاعلية وتطبيقات الجوال، هندسة البيانات، والبنية السحابية المؤمّنة.",
         "t-faq2-q": "ما أبرز الأنظمة التي طوّرتها 99 للتقنية داخلياً؟",
-        "t-faq2-a": "طوّرنا ثلاث منظومات رائدة من الصفر: نظام EXOX (exox.ai) كنظام تشغيل ذكي لنمو الأعمال، ومنصة PRCI للذكاء الإعلامي والاتصال الاستراتيجي، ومنظومة FIRX لحوكمة والتحقق من تنفيذ الأنظمة الذكية.",
+        "t-faq2-a": "طوّرت 99 ثلاث منظومات رائدة من الصفر: نظام EXOX (exox.ai) كنظام تشغيل ذكي لنمو الأعمال، ومنظومة PRCI (prci.top — Public Relations & Communications Intelligence) كنظام تشغيل واستخبارات للاتصال المؤسسي، ومنظومة FIRX لحوكمة والتحقق من تنفيذ الأنظمة الذكية.",
         "t-faq3-q": "أين يقع مقر 99 للتقنية وهل تقدّمون خدماتكم خارج جدة؟",
         "t-faq3-a": "يقع مقرنا الرئيسي في جدة بالمملكة العربية السعودية، ونخدم المنشآت والجهات في جميع مدن المملكة (جدة، الرياض، الشرقية، مكة والمدينة) ودول الخليج والمنطقة.",
         "t-faq4-q": "كيف تضمنون أمان وحوكمة أنظمة الذكاء الاصطناعي للشركات؟",
@@ -151,7 +151,7 @@ const techTranslations = {
         "t-work1-cta": "Explore exox.ai ↗",
 
         "t-work2-tag": "Live · prci.top",
-        "t-work2-long": "An AI media intelligence and strategic communications suite turning live coverage and reputation signals into precise executive decisions.",
+        "t-work2-long": "Institutional Communications Intelligence & Operating System — turning live media coverage and reputation signals into decisive leadership action. From Intelligence to Impact.",
         "t-work2-cta": "Explore prci.top ↗",
 
         "t-work3-tag": "AI Governance",
@@ -208,7 +208,7 @@ const techTranslations = {
         "t-faq1-q": "What is 99 Tech & AI?",
         "t-faq1-a": "99 Tech & AI is the artificial intelligence and software engineering division of 99 Establishment (i99.sa), founded in 2014 and headquartered in Jeddah, Saudi Arabia. We engineer autonomous AI systems, enterprise SaaS platforms, high-craft web & mobile apps, data pipelines, and Zero-Trust cloud infrastructure.",
         "t-faq2-q": "What flagship platforms has 99 Tech engineered in-house?",
-        "t-faq2-a": "We engineered three flagship platforms from first principles: EXOX (exox.ai), an autonomous AI business operating system; PRCI, an AI-powered media intelligence and strategic communications platform; and FIRX, an enterprise AI governance and trusted execution layer.",
+        "t-faq2-a": "We engineered three flagship platforms from first principles: EXOX (exox.ai), an autonomous AI business operating system; PRCI (prci.top — Public Relations & Communications Intelligence), an Institutional Communications Intelligence & Operating System ('From Intelligence to Impact.'); and FIRX, an enterprise AI governance and trusted execution layer.",
         "t-faq3-q": "Where is 99 Tech headquartered, and do you serve clients outside Jeddah?",
         "t-faq3-a": "Our headquarters are in Jeddah, Saudi Arabia, and we partner with enterprises and government entities across the entire Kingdom (Jeddah, Riyadh, Eastern Province, Makkah, Madinah) as well as the GCC and wider region.",
         "t-faq4-q": "How does 99 ensure security and governance for enterprise AI?",
