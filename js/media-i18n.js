@@ -51,7 +51,7 @@ const mediaTranslations = {
         "m-step4-d": "مونتاج وتلوين سينمائي ومكساج متقن، يليه إطلاق إعلامي ورقمي مدروس يضمن وصولاً مؤثراً وأثراً ممتداً.",
 
         "m-syn-title": "حسّ سينمائي وإعلامي… مدعوم بذراع ذكاء اصطناعي",
-        "m-syn-desc": "ما يميّز 99 منذ 2014 في جدة أننا لم نفصل بين جمال الصورة وقوة التكنولوجيا. اليوم تعمل 99 للإعلام بتكامل مباشر مع ذراعنا التقنية (99 Tech & AI) ومنظوماتنا المطوّرة داخلياً مثل EXOX و PR MEDIA لتحويل كل إنتاج إعلامي إلى حضور رقمي قابل للقياس والنمو.",
+        "m-syn-desc": "ما يميّز 99 منذ 2014 في جدة أننا لم نفصل بين جمال الصورة وقوة التكنولوجيا. اليوم تعمل 99 للإعلام بتكامل مباشر مع ذراعنا التقنية (99 Tech & AI) ومنظوماتنا المطوّرة داخلياً مثل EXOX و PRCI لتحويل كل إنتاج إعلامي إلى حضور رقمي قابل للقياس والنمو.",
         "m-syn-tech-cta": "استكشف 99 للتقنية والذكاء الاصطناعي ↗",
         "m-syn-pdf-cta": "تحميل بروفايل 99 (PDF) ↓",
 
@@ -61,7 +61,7 @@ const mediaTranslations = {
         "m-faq2-q": "من أبرز الجهات والشركاء الذين تعاونت معهم 99 للإعلام؟",
         "m-faq2-a": "تشرفنا بالتعاون والعمل مع جهات إعلامية ومؤسسية كبرى في المملكة منها مجموعة MBC، هيئة الإذاعة والتلفزيون (SBA)، مؤسسة مسك الخيرية، الجمعية الفيصلية الخيرية، جمعية طيبة النسائية، صيدليات الدواء، جمعية زهرة، وجمعية فتاة الأحساء.",
         "m-faq3-q": "كيف توظف 99 الذكاء الاصطناعي في إنتاج الفيديوهات والحملات؟",
-        "m-faq3-a": "نجمع بين الإخراج السينمائي البشري وتقنيات توليد الفيديو بالذكاء الاصطناعي لاختصار زمن التنفيذ ومضاعفة الأثر البصري، مدعومين بذراع 99 للتقنية والذكاء الاصطناعي (EXOX و PR MEDIA) لقياس الأداء والوصول.",
+        "m-faq3-a": "نجمع بين الإخراج السينمائي البشري وتقنيات توليد الفيديو بالذكاء الاصطناعي لاختصار زمن التنفيذ ومضاعفة الأثر البصري، مدعومين بذراع 99 للتقنية والذكاء الاصطناعي (EXOX و PRCI) لقياس الأداء والوصول.",
         "m-faq4-q": "أين يقع مقر 99 للإعلام وهل تنفذون أعمالاً خارج جدة؟",
         "m-faq4-a": "يقع المقر الرئيسي في جدة بالمملكة العربية السعودية، وننفذ الإنتاج والتغطيات والحملات في كافة مناطق المملكة (جدة، الرياض، الشرقية، مكة والمدينة) ودول الخليج والمنطقة.",
         "m-faq5-q": "كيف نطلب عرضاً فنياً أو نبدأ إنتاجاً إعلامياً مع 99؟",
@@ -170,7 +170,7 @@ const mediaTranslations = {
         "m-step4-d": "Precision editing, theatrical color grading, and sound mastering followed by high-impact distribution.",
 
         "m-syn-title": "Cinematic craft… backed by an in-house AI engine",
-        "m-syn-desc": "Since 2014 in Jeddah, 99 has never separated visual prestige from engineering power. Today 99 Media operates hand-in-hand with 99 Tech & AI and our proprietary platforms EXOX and PR MEDIA to turn storytelling into measurable growth.",
+        "m-syn-desc": "Since 2014 in Jeddah, 99 has never separated visual prestige from engineering power. Today 99 Media operates hand-in-hand with 99 Tech & AI and our proprietary platforms EXOX and PRCI to turn storytelling into measurable growth.",
         "m-syn-tech-cta": "Explore 99 Tech & AI ↗",
         "m-syn-pdf-cta": "Download 99 Profile (PDF) ↓",
 
@@ -180,7 +180,7 @@ const mediaTranslations = {
         "m-faq2-q": "Which leading organizations has 99 Media partnered with?",
         "m-faq2-a": "We have proudly collaborated with MBC Group, Saudi Broadcasting Authority (SBA), Misk Foundation, Al-Faisalya Welfare Society, Taiba Women's Society, Al-Dawaa, Zahra Association, and Ftah Al-Ahsa.",
         "m-faq3-q": "How does 99 integrate AI into video production and campaigns?",
-        "m-faq3-a": "We unite human film direction with generative AI video models to compress turnaround times and unlock bold visual worlds, supported by 99 Tech & AI platforms (EXOX and PR MEDIA).",
+        "m-faq3-a": "We unite human film direction with generative AI video models to compress turnaround times and unlock bold visual worlds, supported by 99 Tech & AI platforms (EXOX and PRCI).",
         "m-faq4-q": "Where is 99 Media headquartered, and do you produce outside Jeddah?",
         "m-faq4-a": "Our headquarters are in Jeddah, Saudi Arabia, and we execute productions, event coverages, and campaigns across the Kingdom (Jeddah, Riyadh, Eastern Province, Makkah, Madinah) and the GCC.",
         "m-faq5-q": "How do we request a proposal or start a production with 99?",

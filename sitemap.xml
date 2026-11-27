@@ -4,7 +4,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.i99.sa/</loc>
-    <lastmod>2026-11-25</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.i99.sa/"/>
@@ -21,7 +21,7 @@
   </url>
   <url>
     <loc>https://www.i99.sa/tech/</loc>
-    <lastmod>2026-11-25</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
     <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.i99.sa/tech/"/>
@@ -36,8 +36,8 @@
       <image:title>EXOX — AI Business Operating System by 99 Tech</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://www.i99.sa/img/works/pr-media.png</image:loc>
-      <image:title>PR MEDIA — AI Media Intelligence by 99 Tech</image:title>
+      <image:loc>https://www.i99.sa/img/works/prci.png</image:loc>
+      <image:title>PRCI — AI Media Intelligence by 99 Tech</image:title>
     </image:image>
     <image:image>
       <image:loc>https://www.i99.sa/img/works/firx.png</image:loc>
@@ -50,7 +50,7 @@
   </url>
   <url>
     <loc>https://www.i99.sa/media/</loc>
-    <lastmod>2026-11-25</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
     <xhtml:link rel="alternate" hreflang="ar-SA" href="https://www.i99.sa/media/"/>

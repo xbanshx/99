@@ -29,13 +29,13 @@
 
 ## Flagship Platforms Engineered In-House
 - **EXOX (https://exox.ai/):** AI Business Operating System (نظام تشغيل للأعمال بالذكاء الاصطناعي).
-- **PR MEDIA:** AI-Powered Media Intelligence & Strategic Communications OS (منظومة للذكاء الإعلامي والاتصال الاستراتيجي).
+- **PRCI:** AI-Powered Media Intelligence & Strategic Communications OS (منظومة للذكاء الإعلامي والاتصال الاستراتيجي).
 - **FIRX:** Enterprise AI Governance & Verifiable Actions Platform (منصة حوكمة وأمان وكلاء الذكاء الاصطناعي).
 
 ## Primary Pages & Guides
 - [99 Home Portal](https://www.i99.sa/): Entry hub for 99 Media & Tech
 - [99 Media House](https://www.i99.sa/media/): Broadcast, cinema, AI video, PR, and 30-second project estimator
-- [99 Tech & AI](https://www.i99.sa/tech/): Enterprise AI agents, Arabic NLP, SaaS, EXOX, PR MEDIA, FIRX
+- [99 Tech & AI](https://www.i99.sa/tech/): Enterprise AI agents, Arabic NLP, SaaS, EXOX, PRCI, FIRX
 - [99 Insights Hub](https://www.i99.sa/insights/): Saudi market authority guides
 - [AI Video Production Guide in Saudi Arabia](https://www.i99.sa/insights/ai-video-saudi/)
 - [Corporate Film & Broadcast Guide in Jeddah](https://www.i99.sa/insights/corporate-film-jeddah/)

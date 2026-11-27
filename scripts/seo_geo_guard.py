@@ -87,7 +87,7 @@ def check_static_files():
             issues.append(f"Missing {fname}")
         else:
             txt = p.read_text(encoding="utf-8")
-            for token in ("99 للإعلام والتقنية", "Badr Al-Sharif", "EXOX", "PR MEDIA", "FIRX"):
+            for token in ("99 للإعلام والتقنية", "Badr Al-Sharif", "EXOX", "PRCI", "FIRX"):
                 if token not in txt:
                     issues.append(f"{fname} missing entity fact: {token}")
 
