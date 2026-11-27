@@ -28,8 +28,9 @@ const techTranslations = {
         "t-work1-p3": "بوابة مراجعة واعتماد وإيقاف فوري بيد المالك",
         "t-work1-cta": "استكشف exox.ai ↗",
 
-        "t-work2-tag": "ذكاء إعلامي واتصال",
+        "t-work2-tag": "مُطلق الآن · prci.top",
         "t-work2-long": "منصة ذكاء إعلامي واتصال استراتيجي تحلّل التغطيات وإشارات السمعة لحظياً وتصوغ قرارات تواصلية دقيقة للقيادات والمؤسسات.",
+        "t-work2-cta": "استكشف prci.top ↗",
 
         "t-work3-tag": "حوكمة وتحقق AI",
         "t-work3-long": "طبقة حوكمة وتحقق وتنفيذ موثوق للأنظمة الذكية؛ تضبط الامتثال، توثّق مسار القرارات، وتحمي البيئات المؤسسية الحساسة.",
@@ -149,8 +150,9 @@ const techTranslations = {
         "t-work1-p3": "Owner approval gate & instant pause authority",
         "t-work1-cta": "Explore exox.ai ↗",
 
-        "t-work2-tag": "Media Intelligence",
+        "t-work2-tag": "Live · prci.top",
         "t-work2-long": "An AI media intelligence and strategic communications suite turning live coverage and reputation signals into precise executive decisions.",
+        "t-work2-cta": "Explore prci.top ↗",
 
         "t-work3-tag": "AI Governance",
         "t-work3-long": "A governance, verification, and trusted execution layer for enterprise AI — enforcing output compliance, auditability, and safety.",

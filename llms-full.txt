@@ -85,7 +85,7 @@ Since 2014, **99 Media** has operated as a full-scale Saudi television, cinema, 
 ### Flagship Proprietary Platforms Built In-House by 99
 1. **EXOX (`https://exox.ai/`) — AI Business Operating System (نظام تشغيل للأعمال بالذكاء الاصطناعي)**
    - Starts from a single website URL to preserve institutional brand memory and orchestrate SEO/GEO web presence, visual creatives, monthly publishing calendars, and multi-channel ad campaigns under strict owner-approval and instant-pause governance.
-2. **PRCI — AI Media Intelligence & Strategic Communications OS (منظومة الذكاء الإعلامي والاتصال الاستراتيجي)**
+2. **PRCI (`https://prci.top/`) — AI Media Intelligence & Strategic Communications OS (منظومة الذكاء الإعلامي والاتصال الاستراتيجي)**
    - Real-time media coverage analysis, sentiment & reputation tracking, and executive communications decision support.
 3. **FIRX — Enterprise AI Governance & Verifiable Actions Platform (منصة حوكمة وأمان وكلاء الذكاء الاصطناعي)**
    - Enforces compliance policies, verifiable execution logs, audit trails, and Zero-Trust guardrails over autonomous AI agents.
